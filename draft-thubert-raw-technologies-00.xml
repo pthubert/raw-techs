@@ -195,23 +195,12 @@
    
    </section><!-- Scheduling -->
    
+   <!--
    
-   <section title="tech X">
-   
-   <section title="Provenance and Documents">
-   
-   </section><!-- Provenance and Documents   -->
-   
-   <section title="General Characteristics">
-   
-   </section><!-- General Characteristics  -->
-   
-   <section title="Applicability to Deterministic Flows">
-   
-   </section><!-- Applicability to deterministic flows  -->
-   
-   </section><!-- title="tech X" -->
-   
+      <?rfc include="draft-include-raw-technologies-TSCH"?> 
+      <?rfc include="draft-include-raw-technologies-EHT"?> 
+      <?rfc include="draft-include-raw-technologies-URLLC"?> 
+   -->
    
    
    
