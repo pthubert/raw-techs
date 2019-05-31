@@ -20,7 +20,20 @@ Medium Access Control (MAC) sublayer overhead is in the
 order of 10-20 bytes, leaving about 100 bytes to the upper
 layers. IEEE802.15.4 uses spread spectrum modulation such
 as the Direct Sequence Spread Spectrum (DSSS).
-
+  
+   
+   <section title="Provenance and Documents">
+   
+  - Which SDO, position wrt Open standards
+  - Existing IP over foo
+  - TSN-like activities, past and present (introduce the likes of as OFDMA, URLLC and EHT)
+  - DetNet-like arching art (introduce the likes of ISA100.11a or WiHART)
+  
+    
+   </section><!-- Provenance and Documents   -->
+   
+   <section title="General Characteristics">
+   
 As the core technique in IEEE802.15.4, TSCH splits time
 in multiple time slots that repeat over time. The structure is referred
 as a Slotframe. For each timeslot, a set of available frequencies
@@ -67,17 +80,25 @@ running for more than 300 years without wrapping (assuming
 a 10 ms timeslot). Channel hopping provides increased reliability
 to multi-path fading and external interference.
 It is handled by TSCH through a channel hopping sequence
-referred as macHopSeq in the IEEE802.15.4 specification.    
-   
-   <section title="Provenance and Documents">
-   
-   </section><!-- Provenance and Documents   -->
-   
-   <section title="General Characteristics">
+referred as macHopSeq in the IEEE802.15.4 specification.  
+
+
+- bandwidth, beam forming
+- expected capabilities for safety and automation, e.g., loops per second
+- caveats, e.g., latency in the backhaul or interference 
+- programming capabilities, is there a model for a flow, etc.
+
    
    </section><!-- General Characteristics  -->
    
    <section title="Applicability to Deterministic Flows">
+
+  - time synchronization
+  - scheduling capabilities, discuss such things as Resource Units, time slots or resource blocks. Can we reserve periodic resources vs. ask each time, what precision can we get in latency control.
+  - diversity scenarios, what’s available, 
+  - gap analysis, e.g. discuss multihop, or what’s missing how to do PAREO features.
+
+
    
    </section><!-- Applicability to deterministic flows  -->
    
