@@ -1,6 +1,73 @@
    
    
    <section title="TimeSlotted Channel Hopping">
+
+   The IEEE802.15.4 Task Group has been driving the development
+of low-power low-cost radio technology. The Timeslotted
+Channel Hopping mode, added to the 2015 revision of
+the IEEE802.15.4 standard, is targeted at the embedded and
+industrial world, where reliability, energy consumption and
+cost drive the application space.
+The IEEE802.15.4 physical layer has been designed to
+support demanding low-power scenarios targeting the use of
+unlicensed bands, both the 2.4 GHz and sub GHz Industrial,
+Scientific and Medical (ISM) bands. This has imposed requirements
+in terms of frame size, data rate and bandwidth
+to achieve reduced collision probability, reduced packet error
+rate, and acceptable range with limited transmission power.
+The PHY layer supports frames of up to 127 bytes. The
+Medium Access Control (MAC) sublayer overhead is in the
+order of 10-20 bytes, leaving about 100 bytes to the upper
+layers. IEEE802.15.4 uses spread spectrum modulation such
+as the Direct Sequence Spread Spectrum (DSSS).
+
+As the core technique in IEEE802.15.4, TSCH splits time
+in multiple time slots that repeat over time. The structure is referred
+as a Slotframe. For each timeslot, a set of available frequencies
+can be used, resulting in a matrix-like schedule (see Fig. <xref target="fig_slotframe"/>). 
+
+
+<figure title="Slotframe example with scheduled cells between nodes A, B and C"       anchor="fig_slotframe">
+<artwork><![CDATA[
+                       timeslot offset
+     | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
+     +------------------------+------------------------+   +-----+
+     |    |    |    |    |    |    |    |    |    |    |   |  C  |
+CH-1 | EB |    |    |C->B|    | EB |    |    |C->B|    |   |     |
+     |    |    |    |    |    |    |    |    |    |    |   +-----+
+     +-------------------------------------------------+      |
+     |    |    |    |    |    |    |    |    |    |    |      |
+CH-2 |    |    |B->C|    |B->A|    |    |B->C|    |B->A|   +-----+
+     |    |    |    |    |    |    |    |    |    |    |   |  B  |
+     +-------------------------------------------------+   |     |
+ ...                                                       +-----+  
+                                                              |
+     +-------------------------------------------------+      |
+     |    |    |    |    |    |    |    |    |    |    |   +-----+     
+CH-15|    |A->B|    |    |    |    |A->B|    |    |    |   |  A  |
+     |    |    |    |    |    |    |    |    |    |    |   |     |
+     +-------------------------------------------------+   +-----+ 
+ch.
+offset                                                           
+]]></artwork> 
+            </figure>
+
+This schedule represents the possible communications
+of a node with its neighbors, and is managed by a Scheduling
+Function such as The Minimal Scheduling Function (MSF) <!-- cite MSF draft -->. Each cell in the schedule
+is identified by its slotoffset and channeloffset coordinates. A
+cell's timeslot offset indicates its position in time, relative to the
+beginning of the slotframe. A cell's channel offset is an index
+which maps to a frequency at each iteration of the slotframe.
+Each packet exchanged between neighbors happens within one
+cell. An Absolute Slot Number (ASN) indicates the number
+of slots elapsed since the network started. It increments at
+every slot. This is a 5 byte counter that can support networks
+running for more than 300 years without wrapping (assuming
+a 10 ms timeslot). Channel hopping provides increased reliability
+to multi-path fading and external interference.
+It is handled by TSCH through a channel hopping sequence
+referred as macHopSeq in the IEEE802.15.4 specification.    
    
    <section title="Provenance and Documents">
    
