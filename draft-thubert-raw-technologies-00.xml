@@ -227,9 +227,12 @@
 
 <back>
    <references title="Normative References">
+      <?rfc include="reference.RFC.8480"?> <!-- 6P Protocol Specification -->
       <?rfc include="reference.RFC.8200"?> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
       <?rfc include='reference.I-D.ietf-detnet-architecture?>
       <?rfc include='reference.I-D.ietf-6tisch-architecture'?>
+      <?rfc include='reference.I-D.ietf-6tisch-msf'?>
+            
    </references>
    <references title="Informative References">
       <reference anchor="IEEE802154">

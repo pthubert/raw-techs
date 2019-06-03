@@ -5,7 +5,7 @@
    The IEEE802.15.4 Task Group has been driving the development
 of low-power low-cost radio technology. The Timeslotted
 Channel Hopping mode, added to the 2015 revision of
-the IEEE802.15.4 standard, is targeted at the embedded and
+the IEEE802.15.4 standard <xref target="IEEE802154"/>, is targeted at the embedded and
 industrial world, where reliability, energy consumption and
 cost drive the application space.
 The IEEE802.15.4 physical layer has been designed to
@@ -23,7 +23,20 @@ as the Direct Sequence Spread Spectrum (DSSS).
   
    
    <section title="Provenance and Documents">
-   
+
+IPv6 over TSCH is enabled by the work done at the 6TiSCH WG. 
+6TiSCH has enabled best effort distributed scheduling to exploit the deterministic access capabilities provided by TSCH
+RFC8480 defines the 6P protocol which provides a pairwise negotiation mechanism to the control plane
+operation. The protocol supports agreement on a schedule
+between neighbors, enabling distributed scheduling. 
+6P goes hand-in-hand with a Scheduling Function (SF), the policy that decides how to maintain cells and trigger 6P
+transactions. The Minimal Scheduling Function (MSF) <xref target="I-D.ietf-6tisch-msf"/> is the default SF defined by the 6TiSCH WG; 
+other standardized SFs can be defined in the future. MSF extends the minimal schedule configuration, and is used to add child-parent links
+according to the traffic load. 
+
+
+
+
   - Which SDO, position wrt Open standards
   - Existing IP over foo
   - TSN-like activities, past and present (introduce the likes of as OFDMA, URLLC and EHT)
