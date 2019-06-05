@@ -79,13 +79,17 @@ Table of Contents
      4.4.  802.11ad and 802.11ay (mmWave operation)  . . . . . . . .  11
        4.4.1.  General Characteristics . . . . . . . . . . . . . . .  11
        4.4.2.  Applicability to deterministic flows  . . . . . . . .  12
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  12
-   7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  12
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  13
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  13
+   5.  TimeSlotted Channel Hopping . . . . . . . . . . . . . . . . .  12
+     5.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  12
+     5.2.  General Characteristics . . . . . . . . . . . . . . . . .  14
+     5.3.  Applicability to Deterministic Flows  . . . . . . . . . .  15
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  15
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  16
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  16
 
 1.  Introduction
 
@@ -103,10 +107,6 @@ Table of Contents
    resilient to any single outage, whether the cause is a software, a
    hardware or a transmission issue.
 
-   RAW (Reliable and Available Wireless) is an effort to provide
-   Deterministic Networking on across a path that include a a wireless
-   physical layer.  Making Wireless Reliable and Available is even more
-
 
 
 Thubert                 Expires December 7, 2019                [Page 2]
@@ -114,6 +114,9 @@ Thubert                 Expires December 7, 2019                [Page 2]
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   RAW (Reliable and Available Wireless) is an effort to provide
+   Deterministic Networking on across a path that include a a wireless
+   physical layer.  Making Wireless Reliable and Available is even more
    challenging than it is with wires, due to the numerous causes of loss
    in transmission that add up to the congestion losses and the delays
    caused by overbooked shared resources.  In order to maintain a
@@ -157,9 +160,6 @@ Internet-Draft                  RAW Techs                      June 2019
          the receiver recover transmission errors.
 
    HARQ: Hybrid ARQ, a combination of FEC and ARQ .
-
-
-
 
 
 
@@ -641,31 +641,31 @@ Internet-Draft                  RAW Techs                      June 2019
    Future Wireless Industrial Automation Systems, the Proceedings of
    IEEE, June 2019].
 
-5.  IANA Considerations
+5.  TimeSlotted Channel Hopping
 
-   This specification does not require IANA action.
+   TODO
 
-6.  Security Considerations
+5.1.  Provenance and Documents
 
-   Most RAW technologies integrate some authentication or encryption
-   mechanisms that were defined outside the IETF.
+   The IEEE is an open standardizatoin body participated by technical
+   professional organizations and individuals with amongst other goals
+   the creation of open standard specifications.  The IEEE
+   standardization activities embrace broad technological areas with the
+   objective to advance technology of the technology for the benefit of
+   humanity.
 
-7.  Acknowledgments
-
-   Many thanks to the participants of the RAW WG where a lot of the work
-   discussed here happened.
-
-8.  References
-
-8.1.  Normative References
-
-   [I-D.ietf-6tisch-architecture]
-              Thubert, P., "An Architecture for IPv6 over the TSCH mode
-              of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
-              in progress), March 2019.
-
-
-
+   The IEEE802.15.4 Task Group has been driving the development of low-
+   power low-cost radio technology.  The Timeslotted Channel Hopping
+   mode, added to the 2015 revision of the IEEE802.15.4 standard
+   [IEEE802154], is targeted at the embedded and industrial world, where
+   reliability, energy consumption and cost drive the application space.
+   The IEEE802.15.4 physical layer has been designed to support
+   demanding low-power scenarios targeting the use of unlicensed bands,
+   both the 2.4 GHz and sub GHz Industrial, Scientific and Medical (ISM)
+   bands.  This has imposed requirements in terms of frame size, data
+   rate and bandwidth to achieve reduced collision probability, reduced
+   packet error rate, and acceptable range with limited transmission
+   power.  The PHY layer supports frames of up to 127 bytes.  The Medium
 
 
 
@@ -674,12 +674,196 @@ Thubert                 Expires December 7, 2019               [Page 12]
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   Access Control (MAC) sublayer overhead is in the order of 10-20
+   bytes, leaving about 100 bytes to the upper layers.  IEEE802.15.4
+   uses spread spectrum modulation such as the Direct Sequence Spread
+   Spectrum (DSSS).
+
+   IPv6 over TSCH is enabled by the work done at the 6TiSCH WG. 6TiSCH
+   has enabled best effort distributed scheduling to exploit the
+   deterministic access capabilities provided by TSCH.  The group
+   designed the essential mechanisms to enable the management plane
+   operation while ensuring IPv6 is supported.  Yet the charter did not
+   focus to providing a solution to establish end to end tracks while
+   meeting quality of service requirements. 6TiSCH, through the RFC8480
+   [RFC8480] defines the 6P protocol which provides a pairwise
+   negotiation mechanism to the control plane operation.  The protocol
+   supports agreement on a schedule between neighbors, enabling
+   distributed scheduling.  6P goes hand-in-hand with a Scheduling
+   Function (SF), the policy that decides how to maintain cells and
+   trigger 6P transactions.  The Minimal Scheduling Function (MSF)
+   [I-D.ietf-6tisch-msf] is the default SF defined by the 6TiSCH WG;
+   other standardized SFs can be defined in the future.  MSF extends the
+   minimal schedule configuration, and is used to add child-parent links
+   according to the traffic load.
+
+   Time sensitive networking on low power constrained wireless networks
+   have been addressed by ISA100.11a and WirelessHART.  TODO
+
+   The 6TiSCH architecture [I-D.ietf-6tisch-architecture] already
+   identified diferent models to schedule resources along tracks
+   exploiting the TSCH schedule structure however these models have not
+   been standardized.  A Track, in the 6TiSCH architecture is considered
+   a directed path from a source 6TiSCH node to one or more
+   destination(s) 6TiSCH node(s) through the 6TiSCH network.  A Track in
+   6TiSCH is the implementation of the deterministic path in the Detnet
+   architecture [I-D.ietf-detnet-architecture] .  Along a Track, 6TiSCH
+   nodes reserve the resources to enable the eficient transmission of
+   packets while aiming to optimize certain properties such as
+   reliability, ensure small jitter or bounded latency.  The track
+   structure enables Layer-2 forwarding schemes, reducing the overhead
+   of taking routing decisions at the Layer-3.  Serial Tracks can be
+   understood as the concatenation of cells or bundles along a routing
+   path from a node towards a destination.  The serial track concept is
+   analogous to the circuit concept where resources are chained through
+   the multi-hop topology.  For example A bundle of Tx Cells in a
+   particular node is paired to a bundle of Rx Cells in the next hop
+   node following a routing path.  More complex approaches are described
+   in and complemented by extensions to the RPL routing protocol in
+   [I-D.ietf-roll-nsa-extension].  Reliability measures are for example
+   achieved by exploiting concepts such as Replication and Elimination.
+
+
+
+Thubert                 Expires December 7, 2019               [Page 13]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+   In them, packets at origin are replicated and transmitted along
+   disjoint tracks.  This redundancy measure exploiting track forwarding
+   increases energy consumption of the network nodes but improves
+   significantly the reliability of the network.
+
+5.2.  General Characteristics
+
+   As a core technique in IEEE802.15.4, TSCH splits time in multiple
+   time slots that repeat over time.  The structure is referred as a
+   Slotframe.  For each timeslot, a set of available frequencies can be
+   used, resulting in a matrix-like schedule (see Fig. Figure 1).
+
+                          timeslot offset
+        | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
+        +------------------------+------------------------+   +-----+
+        |    |    |    |    |    |    |    |    |    |    |   |  C  |
+   CH-1 | EB |    |    |C->B|    | EB |    |    |C->B|    |   |     |
+        |    |    |    |    |    |    |    |    |    |    |   +-----+
+        +-------------------------------------------------+      |
+        |    |    |    |    |    |    |    |    |    |    |      |
+   CH-2 |    |    |B->C|    |B->A|    |    |B->C|    |B->A|   +-----+
+        |    |    |    |    |    |    |    |    |    |    |   |  B  |
+        +-------------------------------------------------+   |     |
+    ...                                                       +-----+
+                                                                 |
+        +-------------------------------------------------+      |
+        |    |    |    |    |    |    |    |    |    |    |   +-----+
+   CH-15|    |A->B|    |    |    |    |A->B|    |    |    |   |  A  |
+        |    |    |    |    |    |    |    |    |    |    |   |     |
+        +-------------------------------------------------+   +-----+
+   ch.
+   offset
+
+    Figure 1: Slotframe example with scheduled cells between nodes A, B
+                                   and C
+
+   This schedule represents the possible communications of a node with
+   its neighbors, and is managed by a Scheduling Function such as The
+   Minimal Scheduling Function (MSF) [I-D.ietf-6tisch-msf].  Each cell
+   in the schedule is identified by its slotoffset and channeloffset
+   coordinates.  A cell's timeslot offset indicates its position in
+   time, relative to the beginning of the slotframe.  A cell's channel
+   offset is an index which maps to a frequency at each iteration of the
+   slotframe.  Each packet exchanged between neighbors happens within
+   one cell.  An Absolute Slot Number (ASN) indicates the number of
+   slots elapsed since the network started.  It increments at every
+   slot.  This is a 5 byte counter that can support networks running for
+   more than 300 years without wrapping (assuming a 10 ms timeslot).
+
+
+
+Thubert                 Expires December 7, 2019               [Page 14]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+   Channel hopping provides increased reliability to multi-path fading
+   and external interference.  It is handled by TSCH through a channel
+   hopping sequence referred as macHopSeq in the IEEE802.15.4
+   specification.
+
+   TODO - bandwidth, beam forming - expected capabilities for safety and
+   automation, e.g., loops per second - caveats, e.g., latency in the
+   backhaul or interference - programming capabilities, is there a model
+   for a flow, etc.
+
+5.3.  Applicability to Deterministic Flows
+
+   -time synchronization - scheduling capabilities, discuss such things
+   as Resource Units, time slots or resource blocks.  Can we reserve
+   periodic resources vs. ask each time, what precision can we get in
+   latency control.  - diversity scenarios, what's available, - gap
+   analysis, e.g. discuss multihop, or what's missing how to do PAREO
+   features.
+
+6.  IANA Considerations
+
+   This specification does not require IANA action.
+
+7.  Security Considerations
+
+   Most RAW technologies integrate some authentication or encryption
+   mechanisms that were defined outside the IETF.
+
+8.  Acknowledgments
+
+   Many thanks to the participants of the RAW WG where a lot of the work
+   discussed here happened.
+
+9.  References
+
+9.1.  Normative References
+
+   [I-D.ietf-6tisch-architecture]
+              Thubert, P., "An Architecture for IPv6 over the TSCH mode
+              of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
+              in progress), March 2019.
+
+   [I-D.ietf-6tisch-msf]
+              Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
+              D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
+              draft-ietf-6tisch-msf-03 (work in progress), April 2019.
+
+
+
+
+
+Thubert                 Expires December 7, 2019               [Page 15]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+   [I-D.ietf-detnet-architecture]
+              Finn, N., Thubert, P., Varga, B., and J. Farkas,
+              "Deterministic Networking Architecture", draft-ietf-
+              detnet-architecture-13 (work in progress), May 2019.
+
+   [I-D.ietf-roll-nsa-extension]
+              Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
+              Thubert, "RPL DAG Metric Container Node State and
+              Attribute object type extension", draft-ietf-roll-nsa-
+              extension-01 (work in progress), March 2019.
+
    [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
               (IPv6) Specification", STD 86, RFC 8200,
               DOI 10.17487/RFC8200, July 2017,
               <https://www.rfc-editor.org/info/rfc8200>.
 
-8.2.  Informative References
+   [RFC8480]  Wang, Q., Ed., Vilajosana, X., and T. Watteyne, "6TiSCH
+              Operation Sublayer (6top) Protocol (6P)", RFC 8480,
+              DOI 10.17487/RFC8480, November 2018,
+              <https://www.rfc-editor.org/info/rfc8480>.
+
+9.2.  Informative References
 
    [IEEE80211]
               "IEEE Standard 802.11 - IEEE Standard for Information
@@ -709,20 +893,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Thubert                 Expires December 7, 2019               [Page 13]
+Thubert                 Expires December 7, 2019               [Page 16]

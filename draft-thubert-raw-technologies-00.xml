@@ -381,9 +381,177 @@
         	</section> <!-- Applicability to deterministic flows-->
         </section><!-- 802.11ad and 802.11ay (mmWave operation)  -->
    </section><!-- title="802.11" -->
+
+
+   
+   <section title="TimeSlotted Channel Hopping">
+      <t>
+      TODO
+      </t>
+
+   <section title="Provenance and Documents">
+
+   
+<!--  - Which SDO, position wrt Open standards -->
+   <t>
+   The IEEE is an open standardizatoin body participated by technical 
+   professional organizations and individuals with amongst other goals the 
+   creation of open standard specifications. The IEEE standardization activities
+   embrace broad technological areas with the objective to advance technology of
+   the technology for the benefit of humanity.
+   </t>
+   <t>
+   The IEEE802.15.4 Task Group has been driving the development of low-power 
+   low-cost radio technology. The Timeslotted Channel Hopping mode, added to the
+   2015 revision of the IEEE802.15.4 standard <xref target="IEEE802154"/>, is 
+   targeted at the embedded and industrial world, where reliability, energy 
+   consumption and cost drive the application space.
+   The IEEE802.15.4 physical layer has been designed to support demanding 
+   low-power scenarios targeting the use of unlicensed bands, both the 2.4 GHz 
+   and sub GHz Industrial, Scientific and Medical (ISM) bands. This has imposed 
+   requirements in terms of frame size, data rate and bandwidth to achieve 
+   reduced collision probability, reduced packet error rate, and acceptable 
+   range with limited transmission power. The PHY layer supports frames of up to
+   127 bytes. The Medium Access Control (MAC) sublayer overhead is in the order
+   of 10-20 bytes, leaving about 100 bytes to the upper layers. IEEE802.15.4 
+   uses spread spectrum modulation such as the Direct Sequence Spread 
+   Spectrum (DSSS).
+   </t>
+ <!--   - Existing IP over foo -->
+   <t>
+   IPv6 over TSCH is enabled by the work done at the 6TiSCH WG. 6TiSCH has 
+   enabled best effort distributed scheduling to exploit the deterministic 
+   access capabilities provided by TSCH. The group designed the essential 
+   mechanisms to enable the management plane operation while ensuring IPv6 is 
+   supported. Yet the charter did not focus to providing a solution to establish
+   end to end tracks while meeting quality of service requirements. 6TiSCH, 
+   through the RFC8480 <xref target="RFC8480"/> defines the 6P protocol which 
+   provides a pairwise negotiation mechanism to the control plane operation. 
+   The protocol supports agreement on a schedule between neighbors, enabling 
+   distributed scheduling. 
+   6P goes hand-in-hand with a Scheduling Function (SF), the policy that decides
+   how to maintain cells and trigger 6P transactions. The Minimal Scheduling 
+   Function (MSF) <xref target="I-D.ietf-6tisch-msf"/> is the default SF defined
+   by the 6TiSCH WG; other standardized SFs can be defined in the future. 
+   MSF extends the minimal schedule configuration, and is used to add 
+   child-parent links according to the traffic load. 
+   </t>
+
+   <!--  TSN-like activities, past and present (introduce the likes of as OFDMA, URLLC and EHT) -->
+   <t>
+   Time sensitive networking on low power constrained wireless networks have 
+   been addressed by ISA100.11a and WirelessHART. 
+   TODO
+   </t>
+   <!--  Pascal help here -->
+
+ 
+     <!--  DetNet-like arching art (introduce the likes of ISA100.11a or WiHART) -->
+   <t>  
+   The 6TiSCH architecture <xref target="I-D.ietf-6tisch-architecture"/> already
+   identified diferent models to schedule resources along tracks exploiting the
+   TSCH schedule structure however these models have not been standardized.  A
+   Track, in the 6TiSCH architecture is considered a directed path from a source
+   6TiSCH  node to one or more destination(s) 6TiSCH node(s) through the 6TiSCH
+   network. A Track in 6TiSCH is the implementation of the deterministic path in
+   the Detnet architecture  <xref target="I-D.ietf-detnet-architecture"/> . 
+   Along a Track, 6TiSCH nodes reserve the resources to enable the eficient 
+   transmission of packets while aiming to optimize certain properties such as
+   reliability, ensure small jitter or bounded latency. The track structure 
+   enables Layer-2 forwarding schemes, reducing the overhead of taking routing
+   decisions at the Layer-3.  
+   Serial Tracks can be understood as the concatenation of cells or bundles
+   along a routing path from a node towards a destination. The serial track
+   concept is analogous to the circuit concept where resources are chained
+   through the multi-hop topology. For example A bundle of Tx Cells in a
+   particular node is paired to a bundle of Rx Cells in the next hop node
+   following a routing path.   More complex approaches are described in 
+  <!--  <xref target="I-D.papadopoulos-6tisch-pre-reqs"/> --> and complemented by 
+   extensions to the RPL routing protocol in 
+   <xref target="I-D.ietf-roll-nsa-extension"/>.
+   Reliability measures are for example achieved by exploiting concepts such as
+   Replication and Elimination. In them, packets at origin are replicated and
+   transmitted along disjoint tracks.  This redundancy measure exploiting track
+   forwarding increases energy consumption of the network nodes but improves
+   significantly the reliability of the network.   
+   </t>
+   </section><!-- Provenance and Documents   -->
+   
+   <section title="General Characteristics">
+   <t>  
+   As a core technique in IEEE802.15.4, TSCH splits time in multiple time slots 
+   that repeat over time. The structure is referred as a Slotframe. For each 
+   timeslot, a set of available frequencies can be used, resulting in a 
+   matrix-like schedule (see Fig. <xref target="fig_slotframe"/>). 
+   </t>
+<t>
+<figure title="Slotframe example with scheduled cells between nodes A, B and C"  anchor="fig_slotframe">
+<artwork><![CDATA[
+                       timeslot offset
+     | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
+     +------------------------+------------------------+   +-----+
+     |    |    |    |    |    |    |    |    |    |    |   |  C  |
+CH-1 | EB |    |    |C->B|    | EB |    |    |C->B|    |   |     |
+     |    |    |    |    |    |    |    |    |    |    |   +-----+
+     +-------------------------------------------------+      |
+     |    |    |    |    |    |    |    |    |    |    |      |
+CH-2 |    |    |B->C|    |B->A|    |    |B->C|    |B->A|   +-----+
+     |    |    |    |    |    |    |    |    |    |    |   |  B  |
+     +-------------------------------------------------+   |     |
+ ...                                                       +-----+  
+                                                              |
+     +-------------------------------------------------+      |
+     |    |    |    |    |    |    |    |    |    |    |   +-----+     
+CH-15|    |A->B|    |    |    |    |A->B|    |    |    |   |  A  |
+     |    |    |    |    |    |    |    |    |    |    |   |     |
+     +-------------------------------------------------+   +-----+ 
+ch.
+offset                                                           
+]]></artwork> 
+</figure>
+</t>
+
+   <t>
+   This schedule represents the possible communications of a node with its
+   neighbors, and is managed by a Scheduling Function such as The Minimal
+   Scheduling Function (MSF)  <xref target="I-D.ietf-6tisch-msf"/>. Each cell in
+   the schedule is identified by its slotoffset and channeloffset coordinates. A
+   cell's timeslot offset indicates its position in time, relative to the
+   beginning of the slotframe. A cell's channel offset is an index which maps to
+   a frequency at each iteration of the slotframe. Each packet exchanged between
+   neighbors happens within one cell. An Absolute Slot Number (ASN) indicates
+   the number of slots elapsed since the network started. It increments at every
+   slot. This is a 5 byte counter that can support networks running for more
+   than 300 years without wrapping (assuming a 10 ms timeslot). Channel hopping
+   provides increased reliability to multi-path fading and external
+   interference. It is handled by TSCH through a channel hopping sequence
+   referred as macHopSeq in the IEEE802.15.4 specification.     
+   </t>
+   
+   <t>
+   TODO
+   - bandwidth, beam forming
+   - expected capabilities for safety and automation, e.g., loops per second
+   - caveats, e.g., latency in the backhaul or interference 
+   - programming capabilities, is there a model for a flow, etc.
+   </t>
+   
+   </section> <!-- General Characteristics  -->
+   
+   <section title="Applicability to Deterministic Flows">
+   <t>
+     -time synchronization
+     - scheduling capabilities, discuss such things as Resource Units, time slots or resource blocks. 
+       Can we reserve periodic resources vs. ask each time, what precision can we get in latency control.
+     - diversity scenarios, what's available, 
+     - gap analysis, e.g. discuss multihop, or what's missing how to do PAREO features.
+   </t>
+   </section><!-- Applicability to deterministic flows  -->
+   
+
    
    
-   
+   </section> <!-- TimeSlotted Channel Hopping-->
    
    <section title="IANA Considerations">
       <t>
@@ -407,9 +575,14 @@
 
 <back>
    <references title="Normative References">
+      <?rfc include="reference.RFC.8480"?> <!-- 6P Protocol Specification -->
       <?rfc include="reference.RFC.8200"?> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
-      <?rfc include='reference.I-D.ietf-detnet-architecture?>
+      <?rfc include='reference.I-D.ietf-detnet-architecture'?>
       <?rfc include='reference.I-D.ietf-6tisch-architecture'?>
+      <?rfc include='reference.I-D.ietf-6tisch-msf'?>
+      <?rfc include='reference.I-D.ietf-roll-nsa-extension'?>
+      <!-- <?rfc include='reference.I-D.papadopoulos-6tisch-pre-reqs'?>-->
+           
    </references>
    <references title="Informative References">
       <reference anchor="IEEE802154">
