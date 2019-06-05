@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc    SYSTEM "rfc2629.dtd" [
+<!DOCTYPE rfc    SYSTEM "rfc2629.dtd" [ 
 
 
 <!ENTITY inc_eht    SYSTEM "https://raw.githubusercontent.com/pthubert/raw-techs/master/draft-include-raw-technologies-EHT.xml">
@@ -39,7 +39,31 @@
          <email>pthubert@cisco.com</email>
       </address>
    </author>
-
+   <author initials="DC" surname="Cavalcanti" fullname="Dave Cavalcanti" >
+      <organization abbrev="Intel">Intel Corporation</organization>
+      <address>
+         <postal>
+            <street>2111 NE 25th Ave </street>
+            <city> Hillsboro, OR</city>
+            <code>97124</code>
+            <country>USA</country>
+         </postal>
+         <phone>503 712 5566</phone>
+         <email>dave.cavalcanti@intel.com</email>
+      </address>
+   </author>
+   <author initials="X" surname="Vilajosana" fullname="Xavier Vilajosana">
+      <organization>Universitat Oberta de Catalunya</organization>
+      <address>
+         <postal>
+            <street>156 Rambla Poblenou</street>
+            <city>Barcelona</city>
+            <region>Catalonia</region>
+            <code>08018</code>
+            <country>Spain</country>
+         </postal>
+         <email>xvilajosana@uoc.edu</email></address>
+    </author>
    <date/>
    <area>Internet Area</area>
    <workgroup>RAW</workgroup>
@@ -73,7 +97,7 @@
    <t>
    
    RAW (Reliable and Available Wireless) is an effort to provide Deterministic
-   Networking on across a path that include a a wireless physical layer.          
+   Networking on across a path that include a wireless physical layer.          
    Making Wireless Reliable and Available is even more challenging than it is
    with wires, due to the numerous causes of loss in transmission that add up 
    to the congestion losses and the delays caused by overbooked shared resources.
@@ -88,33 +112,33 @@
    Such wireless-specific methods include per-hop retransmissions (HARQ) and
    P2MP overhearing whereby multiple receivers are scheduled to receive the same
    transmission, which balances the adverse effects of the transmission losses
-   that are eperienced when a radio is used as pure P2P.
+   that are experienced when a radio is used as pure P2P.
    
    </t>
    </section><!-- title="Introduction"-->
    
    <section title="Terminology">
-   <t>This specification uses a number of terms that are uncommon on protocols
+   <t>This specification uses several terms that are uncommon on protocols
    that ensure bets effort transmissions for stochastics flows, such as found in 
    the traditional Internet and other statistically multiplexed packet networks.
    
        <list hangIndent="6" style="hanging">
        <t hangText="Reliable:"> That consistently performs as expected, the
-       expectation for a network being to always deliver a packet in due time.</t>
+       expectation for a network being to always deliver a packet in due time. </t>
        <t hangText="Available:"> That is exempt of unscheduled outage, the
        expectation for a network being that the flow is maintained in the face
-       of any single breakage.</t>
+       of any single breakage. </t>
        <t hangText="PAREO (functions):"> the wireless extension of DetNet PREOF.
        PAREO functions include scheduled ARQ at selected hops, and expect the
-       use of new operations like overhearing where available.</t>
-       <t hangText="Track:"> A DODAG oriented to a destination,and that enables
-       Packet ARQ, Replication, Elimination, and Ordering Functions.</t>
+       use of new operations like overhearing where available. </t>
+       <t hangText="Track:"> A DODAG oriented to a destination, and that enables
+       Packet ARQ, Replication, Elimination, and Ordering Functions. </t>
        <t hangText="ARQ:"> Automatic Repeat Request, enabling an acknowledged
        transmission, which is the typical model at Layer-2 on a wireless medium.
        </t>
        <t hangText="HARQ:"> Forward error correction, sending redundant coded
-       data to help the receiver recover transmission errors.</t>
-       <t hangText="HARQ:"> Hybrid ARQ, a combination of FEC and ARQ .</t>
+       data to help the receiver recover transmission errors. </t>
+       <t hangText="HARQ:"> Hybrid ARQ, a combination of FEC and ARQ. </t>
        </list>
    </t>
    </section><!-- Terminology -->
@@ -124,7 +148,7 @@
        
    The operations of a Deterministic Network often rely on precisely
    applying a tight schedule, in order to avoid collision loss and guarantee
-   the worst case time of delivery . To achieve this, there must be a shared
+   the worst-case time of delivery. To achieve this, there must be a shared
    sense of time throughout the network. The sense of time is 
    usually provided by the lower layer and is not in scope for RAW. 
    </t>
@@ -175,7 +199,7 @@
    <t>
    On the one hand, scheduling avoids collisions between scheduled transmissions
    and can ensure both time and frequency diversity between retries in order
-   to defeat co-channel interference from uncontroller transmitters as well as
+   to defeat co-channel interference from un-controlled transmitters as well as
    multipath fading. Transmissions can be scheduled on multiple channels in
    parallel, which enables to use the full available spectrum while avoiding the
    hidden terminal problem, e.g., when the next packet in a same flow interferes
@@ -188,13 +212,13 @@
    A minimal Clear Channel Assessment may be needed to comply with the local
    regulations such as ETSI 300-328, but that will not detect a collision when
    the senders are synchronized.
-   And because scheduling allows a time sharing operation, there is no limit to
+   And because scheduling allows a time-sharing operation, there is no limit to
    the ratio of isolated critical traffic.
    </t>
    <t>   
    Finally, scheduling plays a critical role to save energy. In IOT, energy is
    the foremost concern, and synchronizing sender and listener enables to
-   maintain them in deep sleep at all times when there is no scheduled
+   always maintain them in deep sleep when there is no scheduled
    transmission. This avoids idle listening and long preambles and enables long
    sleep periods between traffic and resynchronization, allowing 
    battery-operated nodes to operate in a mesh topology for multiple years.
@@ -203,9 +227,13 @@
    
    </section><!-- Scheduling -->
    
-   
-   
-   <section title="802.11">
+   <section title="IEEE 802 standards">
+      <t>
+   The IEEE 802 is an standard definition organization (SDO) participated
+   by technical professional organizations and individuals for the development
+   of open communication standard specifications. 
+   </t>
+   <section title="IEEE Std. 802.11">
         <section title="Provenance and Documents">
         
         <t>
@@ -238,22 +266,22 @@
      		<t>
      		The main 802.11ax and 802.11be capabilities and their relevance to RAW are discussed in the remainder of this document.
      		</t>
-     		<t>References:
+     		<t>Useful References include:
        	<list hangIndent="5" style="hanging">
-        	<t hangText="1."> IEEE802.11-2016: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications.</t>
-        	<t hangText="2."> IEEE802.11ak-2017: Enhancements for Transit Links Within Bridged Networks</t>
-        	<t hangText="3."> IEEE802.11ax D4.0: Enhancements for High Efficiency WLAN</t>
-        	<t hangText="4."> IEEE802.11be PAR </t>
-       		<t hangText="5."> D. Cavalcanti, et al, Extending Time Distribution and
+        	<t hangText="1."> IEEE Std 802.11: "Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications" <xref target="IEEE80211"/>. The latest version at the time of this writing is dated year 2016.</t>
+        	<t hangText="2."> IEEE Std 802.11ak-2017: "Enhancements for Transit Links Within Bridged Networks" <xref target="IEEE80211ak"/></t>
+        	<t hangText="3."> IEEE 802.11ax D4.0: "Enhancements for High Efficiency WLAN" <xref target="IEEE80211ax"/></t>
+        	<t hangText="4."> IEEE 802.11be project authorization request (PAR) </t>
+       		<t hangText="5."> "Extending Time Distribution and
        		Timeliness Capabilities over the Air to Enable Future Wireless Industrial
-       		Automation Systems, the Proceedings of IEEE, June 2019.</t>
+       		Automation Systems" <xref target="IEEE80211timeliness"/>.</t>
         </list>
         </t>
         </section> <!-- Provenance and Documents-->
         <section title="802.11ax High Efficiency (HE)">
         	<section title="General Characteristics"> 
         		<t>
-        			The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax amendment (IEEE802.11ax D4.0), which includes new capabilities to increase efficiency, control and reduce latency. Some of the new features include higher order 1024-QAM modulation, support for uplink multi-user MIMO, OFDMA, trigger based access and Target Wake time (TWT) for enhanced power savings. The OFDMA mode and trigger based access enable scheduled operation, which is a key capability required to support deterministic latency and reliability for time-sensitive flows. 802.11ax can operate in up to 160 MHz channels and it includes support for operation in the new 6 GHz band, which is expected to be open to unlicensed use by the FCC and other regulatory agencies worldwide. 
+        			The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax amendment (IEEE802.11ax D4.0), which includes new capabilities to increase efficiency, control and reduce latency. Some of the new features include higher order 1024-QAM modulation, support for uplink multi-user MIMO, OFDMA, trigger-based access and Target Wake time (TWT) for enhanced power savings. The OFDMA mode and trigger-based access enable scheduled operation, which is a key capability required to support deterministic latency and reliability for time-sensitive flows. 802.11ax can operate in up to 160 MHz channels and it includes support for operation in the new 6 GHz band, which is expected to be open to unlicensed use by the FCC and other regulatory agencies worldwide. 
         			</t>
         		<section title="Multi-User OFDMA and Trigger-based Scheduled Access">
         			<t>
@@ -279,7 +307,7 @@
         	<t>
         		TSN capabilities, as defined by the IEEE 802.1 TSN standards, provide the underlying mechanism for supporting deterministic flows in a Local Area Network (LAN). The 802.11 working group has already incorporated support for several TSN capabilities, so that time-sensitive flow can experience precise time synchronization and timeliness when operating over 802.11 links. TSN capabilities supported over 802.11 (which also extends to 802.11ax), include:
         		<list hangIndent="3" style="hanging">
-        			<t hangText="1."> 802.1AS based Time Synchronization (other time synchronization techniquest may also be used)</t>
+        			<t hangText="1."> 802.1AS based Time Synchronization (other time synchronization techniquest may also be used) </t>
         			<t hangText="2."> Interoperating with IEEE802.1Q bridges</t>
         			<t hangText="3."> Time-sensitive Traffic Stream identification</t>
         			</list>
@@ -292,7 +320,7 @@
         		Time-sensitive applications and TSN standards are expected to operate under a managed network (e.g. industrial/enterprise network). Thus, the Wi-Fi operation must also be carefully managed and integrated with the overall TSN management framework, as defined in the 802.1Qcc specification [1].
         	</t>	
          	<t>
-        		Some of the random access latency and interference from legacy/unmanaged devices can be minimized under a centralized management mode as defined in 802.1Qcc, in which admission control procedures are enforced. 				
+        		Some of the random-access latency and interference from legacy/unmanaged devices can be minimized under a centralized management mode as defined in 802.1Qcc, in which admission control procedures are enforced. 				
         	</t>
         	<t>
         		Existing traffic stream identification, configuration and admission control procedures defined in 802.11 QoS mechanism can be re-used. However, given the high degree of determinism required by many time-sensitive applications, additional capabilities to manage interference and legacy devices within tight time-constraints need to be explored. 
@@ -306,7 +334,7 @@
         		As shown in [1], it is possible to achieve latencies in the order of 1msec with high reliability in an interference free environment. Obviously, there are latency, reliability and capacity tradeoffs to be considered. For instance, smaller RUs result in longer transmission durations, which may impact the minimal latency that can be achieved, but the contention latency and randomness elimination due to multi-user transmission is a major benefit of the OFDMA mode.
         	</t>
         	<t>
-        		The flexibility to dynamically assign RUs to each transmissions also enables the AP to provide frequency diversity, which can help increase reliability.	
+        		The flexibility to dynamically assign RUs to each transmission also enables the AP to provide frequency diversity, which can help increase reliability.	
         	</t>
         	</section> <!--Scheduling for bounded latency and diversity-->
         </section> <!-- Applicability to deterministic flows -->
@@ -322,11 +350,11 @@
         			The 802.11be Task Group started its operation in May 2019, therefore, detailed information about specific features is not yet available. Only high level candidate features have been discussed so far, including:
         			<list hangIndent="6" style="hanging">
         				<t hangText="1."> 320MHz bandwidth and more efficient utilization of non-contiguous spectrum. </t>
-        				<t hangText="2."> Multi-band/multi-channel aggregation and operation.</t>
-        				<t hangText="3."> 16 spatial streams and related MIMO enhancements.</t>
+        				<t hangText="2."> Multi-band/multi-channel aggregation and operation. </t>
+        				<t hangText="3."> 16 spatial streams and related MIMO enhancements. </t>
         				<t hangText="4."> Multi-Access Point (AP) Coordination.</t>
         				<t hangText="5."> Enhanced link adaptation and retransmission protocol, e.g. Hybrid Automatic Repeat Request (HARQ).</t>
-        				<t hangText="6."> Any required adaptations to regulatory rules for the 6 GHz spectrum.</t>
+        				<t hangText="6."> Any required adaptations to regulatory rules for the 6 GHz spectrum. </t>
         			</list>
         		</t>
         	</section> <!-- General Characteristics-->
@@ -347,7 +375,7 @@
         		</section> <!-- Enhanced scheduled operation for bounded latency -->
         		<section title="Multi-AP coordination">
         			<t>
-        				Multi-AP coordination is one of the main new candidate features in 802.11be. It can provide benefits in throughput and capacity, and has the potential to address some of the issues that impact worst case latency and reliability. 
+        				Multi-AP coordination is one of the main new candidate features in 802.11be. It can provide benefits in throughput and capacity and has the potential to address some of the issues that impact worst case latency and reliability. 
         				Multi-AP coordination is expected to address the contention due to overlapping Basic Service Sets (OBSS), which is one of the main sources of random latency variations. 802.11be can define methods to enable better coordination between APs, for instance, in a managed network scenario, in order to reduce latency due to unmanaged contention. 
 	       			</t>
 	       			<t>
@@ -365,7 +393,7 @@
         <section title="802.11ad and 802.11ay (mmWave operation)">
         	<section title="General Characteristics"> 
         		<t>
-        			The IEEE 802.11ad amendment defines PHY and MAC capabilities to enable multi-Gbps throughput in the 60 GHz millimeter ware (mmWave) band. The standard addresses the adverse mmWave signal propagation characteristics and provides directional communication capabilities that take advantage of beamforming to cope with increased attenuation. An overview of the 802.11ad standard can be found in [T. Nitsche et al, IEEE 802.11ad: Directional 60 GHz Communication for Multi-Gbps Wi-Fi].	
+        			The IEEE 802.11ad amendment defines PHY and MAC capabilities to enable multi-Gbps throughput in the 60 GHz millimeter wave (mmWave) band. The standard addresses the adverse mmWave signal propagation characteristics and provides directional communication capabilities that take advantage of beamforming to cope with increased attenuation. An overview of the 802.11ad standard can be found in [T. Nitsche et al, IEEE 802.11ad: Directional 60 GHz Communication for Multi-Gbps Wi-Fi].	
         		</t>
         		<t>
         			The IEEE 802.11ay is currently developing enhancements to the 802.11ad standard to enable the next generation mmWave operation targeting 100 Gbps throughput. Some of the main enhancements in 802.11ay include MIMO, channel bonding, improved channel access and beamforming training. An overview of the 802.11ay capabilities can be found in [Y. Ghasempour et al, IEEE 802.11ay: Next-Generation 60 GHz Communications for 100 Gb/s Wi-Fi.
@@ -373,18 +401,18 @@
         	</section><!--General Characteristics -->
         	<section title="Applicability to deterministic flows"> 
         		<t>
-        			The high data rates achievable with 802.11ad and 802.11ay can significantly reduce latency down to micro second levels. Limited interference from legacy and other unlicensed devices in 60 GHz is also a benefit. However, directionality and short range typical in mmWave operation impose new challenges such as the overhead required for beam training and blockage issues, which impact both latency and reliability. Therefore, it is important to understand the use case and deployment conditions in order to properly apply and configure 802.11ad/ay networks for time sensitive applications.
+        			The high data rates achievable with 802.11ad and 802.11ay can significantly reduce latency down to microsecond levels. Limited interference from legacy and other unlicensed devices in 60 GHz is also a benefit. However, directionality and short range typical in mmWave operation impose new challenges such as the overhead required for beam training and blockage issues, which impact both latency and reliability. Therefore, it is important to understand the use case and deployment conditions in order to properly apply and configure 802.11ad/ay networks for time sensitive applications.
         		</t>
         		<t>
-        			The 802.11ad standard include a scheduled access mode in which stations can be allocated contention-free service periods by a central controller. This scheduling capability is also available in 802.11ay, and it is one of the mechanisms that can be used to provide bounded latency to time-sensitive data flows. An analysis of the theorectical latency bounds that can be achieved with 802.11ad service periods is provided in [D. Cavalcanti, et al, Extending Time Distribution and Timeliness Capabilities over the Air to Enable Future Wireless Industrial Automation Systems, the Proceedings of IEEE, June 2019].
+        			The 802.11ad standard include a scheduled access mode in which stations can be allocated contention-free service periods by a central controller. This scheduling capability is also available in 802.11ay, and it is one of the mechanisms that can be used to provide bounded latency to time-sensitive data flows. An analysis of the theoretical latency bounds that can be achieved with 802.11ad service periods is provided in [D. Cavalcanti, et al, Extending Time Distribution and Timeliness Capabilities over the Air to Enable Future Wireless Industrial Automation Systems, the Proceedings of IEEE, June 2019].
         		</t>
         	</section> <!-- Applicability to deterministic flows-->
         </section><!-- 802.11ad and 802.11ay (mmWave operation)  -->
-   </section><!-- title="802.11" -->
+   </section><!-- title="IEEE std 802.11" -->
 
 
    
-   <section title="TimeSlotted Channel Hopping">
+   <section title="IEEE Std. 802.15.4 TimeSlotted Channel Hopping">
       <t>
       TODO
       </t>
@@ -393,13 +421,7 @@
 
    
 <!--  - Which SDO, position wrt Open standards -->
-   <t>
-   The IEEE is an open standardizatoin body participated by technical 
-   professional organizations and individuals with amongst other goals the 
-   creation of open standard specifications. The IEEE standardization activities
-   embrace broad technological areas with the objective to advance technology of
-   the technology for the benefit of humanity.
-   </t>
+
    <t>
    The IEEE802.15.4 Task Group has been driving the development of low-power 
    low-cost radio technology. The Timeslotted Channel Hopping mode, added to the
@@ -449,21 +471,21 @@
      <!--  DetNet-like arching art (introduce the likes of ISA100.11a or WiHART) -->
    <t>  
    The 6TiSCH architecture <xref target="I-D.ietf-6tisch-architecture"/> already
-   identified diferent models to schedule resources along tracks exploiting the
+   identified different models to schedule resources along tracks exploiting the
    TSCH schedule structure however these models have not been standardized.  A
    Track, in the 6TiSCH architecture is considered a directed path from a source
    6TiSCH  node to one or more destination(s) 6TiSCH node(s) through the 6TiSCH
    network. A Track in 6TiSCH is the implementation of the deterministic path in
-   the Detnet architecture  <xref target="I-D.ietf-detnet-architecture"/> . 
-   Along a Track, 6TiSCH nodes reserve the resources to enable the eficient 
+   the Detnet architecture <xref target="I-D.ietf-detnet-architecture"/> . 
+   Along a Track, 6TiSCH nodes reserve the resources to enable the efficient 
    transmission of packets while aiming to optimize certain properties such as
-   reliability, ensure small jitter or bounded latency. The track structure 
+   reliability and ensure small jitter or bounded latency. The track structure 
    enables Layer-2 forwarding schemes, reducing the overhead of taking routing
    decisions at the Layer-3.  
    Serial Tracks can be understood as the concatenation of cells or bundles
    along a routing path from a node towards a destination. The serial track
    concept is analogous to the circuit concept where resources are chained
-   through the multi-hop topology. For example A bundle of Tx Cells in a
+   through the multi-hop topology. For example, A bundle of Tx Cells in a
    particular node is paired to a bundle of Rx Cells in the next hop node
    following a routing path.   More complex approaches are described in 
   <!--  <xref target="I-D.papadopoulos-6tisch-pre-reqs"/> --> and complemented by 
@@ -548,10 +570,23 @@ offset
    </t>
    </section><!-- Applicability to deterministic flows  -->
    
-
+   </section> <!-- IEEE Std 802.15.4 TimeSlotted Channel Hopping-->
+   
+   </section> <!-- IEEE standards -->
    
    
-   </section> <!-- TimeSlotted Channel Hopping-->
+   
+   
+   
+   <section title="3GPP standards">
+   
+   
+   </section> <!-- 3GPP standards -->
+   
+   
+   
+   
+   
    
    <section title="IANA Considerations">
       <t>
@@ -585,6 +620,7 @@ offset
            
    </references>
    <references title="Informative References">
+   
       <reference anchor="IEEE802154">
          <front>
             <title>IEEE Std. 802.15.4, Part. 15.4: Wireless Medium Access
@@ -597,6 +633,7 @@ offset
             <date/>
          </front>
       </reference>
+      
       <reference anchor="IEEE80211" >
         <front>
           <title>
@@ -611,6 +648,83 @@ offset
           <date/>
         </front>
       </reference>
+
+      <reference anchor="IEEE80211ak" >
+        <front>
+          <title>
+            Enhancements for Transit Links Within Bridged Networks
+          </title>
+          <author/>
+          <date year="2017"/>
+        </front>
+      </reference>
+      
+      <reference anchor="IEEE80211ax" >
+        <front>
+          <title>
+            Enhancements for High Efficiency WLAN
+          </title>
+          <author/>
+          <date/>
+        </front>
+      </reference>
+      
+      <reference anchor="IEEE80211ay" >
+        <front>
+          <title>
+            Enhanced throughput for operation in license-exempt bands above 45 GHz
+          </title>
+          <author/>
+          <date/>
+        </front>
+      </reference>
+                     
+      <reference anchor="IEEE80211ad" >
+        <front>
+          <title>
+            Enhancements for very high throughput in the 60 GHz band
+          </title>
+          <author/>
+          <date/>
+        </front>
+      </reference>
+      
+      <reference anchor="IEEE8021Qat" >
+        <front>
+          <title>
+            Stream Reservation Protocol
+          </title>
+          <author/>
+          <date/>
+        </front>
+      </reference>
+            
+      <reference anchor="IEEE80211timeliness" >
+        <front>
+          <title>
+            Extending Time Distribution and
+       		Timeliness Capabilities over the Air to Enable Future Wireless Industrial
+       		Automation Systems, the Proceedings of IEEE
+          </title>
+          <author initials="" surname="Dave Cavalcanti et al." fullname="Dave Cavalcanti et al.">
+            <organization>IEEE</organization><address/>
+          </author>
+          <date month="june" year="2019"/>
+        </front>
+      </reference>
+      
+      <reference anchor="IEEE80211RTA" >
+        <front>
+          <title>
+            802.11 Real-Time Applications Topic Interest Group (TIG)Report
+            (Doc# 11-18-2009-06-rta-report-draft)
+          </title>
+          <author/>
+          <date month="November" year="2018"/>
+        </front>
+      </reference>
+      
+      
    </references>
 </back>
 

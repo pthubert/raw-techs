@@ -4,8 +4,11 @@
 
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
-Intended status: Informational                              June 5, 2019
-Expires: December 7, 2019
+Intended status: Informational                            DC. Cavalcanti
+Expires: December 7, 2019                                          Intel
+                                                           X. Vilajosana
+                                         Universitat Oberta de Catalunya
+                                                            June 5, 2019
 
 
               Reliable and Available Wireless Technologies
@@ -47,17 +50,16 @@ Copyright Notice
    (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
 
 
 
-
-Thubert                 Expires December 7, 2019                [Page 1]
+Thubert, et al.         Expires December 7, 2019                [Page 1]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -68,28 +70,24 @@ Table of Contents
    3.  On Scheduling . . . . . . . . . . . . . . . . . . . . . . . .   4
      3.1.  Benefits of Scheduling on Wires . . . . . . . . . . . . .   4
      3.2.  Benefits of Scheduling on Wireless  . . . . . . . . . . .   4
-   4.  802.11  . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     4.1.  Provenance and Documents  . . . . . . . . . . . . . . . .   5
-     4.2.  802.11ax High Efficiency (HE) . . . . . . . . . . . . . .   7
-       4.2.1.  General Characteristics . . . . . . . . . . . . . . .   7
-       4.2.2.  Applicability to deterministic flows  . . . . . . . .   8
-     4.3.  802.11be Extreme High Throughput (EHT)  . . . . . . . . .   9
-       4.3.1.  General Characteristics . . . . . . . . . . . . . . .   9
-       4.3.2.  Applicability to deterministic flows  . . . . . . . .  10
-     4.4.  802.11ad and 802.11ay (mmWave operation)  . . . . . . . .  11
-       4.4.1.  General Characteristics . . . . . . . . . . . . . . .  11
-       4.4.2.  Applicability to deterministic flows  . . . . . . . .  12
-   5.  TimeSlotted Channel Hopping . . . . . . . . . . . . . . . . .  12
-     5.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  12
-     5.2.  General Characteristics . . . . . . . . . . . . . . . . .  14
-     5.3.  Applicability to Deterministic Flows  . . . . . . . . . .  15
+   4.  IEEE 802 standards  . . . . . . . . . . . . . . . . . . . . .   5
+     4.1.  IEEE Std. 802.11  . . . . . . . . . . . . . . . . . . . .   5
+       4.1.1.  Provenance and Documents  . . . . . . . . . . . . . .   5
+       4.1.2.  802.11ax High Efficiency (HE) . . . . . . . . . . . .   7
+       4.1.3.  802.11be Extreme High Throughput (EHT)  . . . . . . .  10
+       4.1.4.  802.11ad and 802.11ay (mmWave operation)  . . . . . .  11
+     4.2.  IEEE Std. 802.15.4 TimeSlotted Channel Hopping  . . . . .  12
+       4.2.1.  Provenance and Documents  . . . . . . . . . . . . . .  12
+       4.2.2.  General Characteristics . . . . . . . . . . . . . . .  14
+       4.2.3.  Applicability to Deterministic Flows  . . . . . . . .  15
+   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  15
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
    8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  15
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  16
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
 
@@ -109,13 +107,15 @@ Table of Contents
 
 
 
-Thubert                 Expires December 7, 2019                [Page 2]
+
+
+Thubert, et al.         Expires December 7, 2019                [Page 2]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
    RAW (Reliable and Available Wireless) is an effort to provide
-   Deterministic Networking on across a path that include a a wireless
+   Deterministic Networking on across a path that include a wireless
    physical layer.  Making Wireless Reliable and Available is even more
    challenging than it is with wires, due to the numerous causes of loss
    in transmission that add up to the congestion losses and the delays
@@ -128,15 +128,15 @@ Internet-Draft                  RAW Techs                      June 2019
    Such wireless-specific methods include per-hop retransmissions (HARQ)
    and P2MP overhearing whereby multiple receivers are scheduled to
    receive the same transmission, which balances the adverse effects of
-   the transmission losses that are eperienced when a radio is used as
+   the transmission losses that are experienced when a radio is used as
    pure P2P.
 
 2.  Terminology
 
-   This specification uses a number of terms that are uncommon on
-   protocols that ensure bets effort transmissions for stochastics
-   flows, such as found in the traditional Internet and other
-   statistically multiplexed packet networks.
+   This specification uses several terms that are uncommon on protocols
+   that ensure bets effort transmissions for stochastics flows, such as
+   found in the traditional Internet and other statistically multiplexed
+   packet networks.
 
    Reliable:  That consistently performs as expected, the expectation
          for a network being to always deliver a packet in due time.
@@ -149,7 +149,7 @@ Internet-Draft                  RAW Techs                      June 2019
          functions include scheduled ARQ at selected hops, and expect
          the use of new operations like overhearing where available.
 
-   Track:  A DODAG oriented to a destination,and that enables Packet
+   Track:  A DODAG oriented to a destination, and that enables Packet
          ARQ, Replication, Elimination, and Ordering Functions.
 
    ARQ:  Automatic Repeat Request, enabling an acknowledged
@@ -159,13 +159,13 @@ Internet-Draft                  RAW Techs                      June 2019
    HARQ: Forward error correction, sending redundant coded data to help
          the receiver recover transmission errors.
 
-   HARQ: Hybrid ARQ, a combination of FEC and ARQ .
+   HARQ: Hybrid ARQ, a combination of FEC and ARQ.
 
 
 
 
 
-Thubert                 Expires December 7, 2019                [Page 3]
+Thubert, et al.         Expires December 7, 2019                [Page 3]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -174,7 +174,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
    The operations of a Deterministic Network often rely on precisely
    applying a tight schedule, in order to avoid collision loss and
-   guarantee the worst case time of delivery . To achieve this, there
+   guarantee the worst-case time of delivery.  To achieve this, there
    must be a shared sense of time throughout the network.  The sense of
    time is usually provided by the lower layer and is not in scope for
    RAW.
@@ -215,13 +215,13 @@ Internet-Draft                  RAW Techs                      June 2019
 
    On the one hand, scheduling avoids collisions between scheduled
    transmissions and can ensure both time and frequency diversity
-   between retries in order to defeat co-channel interference from
-   uncontroller transmitters as well as multipath fading.  Transmissions
+   between retries in order to defeat co-channel interference from un-
+   controlled transmitters as well as multipath fading.  Transmissions
    can be scheduled on multiple channels in parallel, which enables to
 
 
 
-Thubert                 Expires December 7, 2019                [Page 4]
+Thubert, et al.         Expires December 7, 2019                [Page 4]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -237,20 +237,26 @@ Internet-Draft                  RAW Techs                      June 2019
    scheduled operations.  A minimal Clear Channel Assessment may be
    needed to comply with the local regulations such as ETSI 300-328, but
    that will not detect a collision when the senders are synchronized.
-   And because scheduling allows a time sharing operation, there is no
+   And because scheduling allows a time-sharing operation, there is no
    limit to the ratio of isolated critical traffic.
 
    Finally, scheduling plays a critical role to save energy.  In IOT,
    energy is the foremost concern, and synchronizing sender and listener
-   enables to maintain them in deep sleep at all times when there is no
+   enables to always maintain them in deep sleep when there is no
    scheduled transmission.  This avoids idle listening and long
    preambles and enables long sleep periods between traffic and
    resynchronization, allowing battery-operated nodes to operate in a
    mesh topology for multiple years.
 
-4.  802.11
+4.  IEEE 802 standards
 
-4.1.  Provenance and Documents
+   The IEEE 802 is an standard definition organization (SDO)
+   participated by technical professional organizations and individuals
+   for the development of open communication standard specifications.
+
+4.1.  IEEE Std. 802.11
+
+4.1.1.  Provenance and Documents
 
    The IEEE 802.11 LAN standards define the underlying MAC and PHY
    layers for the Wi-Fi technology.  Wi-Fi/802.11 is one of the most
@@ -268,19 +274,19 @@ Internet-Draft                  RAW Techs                      June 2019
    and timeliness (bounded latency) guarantees with high reliability.
    The IEEE 802.11 working group has been working in collaboration with
    the IEEE 802.1 group for several years extending 802.1 features over
+
+
+
+Thubert, et al.         Expires December 7, 2019                [Page 5]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    802.11.  As with any wireless media, 802.11 imposes new constraints
    and restrictions to TSN-grade QoS, and tradeoffs between latency and
    reliability guarantees must be considered as well as managed
    deployment requirements.  An overview of 802.1 TSN capabilities and
    their extensions to 802.11 are discussed in [5].
-
-
-
-
-Thubert                 Expires December 7, 2019                [Page 5]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    The following IEEE 802.11 specifications/certifications are relevant
    in the context of reliable and available wireless services and
@@ -320,41 +326,44 @@ Internet-Draft                  RAW Techs                      June 2019
    The main 802.11ax and 802.11be capabilities and their relevance to
    RAW are discussed in the remainder of this document.
 
-   References:
-
-   1.   IEEE802.11-2016: Wireless LAN Medium Access Control (MAC) and
-        Physical Layer (PHY) Specifications.
-
-   2.   IEEE802.11ak-2017: Enhancements for Transit Links Within Bridged
-        Networks
-
-   3.   IEEE802.11ax D4.0: Enhancements for High Efficiency WLAN
+   Useful References include:
 
 
 
 
-Thubert                 Expires December 7, 2019                [Page 6]
+
+
+Thubert, et al.         Expires December 7, 2019                [Page 6]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
-   4.   IEEE802.11be PAR
+   1.   IEEE Std 802.11: "Wireless LAN Medium Access Control (MAC) and
+        Physical Layer (PHY) Specifications" [IEEE80211].  The latest
+        version at the time of this writing is dated year 2016.
 
-   5.   D.  Cavalcanti, et al, Extending Time Distribution and
-        Timeliness Capabilities over the Air to Enable Future Wireless
-        Industrial Automation Systems, the Proceedings of IEEE, June
-        2019.
+   2.   IEEE Std 802.11ak-2017: "Enhancements for Transit Links Within
+        Bridged Networks" [IEEE80211ak]
 
-4.2.  802.11ax High Efficiency (HE)
+   3.   IEEE 802.11ax D4.0: "Enhancements for High Efficiency WLAN"
+        [IEEE80211ax]
 
-4.2.1.  General Characteristics
+   4.   IEEE 802.11be project authorization request (PAR)
+
+   5.   "Extending Time Distribution and Timeliness Capabilities over
+        the Air to Enable Future Wireless Industrial Automation Systems"
+        [IEEE80211timeliness].
+
+4.1.2.  802.11ax High Efficiency (HE)
+
+4.1.2.1.  General Characteristics
 
    The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax
    amendment (IEEE802.11ax D4.0), which includes new capabilities to
    increase efficiency, control and reduce latency.  Some of the new
    features include higher order 1024-QAM modulation, support for uplink
-   multi-user MIMO, OFDMA, trigger based access and Target Wake time
-   (TWT) for enhanced power savings.  The OFDMA mode and trigger based
+   multi-user MIMO, OFDMA, trigger-based access and Target Wake time
+   (TWT) for enhanced power savings.  The OFDMA mode and trigger-based
    access enable scheduled operation, which is a key capability required
    to support deterministic latency and reliability for time-sensitive
    flows. 802.11ax can operate in up to 160 MHz channels and it includes
@@ -362,7 +371,7 @@ Internet-Draft                  RAW Techs                      June 2019
    open to unlicensed use by the FCC and other regulatory agencies
    worldwide.
 
-4.2.1.1.  Multi-User OFDMA and Trigger-based Scheduled Access
+4.1.2.1.1.  Multi-User OFDMA and Trigger-based Scheduled Access
 
    802.11ax introduced a new OFDMA mode in which multiple users can be
    scheduled across the frequency domain.  In this mode, the Access
@@ -377,23 +386,23 @@ Internet-Draft                  RAW Techs                      June 2019
    the OFDMA mode, the AP still follows the typical listen before talk
    procedure to acquire the medium, which ensures interoperability and
    compliance with unlicensed band access rules.  However, 802.11ax also
-   includes a multi-user Enhanced Distributed Channel Access (MU-EDCA)
-   capability, which allows the AP to get higher channel access
-   priority.
-
-4.2.1.2.  Improved PHY Robustness
-
-   The 802.11ax PHY can operate with 0.8, 1.6 or 3.2 microsecond guard
-   interval (GI).  The larger GI options provide better protection
-   against multipath, which is expected to be a challenge in industrial
 
 
 
-Thubert                 Expires December 7, 2019                [Page 7]
+Thubert, et al.         Expires December 7, 2019                [Page 7]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   includes a multi-user Enhanced Distributed Channel Access (MU-EDCA)
+   capability, which allows the AP to get higher channel access
+   priority.
+
+4.1.2.1.2.  Improved PHY Robustness
+
+   The 802.11ax PHY can operate with 0.8, 1.6 or 3.2 microsecond guard
+   interval (GI).  The larger GI options provide better protection
+   against multipath, which is expected to be a challenge in industrial
    environments.  The possibility to operate with smaller resource units
    (e.g. 2 MHz) enabled by OFDMA also helps reduce noise power and
    improve SNR, leading to better packet error rate (PER) performance.
@@ -402,7 +411,7 @@ Internet-Draft                  RAW Techs                      June 2019
    MIMO, which helps improve reliability.  The UL MU MIMO capability is
    also enabled by the trigger based access operation in 802.11ax.
 
-4.2.1.3.  Support for 6GHz band
+4.1.2.1.3.  Support for 6GHz band
 
    The 802.11ax specification (IEEE802.11ax D.40) includes support for
    operation in the new 6 GHz band.  Given the amount of new spectrum
@@ -410,7 +419,7 @@ Internet-Draft                  RAW Techs                      June 2019
    802.11ax) will be able to operate in this new band, 802.11ax
    operation in this new band can be even more efficient.
 
-4.2.2.  Applicability to deterministic flows
+4.1.2.2.  Applicability to deterministic flows
 
    TSN capabilities, as defined by the IEEE 802.1 TSN standards, provide
    the underlying mechanism for supporting deterministic flows in a
@@ -434,7 +443,14 @@ Internet-Draft                  RAW Techs                      June 2019
    well as redundancy and diversity mechanisms that can be used to
    provide more predictable and reliable performance.
 
-4.2.2.1.  802.11 Managed network operation and admission control
+
+
+Thubert, et al.         Expires December 7, 2019                [Page 8]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+4.1.2.2.1.  802.11 Managed network operation and admission control
 
    Time-sensitive applications and TSN standards are expected to operate
    under a managed network (e.g. industrial/enterprise network).  Thus,
@@ -442,15 +458,7 @@ Internet-Draft                  RAW Techs                      June 2019
    with the overall TSN management framework, as defined in the 802.1Qcc
    specification [1].
 
-
-
-
-Thubert                 Expires December 7, 2019                [Page 8]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
-   Some of the random access latency and interference from legacy/
+   Some of the random-access latency and interference from legacy/
    unmanaged devices can be minimized under a centralized management
    mode as defined in 802.1Qcc, in which admission control procedures
    are enforced.
@@ -462,7 +470,7 @@ Internet-Draft                  RAW Techs                      June 2019
    interference and legacy devices within tight time-constraints need to
    be explored.
 
-4.2.2.2.  Scheduling for bounded latency and diversity
+4.1.2.2.2.  Scheduling for bounded latency and diversity
 
    As discussed earlier, the 802.11ax OFDMA mode introduces the
    possibility of assigning different RUs (frequency resources) to users
@@ -482,13 +490,25 @@ Internet-Draft                  RAW Techs                      June 2019
    be achieved, but the contention latency and randomness elimination
    due to multi-user transmission is a major benefit of the OFDMA mode.
 
-   The flexibility to dynamically assign RUs to each transmissions also
+   The flexibility to dynamically assign RUs to each transmission also
    enables the AP to provide frequency diversity, which can help
    increase reliability.
 
-4.3.  802.11be Extreme High Throughput (EHT)
 
-4.3.1.  General Characteristics
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019                [Page 9]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+4.1.3.  802.11be Extreme High Throughput (EHT)
+
+4.1.3.1.  General Characteristics
 
    The 802.11be is the next major 802.11 amendment (after 802.11ax) for
    operation in the 2.4, 5 and 6 GHz bands. 802.11be is expected to
@@ -497,14 +517,6 @@ Internet-Draft                  RAW Techs                      June 2019
    latency and jitter.  It is also expected to improve the integration
    with 802.1 TSN to support time-sensitive applications over Ethernet
    and Wireless LANs.
-
-
-
-
-Thubert                 Expires December 7, 2019                [Page 9]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    The 802.11be Task Group started its operation in May 2019, therefore,
    detailed information about specific features is not yet available.
@@ -526,7 +538,7 @@ Internet-Draft                  RAW Techs                      June 2019
    6.    Any required adaptations to regulatory rules for the 6 GHz
          spectrum.
 
-4.3.2.  Applicability to deterministic flows
+4.1.3.2.  Applicability to deterministic flows
 
    The 802.11 Real-Time Applications (RTA) Topic Interest Group (TIG)
    provided detailed information on use cases, issues and potential
@@ -541,11 +553,20 @@ Internet-Draft                  RAW Techs                      June 2019
    capabilities, such as time-aware (802.1Qbv) shaping and packet
    replication and elimination as defined in 802.1CB.
 
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 10]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    802.11be is expected to build on and enhance 802.11ax capabilities to
    improve worst case latency and jitter.  Some of the enhancement areas
    are discussed next.
 
-4.3.2.1.  Enhanced scheduled operation for bounded latency
+4.1.3.2.1.  Enhanced scheduled operation for bounded latency
 
    In addition to the throughput enhancements, 802.11be will leverage
    the trigger-based scheduled operation enabled by 802.11ax to provide
@@ -553,21 +574,12 @@ Internet-Draft                  RAW Techs                      June 2019
    include enhancements to reduce overhead and enable more efficient
    operation in managed network deployments [Doc#11-19-0373-00].
 
-
-
-
-
-Thubert                 Expires December 7, 2019               [Page 10]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
-4.3.2.2.  Multi-AP coordination
+4.1.3.2.2.  Multi-AP coordination
 
    Multi-AP coordination is one of the main new candidate features in
-   802.11be.  It can provide benefits in throughput and capacity, and
-   has the potential to address some of the issues that impact worst
-   case latency and reliability.  Multi-AP coordination is expected to
+   802.11be.  It can provide benefits in throughput and capacity and has
+   the potential to address some of the issues that impact worst case
+   latency and reliability.  Multi-AP coordination is expected to
    address the contention due to overlapping Basic Service Sets (OBSS),
    which is one of the main sources of random latency variations.
    802.11be can define methods to enable better coordination between
@@ -578,7 +590,7 @@ Internet-Draft                  RAW Techs                      June 2019
    different levels of complexities and benefits, but specific
    coordination methods have not yet been defined.
 
-4.3.2.3.  Multi-band operation
+4.1.3.2.3.  Multi-band operation
 
    802.11be will introduce new features to improve operation over
    multiple bands and channels.  By leveraging multiple bands/channels,
@@ -588,16 +600,24 @@ Internet-Draft                  RAW Techs                      June 2019
    bands/channels to isolate time-sensitive traffic from other traffic
    and help achieve bounded latency.
 
-4.4.  802.11ad and 802.11ay (mmWave operation)
+4.1.4.  802.11ad and 802.11ay (mmWave operation)
 
-4.4.1.  General Characteristics
+4.1.4.1.  General Characteristics
 
    The IEEE 802.11ad amendment defines PHY and MAC capabilities to
-   enable multi-Gbps throughput in the 60 GHz millimeter ware (mmWave)
+   enable multi-Gbps throughput in the 60 GHz millimeter wave (mmWave)
    band.  The standard addresses the adverse mmWave signal propagation
    characteristics and provides directional communication capabilities
    that take advantage of beamforming to cope with increased
    attenuation.  An overview of the 802.11ad standard can be found in
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 11]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [T.  Nitsche et al, IEEE 802.11ad: Directional 60 GHz Communication
    for Multi-Gbps Wi-Fi].
 
@@ -609,19 +629,10 @@ Internet-Draft                  RAW Techs                      June 2019
    be found in [Y.  Ghasempour et al, IEEE 802.11ay: Next-Generation 60
    GHz Communications for 100 Gb/s Wi-Fi.
 
-
-
-
-
-Thubert                 Expires December 7, 2019               [Page 11]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
-4.4.2.  Applicability to deterministic flows
+4.1.4.2.  Applicability to deterministic flows
 
    The high data rates achievable with 802.11ad and 802.11ay can
-   significantly reduce latency down to micro second levels.  Limited
+   significantly reduce latency down to microsecond levels.  Limited
    interference from legacy and other unlicensed devices in 60 GHz is
    also a benefit.  However, directionality and short range typical in
    mmWave operation impose new challenges such as the overhead required
@@ -635,24 +646,17 @@ Internet-Draft                  RAW Techs                      June 2019
    central controller.  This scheduling capability is also available in
    802.11ay, and it is one of the mechanisms that can be used to provide
    bounded latency to time-sensitive data flows.  An analysis of the
-   theorectical latency bounds that can be achieved with 802.11ad
-   service periods is provided in [D.  Cavalcanti, et al, Extending Time
+   theoretical latency bounds that can be achieved with 802.11ad service
+   periods is provided in [D.  Cavalcanti, et al, Extending Time
    Distribution and Timeliness Capabilities over the Air to Enable
    Future Wireless Industrial Automation Systems, the Proceedings of
    IEEE, June 2019].
 
-5.  TimeSlotted Channel Hopping
+4.2.  IEEE Std. 802.15.4 TimeSlotted Channel Hopping
 
    TODO
 
-5.1.  Provenance and Documents
-
-   The IEEE is an open standardizatoin body participated by technical
-   professional organizations and individuals with amongst other goals
-   the creation of open standard specifications.  The IEEE
-   standardization activities embrace broad technological areas with the
-   objective to advance technology of the technology for the benefit of
-   humanity.
+4.2.1.  Provenance and Documents
 
    The IEEE802.15.4 Task Group has been driving the development of low-
    power low-cost radio technology.  The Timeslotted Channel Hopping
@@ -662,18 +666,18 @@ Internet-Draft                  RAW Techs                      June 2019
    The IEEE802.15.4 physical layer has been designed to support
    demanding low-power scenarios targeting the use of unlicensed bands,
    both the 2.4 GHz and sub GHz Industrial, Scientific and Medical (ISM)
-   bands.  This has imposed requirements in terms of frame size, data
-   rate and bandwidth to achieve reduced collision probability, reduced
-   packet error rate, and acceptable range with limited transmission
-   power.  The PHY layer supports frames of up to 127 bytes.  The Medium
 
 
 
-Thubert                 Expires December 7, 2019               [Page 12]
+Thubert, et al.         Expires December 7, 2019               [Page 12]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   bands.  This has imposed requirements in terms of frame size, data
+   rate and bandwidth to achieve reduced collision probability, reduced
+   packet error rate, and acceptable range with limited transmission
+   power.  The PHY layer supports frames of up to 127 bytes.  The Medium
    Access Control (MAC) sublayer overhead is in the order of 10-20
    bytes, leaving about 100 bytes to the upper layers.  IEEE802.15.4
    uses spread spectrum modulation such as the Direct Sequence Spread
@@ -701,41 +705,41 @@ Internet-Draft                  RAW Techs                      June 2019
    have been addressed by ISA100.11a and WirelessHART.  TODO
 
    The 6TiSCH architecture [I-D.ietf-6tisch-architecture] already
-   identified diferent models to schedule resources along tracks
+   identified different models to schedule resources along tracks
    exploiting the TSCH schedule structure however these models have not
    been standardized.  A Track, in the 6TiSCH architecture is considered
    a directed path from a source 6TiSCH node to one or more
    destination(s) 6TiSCH node(s) through the 6TiSCH network.  A Track in
    6TiSCH is the implementation of the deterministic path in the Detnet
    architecture [I-D.ietf-detnet-architecture] .  Along a Track, 6TiSCH
-   nodes reserve the resources to enable the eficient transmission of
+   nodes reserve the resources to enable the efficient transmission of
    packets while aiming to optimize certain properties such as
-   reliability, ensure small jitter or bounded latency.  The track
+   reliability and ensure small jitter or bounded latency.  The track
    structure enables Layer-2 forwarding schemes, reducing the overhead
    of taking routing decisions at the Layer-3.  Serial Tracks can be
    understood as the concatenation of cells or bundles along a routing
    path from a node towards a destination.  The serial track concept is
    analogous to the circuit concept where resources are chained through
-   the multi-hop topology.  For example A bundle of Tx Cells in a
+   the multi-hop topology.  For example, A bundle of Tx Cells in a
    particular node is paired to a bundle of Rx Cells in the next hop
-   node following a routing path.  More complex approaches are described
-   in and complemented by extensions to the RPL routing protocol in
-   [I-D.ietf-roll-nsa-extension].  Reliability measures are for example
-   achieved by exploiting concepts such as Replication and Elimination.
 
 
 
-Thubert                 Expires December 7, 2019               [Page 13]
+Thubert, et al.         Expires December 7, 2019               [Page 13]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   node following a routing path.  More complex approaches are described
+   in and complemented by extensions to the RPL routing protocol in
+   [I-D.ietf-roll-nsa-extension].  Reliability measures are for example
+   achieved by exploiting concepts such as Replication and Elimination.
    In them, packets at origin are replicated and transmitted along
    disjoint tracks.  This redundancy measure exploiting track forwarding
    increases energy consumption of the network nodes but improves
    significantly the reliability of the network.
 
-5.2.  General Characteristics
+4.2.2.  General Characteristics
 
    As a core technique in IEEE802.15.4, TSCH splits time in multiple
    time slots that repeat over time.  The structure is referred as a
@@ -774,18 +778,18 @@ Internet-Draft                  RAW Techs                      June 2019
    time, relative to the beginning of the slotframe.  A cell's channel
    offset is an index which maps to a frequency at each iteration of the
    slotframe.  Each packet exchanged between neighbors happens within
-   one cell.  An Absolute Slot Number (ASN) indicates the number of
-   slots elapsed since the network started.  It increments at every
-   slot.  This is a 5 byte counter that can support networks running for
-   more than 300 years without wrapping (assuming a 10 ms timeslot).
 
 
 
-Thubert                 Expires December 7, 2019               [Page 14]
+Thubert, et al.         Expires December 7, 2019               [Page 14]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   one cell.  An Absolute Slot Number (ASN) indicates the number of
+   slots elapsed since the network started.  It increments at every
+   slot.  This is a 5 byte counter that can support networks running for
+   more than 300 years without wrapping (assuming a 10 ms timeslot).
    Channel hopping provides increased reliability to multi-path fading
    and external interference.  It is handled by TSCH through a channel
    hopping sequence referred as macHopSeq in the IEEE802.15.4
@@ -796,7 +800,7 @@ Internet-Draft                  RAW Techs                      June 2019
    backhaul or interference - programming capabilities, is there a model
    for a flow, etc.
 
-5.3.  Applicability to Deterministic Flows
+4.2.3.  Applicability to Deterministic Flows
 
    -time synchronization - scheduling capabilities, discuss such things
    as Resource Units, time slots or resource blocks.  Can we reserve
@@ -804,6 +808,8 @@ Internet-Draft                  RAW Techs                      June 2019
    latency control.  - diversity scenarios, what's available, - gap
    analysis, e.g. discuss multihop, or what's missing how to do PAREO
    features.
+
+5.  3GPP standards
 
 6.  IANA Considerations
 
@@ -828,19 +834,18 @@ Internet-Draft                  RAW Techs                      June 2019
               of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
               in progress), March 2019.
 
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 15]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [I-D.ietf-6tisch-msf]
               Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
               D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
               draft-ietf-6tisch-msf-03 (work in progress), April 2019.
-
-
-
-
-
-Thubert                 Expires December 7, 2019               [Page 15]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    [I-D.ietf-detnet-architecture]
               Finn, N., Thubert, P., Varga, B., and J. Farkas,
@@ -873,13 +878,51 @@ Internet-Draft                  RAW Techs                      June 2019
               Access Control (MAC) and Physical Layer (PHY)
               Specifications.".
 
+   [IEEE80211ad]
+              "Enhancements for very high throughput in the 60 GHz
+              band".
+
+   [IEEE80211ak]
+              "Enhancements for Transit Links Within Bridged Networks",
+              2017.
+
+   [IEEE80211ax]
+              "Enhancements for High Efficiency WLAN".
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 16]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+   [IEEE80211ay]
+              "Enhanced throughput for operation in license-exempt bands
+              above 45 GHz".
+
+   [IEEE80211RTA]
+              "802.11 Real-Time Applications Topic Interest Group
+              (TIG)Report (Doc# 11-18-2009-06-rta-report-draft)",
+              November 2018.
+
+   [IEEE80211timeliness]
+              Dave Cavalcanti et al., "Extending Time Distribution and
+              Timeliness Capabilities over the Air to Enable Future
+              Wireless Industrial Automation Systems, the Proceedings of
+              IEEE", june 2019.
+
    [IEEE802154]
               IEEE standard for Information Technology, "IEEE Std.
               802.15.4, Part. 15.4: Wireless Medium Access Control (MAC)
               and Physical Layer (PHY) Specifications for Low-Rate
               Wireless Personal Area Networks".
 
-Author's Address
+   [IEEE8021Qat]
+              "Stream Reservation Protocol".
+
+Authors' Addresses
 
    Pascal Thubert (editor)
    Cisco Systems, Inc
@@ -892,5 +935,74 @@ Author's Address
    Email: pthubert@cisco.com
 
 
+   Dave Cavalcanti
+   Intel Corporation
+   2111 NE 25th Ave
+   Hillsboro, OR  97124
+   USA
 
-Thubert                 Expires December 7, 2019               [Page 16]
+   Phone: 503 712 5566
+   Email: dave.cavalcanti@intel.com
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 17]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+   Xavier Vilajosana
+   Universitat Oberta de Catalunya
+   156 Rambla Poblenou
+   Barcelona, Catalonia  08018
+   Spain
+
+   Email: xvilajosana@uoc.edu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 18]
