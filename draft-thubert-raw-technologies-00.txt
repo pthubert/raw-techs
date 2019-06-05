@@ -79,15 +79,15 @@ Table of Contents
      4.2.  IEEE Std. 802.15.4 TimeSlotted Channel Hopping  . . . . .  12
        4.2.1.  Provenance and Documents  . . . . . . . . . . . . . .  12
        4.2.2.  General Characteristics . . . . . . . . . . . . . . .  14
-       4.2.3.  Applicability to Deterministic Flows  . . . . . . . .  15
-   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  15
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  15
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  16
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
+       4.2.3.  Applicability to Deterministic Flows  . . . . . . . .  16
+   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  16
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  16
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  17
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
 
 1.  Introduction
 
@@ -654,8 +654,6 @@ Internet-Draft                  RAW Techs                      June 2019
 
 4.2.  IEEE Std. 802.15.4 TimeSlotted Channel Hopping
 
-   TODO
-
 4.2.1.  Provenance and Documents
 
    The IEEE802.15.4 Task Group has been driving the development of low-
@@ -666,6 +664,8 @@ Internet-Draft                  RAW Techs                      June 2019
    The IEEE802.15.4 physical layer has been designed to support
    demanding low-power scenarios targeting the use of unlicensed bands,
    both the 2.4 GHz and sub GHz Industrial, Scientific and Medical (ISM)
+   bands.  This has imposed requirements in terms of frame size, data
+   rate and bandwidth to achieve reduced collision probability, reduced
 
 
 
@@ -674,8 +674,6 @@ Thubert, et al.         Expires December 7, 2019               [Page 12]
 Internet-Draft                  RAW Techs                      June 2019
 
 
-   bands.  This has imposed requirements in terms of frame size, data
-   rate and bandwidth to achieve reduced collision probability, reduced
    packet error rate, and acceptable range with limited transmission
    power.  The PHY layer supports frames of up to 127 bytes.  The Medium
    Access Control (MAC) sublayer overhead is in the order of 10-20
@@ -722,6 +720,8 @@ Internet-Draft                  RAW Techs                      June 2019
    analogous to the circuit concept where resources are chained through
    the multi-hop topology.  For example, A bundle of Tx Cells in a
    particular node is paired to a bundle of Rx Cells in the next hop
+   node following a routing path.  More complex approaches are described
+   in and complemented by extensions to the RPL routing protocol in
 
 
 
@@ -730,8 +730,6 @@ Thubert, et al.         Expires December 7, 2019               [Page 13]
 Internet-Draft                  RAW Techs                      June 2019
 
 
-   node following a routing path.  More complex approaches are described
-   in and complemented by extensions to the RPL routing protocol in
    [I-D.ietf-roll-nsa-extension].  Reliability measures are for example
    achieved by exploiting concepts such as Replication and Elimination.
    In them, packets at origin are replicated and transmitted along
@@ -739,12 +737,54 @@ Internet-Draft                  RAW Techs                      June 2019
    increases energy consumption of the network nodes but improves
    significantly the reliability of the network.
 
+   Useful References include:
+
+   1.   IEEE Std 802.15.4: "IEEE Std. 802.15.4, Part. 15.4: Wireless
+        Medium Access Control (MAC) and Physical Layer (PHY)
+        Specifications for Low-Rate Wireless Personal Area Networks"
+        [IEEE802154].  The latest version at the time of this writing is
+        dated year 2015.
+
+   2.   Morell, A. , Vilajosana, X. , Vicario, J.  L. and Watteyne, T.
+        (2013), Label switching over IEEE802.15.4e networks.  Trans.
+        Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650"
+        [morell13].
+
+   3.   De Armas, J., Tuset, P., Chang, T., Adelantado, F., Watteyne,
+        T., Vilajosana, X. (2016, September).  Determinism through path
+        diversity: Why packet replication makes sense.  In 2016
+        International Conference on Intelligent Networking and
+        Collaborative Systems (INCoS) (pp. 150-154).  IEEE. [dearmas16].
+
+   4.   X.  Vilajosana, T.  Watteyne, M.  Vucinic, T.  Chang and K.  S.
+        J.  Pister, "6TiSCH: Industrial Performance for IPv6 Internet-
+        of-Things Networks," in Proceedings of the IEEE, vol. 107, no.
+        6, pp. 1153-1165, June 2019. [vilajosana19].
+
 4.2.2.  General Characteristics
 
    As a core technique in IEEE802.15.4, TSCH splits time in multiple
    time slots that repeat over time.  The structure is referred as a
    Slotframe.  For each timeslot, a set of available frequencies can be
    used, resulting in a matrix-like schedule (see Fig. Figure 1).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 14]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
                           timeslot offset
         | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
@@ -778,14 +818,6 @@ Internet-Draft                  RAW Techs                      June 2019
    time, relative to the beginning of the slotframe.  A cell's channel
    offset is an index which maps to a frequency at each iteration of the
    slotframe.  Each packet exchanged between neighbors happens within
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 14]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    one cell.  An Absolute Slot Number (ASN) indicates the number of
    slots elapsed since the network started.  It increments at every
    slot.  This is a 5 byte counter that can support networks running for
@@ -799,6 +831,16 @@ Internet-Draft                  RAW Techs                      June 2019
    automation, e.g., loops per second - caveats, e.g., latency in the
    backhaul or interference - programming capabilities, is there a model
    for a flow, etc.
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 15]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
 4.2.3.  Applicability to Deterministic Flows
 
@@ -834,14 +876,6 @@ Internet-Draft                  RAW Techs                      June 2019
               of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
               in progress), March 2019.
 
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 15]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    [I-D.ietf-6tisch-msf]
               Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
               D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
@@ -851,6 +885,18 @@ Internet-Draft                  RAW Techs                      June 2019
               Finn, N., Thubert, P., Varga, B., and J. Farkas,
               "Deterministic Networking Architecture", draft-ietf-
               detnet-architecture-13 (work in progress), May 2019.
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 16]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    [I-D.ietf-roll-nsa-extension]
               Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
@@ -869,6 +915,11 @@ Internet-Draft                  RAW Techs                      June 2019
               <https://www.rfc-editor.org/info/rfc8480>.
 
 9.2.  Informative References
+
+   [dearmas16]
+              Jesica de Armas et al., "Determinism through path
+              diversity: Why packet replication makes sense", September
+              2016.
 
    [IEEE80211]
               "IEEE Standard 802.11 - IEEE Standard for Information
@@ -889,18 +940,19 @@ Internet-Draft                  RAW Techs                      June 2019
    [IEEE80211ax]
               "Enhancements for High Efficiency WLAN".
 
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 16]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    [IEEE80211ay]
               "Enhanced throughput for operation in license-exempt bands
               above 45 GHz".
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 17]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    [IEEE80211RTA]
               "802.11 Real-Time Applications Topic Interest Group
@@ -922,6 +974,14 @@ Internet-Draft                  RAW Techs                      June 2019
    [IEEE8021Qat]
               "Stream Reservation Protocol".
 
+   [morell13]
+              Antoni Morell et al., "Label switching over IEEE802.15.4e
+              networks", April 2013.
+
+   [vilajosana19]
+              Xavier Vilajosana et al., "6TiSCH: Industrial Performance
+              for IPv6 Internet-of-Things Networks", June 2019.
+
 Authors' Addresses
 
    Pascal Thubert (editor)
@@ -935,6 +995,21 @@ Authors' Addresses
    Email: pthubert@cisco.com
 
 
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 18]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    Dave Cavalcanti
    Intel Corporation
    2111 NE 25th Ave
@@ -943,15 +1018,6 @@ Authors' Addresses
 
    Phone: 503 712 5566
    Email: dave.cavalcanti@intel.com
-
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 17]
-
-Internet-Draft                  RAW Techs                      June 2019
 
 
    Xavier Vilajosana
@@ -995,14 +1061,4 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 18]
+Thubert, et al.         Expires December 7, 2019               [Page 19]

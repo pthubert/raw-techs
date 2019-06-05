@@ -413,9 +413,6 @@
 
    
    <section title="IEEE Std. 802.15.4 TimeSlotted Channel Hopping">
-      <t>
-      TODO
-      </t>
 
    <section title="Provenance and Documents">
 
@@ -497,6 +494,16 @@
    forwarding increases energy consumption of the network nodes but improves
    significantly the reliability of the network.   
    </t>
+      
+   <t>Useful References include:
+       	<list hangIndent="5" style="hanging">
+        	<t hangText="1."> IEEE Std 802.15.4: "IEEE Std. 802.15.4, Part. 15.4: Wireless Medium Access Control (MAC) and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal Area Networks" <xref target="IEEE802154"/>. The latest version at the time of this writing is dated year 2015.</t>
+        	<t hangText="2."> Morell, A. , Vilajosana, X. , Vicario, J. L. and Watteyne, T. (2013), Label switching over IEEE802.15.4e networks. Trans. Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650" <xref target="morell13"/>.</t>
+        	<t hangText="3."> De Armas, J., Tuset, P., Chang, T., Adelantado, F., Watteyne, T., Vilajosana, X. (2016, September). Determinism through path diversity: Why packet replication makes sense. In 2016 International Conference on Intelligent Networking and Collaborative Systems (INCoS) (pp. 150-154). IEEE. <xref target="dearmas16"/>.</t>
+            <t hangText="4."> X. Vilajosana, T. Watteyne, M. Vucinic, T. Chang and K. S. J. Pister, "6TiSCH: Industrial Performance for IPv6 Internet-of-Things Networks," in Proceedings of the IEEE, vol. 107, no. 6, pp. 1153-1165, June 2019. <xref target="vilajosana19"/>.</t>
+        </list>
+   </t>
+   
    </section><!-- Provenance and Documents   -->
    
    <section title="General Characteristics">
@@ -724,7 +731,43 @@ offset
         </front>
       </reference>
       
-      
+      <reference anchor="morell13" >
+        <front>
+          <title>
+            Label switching over IEEE802.15.4e networks
+          </title>
+          <author initials="" surname="Antoni Morell et al." fullname="Antoni Morell et al.">
+            <organization>Trans. Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650</organization><address/>
+          </author>
+          <date month="April" year="2013"/>
+        </front>
+      </reference>
+   
+   <reference anchor="dearmas16" >
+        <front>
+          <title>
+            Determinism through path diversity: Why packet replication makes sense 
+          </title>
+          <author initials="" surname="Jesica de Armas et al." fullname="Jesica de Armas et al.">
+            <organization>In 2016 International Conference on Intelligent Networking and Collaborative Systems (INCoS)</organization><address/>
+          </author>
+          <date month="September" year="2016"/>
+        </front>
+      </reference>
+   
+   
+      <reference anchor="vilajosana19" >
+        <front>
+          <title>
+            6TiSCH: Industrial Performance for IPv6 Internet-of-Things Networks
+          </title>
+          <author initials="" surname="Xavier Vilajosana et al." fullname="Xavier Vilajosana et al.">
+            <organization>Proceedings of the IEEE, vol. 107, no. 6, pp. 1153-1165 </organization><address/>
+          </author>
+          <date month="June" year="2019"/>
+        </front>
+      </reference>
+              
    </references>
 </back>
 
