@@ -79,14 +79,14 @@ Table of Contents
      4.2.  IEEE 802.15.4 . . . . . . . . . . . . . . . . . . . . . .  12
        4.2.1.  Provenance and Documents  . . . . . . . . . . . . . .  12
        4.2.2.  TimeSlotted Channel Hopping . . . . . . . . . . . . .  14
-   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  15
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  15
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  16
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
+   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  16
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  16
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  17
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -734,6 +734,30 @@ Internet-Draft                  RAW Techs                      June 2019
    increases energy consumption of the network nodes but improves
    significantly the reliability of the network.
 
+   Useful References include:
+
+   1.   IEEE Std 802.15.4: "IEEE Std. 802.15.4, Part. 15.4: Wireless
+        Medium Access Control (MAC) and Physical Layer (PHY)
+        Specifications for Low-Rate Wireless Personal Area Networks"
+        [IEEE802154].  The latest version at the time of this writing is
+        dated year 2015.
+
+   2.   Morell, A. , Vilajosana, X. , Vicario, J.  L. and Watteyne, T.
+        (2013), Label switching over IEEE802.15.4e networks.  Trans.
+        Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650"
+        [morell13].
+
+   3.   De Armas, J., Tuset, P., Chang, T., Adelantado, F., Watteyne,
+        T., Vilajosana, X. (2016, September).  Determinism through path
+        diversity: Why packet replication makes sense.  In 2016
+        International Conference on Intelligent Networking and
+        Collaborative Systems (INCoS) (pp. 150-154).  IEEE. [dearmas16].
+
+   4.   X.  Vilajosana, T.  Watteyne, M.  Vucinic, T.  Chang and K.  S.
+        J.  Pister, "6TiSCH: Industrial Performance for IPv6 Internet-
+        of-Things Networks," in Proceedings of the IEEE, vol. 107, no.
+        6, pp. 1153-1165, June 2019. [vilajosana19].
+
 4.2.2.  TimeSlotted Channel Hopping
 
 4.2.2.1.  General Characteristics
@@ -742,6 +766,25 @@ Internet-Draft                  RAW Techs                      June 2019
    time slots that repeat over time.  The structure is referred as a
    Slotframe.  For each timeslot, a set of available frequencies can be
    used, resulting in a matrix-like schedule (see Fig. Figure 1).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 14]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
                           timeslot offset
         | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
@@ -778,14 +821,6 @@ Internet-Draft                  RAW Techs                      June 2019
    one cell.  An Absolute Slot Number (ASN) indicates the number of
    slots elapsed since the network started.  It increments at every
    slot.  This is a 5 byte counter that can support networks running for
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 14]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    more than 300 years without wrapping (assuming a 10 ms timeslot).
    Channel hopping provides increased reliability to multi-path fading
    and external interference.  It is handled by TSCH through a channel
@@ -796,6 +831,16 @@ Internet-Draft                  RAW Techs                      June 2019
    automation, e.g., loops per second - caveats, e.g., latency in the
    backhaul or interference - programming capabilities, is there a model
    for a flow, etc.
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 15]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
 4.2.2.2.  Applicability to Deterministic Flows
 
@@ -831,17 +876,6 @@ Internet-Draft                  RAW Techs                      June 2019
               of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
               in progress), March 2019.
 
-
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 15]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    [I-D.ietf-6tisch-msf]
               Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
               D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
@@ -851,6 +885,18 @@ Internet-Draft                  RAW Techs                      June 2019
               Finn, N., Thubert, P., Varga, B., and J. Farkas,
               "Deterministic Networking Architecture", draft-ietf-
               detnet-architecture-13 (work in progress), May 2019.
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 16]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    [I-D.ietf-roll-nsa-extension]
               Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
@@ -876,6 +922,11 @@ Internet-Draft                  RAW Techs                      June 2019
               Wireless Industrial Automation Systems, the Proceedings of
               IEEE", June 2019.
 
+   [dearmas16]
+              Jesica de Armas et al., "Determinism through path
+              diversity: Why packet replication makes sense", September
+              2016.
+
    [Doc_11-18-2009-06]
               "802.11 Real-Time Applications (RTA) Topic Interest Group
               (TIG) Report", November 2018.
@@ -888,16 +939,6 @@ Internet-Draft                  RAW Techs                      June 2019
               Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
               GHz Communications for 100 Gb/s Wi-Fi", December 2017.
 
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 16]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    [IEEE80211]
               "IEEE Standard 802.11 - IEEE Standard for Information
               Technology - Telecommunications and information exchange
@@ -905,6 +946,13 @@ Internet-Draft                  RAW Techs                      June 2019
               Specific requirements - Part 11: Wireless LAN Medium
               Access Control (MAC) and Physical Layer (PHY)
               Specifications.".
+
+
+
+Thubert, et al.         Expires December 7, 2019               [Page 17]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    [IEEE80211ad]
               "802.11ad: Enhancements for very high throughput in the 60
@@ -939,17 +987,25 @@ Internet-Draft                  RAW Techs                      June 2019
               Stream Reservation Protocol (SRP) Enhancements and
               Performance Improvements".
 
+   [morell13]
+              Antoni Morell et al., "Label switching over IEEE802.15.4e
+              networks", April 2013.
+
    [Nitsche_2015]
               Thomas Nitsche et al., "IEEE 802.11ad: directional 60 GHz
               communication for multi-Gigabit-per-second Wi-Fi",
               December 2014.
 
+   [vilajosana19]
+              Xavier Vilajosana et al., "6TiSCH: Industrial Performance
+              for IPv6 Internet-of-Things Networks", June 2019.
 
 
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 17]
+
+Thubert, et al.         Expires December 7, 2019               [Page 18]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1005,4 +1061,4 @@ Authors' Addresses
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 18]
+Thubert, et al.         Expires December 7, 2019               [Page 19]
