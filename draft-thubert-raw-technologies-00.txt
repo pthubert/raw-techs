@@ -5,10 +5,10 @@
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                             D. Cavalcanti
-Expires: December 7, 2019                                          Intel
+Expires: December 8, 2019                                          Intel
                                                            X. Vilajosana
                                          Universitat Oberta de Catalunya
-                                                            June 5, 2019
+                                                            June 6, 2019
 
 
               Reliable and Available Wireless Technologies
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 7, 2019.
+   This Internet-Draft will expire on December 8, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 1]
+Thubert, et al.         Expires December 8, 2019                [Page 1]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -82,9 +82,9 @@ Table of Contents
    5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  16
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  16
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  17
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  17
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 2]
+Thubert, et al.         Expires December 8, 2019                [Page 2]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -165,7 +165,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 3]
+Thubert, et al.         Expires December 8, 2019                [Page 3]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -221,7 +221,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 4]
+Thubert, et al.         Expires December 8, 2019                [Page 4]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -277,7 +277,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 5]
+Thubert, et al.         Expires December 8, 2019                [Page 5]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -333,7 +333,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 6]
+Thubert, et al.         Expires December 8, 2019                [Page 6]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -389,7 +389,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 7]
+Thubert, et al.         Expires December 8, 2019                [Page 7]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -445,7 +445,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 8]
+Thubert, et al.         Expires December 8, 2019                [Page 8]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -501,7 +501,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 9]
+Thubert, et al.         Expires December 8, 2019                [Page 9]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -557,7 +557,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 10]
+Thubert, et al.         Expires December 8, 2019               [Page 10]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -613,7 +613,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 11]
+Thubert, et al.         Expires December 8, 2019               [Page 11]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -669,7 +669,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 12]
+Thubert, et al.         Expires December 8, 2019               [Page 12]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -725,7 +725,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 13]
+Thubert, et al.         Expires December 8, 2019               [Page 13]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -781,7 +781,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 14]
+Thubert, et al.         Expires December 8, 2019               [Page 14]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -827,25 +827,50 @@ Internet-Draft                  RAW Techs                      June 2019
    hopping sequence referred as macHopSeq in the IEEE802.15.4
    specification.
 
-   TODO - bandwidth, beam forming - expected capabilities for safety and
-   automation, e.g., loops per second - caveats, e.g., latency in the
-   backhaul or interference - programming capabilities, is there a model
-   for a flow, etc.
+   The Time-Frequency Division Multiple Access provided by TSCH enables
+   the orchestration of traffic flows, spreading them in time and
+   frequency, and hence enabling an efficient management of the
+   bandwidth utilization.  Such efficient bandwidth utilization can be
+   combined to OFDM modulations also supported by the IEEE802.15.4
+   standard [IEEE802154] since the 2015 version.
 
 
 
 
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 15]
+Thubert, et al.         Expires December 8, 2019               [Page 15]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   In the RAW context, low power reliable networks should address non-
+   critical control scenarios such as Class 2 and monitoring scenarios
+   such as Class 4 defined by the RFC5673 [RFC5673].  As a low power
+   technology targeting industrial scenarios radio transducers provide
+   low data rates (typically between 50kbps to 250kbps) and robust
+   modulations to trade-off performance to reliability.  TSCH networks
+   are organized in mesh topologies and connected to a backbone.
+   Latency in the mesh network is mainly influenced by propagation
+   aspects such as interference.  ARQ methods and redundancy techniques
+   such as replication and elimination should be studied to provide the
+   needed performance to address deterministic scenarios.
+
 4.2.2.2.  Applicability to Deterministic Flows
 
-   -time synchronization - scheduling capabilities, discuss such things
-   as Resource Units, time slots or resource blocks.  Can we reserve
+   Nodes in a TSCH network are tightly synchronized.  This enables to
+   build the slotted structure an ensure efficient utilization of
+   resources thranks to proper scheduling policies.  Scheduling is a key
+   to orchestrate the resources that different nodes in a track or path
+   are using.  Slotframes can be split in resource blocks reserving the
+   needed capacity to certain needs.  Periodic and bursty traffic can be
+   handled independently in the schedule, using active and reactive
+   policies and taking advantage of certain cell overprovision.  Along a
+   track, resource blocks can be chained so nodes in previous hops
+   transmit their data before those that come later.  This provides a
+   tight control to latency along a track.  Redundancy is achieved in a
+   best effort manner by overprovision, giving time to the management
+   plane of the network to request more resources if needed.  -time
+   synchronization - scheduling capabilities, discuss such things as
+   Resource Units, time slots or resource blocks.  Can we reserve
    periodic resources vs. ask each time, what precision can we get in
    latency control.  - diversity scenarios, what's available, - gap
    analysis, e.g. discuss multihop, or what's missing how to do PAREO
@@ -862,6 +887,17 @@ Internet-Draft                  RAW Techs                      June 2019
    Most RAW technologies integrate some authentication or encryption
    mechanisms that were defined outside the IETF.
 
+
+
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 16]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
 8.  Acknowledgments
 
    Many thanks to the participants of the RAW WG where a lot of the work
@@ -876,33 +912,15 @@ Internet-Draft                  RAW Techs                      June 2019
               of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
               in progress), March 2019.
 
-   [I-D.ietf-6tisch-msf]
-              Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
-              D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
-              draft-ietf-6tisch-msf-03 (work in progress), April 2019.
-
    [I-D.ietf-detnet-architecture]
               Finn, N., Thubert, P., Varga, B., and J. Farkas,
               "Deterministic Networking Architecture", draft-ietf-
               detnet-architecture-13 (work in progress), May 2019.
 
-
-
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 16]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
-   [I-D.ietf-roll-nsa-extension]
-              Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
-              Thubert, "RPL DAG Metric Container Node State and
-              Attribute object type extension", draft-ietf-roll-nsa-
-              extension-01 (work in progress), March 2019.
+   [RFC5673]  Pister, K., Ed., Thubert, P., Ed., Dwars, S., and T.
+              Phinney, "Industrial Routing Requirements in Low-Power and
+              Lossy Networks", RFC 5673, DOI 10.17487/RFC5673, October
+              2009, <https://www.rfc-editor.org/info/rfc5673>.
 
    [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
               (IPv6) Specification", STD 86, RFC 8200,
@@ -927,9 +945,29 @@ Internet-Draft                  RAW Techs                      June 2019
               diversity: Why packet replication makes sense", September
               2016.
 
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 17]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [Ghasempour_2017]
               Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
               GHz Communications for 100 Gb/s Wi-Fi", December 2017.
+
+   [I-D.ietf-6tisch-msf]
+              Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
+              D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
+              draft-ietf-6tisch-msf-03 (work in progress), April 2019.
+
+   [I-D.ietf-roll-nsa-extension]
+              Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
+              Thubert, "RPL DAG Metric Container Node State and
+              Attribute object type extension", draft-ietf-roll-nsa-
+              extension-01 (work in progress), March 2019.
 
    [IEEE80211]
               "IEEE Standard 802.11 - IEEE Standard for Information
@@ -947,13 +985,6 @@ Internet-Draft                  RAW Techs                      June 2019
               "802.11ak: Enhancements for Transit Links Within Bridged
               Networks", 2017.
 
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 17]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    [IEEE80211ax]
               "802.11ax D4.0: Enhancements for High Efficiency WLAN".
 
@@ -969,6 +1000,15 @@ Internet-Draft                  RAW Techs                      June 2019
               802.15.4, Part. 15.4: Wireless Medium Access Control (MAC)
               and Physical Layer (PHY) Specifications for Low-Rate
               Wireless Personal Area Networks".
+
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 18]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    [IEEE8021Qat]
               "802.1Qat: Stream Reservation Protocol".
@@ -1000,16 +1040,6 @@ Internet-Draft                  RAW Techs                      June 2019
               Xavier Vilajosana et al., "6TiSCH: Industrial Performance
               for IPv6 Internet-of-Things Networks", June 2019.
 
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 18]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
 Authors' Addresses
 
    Pascal Thubert (editor)
@@ -1021,6 +1051,19 @@ Authors' Addresses
 
    Phone: +33 497 23 26 34
    Email: pthubert@cisco.com
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 19]
+
+Internet-Draft                  RAW Techs                      June 2019
 
 
    Dave Cavalcanti
@@ -1061,4 +1104,17 @@ Authors' Addresses
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 19]
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 20]

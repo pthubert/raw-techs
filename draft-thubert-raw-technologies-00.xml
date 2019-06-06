@@ -557,17 +557,47 @@ offset
    </t>
    
    <t>
-   TODO
-   - bandwidth, beam forming
-   - expected capabilities for safety and automation, e.g., loops per second
-   - caveats, e.g., latency in the backhaul or interference 
-   - programming capabilities, is there a model for a flow, etc.
+   <!-- bandwidth, beam forming-->
+    The Time-Frequency Division Multiple Access provided by TSCH enables the 
+    orchestration of traffic flows, spreading them in time and frequency,
+    and hence enabling an efficient management of the bandwidth utilization. 
+    Such efficient bandwidth utilization can be combined to OFDM modulations 
+    also supported by the IEEE802.15.4 standard <xref target="IEEE802154"/> 
+    since the 2015 version. 
+ </t>
+   <t>
+  <!-- expected capabilities for safety and automation, e.g., loops per second -->
+    In the RAW context, low power reliable networks should address non-critical 
+    control scenarios such as Class 2 and monitoring scenarios such as Class 4
+    defined by the RFC5673 <xref target="RFC5673"/>. 
+    As a low power technology targeting industrial scenarios radio transducers provide 
+    low data rates (typically between 50kbps to 250kbps) and robust modulations 
+    to trade-off performance to reliability. TSCH networks are organized in mesh
+    topologies and connected to a backbone. Latency in the mesh network is 
+    mainly influenced by propagation aspects such as interference. 
+    ARQ methods and redundancy techniques such as replication and elimination 
+    should be studied to provide the needed performance to address deterministic
+    scenarios.   
    </t>
    
    </section> <!-- General Characteristics  -->
    
    <section title="Applicability to Deterministic Flows">
    <t>
+      Nodes in a TSCH network are tightly synchronized. This enables to build the
+      slotted structure an ensure efficient utilization of resources thranks to
+      proper scheduling policies. Scheduling is a key to orchestrate the resources
+      that different nodes in a track or path are using. Slotframes can be 
+      split in resource blocks reserving the needed capacity to certain needs.
+      Periodic and bursty traffic can be handled independently in the schedule,
+      using active and reactive policies and taking advantage of certain 
+      cell overprovision. Along a track, resource blocks can be chained so nodes
+      in previous hops transmit their data before those that come later. This 
+      provides a tight control to latency along a track. Redundancy is achieved
+      in a best effort manner by overprovision, giving time to the management plane
+      of the network to request more resources if needed. 
+      
+      
      -time synchronization
      - scheduling capabilities, discuss such things as Resource Units, time slots or resource blocks. 
        Can we reserve periodic resources vs. ask each time, what precision can we get in latency control.
@@ -619,6 +649,7 @@ offset
    <references title="Normative References">
       <?rfc include="reference.RFC.8480"?> <!-- 6P Protocol Specification -->
       <?rfc include="reference.RFC.8200"?> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
+      <?rfc include="reference.RFC.5673"?> <!-- Industrial Routing Requirements in Low-Power and Lossy Networks -->
       <?rfc include='reference.I-D.ietf-detnet-architecture'?>
       <?rfc include='reference.I-D.ietf-6tisch-architecture'?>
            
