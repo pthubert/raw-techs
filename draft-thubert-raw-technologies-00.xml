@@ -242,7 +242,7 @@
         	The IEEE 802.11 LAN standards define the underlying MAC and PHY layers for the Wi-Fi technology. Wi-Fi/802.11 is one of the most successful wireless technologies, supporting many application domains. While previous 802.11 generations, such as 802.11n and 802.11ac, have focused mainly on improving peak throughput, more recent generations are also considering other performance vectors, such as efficiency enhancements for dense environments in 802.11ax, and latency and support for Time-Sensitive Networking (TSN) capabilities in 802.11be.
         	</t>
         	<t>
-        	IEEE 802.11 is undergoing efforts to support for some of the IEEE 802.1 TSN capabilities required to address the use cases that require time synchronization and timeliness (bounded latency) guarantees with high reliability and availability. The IEEE 802.11 working group has been working in collaboration with the IEEE 802.1 group for several years extending 802.1 features over 802.11. As with any wireless media, 802.11 imposes new constraints and restrictions to TSN-grade QoS, and tradeoffs between latency and reliability guarantees must be considered as well as managed deployment requirements. An overview of 802.1 TSN capabilities and their extensions to 802.11 are discussed in <xref target="Cavalcanti_2019"/>. 
+        	IEEE 802.11 already supports some 802.1 TSN standards  and it is undergoing efforts to support for other 802.1 TSN capabilities required to address the use cases that require time synchronization and timeliness (bounded latency) guarantees with high reliability and availability. The IEEE 802.11 working group has been working in collaboration with the IEEE 802.1 group for several years extending 802.1 features over 802.11. As with any wireless media, 802.11 imposes new constraints and restrictions to TSN-grade QoS, and tradeoffs between latency and reliability guarantees must be considered as well as managed deployment requirements. An overview of 802.1 TSN capabilities and their extensions to 802.11 are discussed in <xref target="Cavalcanti_2019"/>. 
      		</t>
      		<t>
             Wi-Fi Alliance (WFA) is the worldwide network of companies that drives global Wi-Fi adoption and evolution through thought leadership, spectrum advocacy, and industry-wide collaboration. The WFA work helps ensure that Wi-Fi devices and networks provide users the interoperability, security, and reliability they have come to expect.
@@ -256,7 +256,7 @@
             <t hangText="Interoperating with IEEE802.1Q bridges:"> IEEE802.11ak.</t>
             <t hangText="Stream Reservation Protocol (part of IEEE802.1Qat):"> AIEEE802.11-2016.</t>
             <t hangText="Scheduled channel access:"> IEEE802.11ad Enhancements for very high throughput in the 60 GHz band <xref target="IEEE80211ad"/>.</t>
-            <t hangText="802.11 Real-Time Applications:"> Topic Interest Group (TIG) ReportDoc <xref target="Doc_11-18-2009-06"/>.</t>
+            <t hangText="802.11 Real-Time Applications:"> Topic Interest Group (TIG) ReportDoc <xref target="IEEE_doc_11-18-2009-06"/>.</t>
           </list>
          </t>
          
@@ -325,7 +325,7 @@
         		As discussed earlier, the 802.11ax OFDMA mode introduces the possibility of assigning different RUs (frequency resources) to users within a PPDU. Several RU sizes are defined in the specification (26, 52, 106, 242, 484, 996 subcarriers). In addition, the AP can also decide on MCS and grouping of users within a given OFMDA PPDU. Such flexibility can be leveraged to support time-sensitive applications with bounded latency, especially in a managed network where stations can be configured to operate under the control of the AP.
         	</t>
         	<t>
-        		As shown in [1???], it is possible to achieve latencies in the order of 1msec with high reliability in an interference free environment. Obviously, there are latency, reliability and capacity tradeoffs to be considered. For instance, smaller RUs result in longer transmission durations, which may impact the minimal latency that can be achieved, but the contention latency and randomness elimination due to multi-user transmission is a major benefit of the OFDMA mode.
+        		As shown in <xref target="Cavalcanti_2019"/>, it is possible to achieve latencies in the order of 1msec with high reliability in an interference free environment. Obviously, there are latency, reliability and capacity tradeoffs to be considered. For instance, smaller Resource Units (RU)s result in longer transmission durations, which may impact the minimal latency that can be achieved, but the contention latency and randomness elimination due to multi-user transmission is a major benefit of the OFDMA mode.
         	</t>
         	<t>
         		The flexibility to dynamically assign RUs to each transmission also enables the AP to provide frequency diversity, which can help increase reliability.	
@@ -354,7 +354,7 @@
         	</section> <!-- General Characteristics-->
         	<section title="Applicability to deterministic flows"> 
         		<t>
-        			The 802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) provided detailed information on use cases, issues and potential solution directions to improve support for time-sensitive applications in 802.11. The RTA TIG report <xref target="Doc_11-18-2009-06"/> was used as input to the 802.11be project scope.
+        			The 802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) provided detailed information on use cases, issues and potential solution directions to improve support for time-sensitive applications in 802.11. The RTA TIG report <xref target="IEEE_doc_11-18-2009-06"/> was used as input to the 802.11be project scope.
         		</t>
         		<t>
         			Improvements for worst-case latency, jitter and reliability were the main topics identified in the RTA report, which were motivated by applications in gaming, industrial automation, robotics, etc. The RTA report also highlighted the need to support additional TSN capabilities, such as time-aware (802.1Qbv) shaping and packet replication and elimination as defined in 802.1CB. 
@@ -364,7 +364,7 @@
         			</t>
         		<section title="Enhanced scheduled operation for bounded latency ">
         			<t>
-        				In addition to the throughput enhancements, 802.11be will leverage the trigger-based scheduled operation enabled by 802.11ax to provide efficient and more predictable medium access. 802.11be is expected to include enhancements to reduce overhead and enable more efficient operation in managed network deployments <xref target="Doc_11-19-0373-00"/>.
+        				In addition to the throughput enhancements, 802.11be will leverage the trigger-based scheduled operation enabled by 802.11ax to provide efficient and more predictable medium access. 802.11be is expected to include enhancements to reduce overhead and enable more efficient operation in managed network deployments <xref target="IEEE_doc_11-19-0373-00"/>.
         				</t>
         		</section> <!-- Enhanced scheduled operation for bounded latency -->
         		<section title="Multi-AP coordination">
@@ -621,13 +621,14 @@ offset
       <?rfc include="reference.RFC.8200"?> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
       <?rfc include='reference.I-D.ietf-detnet-architecture'?>
       <?rfc include='reference.I-D.ietf-6tisch-architecture'?>
-      <?rfc include='reference.I-D.ietf-6tisch-msf'?>
-      <?rfc include='reference.I-D.ietf-roll-nsa-extension'?>
-      <!-- <?rfc include='reference.I-D.papadopoulos-6tisch-pre-reqs'?>-->
            
    </references>
    <references title="Informative References">
    
+      <?rfc include='reference.I-D.ietf-6tisch-msf'?>
+      <?rfc include='reference.I-D.ietf-roll-nsa-extension'?>
+      <!-- <?rfc include='reference.I-D.papadopoulos-6tisch-pre-reqs'?>-->
+      
       <reference anchor="IEEE802154">
          <front>
             <title>IEEE Std. 802.15.4, Part. 15.4: Wireless Medium Access
@@ -763,7 +764,7 @@ offset
         </front>
       </reference>
       
-      <reference anchor="Doc_11-18-2009-06" >
+      <reference anchor="IEEE_doc_11-18-2009-06" >
         <front>
           <title>
             802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) Report 
@@ -773,7 +774,7 @@ offset
         </front>
       </reference>
        
-      <reference anchor="Doc_11-19-0373-00">
+      <reference anchor="IEEE_doc_11-19-0373-00">
         <front>
           <title>
             Time-Sensitive Applications Support in EHT
