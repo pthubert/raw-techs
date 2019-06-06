@@ -5,10 +5,10 @@
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                             D. Cavalcanti
-Expires: December 7, 2019                                          Intel
+Expires: December 8, 2019                                          Intel
                                                            X. Vilajosana
                                          Universitat Oberta de Catalunya
-                                                            June 5, 2019
+                                                            June 6, 2019
 
 
               Reliable and Available Wireless Technologies
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 7, 2019.
+   This Internet-Draft will expire on December 8, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 1]
+Thubert, et al.         Expires December 8, 2019                [Page 1]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 2]
+Thubert, et al.         Expires December 8, 2019                [Page 2]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -165,7 +165,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 3]
+Thubert, et al.         Expires December 8, 2019                [Page 3]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -221,7 +221,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 4]
+Thubert, et al.         Expires December 8, 2019                [Page 4]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -277,7 +277,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 5]
+Thubert, et al.         Expires December 8, 2019                [Page 5]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -333,7 +333,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 6]
+Thubert, et al.         Expires December 8, 2019                [Page 6]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -389,7 +389,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 7]
+Thubert, et al.         Expires December 8, 2019                [Page 7]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -445,7 +445,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 8]
+Thubert, et al.         Expires December 8, 2019                [Page 8]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -501,7 +501,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019                [Page 9]
+Thubert, et al.         Expires December 8, 2019                [Page 9]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -557,7 +557,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 10]
+Thubert, et al.         Expires December 8, 2019               [Page 10]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -613,7 +613,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 11]
+Thubert, et al.         Expires December 8, 2019               [Page 11]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -669,7 +669,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 12]
+Thubert, et al.         Expires December 8, 2019               [Page 12]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -725,7 +725,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 13]
+Thubert, et al.         Expires December 8, 2019               [Page 13]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -781,7 +781,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 7, 2019               [Page 14]
+Thubert, et al.         Expires December 8, 2019               [Page 14]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -827,20 +827,25 @@ Internet-Draft                  RAW Techs                      June 2019
    hopping sequence referred as macHopSeq in the IEEE802.15.4
    specification.
 
-   TODO - bandwidth, beam forming - expected capabilities for safety and
-   automation, e.g., loops per second - caveats, e.g., latency in the
-   backhaul or interference - programming capabilities, is there a model
-   for a flow, etc.
+   The Time-Frequency Division Multiple Access provided by TSCH enables
+   the orchestration of traffic flows, spreading them in time and
+   frequency, and hence enabling an efficient management of the
+   bandwidth utilization.  Such efficient bandwidth utilization can be
+   combined to OFDM modulations also supported by the IEEE802.15.4
+   standard [IEEE802154] since the 2015 version.  In the RAW context,
+   low power reliable networks should address non-critical control
 
 
 
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 15]
+Thubert, et al.         Expires December 8, 2019               [Page 15]
 
 Internet-Draft                  RAW Techs                      June 2019
 
+
+   scenarios such as Class 2 and monitoring scenarios such as Class 4 as
+   defined by the RFC5673 [RFC5673].  TSCH networks - caveats, e.g.,
+   latency in the backhaul or interference - programming capabilities,
+   is there a model for a flow, etc.
 
 4.2.2.2.  Applicability to Deterministic Flows
 
@@ -888,12 +893,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 16]
+Thubert, et al.         Expires December 8, 2019               [Page 16]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -903,6 +903,11 @@ Internet-Draft                  RAW Techs                      June 2019
               Thubert, "RPL DAG Metric Container Node State and
               Attribute object type extension", draft-ietf-roll-nsa-
               extension-01 (work in progress), March 2019.
+
+   [RFC5673]  Pister, K., Ed., Thubert, P., Ed., Dwars, S., and T.
+              Phinney, "Industrial Routing Requirements in Low-Power and
+              Lossy Networks", RFC 5673, DOI 10.17487/RFC5673, October
+              2009, <https://www.rfc-editor.org/info/rfc5673>.
 
    [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
               (IPv6) Specification", STD 86, RFC 8200,
@@ -939,6 +944,16 @@ Internet-Draft                  RAW Techs                      June 2019
               Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
               GHz Communications for 100 Gb/s Wi-Fi", December 2017.
 
+
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 17]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [IEEE80211]
               "IEEE Standard 802.11 - IEEE Standard for Information
               Technology - Telecommunications and information exchange
@@ -946,13 +961,6 @@ Internet-Draft                  RAW Techs                      June 2019
               Specific requirements - Part 11: Wireless LAN Medium
               Access Control (MAC) and Physical Layer (PHY)
               Specifications.".
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 17]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    [IEEE80211ad]
               "802.11ad: Enhancements for very high throughput in the 60
@@ -991,6 +999,17 @@ Internet-Draft                  RAW Techs                      June 2019
               Antoni Morell et al., "Label switching over IEEE802.15.4e
               networks", April 2013.
 
+
+
+
+
+
+
+Thubert, et al.         Expires December 8, 2019               [Page 18]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [Nitsche_2015]
               Thomas Nitsche et al., "IEEE 802.11ad: directional 60 GHz
               communication for multi-Gigabit-per-second Wi-Fi",
@@ -999,16 +1018,6 @@ Internet-Draft                  RAW Techs                      June 2019
    [vilajosana19]
               Xavier Vilajosana et al., "6TiSCH: Industrial Performance
               for IPv6 Internet-of-Things Networks", June 2019.
-
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 18]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
 Authors' Addresses
 
@@ -1052,13 +1061,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-Thubert, et al.         Expires December 7, 2019               [Page 19]
+Thubert, et al.         Expires December 8, 2019               [Page 19]

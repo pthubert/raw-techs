@@ -557,9 +557,23 @@ offset
    </t>
    
    <t>
-   TODO
-   - bandwidth, beam forming
-   - expected capabilities for safety and automation, e.g., loops per second
+   <!-- bandwidth, beam forming-->
+    The Time-Frequency Division Multiple Access provided by TSCH enables the 
+    orchestration of traffic flows, spreading them in time and frequency,
+    and hence enabling an efficient management of the bandwidth utilization. 
+    Such efficient bandwidth utilization can be combined to OFDM modulations 
+    also supported by the IEEE802.15.4 standard <xref target="IEEE802154"/> 
+    since the 2015 version. 
+
+  <!-- expected capabilities for safety and automation, e.g., loops per second -->
+    In the RAW context, low power reliable networks should address non-critical 
+    control scenarios such as Class 2 and monitoring scenarios such as Class 4
+    as defined by the RFC5673 <xref target="RFC5673"/>. 
+    As a low power technology targeting industrial scenarios radio transducers provide 
+    low data rates (typically between 50kbps to 250kbps) and robust modulations 
+    to trade-off performance to reliability. TSCH networks are organized in mesh
+    topologies and connected to a backbone 
+    
    - caveats, e.g., latency in the backhaul or interference 
    - programming capabilities, is there a model for a flow, etc.
    </t>
@@ -619,6 +633,7 @@ offset
    <references title="Normative References">
       <?rfc include="reference.RFC.8480"?> <!-- 6P Protocol Specification -->
       <?rfc include="reference.RFC.8200"?> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
+      <?rfc include="reference.RFC.5673"?> <!-- Industrial Routing Requirements in Low-Power and Lossy Networks -->
       <?rfc include='reference.I-D.ietf-detnet-architecture'?>
       <?rfc include='reference.I-D.ietf-6tisch-architecture'?>
       <?rfc include='reference.I-D.ietf-6tisch-msf'?>
