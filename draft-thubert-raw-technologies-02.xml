@@ -577,18 +577,18 @@ offset
    
    <section title="Applicability to Deterministic Flows">
    <t>
-      Nodes in a TSCH network are tightly synchronized. This enables to build the
-      slotted structure an ensure efficient utilization of resources thranks to
-      proper scheduling policies. Scheduling is a key to orchestrate the resources
-      that different nodes in a Track or path are using. Slotframes can be 
-      split in resource blocks reserving the needed capacity to certain needs.
-      Periodic and bursty traffic can be handled independently in the schedule,
-      using active and reactive policies and taking advantage of certain 
-      cell overprovision. Along a Track, resource blocks can be chained so nodes
-      in previous hops transmit their data before those that come later. This 
-      provides a tight control to latency along a Track. Redundancy is achieved
-      in a best effort manner by overprovision, giving time to the management plane
-      of the network to request more resources if needed. 
+    Nodes in a TSCH network are tightly synchronized. This enables to build the
+    slotted structure and ensure efficient utilization of resources thanks to
+    proper scheduling policies. Scheduling is a key to orchestrate the resources
+    that different nodes in a Track or a path are using. Slotframes can be 
+    split in resource blocks reserving the needed capacity to certain flows.
+    Periodic and bursty traffic can be handled independently in the schedule,
+    using active and reactive policies and taking advantage of overprovisionned
+    cells to measu reth excursion. Along a Track, resource blocks can be chained
+    so nodes in previous hops transmit their data before the next packet comes.
+    This provides a tight control to latency along a Track. Collision loss is
+    avoided for best effort traffic by overprovisionning resources, giving time
+    to the management plane of the network to dedicate more resources if needed. 
       
       <!--
       
@@ -601,23 +601,24 @@ offset
    </t>
    
    <section anchor="detnet" title="Centralized Path Computation">
-   <t>In a classical system, the 6TiSCH device does not place the request for
-   bandwidth between self and another device in the network. Rather, an Operation
-   Control System invoked through an Human/Machine Interface (HMI) indicates the
-   Traffic Specification, in particular in terms of latency and reliability, and
-   the end nodes. With this, the PCE must compute a Track between the end nodes
-   and provision the network with per-flow state that describes the per-hop 
-   operation for a given packet, the corresponding timeSlots, and the flow 
-   identification that enables to recognize when a certain packet belongs to a
-   certain Track, sort out duplicates, etc...
+   <t>
+   In a controlled environment, a 6TiSCH device usually does not place a request
+   for bandwidth between itself and another device in the network. Rather, an
+   Operation Control System (OCS) invoked through an Human/Machine Interface
+   (HMI) iprovides the Traffic Specification, in particular in terms of latency
+   and reliability, and the end nodes, to a PCE. With this, the PCE computes a
+   Track between the end nodes and provisions every hop in the Track with
+   per-flow state that describes the per-hop operation for a given packet, the
+   corresponding timeSlots, and the flow identification to recognize which packet
+   is placed in which Track, sort out duplicates, etc...
    </t>
    <t>
-   For a static configuration that serves a certain purpose for a long period of time, 
-   it is expected that a node will be provisioned in one shot with a full schedule,
-   which incorporates the aggregation of its behavior for multiple Tracks. 6TiSCH
-   expects that the programing of the schedule will be done over COAP 
-   as discussed in <xref target="I-D.ietf-6tisch-coap">6TiSCH Resource 
-   Management and Interaction using CoAP</xref>.
+   For a static configuration that serves a certain purpose for a long period of
+   time, it is expected that a node will be provisioned in one shot with a full
+   schedule, which incorporates the aggregation of its behavior for multiple
+   Tracks. The 6TiSCH Architecture expects that the programing of the schedule
+   is done over COAP as discussed in <xref target="I-D.ietf-6tisch-coap">"6TiSCH
+   Resource Management and Interaction using CoAP"</xref>.
    </t>
    <t>
    But an Hybrid mode may be required as well whereby a single Track is added,
