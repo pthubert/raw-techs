@@ -442,7 +442,7 @@
    access capabilities provided by TSCH. The group designed the essential 
    mechanisms to enable the management plane operation while ensuring IPv6 is 
    supported. Yet the charter did not focus to providing a solution to establish
-   end to end tracks while meeting quality of service requirements. 6TiSCH, 
+   end to end Tracks while meeting quality of service requirements. 6TiSCH, 
    through the RFC8480 <xref target="RFC8480"/> defines the 6P protocol which 
    provides a pairwise negotiation mechanism to the control plane operation. 
    The protocol supports agreement on a schedule between neighbors, enabling 
@@ -477,7 +477,7 @@
    <t>  
    The 6TiSCH architecture <xref target="I-D.ietf-6tisch-architecture"/> 
    identifies different models to schedule resources along so-called Tracks 
-   (see <xref target="tracks"/>) exploiting the
+   (see <xref target="Tracks"/>) exploiting the
    TSCH schedule structure however the focus at 6TiSCH is on best effort traffic
    and the group was never chartered to produce standard work related to Tracks.
    
@@ -580,13 +580,13 @@ offset
       Nodes in a TSCH network are tightly synchronized. This enables to build the
       slotted structure an ensure efficient utilization of resources thranks to
       proper scheduling policies. Scheduling is a key to orchestrate the resources
-      that different nodes in a track or path are using. Slotframes can be 
+      that different nodes in a Track or path are using. Slotframes can be 
       split in resource blocks reserving the needed capacity to certain needs.
       Periodic and bursty traffic can be handled independently in the schedule,
       using active and reactive policies and taking advantage of certain 
-      cell overprovision. Along a track, resource blocks can be chained so nodes
+      cell overprovision. Along a Track, resource blocks can be chained so nodes
       in previous hops transmit their data before those that come later. This 
-      provides a tight control to latency along a track. Redundancy is achieved
+      provides a tight control to latency along a Track. Redundancy is achieved
       in a best effort manner by overprovision, giving time to the management plane
       of the network to request more resources if needed. 
       
@@ -707,7 +707,7 @@ offset
    transmission over any of branches MUST be attempted regardless of whether a
    transmission succeeded in another branch. It is also possible to place cells
    to different next-hop routers in a same 'OR' group. This allows to route along
-   multi-path tracks, trying one next-hop and then another only if sending to the 
+   multi-path Tracks, trying one next-hop and then another only if sending to the 
    first fails.
    </t>
    <t>
@@ -768,7 +768,7 @@ offset
       <t>
       Both methods may inject routes in the Routing Tables of the 6TiSCH routers.
       In either case, each route is associated with a 6TiSCH topology that can
-      be a RPL Instance topology or a track. The 6TiSCH topology is
+      be a RPL Instance topology or a Track. The 6TiSCH topology is
       indexed by a Instance ID, in a format that reuses the RPLInstanceID as
       defined in RPL.
       </t>
@@ -881,12 +881,12 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
       </section>
    
    </section>
-   <section anchor="tracks" title="6TiSCH Tracks">
+   <section anchor="Tracks" title="6TiSCH Tracks">
    
    <t>
    A Track at 6TiSCH is the application to wireless of the concept of a path in
    the Detnet architecture <xref target="I-D.ietf-detnet-architecture"/>.
-   A track can follow a simple sequence of relay nodes or can be structured as a
+   A Track can follow a simple sequence of relay nodes or can be structured as a
    more complex destination oriented directed acyclic graph (DODAG) to a unicast 
    destination. Along a Track, 6TiSCH nodes reserve the resources to enable the
    efficient transmission of packets while aiming to optimize certain properties
@@ -896,7 +896,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
    </t>
    <t>
    Serial Tracks can be understood as the concatenation of cells or bundles
-   along a routing path from a node towards a destination. The serial track
+   along a routing path from a node towards a destination. The serial Track
    concept is analogous to the circuit concept where resources are chained
    through the multi-hop topology. For example, A bundle of Tx Cells in a
    particular node is paired to a bundle of Rx Cells in the next hop node
@@ -1112,22 +1112,22 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
             for instance if more retransmissions are needed than provisioned.
             In that case, the frame can be placed for transmission in the
             bundle that is used for layer-3 traffic towards the next hop along
-            the track as long as it can be routed by the upper layer, that is,
+            the Track as long as it can be routed by the upper layer, that is,
             typically, if the frame transports an IPv6 packet. The MAC address
             should be set to the next-hop MAC address to avoid confusion.
             It results that a frame that is received over a layer-3 bundle may
             be in fact associated to a Track. In a classical IP link such as an
-            Ethernet, off-track traffic is typically in excess over reservation
+            Ethernet, off-Track traffic is typically in excess over reservation
             to be routed along the non-reserved path based on its QoS setting.
             But with 6TiSCH, since the use of the layer-3 bundle may be due to
             transmission failures, it makes sense for the receiver to recognize
-            a frame that should be re-tracked, and to place it back on the
+            a frame that should be re-Tracked, and to place it back on the
             appropriate bundle if possible.
-            A frame should be re-tracked if the Per-Hop-Behavior
+            A frame should be re-Tracked if the Per-Hop-Behavior
             group indicated in the Differentiated Services Field in the
             IPv6 header is set to Deterministic Forwarding, as discussed in
             <xref target="pmh"/>.
-            A frame is re-tracked by scheduling it for transmission over the
+            A frame is re-Tracked by scheduling it for transmission over the
             transmit bundle associated to the Track,
             with the destination MAC address set to broadcast.
          </t>
@@ -1558,7 +1558,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
       </reference>
       
       
-      <reference anchor="PCE" target="https://datatracker.ietf.org/doc/charter-ietf-pce/">
+      <reference anchor="PCE" target="https://dataTracker.ietf.org/doc/charter-ietf-pce/">
          <front>
             <title>Path Computation Element</title>
             <author>
@@ -1568,7 +1568,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
          </front>
       </reference>
       
-      <reference anchor="CCAMP" target="https://datatracker.ietf.org/doc/charter-ietf-ccamp/">
+      <reference anchor="CCAMP" target="https://dataTracker.ietf.org/doc/charter-ietf-ccamp/">
          <front>
             <title>Common Control and Measurement Plane</title>
             <author>
@@ -1578,7 +1578,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
          </front>
       </reference>
       
-      <!--reference anchor="MPLS" target="https://datatracker.ietf.org/doc/charter-ietf-mpls/">
+      <!--reference anchor="MPLS" target="https://dataTracker.ietf.org/doc/charter-ietf-mpls/">
          <front>
             <title>Multiprotocol Label Switching</title>
             <author>
@@ -1588,7 +1588,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
          </front>
       </reference-->
       
-      <reference anchor="TiSCH" target="https://datatracker.ietf.org/doc/charter-ietf-6tisch/">
+      <reference anchor="TiSCH" target="https://dataTracker.ietf.org/doc/charter-ietf-6tisch/">
          <front>
             <title>IPv6 over the TSCH mode over 802.15.4</title>
             <author>
