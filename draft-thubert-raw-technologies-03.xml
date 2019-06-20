@@ -500,7 +500,8 @@
    <section title="General Characteristics">
    <t>  
    As a core technique in IEEE802.15.4, TSCH splits time in multiple time slots 
-   that repeat over time. The structure is referred as a Slotframe (see
+   that repeat over time. 
+   A set of timeslots constructs a Slotframe (see
    <xref target="slotFrames"/>). For each 
    timeslot, a set of available frequencies can be used, resulting in a 
    matrix-like schedule (see <xref target="fig_slotframe"/>). 
@@ -540,7 +541,8 @@ offset
    cell's timeslot offset indicates its position in time, relative to the
    beginning of the slotframe. A cell's channel offset is an index which maps to
    a frequency at each iteration of the slotframe. Each packet exchanged between
-   neighbors happens within one cell. An Absolute Slot Number (ASN) indicates
+   neighbors happens within one cell. The size of a cell is a timeslot duration, 
+   between 10 to 15 milliseconds. An Absolute Slot Number (ASN) indicates
    the number of slots elapsed since the network started. It increments at every
    slot. This is a 5 byte counter that can support networks running for more
    than 300 years without wrapping (assuming a 10 ms timeslot). Channel hopping
@@ -677,7 +679,63 @@ offset
    is generalized to all 6TiSCH topological Instances, which includes Tracks.
    </t>
    </section>
+   
    <section anchor="pmhrre" title="Replication, Retries and Elimination">
+    <t>
+        PRE establishes several paths in a network to provide redundancy and parallel 
+        transmissions to bound the end-to-end delay. 
+        <!--Optionally, promiscuous listening between paths is possible, such that the nodes
+        on one path may overhear transmissions along the other path. -->
+        Considering the scenario shown in <xref
+        target="fig_ladder"/>, 
+        many different paths are possible for S to reach R. 
+        A simple way to benefit from this topology could be to use the
+        two independent paths via nodes A, C, E and via B, D, F.  
+        But more complex paths are possible as well.
+    </t>         
+
+      <figure anchor="fig_ladder" align="center" title="A Typical Ladder Shape with Two Parallel Paths Toward the Destination">
+         <artwork align="center"><![CDATA[
+ 
+                 (A)   (C)   (E)   
+                                                
+   source (S)                       (R) (destination)
+                                                
+                 (B)   (D)   (F)  
+
+        ]]></artwork>
+     </figure>
+    
+    <t>
+    	By employing a Packet Replication function, each node forwards 
+        a copy of each data packet over two different branches.
+        For instance, in <xref target="fig_replication"/>, the source node S 
+        transmits the packet to nodes A and B, in two different 
+        timeslots within the same TSCH slotframe. 
+    </t>
+    
+        <figure anchor="fig_replication" align="center"
+            title="Packet Replication: S transmits twice the same data packet, to its DP
+            (A) and to its AP (B).">
+            <artwork align="center"><![CDATA[
+ 
+               ===> (A) => (C) => (E) === 
+             //        \\//   \\//       \\
+   source (S)          //\\   //\\         (R) (destination)
+             \\       //  \\ //  \\      //
+               ===> (B) => (D) => (F) ===
+
+            ]]></artwork>
+        </figure>
+    
+    <t>
+        By employing Packet Elimination function once a node receives the 
+        first copy of a data packet, it discards the subsequent copies. 
+        Because the first copy that reaches a node is the
+        one that matters, it is the only copy that will be
+        forwarded upward. 
+    </t>
+   
    <t>6TiSCH expects elimination and replication of packets along a complex 
    Track, but has no position about how the sequence numbers would be tagged in 
    the packet. 
@@ -849,12 +907,12 @@ offset
          (<xref target="I-D.ietf-6tisch-architecture"/>) to operate
          such spectrum distribution for a whole group of cells at a time.
          The CDU matrix is formatted into a set of chunks, each of them
-         identified uniquely by a chunk-ID. 
+         identified uniquely by a chunk-ID, see <xref target="fig3"/>. 
          The PCE MUST compute the partitioning of CDU matrices into chunks and
          shared that knowledge with all the nodes in a 6TiSCH network. 
          </t>
          <t>
-            <figure anchor="fig10" title="CDU matrix Partitioning in Chunks">
+            <figure anchor="fig3" title="CDU matrix Partitioning in Chunks">
 <artwork>
 <![CDATA[
              +-----+-----+-----+-----+-----+-----+-----+     +-----+

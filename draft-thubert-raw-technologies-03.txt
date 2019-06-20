@@ -99,13 +99,13 @@ Table of Contents
          4.2.2.1.  General Characteristics . . . . . . . . . . . . .  15
          4.2.2.2.  Applicability to Deterministic Flows  . . . . . .  16
            4.2.2.2.1.  Centralized Path Computation  . . . . . . . .  16
-           4.2.2.2.2.  6TiSCH Tracks . . . . . . . . . . . . . . . .  22
-   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  29
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  29
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  29
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  29
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  29
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  29
+           4.2.2.2.2.  6TiSCH Tracks . . . . . . . . . . . . . . . .  23
+   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  30
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  30
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  30
+   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  30
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  30
 
 
 
@@ -114,8 +114,8 @@ Thubert, et al.         Expires December 22, 2019               [Page 2]
 Internet-Draft                  RAW Techs                      June 2019
 
 
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  30
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  31
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
 
@@ -791,7 +791,7 @@ Internet-Draft                  RAW Techs                      June 2019
 4.2.2.1.  General Characteristics
 
    As a core technique in IEEE802.15.4, TSCH splits time in multiple
-   time slots that repeat over time.  The structure is referred as a
+   time slots that repeat over time.  A set of timeslots constructs a
    Slotframe (see Section 4.2.2.2.1.4).  For each timeslot, a set of
    available frequencies can be used, resulting in a matrix-like
    schedule (see Figure 1).
@@ -828,12 +828,12 @@ Internet-Draft                  RAW Techs                      June 2019
    time, relative to the beginning of the slotframe.  A cell's channel
    offset is an index which maps to a frequency at each iteration of the
    slotframe.  Each packet exchanged between neighbors happens within
-   one cell.  An Absolute Slot Number (ASN) indicates the number of
-   slots elapsed since the network started.  It increments at every
+   one cell.  The size of a cell is a timeslot duration, between 10 to
+   15 milliseconds.  An Absolute Slot Number (ASN) indicates the number
+   of slots elapsed since the network started.  It increments at every
    slot.  This is a 5 byte counter that can support networks running for
    more than 300 years without wrapping (assuming a 10 ms timeslot).
    Channel hopping provides increased reliability to multi-path fading
-   and external interference.  It is handled by TSCH through a channel
 
 
 
@@ -842,6 +842,7 @@ Thubert, et al.         Expires December 22, 2019              [Page 15]
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   and external interference.  It is handled by TSCH through a channel
    hopping sequence referred as macHopSeq in the IEEE802.15.4
    specification.
 
@@ -889,7 +890,6 @@ Internet-Draft                  RAW Techs                      June 2019
    an Human/Machine Interface (HMI) iprovides the Traffic Specification,
    in particular in terms of latency and reliability, and the end nodes,
    to a Path Computation element (PCE).  With this, the PCE computes a
-   Track between the end nodes and provisions every hop in the Track
 
 
 
@@ -898,6 +898,7 @@ Thubert, et al.         Expires December 22, 2019              [Page 16]
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   Track between the end nodes and provisions every hop in the Track
    with per-flow state that describes the per-hop operation for a given
    packet, the corresponding timeSlots, and the flow identification to
    recognize which packet is placed in which Track, sort out duplicates,
@@ -948,7 +949,6 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
 Thubert, et al.         Expires December 22, 2019              [Page 17]
 
 Internet-Draft                  RAW Techs                      June 2019
@@ -977,6 +977,54 @@ Internet-Draft                  RAW Techs                      June 2019
 
 4.2.2.2.1.1.2.  Replication, Retries and Elimination
 
+   PRE establishes several paths in a network to provide redundancy and
+   parallel transmissions to bound the end-to-end delay.  Considering
+   the scenario shown in Figure 3, many different paths are possible for
+   S to reach R.  A simple way to benefit from this topology could be to
+   use the two independent paths via nodes A, C, E and via B, D, F.  But
+   more complex paths are possible as well.
+
+
+                            (A)   (C)   (E)
+
+              source (S)                       (R) (destination)
+
+                            (B)   (D)   (F)
+
+
+    Figure 3: A Typical Ladder Shape with Two Parallel Paths Toward the
+                                Destination
+
+   By employing a Packet Replication function, each node forwards a copy
+   of each data packet over two different branches.  For instance, in
+   Figure 4, the source node S transmits the packet to nodes A and B, in
+   two different timeslots within the same TSCH slotframe.
+
+
+
+
+
+
+Thubert, et al.         Expires December 22, 2019              [Page 18]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+                      ===> (A) => (C) => (E) ===
+                    //        \\//   \\//       \\
+          source (S)          //\\   //\\         (R) (destination)
+                    \\       //  \\ //  \\      //
+                      ===> (B) => (D) => (F) ===
+
+
+   Figure 4: Packet Replication: S transmits twice the same data packet,
+                     to its DP (A) and to its AP (B).
+
+   By employing Packet Elimination function once a node receives the
+   first copy of a data packet, it discards the subsequent copies.
+   Because the first copy that reaches a node is the one that matters,
+   it is the only copy that will be forwarded upward.
+
    6TiSCH expects elimination and replication of packets along a complex
    Track, but has no position about how the sequence numbers would be
    tagged in the packet.
@@ -1002,14 +1050,6 @@ Internet-Draft                  RAW Techs                      June 2019
    departing from this node.  Different 'OR' groups are programmed for
    the purpose of replication, each group corresponding to one branch of
    the Track.  The 'AND' relation between the groups indicates that
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 18]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    transmission over any of branches MUST be attempted regardless of
    whether a transmission succeeded in another branch.  It is also
    possible to place cells to different next-hop routers in a same 'OR'
@@ -1018,6 +1058,14 @@ Internet-Draft                  RAW Techs                      June 2019
 
    On the receive side, all timeSlots are programmed in a same 'OR'
    group.  Retries of a same copy as well as converging branches for
+
+
+
+Thubert, et al.         Expires December 22, 2019              [Page 19]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    elimination are converged, meaning that the first successful
    reception is enough and that all the other timeSlots can be ignored.
 
@@ -1057,15 +1105,6 @@ Internet-Draft                  RAW Techs                      June 2019
 
    6TiSCH supports a mixed model of centralized routes and distributed
    routes.  Centralized routes can for example be computed by a entity
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 19]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    such as a PCE [PCE].  Distributed routes are computed by RPL
    [RFC6550].
 
@@ -1074,6 +1113,14 @@ Internet-Draft                  RAW Techs                      June 2019
    topology that can be a RPL Instance topology or a Track.  The 6TiSCH
    topology is indexed by a Instance ID, in a format that reuses the
    RPLInstanceID as defined in RPL.
+
+
+
+
+Thubert, et al.         Expires December 22, 2019              [Page 20]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    Both RPL and PCE rely on shared sources such as policies to define
    Global and Local RPLInstanceIDs that can be used by either method.
@@ -1113,15 +1160,6 @@ Internet-Draft                  RAW Techs                      June 2019
    traffic.  The PCE has precedence in the allocation in case of a
    conflict.
 
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 20]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    In a given network, there might be multiple CDU matrices that operate
    with different width, so they have different durations and represent
    different periodic operations.  It is recommended that all CDU
@@ -1130,6 +1168,15 @@ Internet-Draft                  RAW Techs                      June 2019
    slotted-aloha operations.  The PCE MUST compute the CDU matrices and
    shared that knowledge with all the nodes.  The matrices are used in
    particular to define slotFrames.
+
+
+
+
+
+Thubert, et al.         Expires December 22, 2019              [Page 21]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
    A slotFrame is a MAC-level abstraction that is common to all nodes
    and contains a series of timeSlots of equal length and precedence.
@@ -1150,9 +1197,9 @@ Internet-Draft                  RAW Techs                      June 2019
    ([I-D.ietf-6tisch-architecture]) to operate such spectrum
    distribution for a whole group of cells at a time.  The CDU matrix is
    formatted into a set of chunks, each of them identified uniquely by a
-   chunk-ID.  The PCE MUST compute the partitioning of CDU matrices into
-   chunks and shared that knowledge with all the nodes in a 6TiSCH
-   network.
+   chunk-ID, see Figure 5.  The PCE MUST compute the partitioning of CDU
+   matrices into chunks and shared that knowledge with all the nodes in
+   a 6TiSCH network.
 
 
                 +-----+-----+-----+-----+-----+-----+-----+     +-----+
@@ -1167,22 +1214,25 @@ Internet-Draft                  RAW Techs                      June 2019
                    0     1     2     3     4     5     6          M
 
 
-                Figure 3: CDU matrix Partitioning in Chunks
-
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 21]
-
-Internet-Draft                  RAW Techs                      June 2019
-
+                Figure 5: CDU matrix Partitioning in Chunks
 
    The appropriation of a chunk can be requested explicitly by the PCE
    to any node.  After a successful appropriation, the PCE owns the
    cells in that chunk, and may use them as hard cells to set up Tracks.
    Then again, 6TiSCH did not propose a method for chunk definition and
    a protocol for appropriation.  This is to be done at RAW.
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 22, 2019              [Page 22]
+
+Internet-Draft                  RAW Techs                      June 2019
+
 
 4.2.2.2.2.  6TiSCH Tracks
 
@@ -1229,7 +1279,13 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 22]
+
+
+
+
+
+
+Thubert, et al.         Expires December 22, 2019              [Page 23]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1255,9 +1311,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-                 Figure 4: End-to-End deterministic Track
+                 Figure 6: End-to-End deterministic Track
 
-   In the example above (see Figure 4), a Track is laid out from a field
+   In the example above (see Figure 6), a Track is laid out from a field
    device in a 6TiSCH network to an IoT gateway that is located on a
    IEEE802.1 TSN backbone.
 
@@ -1285,7 +1341,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 23]
+Thubert, et al.         Expires December 22, 2019              [Page 24]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1341,7 +1397,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 24]
+Thubert, et al.         Expires December 22, 2019              [Page 25]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1397,7 +1453,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 25]
+Thubert, et al.         Expires December 22, 2019              [Page 26]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1453,7 +1509,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 26]
+Thubert, et al.         Expires December 22, 2019              [Page 27]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1474,7 +1530,7 @@ Internet-Draft                  RAW Techs                      June 2019
       |   LLN PHY    |    +-------+    +--...-----+    +-------+
       +--------------+
 
-                Figure 5: Track Forwarding, Transport Mode
+                Figure 7: Track Forwarding, Transport Mode
 
 4.2.2.2.2.2.2.  Tunnel Mode
 
@@ -1509,7 +1565,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 27]
+Thubert, et al.         Expires December 22, 2019              [Page 28]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1534,7 +1590,7 @@ Internet-Draft                  RAW Techs                      June 2019
       |ISA100/WiHART |    | nexthop                            v nexthop
       +--------------+
 
-                  Figure 6: Track Forwarding, Tunnel Mode
+                  Figure 8: Track Forwarding, Tunnel Mode
 
    In that case, the flow information that identifies the Track at the
    ingress 6TiSCH router is derived from the RX-cell.  The dmac is set
@@ -1565,7 +1621,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 28]
+Thubert, et al.         Expires December 22, 2019              [Page 29]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1621,7 +1677,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 29]
+Thubert, et al.         Expires December 22, 2019              [Page 30]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1677,7 +1733,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 30]
+Thubert, et al.         Expires December 22, 2019              [Page 31]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1733,7 +1789,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 31]
+Thubert, et al.         Expires December 22, 2019              [Page 32]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1789,7 +1845,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 32]
+Thubert, et al.         Expires December 22, 2019              [Page 33]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1845,7 +1901,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 33]
+Thubert, et al.         Expires December 22, 2019              [Page 34]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1901,4 +1957,4 @@ Authors' Addresses
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 34]
+Thubert, et al.         Expires December 22, 2019              [Page 35]
