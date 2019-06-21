@@ -1364,6 +1364,13 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
     mechanisms that were defined outside the IETF. 
       </t>
    </section>
+   <section title="Contributors">
+   <t>
+   <list style="hanging">
+   <t hangtext="Georgios Z. Papadopoulos:"> Contributed to the TSCH section </t>
+   </list>
+
+   </t>
    <section title="Acknowledgments">
    <t>
     Many thanks to the participants of the RAW WG where a lot of the work discussed here happened.
