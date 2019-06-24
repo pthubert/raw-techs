@@ -5,10 +5,10 @@
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                             D. Cavalcanti
-Expires: December 22, 2019                                         Intel
+Expires: December 26, 2019                                         Intel
                                                            X. Vilajosana
                                          Universitat Oberta de Catalunya
-                                                           June 20, 2019
+                                                           June 24, 2019
 
 
               Reliable and Available Wireless Technologies
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 22, 2019.
+   This Internet-Draft will expire on December 26, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 1]
+Thubert, et al.         Expires December 26, 2019               [Page 1]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -103,18 +103,19 @@ Table of Contents
    5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  30
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  30
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  30
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  30
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  30
+   8.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  30
+   9.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  30
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 2]
+Thubert, et al.         Expires December 26, 2019               [Page 2]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  31
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  31
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  31
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
@@ -161,15 +162,15 @@ Internet-Draft                  RAW Techs                      June 2019
          and retries.  ARQ is a typical model at Layer-2 on a wireless
          medium.  It is typically avoided end-to-end on deterministic
          flows because it introduces excessive indetermination in
-         latency, but a limited number of retries within a bounded time
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 3]
+Thubert, et al.         Expires December 26, 2019               [Page 3]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+         latency, but a limited number of retries within a bounded time
          may be used over a wireless link and yet respect end-to-end
          constraints.
 
@@ -217,15 +218,15 @@ Internet-Draft                  RAW Techs                      June 2019
    Equipment failure, such as an access point rebooting, a broken radio
    adapter, or a permanent obstacle to the transmission, is a secondary
    source of packet loss.  When a breakage occurs, multiple packets are
-   lost in a row before the flows are rerouted or the system may
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 4]
+Thubert, et al.         Expires December 26, 2019               [Page 4]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
+   lost in a row before the flows are rerouted or the system may
    recover.  This is not acceptable for critical applications such as
    related to safety.  A typical process control loop will tolerate an
    occasional packet loss, but a loss of several packets in a row will
@@ -276,8 +277,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-Thubert, et al.         Expires December 22, 2019               [Page 5]
+Thubert, et al.         Expires December 26, 2019               [Page 5]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -333,7 +333,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 6]
+Thubert, et al.         Expires December 26, 2019               [Page 6]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -389,7 +389,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 7]
+Thubert, et al.         Expires December 26, 2019               [Page 7]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -445,7 +445,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 8]
+Thubert, et al.         Expires December 26, 2019               [Page 8]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -501,7 +501,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019               [Page 9]
+Thubert, et al.         Expires December 26, 2019               [Page 9]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -557,7 +557,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 10]
+Thubert, et al.         Expires December 26, 2019              [Page 10]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -613,7 +613,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 11]
+Thubert, et al.         Expires December 26, 2019              [Page 11]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -669,7 +669,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 12]
+Thubert, et al.         Expires December 26, 2019              [Page 12]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -725,7 +725,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 13]
+Thubert, et al.         Expires December 26, 2019              [Page 13]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -781,7 +781,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 14]
+Thubert, et al.         Expires December 26, 2019              [Page 14]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -837,7 +837,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 15]
+Thubert, et al.         Expires December 26, 2019              [Page 15]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -893,7 +893,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 16]
+Thubert, et al.         Expires December 26, 2019              [Page 16]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -902,7 +902,8 @@ Internet-Draft                  RAW Techs                      June 2019
    with per-flow state that describes the per-hop operation for a given
    packet, the corresponding timeSlots, and the flow identification to
    recognize which packet is placed in which Track, sort out duplicates,
-   etc...
+   etc.  In Figure 2, an example of Operational Control System and HMI
+   is depicted.
 
    For a static configuration that serves a certain purpose for a long
    period of time, it is expected that a node will be provisioned in one
@@ -926,7 +927,7 @@ Internet-Draft                  RAW Techs                      June 2019
                          Stream Management Entity
 
 
-                         Operational System and HMI
+                         Operational Control System and HMI
 
       -+-+-+-+-+-+-+ Northbound -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
@@ -948,8 +949,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-Thubert, et al.         Expires December 22, 2019              [Page 17]
+Thubert, et al.         Expires December 26, 2019              [Page 17]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -997,15 +997,15 @@ Internet-Draft                  RAW Techs                      June 2019
 
    By employing a Packet Replication function, each node forwards a copy
    of each data packet over two different branches.  For instance, in
-   Figure 4, the source node S transmits the packet to nodes A and B, in
-   two different timeslots within the same TSCH slotframe.
+   Figure 4, the source node S transmits the data packet to nodes A and
+   B, in two different timeslots within the same TSCH slotframe.
 
 
 
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 18]
+Thubert, et al.         Expires December 26, 2019              [Page 18]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1024,6 +1024,13 @@ Internet-Draft                  RAW Techs                      June 2019
    first copy of a data packet, it discards the subsequent copies.
    Because the first copy that reaches a node is the one that matters,
    it is the only copy that will be forwarded upward.
+
+   Considering that the wireless medium is broadcast by nature, any
+   neighbor of a transmitter may overhear a transmission.  By employing
+   the Promiscuous Overhearing function, nodes will have multiple
+   opportunities to receive a given data packet.  For instance, in
+   Figure 4, when the source node S transmits the data packet to node A,
+   node B may overhear this transmission.
 
    6TiSCH expects elimination and replication of packets along a complex
    Track, but has no position about how the sequence numbers would be
@@ -1051,6 +1058,14 @@ Internet-Draft                  RAW Techs                      June 2019
    the purpose of replication, each group corresponding to one branch of
    the Track.  The 'AND' relation between the groups indicates that
    transmission over any of branches MUST be attempted regardless of
+
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 19]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    whether a transmission succeeded in another branch.  It is also
    possible to place cells to different next-hop routers in a same 'OR'
    group.  This allows to route along multi-path Tracks, trying one
@@ -1058,14 +1073,6 @@ Internet-Draft                  RAW Techs                      June 2019
 
    On the receive side, all timeSlots are programmed in a same 'OR'
    group.  Retries of a same copy as well as converging branches for
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 19]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    elimination are converged, meaning that the first successful
    reception is enough and that all the other timeSlots can be ignored.
 
@@ -1108,19 +1115,18 @@ Internet-Draft                  RAW Techs                      June 2019
    such as a PCE [PCE].  Distributed routes are computed by RPL
    [RFC6550].
 
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 20]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    Both methods may inject routes in the Routing Tables of the 6TiSCH
    routers.  In either case, each route is associated with a 6TiSCH
    topology that can be a RPL Instance topology or a Track.  The 6TiSCH
    topology is indexed by a Instance ID, in a format that reuses the
    RPLInstanceID as defined in RPL.
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 20]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    Both RPL and PCE rely on shared sources such as policies to define
    Global and Local RPLInstanceIDs that can be used by either method.
@@ -1164,19 +1170,18 @@ Internet-Draft                  RAW Techs                      June 2019
    with different width, so they have different durations and represent
    different periodic operations.  It is recommended that all CDU
    matrices in a 6TiSCH domain operate with the same cell duration and
+
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 21]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    are aligned, so as to reduce the chances of interferences from
    slotted-aloha operations.  The PCE MUST compute the CDU matrices and
    shared that knowledge with all the nodes.  The matrices are used in
    particular to define slotFrames.
-
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 21]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    A slotFrame is a MAC-level abstraction that is common to all nodes
    and contains a series of timeSlots of equal length and precedence.
@@ -1224,12 +1229,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 22]
+Thubert, et al.         Expires December 26, 2019              [Page 22]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1285,7 +1285,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 23]
+Thubert, et al.         Expires December 26, 2019              [Page 23]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1341,7 +1341,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 24]
+Thubert, et al.         Expires December 26, 2019              [Page 24]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1397,15 +1397,16 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 25]
+Thubert, et al.         Expires December 26, 2019              [Page 25]
 
 Internet-Draft                  RAW Techs                      June 2019
 
 
    6TiSCH architecture supports three different forwarding model, G-MPLS
    Track Forwarding (TF), 6LoWPAN Fragment Forwarding (FF) and IPv6
-   Forwarding (6F) which is the classical IP operation.  The DetNet case
-   relates to the Track Forwarding operation under the control of a PCE.
+   Forwarding (6F) which is the classical IP operation
+   [I-D.ietf-6tisch-architecture].  The DetNet case relates to the Track
+   Forwarding operation under the control of a PCE.
 
    A Track is a unidirectional path between a source and a destination.
    In a Track cell, the normal operation of IEEE802.15.4 Automatic
@@ -1452,8 +1453,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-Thubert, et al.         Expires December 22, 2019              [Page 26]
+Thubert, et al.         Expires December 26, 2019              [Page 26]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1509,7 +1509,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 27]
+Thubert, et al.         Expires December 26, 2019              [Page 27]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1565,7 +1565,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 28]
+Thubert, et al.         Expires December 26, 2019              [Page 28]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1621,7 +1621,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 22, 2019              [Page 29]
+Thubert, et al.         Expires December 26, 2019              [Page 29]
 
 Internet-Draft                  RAW Techs                      June 2019
 
@@ -1660,27 +1660,34 @@ Internet-Draft                  RAW Techs                      June 2019
    Most RAW technologies integrate some authentication or encryption
    mechanisms that were defined outside the IETF.
 
-8.  Acknowledgments
+8.  Contributors
+
+   Georgios Z.  Papadopoulos:  Contributed to the TSCH section.
+
+9.  Acknowledgments
 
    Many thanks to the participants of the RAW WG where a lot of the work
    discussed here happened.
 
-9.  References
+10.  References
 
-9.1.  Normative References
+
+
+
+
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 30]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
+10.1.  Normative References
 
    [I-D.ietf-6tisch-architecture]
               Thubert, P., "An Architecture for IPv6 over the TSCH mode
               of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
               in progress), March 2019.
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 30]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    [I-D.ietf-detnet-architecture]
               Finn, N., Thubert, P., Varga, B., and J. Farkas,
@@ -1702,7 +1709,7 @@ Internet-Draft                  RAW Techs                      June 2019
               DOI 10.17487/RFC8480, November 2018,
               <https://www.rfc-editor.org/info/rfc8480>.
 
-9.2.  Informative References
+10.2.  Informative References
 
    [Cavalcanti_2019]
               Dave Cavalcanti et al., "Extending Time Distribution and
@@ -1722,21 +1729,19 @@ Internet-Draft                  RAW Techs                      June 2019
               Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
               GHz Communications for 100 Gb/s Wi-Fi", December 2017.
 
+
+
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 31]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [I-D.ietf-6tisch-coap]
               Sudhaakar, R. and P. Zand, "6TiSCH Resource Management and
               Interaction using CoAP", draft-ietf-6tisch-coap-03 (work
               in progress), March 2015.
-
-
-
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 31]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    [I-D.ietf-6tisch-msf]
               Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
@@ -1776,6 +1781,19 @@ Internet-Draft                  RAW Techs                      June 2019
               Function (PREF) and OAM", draft-thubert-bier-replication-
               elimination-03 (work in progress), March 2018.
 
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 32]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [IEEE80211]
               "IEEE Standard 802.11 - IEEE Standard for Information
               Technology - Telecommunications and information exchange
@@ -1783,16 +1801,6 @@ Internet-Draft                  RAW Techs                      June 2019
               Specific requirements - Part 11: Wireless LAN Medium
               Access Control (MAC) and Physical Layer (PHY)
               Specifications.".
-
-
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 32]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    [IEEE80211ad]
               "802.11ad: Enhancements for very high throughput in the 60
@@ -1835,20 +1843,18 @@ Internet-Draft                  RAW Techs                      June 2019
               Kevin Stanton et Al., "Time-Sensitive Applications Support
               in EHT", March 2019.
 
+
+
+Thubert, et al.         Expires December 26, 2019              [Page 33]
+
+Internet-Draft                  RAW Techs                      June 2019
+
+
    [ISA100.11a]
               ISA/IEC, "ISA100.11a, Wireless Systems for Automation,
               also IEC 62734", 2011, < http://www.isa100wci.org/en-
               US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-
               WEB-ETSI.aspx>.
-
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 33]
-
-Internet-Draft                  RAW Techs                      June 2019
-
 
    [morell13]
               Antoni Morell et al., "Label switching over IEEE802.15.4e
@@ -1893,18 +1899,15 @@ Internet-Draft                  RAW Techs                      June 2019
               DOI 10.17487/RFC8279, November 2017,
               <https://www.rfc-editor.org/info/rfc8279>.
 
-   [TiSCH]    IETF, "IPv6 over the TSCH mode over 802.15.4",
-              <https://dataTracker.ietf.org/doc/charter-ietf-6tisch/>.
 
 
-
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 34]
+Thubert, et al.         Expires December 26, 2019              [Page 34]
 
 Internet-Draft                  RAW Techs                      June 2019
 
+
+   [TiSCH]    IETF, "IPv6 over the TSCH mode over 802.15.4",
+              <https://dataTracker.ietf.org/doc/charter-ietf-6tisch/>.
 
    [vilajosana19]
               Xavier Vilajosana et al., "6TiSCH: Industrial Performance
@@ -1954,7 +1957,4 @@ Authors' Addresses
 
 
 
-
-
-
-Thubert, et al.         Expires December 22, 2019              [Page 35]
+Thubert, et al.         Expires December 26, 2019              [Page 35]

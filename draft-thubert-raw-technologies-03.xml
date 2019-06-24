@@ -612,7 +612,9 @@ offset
    With this, the PCE computes a Track between the end nodes and provisions every 
    hop in the Track with per-flow state that describes the per-hop operation for a 
    given packet, the corresponding timeSlots, and the flow identification to 
-   recognize which packet is placed in which Track, sort out duplicates, etc...
+   recognize which packet is placed in which Track, sort out duplicates, etc.
+   In <xref target="NorthSouth"/>, an example of Operational Control System and HMI
+   is depicted.
    </t>
    <t>
    For a static configuration that serves a certain purpose for a long period of
@@ -640,7 +642,7 @@ offset
 			<preamble>Stream Management Entity</preamble>
 			<artwork align="left"><![CDATA[
                                                 
-                      Operational System and HMI
+                      Operational Control System and HMI
                      
    -+-+-+-+-+-+-+ Northbound -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
@@ -710,7 +712,7 @@ offset
     	By employing a Packet Replication function, each node forwards 
         a copy of each data packet over two different branches.
         For instance, in <xref target="fig_replication"/>, the source node S 
-        transmits the packet to nodes A and B, in two different 
+        transmits the data packet to nodes A and B, in two different 
         timeslots within the same TSCH slotframe. 
     </t>
     
@@ -735,8 +737,18 @@ offset
         one that matters, it is the only copy that will be
         forwarded upward. 
     </t>
+    
+    <t>
+		Considering that the wireless medium is broadcast by nature, any neighbor of 
+		a transmitter may overhear a transmission. 
+		By employing the Promiscuous Overhearing function, nodes will have multiple 
+		opportunities to receive a given data packet. 
+		For instance, in <xref target="fig_replication"/>, when the source node S
+		transmits the data packet to node A, node B may overhear this transmission.
+	</t>
    
-   <t>6TiSCH expects elimination and replication of packets along a complex 
+   <t>
+   6TiSCH expects elimination and replication of packets along a complex 
    Track, but has no position about how the sequence numbers would be tagged in 
    the packet. 
    </t>
@@ -1099,7 +1111,8 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
          result of the routing computation of a Track by a PCE. 
          The 6TiSCH architecture supports three different forwarding model, 
          G-MPLS Track Forwarding (TF), 6LoWPAN Fragment Forwarding (FF) and 
-         IPv6 Forwarding (6F) which is the classical IP operation.
+         IPv6 Forwarding (6F) which is the classical IP operation
+         <xref target="I-D.ietf-6tisch-architecture"/>.
          The DetNet case relates to the Track Forwarding operation under the
          control of a PCE.
       </t>
@@ -1360,24 +1373,28 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
 
    <section  anchor='sec' title="Security Considerations">
       <t>
-    Most RAW  technologies integrate some authentication or encryption
-    mechanisms that were defined outside the IETF. 
+    	Most RAW technologies integrate some authentication or encryption
+    	mechanisms that were defined outside the IETF. 
       </t>
    </section>
-   <section title="Contributors">
-   <t>
-   <list style="hanging">
-   <t hangtext="Georgios Z. Papadopoulos:"> Contributed to the TSCH section </t>
-   </list>
 
-   </t>
-   <section title="Acknowledgments">
-   <t>
-    Many thanks to the participants of the RAW WG where a lot of the work discussed here happened.
+	
+	<section title="Contributors">
+		<t>
+   			<list style="hanging">
+   				<t hangText="Georgios Z. Papadopoulos:"> Contributed to the TSCH section. </t>
+   			</list>
+   		</t>
+	</section>
 
-   </t>
-   </section><!-- ack -->
+	
+	<section title="Acknowledgments">
+		<t>
+    		Many thanks to the participants of the RAW WG where a lot of the work discussed here happened.
+   		</t>
+	</section><!-- ack -->
 </middle>
+
 
 <back>
    <references title="Normative References">
