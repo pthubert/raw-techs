@@ -5,10 +5,12 @@
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                             D. Cavalcanti
-Expires: December 26, 2019                                         Intel
+Expires: January 2, 2020                                           Intel
                                                            X. Vilajosana
                                          Universitat Oberta de Catalunya
-                                                           June 24, 2019
+                                                              C. Schmitt
+                                    Universitaet der Bundeswehr Muenchen
+                                                            July 1, 2019
 
 
               Reliable and Available Wireless Technologies
@@ -38,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 26, 2019.
+   This Internet-Draft will expire on January 2, 2020.
 
 Copyright Notice
 
@@ -48,16 +50,16 @@ Copyright Notice
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
    (https://trustee.ietf.org/license-info) in effect on the date of
+
+
+
+Thubert, et al.          Expires January 2, 2020                [Page 1]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
-
-
-
-Thubert, et al.         Expires December 26, 2019               [Page 1]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
@@ -70,53 +72,55 @@ Table of Contents
    3.  On Scheduling . . . . . . . . . . . . . . . . . . . . . . . .   4
      3.1.  Benefits of Scheduling on Wires . . . . . . . . . . . . .   4
      3.2.  Benefits of Scheduling on Wireless  . . . . . . . . . . .   5
-   4.  IEEE 802 standards  . . . . . . . . . . . . . . . . . . . . .   6
-     4.1.  IEEE 802.11 . . . . . . . . . . . . . . . . . . . . . . .   6
-       4.1.1.  Provenance and Documents  . . . . . . . . . . . . . .   6
-       4.1.2.  802.11ax High Efficiency (HE) . . . . . . . . . . . .   8
-         4.1.2.1.  General Characteristics . . . . . . . . . . . . .   8
-           4.1.2.1.1.  Multi-User OFDMA and Trigger-based Scheduled
-                       Access  . . . . . . . . . . . . . . . . . . .   8
-           4.1.2.1.2.  Improved PHY Robustness . . . . . . . . . . .   8
-           4.1.2.1.3.  Support for 6GHz band . . . . . . . . . . . .   9
-         4.1.2.2.  Applicability to deterministic flows  . . . . . .   9
-           4.1.2.2.1.  802.11 Managed network operation and
-                       admission control . . . . . . . . . . . . . .   9
-           4.1.2.2.2.  Scheduling for bounded latency and diversity   10
-       4.1.3.  802.11be Extreme High Throughput (EHT)  . . . . . . .  10
-         4.1.3.1.  General Characteristics . . . . . . . . . . . . .  10
-         4.1.3.2.  Applicability to deterministic flows  . . . . . .  11
-           4.1.3.2.1.  Enhanced scheduled operation for bounded
-                       latency . . . . . . . . . . . . . . . . . . .  11
-           4.1.3.2.2.  Multi-AP coordination . . . . . . . . . . . .  11
-           4.1.3.2.3.  Multi-band operation  . . . . . . . . . . . .  12
-       4.1.4.  802.11ad and 802.11ay (mmWave operation)  . . . . . .  12
-         4.1.4.1.  General Characteristics . . . . . . . . . . . . .  12
-         4.1.4.2.  Applicability to deterministic flows  . . . . . .  12
-     4.2.  IEEE 802.15.4 . . . . . . . . . . . . . . . . . . . . . .  13
-       4.2.1.  Provenance and Documents  . . . . . . . . . . . . . .  13
-       4.2.2.  TimeSlotted Channel Hopping . . . . . . . . . . . . .  15
-         4.2.2.1.  General Characteristics . . . . . . . . . . . . .  15
-         4.2.2.2.  Applicability to Deterministic Flows  . . . . . .  16
-           4.2.2.2.1.  Centralized Path Computation  . . . . . . . .  16
-           4.2.2.2.2.  6TiSCH Tracks . . . . . . . . . . . . . . . .  23
-   5.  3GPP standards  . . . . . . . . . . . . . . . . . . . . . . .  30
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  30
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  30
-   8.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  30
-   9.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  30
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
+   4.  IEEE 802.11 . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.1.  Provenance and Documents  . . . . . . . . . . . . . . . .   6
+     4.2.  802.11ax High Efficiency (HE) . . . . . . . . . . . . . .   8
+       4.2.1.  General Characteristics . . . . . . . . . . . . . . .   8
+         4.2.1.1.  Multi-User OFDMA and Trigger-based Scheduled
+                   Access  . . . . . . . . . . . . . . . . . . . . .   8
+         4.2.1.2.  Improved PHY Robustness . . . . . . . . . . . . .   8
+         4.2.1.3.  Support for 6GHz band . . . . . . . . . . . . . .   9
+       4.2.2.  Applicability to deterministic flows  . . . . . . . .   9
+         4.2.2.1.  802.11 Managed network operation and admission
+                   control . . . . . . . . . . . . . . . . . . . . .   9
+         4.2.2.2.  Scheduling for bounded latency and diversity  . .  10
+     4.3.  802.11be Extreme High Throughput (EHT)  . . . . . . . . .  10
+       4.3.1.  General Characteristics . . . . . . . . . . . . . . .  10
+       4.3.2.  Applicability to deterministic flows  . . . . . . . .  11
+         4.3.2.1.  Enhanced scheduled operation for bounded latency   11
+         4.3.2.2.  Multi-AP coordination . . . . . . . . . . . . . .  11
+         4.3.2.3.  Multi-band operation  . . . . . . . . . . . . . .  12
+     4.4.  802.11ad and 802.11ay (mmWave operation)  . . . . . . . .  12
+       4.4.1.  General Characteristics . . . . . . . . . . . . . . .  12
+       4.4.2.  Applicability to deterministic flows  . . . . . . . .  12
+   5.  IEEE 802.15.4 . . . . . . . . . . . . . . . . . . . . . . . .  13
+     5.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  13
+     5.2.  TimeSlotted Channel Hopping . . . . . . . . . . . . . . .  15
+       5.2.1.  General Characteristics . . . . . . . . . . . . . . .  15
+       5.2.2.  Applicability to Deterministic Flows  . . . . . . . .  16
+         5.2.2.1.  Centralized Path Computation  . . . . . . . . . .  16
+         5.2.2.2.  6TiSCH Tracks . . . . . . . . . . . . . . . . . .  23
+   6.  3GPP Ultra-Reliable Low-Latency Communication . . . . . . . .  30
+   7.  L-band Digital Aeronautical Communications System . . . . . .  30
+     7.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  31
+     7.2.  General Characteristics . . . . . . . . . . . . . . . . .  31
+     7.3.  Applicability to Deterministic Flows  . . . . . . . . . .  33
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  34
 
 
 
-Thubert, et al.         Expires December 26, 2019               [Page 2]
+Thubert, et al.          Expires January 2, 2020                [Page 2]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  31
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  31
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  34
+   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  34
+   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  34
+   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     12.1.  Normative References . . . . . . . . . . . . . . . . . .  34
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  35
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  39
 
 1.  Introduction
 
@@ -158,18 +162,18 @@ Internet-Draft                  RAW Techs                      June 2019
    found in the traditional Internet and other statistically multiplexed
    packet networks.
 
+
+
+
+Thubert, et al.          Expires January 2, 2020                [Page 3]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    ARQ:  Automatic Repeat Request, enabling an acknowledged transmission
          and retries.  ARQ is a typical model at Layer-2 on a wireless
          medium.  It is typically avoided end-to-end on deterministic
          flows because it introduces excessive indetermination in
-
-
-
-Thubert, et al.         Expires December 26, 2019               [Page 3]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
          latency, but a limited number of retries within a bounded time
          may be used over a wireless link and yet respect end-to-end
          constraints.
@@ -215,17 +219,16 @@ Internet-Draft                  RAW Techs                      June 2019
    buffers, by shaping the flows and by scheduling the time of
    transmission of the packets that compose the flow at every hop.
 
+
+
+Thubert, et al.          Expires January 2, 2020                [Page 4]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    Equipment failure, such as an access point rebooting, a broken radio
    adapter, or a permanent obstacle to the transmission, is a secondary
    source of packet loss.  When a breakage occurs, multiple packets are
-
-
-
-Thubert, et al.         Expires December 26, 2019               [Page 4]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    lost in a row before the flows are rerouted or the system may
    recover.  This is not acceptable for critical applications such as
    related to safety.  A typical process control loop will tolerate an
@@ -271,18 +274,20 @@ Internet-Draft                  RAW Techs                      June 2019
    enables to always maintain them in deep sleep when there is no
    scheduled transmission.  This avoids idle listening and long
    preambles and enables long sleep periods between traffic and
+
+
+
+Thubert, et al.          Expires January 2, 2020                [Page 5]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    resynchronization, allowing battery-operated nodes to operate in a
    mesh topology for multiple years.
 
+4.  IEEE 802.11
 
-
-
-Thubert, et al.         Expires December 26, 2019               [Page 5]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
-4.  IEEE 802 standards
+4.1.  Provenance and Documents
 
    With an active portfolio of nearly 1,300 standards and projects under
    development, IEEE is a leading developer of industry standards in a
@@ -300,10 +305,6 @@ Internet-Draft                  RAW Techs                      June 2019
    Working Group provides the focus for each area.  Standards produced
    by the IEEE 802 SC are freely available from the IEEE GET Program
    after they have been published in PDF for six months.
-
-4.1.  IEEE 802.11
-
-4.1.1.  Provenance and Documents
 
    The IEEE 802.11 LAN standards define the underlying MAC and PHY
    layers for the Wi-Fi technology.  Wi-Fi/802.11 is one of the most
@@ -328,16 +329,17 @@ Internet-Draft                  RAW Techs                      June 2019
    of 802.1 TSN capabilities and their extensions to 802.11 are
    discussed in [Cavalcanti_2019].
 
+
+
+
+
+Thubert, et al.          Expires January 2, 2020                [Page 6]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    Wi-Fi Alliance (WFA) is the worldwide network of companies that
    drives global Wi-Fi adoption and evolution through thought
-
-
-
-Thubert, et al.         Expires December 26, 2019               [Page 6]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
    leadership, spectrum advocacy, and industry-wide collaboration.  The
    WFA work helps ensure that Wi-Fi devices and networks provide users
    the interoperability, security, and reliability they have come to
@@ -387,16 +389,14 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-
-
-Thubert, et al.         Expires December 26, 2019               [Page 7]
+Thubert, et al.          Expires January 2, 2020                [Page 7]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
-4.1.2.  802.11ax High Efficiency (HE)
+4.2.  802.11ax High Efficiency (HE)
 
-4.1.2.1.  General Characteristics
+4.2.1.  General Characteristics
 
    The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax
    amendment [IEEE80211ax], which includes new capabilities to increase
@@ -411,7 +411,7 @@ Internet-Draft                  RAW Techs                      June 2019
    open to unlicensed use by the FCC and other regulatory agencies
    worldwide.
 
-4.1.2.1.1.  Multi-User OFDMA and Trigger-based Scheduled Access
+4.2.1.1.  Multi-User OFDMA and Trigger-based Scheduled Access
 
    802.11ax introduced a new orthogonal frequency-division multiple
    access (OFDMA) mode in which multiple users can be scheduled across
@@ -431,7 +431,7 @@ Internet-Draft                  RAW Techs                      June 2019
    Distributed Channel Access (MU-EDCA) capability, which allows the AP
    to get higher channel access priority.
 
-4.1.2.1.2.  Improved PHY Robustness
+4.2.1.2.  Improved PHY Robustness
 
    The 802.11ax PHY can operate with 0.8, 1.6 or 3.2 microsecond guard
    interval (GI).  The larger GI options provide better protection
@@ -445,16 +445,16 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019               [Page 8]
+Thubert, et al.          Expires January 2, 2020                [Page 8]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    802.11ax supports beamforming as in 802.11ac, but introduces UL MU
    MIMO, which helps improve reliability.  The UL MU MIMO capability is
    also enabled by the trigger based access operation in 802.11ax.
 
-4.1.2.1.3.  Support for 6GHz band
+4.2.1.3.  Support for 6GHz band
 
    The 802.11ax specification [IEEE80211ax] includes support for
    operation in the new 6 GHz band.  Given the amount of new spectrum
@@ -462,7 +462,7 @@ Internet-Draft                  RAW Techs                      June 2019
    802.11ax) will be able to operate in this new band, 802.11ax
    operation in this new band can be even more efficient.
 
-4.1.2.2.  Applicability to deterministic flows
+4.2.2.  Applicability to deterministic flows
 
    TSN capabilities, as defined by the IEEE 802.1 TSN standards, provide
    the underlying mechanism for supporting deterministic flows in a
@@ -486,7 +486,7 @@ Internet-Draft                  RAW Techs                      June 2019
    well as redundancy and diversity mechanisms that can be used to
    provide more predictable and reliable performance.
 
-4.1.2.2.1.  802.11 Managed network operation and admission control
+4.2.2.1.  802.11 Managed network operation and admission control
 
    Time-sensitive applications and TSN standards are expected to operate
    under a managed network (e.g. industrial/enterprise network).  Thus,
@@ -501,9 +501,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019               [Page 9]
+Thubert, et al.          Expires January 2, 2020                [Page 9]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    Existing traffic stream identification, configuration and admission
@@ -513,7 +513,7 @@ Internet-Draft                  RAW Techs                      June 2019
    interference and legacy devices within tight time-constraints need to
    be explored.
 
-4.1.2.2.2.  Scheduling for bounded latency and diversity
+4.2.2.2.  Scheduling for bounded latency and diversity
 
    As discussed earlier, the 802.11ax OFDMA mode introduces the
    possibility of assigning different RUs (frequency resources) to users
@@ -538,9 +538,9 @@ Internet-Draft                  RAW Techs                      June 2019
    enables the AP to provide frequency diversity, which can help
    increase reliability.
 
-4.1.3.  802.11be Extreme High Throughput (EHT)
+4.3.  802.11be Extreme High Throughput (EHT)
 
-4.1.3.1.  General Characteristics
+4.3.1.  General Characteristics
 
    The 802.11be is the next major 802.11 amendment (after 802.11ax) for
    operation in the 2.4, 5 and 6 GHz bands. 802.11be is expected to
@@ -557,9 +557,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 10]
+Thubert, et al.          Expires January 2, 2020               [Page 10]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    1.    320MHz bandwidth and more efficient utilization of non-
@@ -577,7 +577,7 @@ Internet-Draft                  RAW Techs                      June 2019
    6.    Any required adaptations to regulatory rules for the 6 GHz
          spectrum.
 
-4.1.3.2.  Applicability to deterministic flows
+4.3.2.  Applicability to deterministic flows
 
    The 802.11 Real-Time Applications (RTA) Topic Interest Group (TIG)
    provided detailed information on use cases, issues and potential
@@ -596,7 +596,7 @@ Internet-Draft                  RAW Techs                      June 2019
    improve worst case latency and jitter.  Some of the enhancement areas
    are discussed next.
 
-4.1.3.2.1.  Enhanced scheduled operation for bounded latency
+4.3.2.1.  Enhanced scheduled operation for bounded latency
 
    In addition to the throughput enhancements, 802.11be will leverage
    the trigger-based scheduled operation enabled by 802.11ax to provide
@@ -604,7 +604,7 @@ Internet-Draft                  RAW Techs                      June 2019
    include enhancements to reduce overhead and enable more efficient
    operation in managed network deployments [IEEE_doc_11-19-0373-00].
 
-4.1.3.2.2.  Multi-AP coordination
+4.3.2.2.  Multi-AP coordination
 
    Multi-AP coordination is one of the main new candidate features in
    802.11be.  It can provide benefits in throughput and capacity and has
@@ -613,9 +613,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 11]
+Thubert, et al.          Expires January 2, 2020               [Page 11]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    address the contention due to overlapping Basic Service Sets (OBSS),
@@ -628,7 +628,7 @@ Internet-Draft                  RAW Techs                      June 2019
    different levels of complexities and benefits, but specific
    coordination methods have not yet been defined.
 
-4.1.3.2.3.  Multi-band operation
+4.3.2.3.  Multi-band operation
 
    802.11be will introduce new features to improve operation over
    multiple bands and channels.  By leveraging multiple bands/channels,
@@ -638,9 +638,9 @@ Internet-Draft                  RAW Techs                      June 2019
    bands/channels to isolate time-sensitive traffic from other traffic
    and help achieve bounded latency.
 
-4.1.4.  802.11ad and 802.11ay (mmWave operation)
+4.4.  802.11ad and 802.11ay (mmWave operation)
 
-4.1.4.1.  General Characteristics
+4.4.1.  General Characteristics
 
    The IEEE 802.11ad amendment defines PHY and MAC capabilities to
    enable multi-Gbps throughput in the 60 GHz millimeter wave (mmWave)
@@ -657,7 +657,7 @@ Internet-Draft                  RAW Techs                      June 2019
    beamforming training.  An overview of the 802.11ay capabilities can
    be found in [Ghasempour_2017]
 
-4.1.4.2.  Applicability to deterministic flows
+4.4.2.  Applicability to deterministic flows
 
    The high data rates achievable with 802.11ad and 802.11ay can
    significantly reduce latency down to microsecond levels.  Limited
@@ -669,9 +669,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 12]
+Thubert, et al.          Expires January 2, 2020               [Page 12]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    and deployment conditions in order to properly apply and configure
@@ -685,9 +685,9 @@ Internet-Draft                  RAW Techs                      June 2019
    theoretical latency bounds that can be achieved with 802.11ad service
    periods is provided in [Cavalcanti_2019].
 
-4.2.  IEEE 802.15.4
+5.  IEEE 802.15.4
 
-4.2.1.  Provenance and Documents
+5.1.  Provenance and Documents
 
    The IEEE802.15.4 Task Group has been driving the development of low-
    power low-cost radio technology.  The IEEE802.15.4 physical layer has
@@ -725,9 +725,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 13]
+Thubert, et al.          Expires January 2, 2020               [Page 13]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    the future.  MSF extends the minimal schedule configuration, and is
@@ -748,7 +748,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
    The 6TiSCH architecture [I-D.ietf-6tisch-architecture] identifies
    different models to schedule resources along so-called Tracks (see
-   Section 4.2.2.2.2) exploiting the TSCH schedule structure however the
+   Section 5.2.2.2) exploiting the TSCH schedule structure however the
    focus at 6TiSCH is on best effort traffic and the group was never
    chartered to produce standard work related to Tracks.
 
@@ -781,18 +781,18 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 14]
+Thubert, et al.          Expires January 2, 2020               [Page 14]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
-4.2.2.  TimeSlotted Channel Hopping
+5.2.  TimeSlotted Channel Hopping
 
-4.2.2.1.  General Characteristics
+5.2.1.  General Characteristics
 
    As a core technique in IEEE802.15.4, TSCH splits time in multiple
    time slots that repeat over time.  A set of timeslots constructs a
-   Slotframe (see Section 4.2.2.2.1.4).  For each timeslot, a set of
+   Slotframe (see Section 5.2.2.1.4).  For each timeslot, a set of
    available frequencies can be used, resulting in a matrix-like
    schedule (see Figure 1).
 
@@ -837,9 +837,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 15]
+Thubert, et al.          Expires January 2, 2020               [Page 15]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    and external interference.  It is handled by TSCH through a channel
@@ -865,7 +865,7 @@ Internet-Draft                  RAW Techs                      June 2019
    such as replication and elimination should be studied to provide the
    needed performance to address deterministic scenarios.
 
-4.2.2.2.  Applicability to Deterministic Flows
+5.2.2.  Applicability to Deterministic Flows
 
    Nodes in a TSCH network are tightly synchronized.  This enables to
    build the slotted structure and ensure efficient utilization of
@@ -882,7 +882,7 @@ Internet-Draft                  RAW Techs                      June 2019
    overprovisionning resources, giving time to the management plane of
    the network to dedicate more resources if needed.
 
-4.2.2.2.1.  Centralized Path Computation
+5.2.2.1.  Centralized Path Computation
 
    In a controlled environment, a 6TiSCH device usually does not place a
    request for bandwidth between itself and another device in the
@@ -893,9 +893,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 16]
+Thubert, et al.          Expires January 2, 2020               [Page 16]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    Track between the end nodes and provisions every hop in the Track
@@ -949,18 +949,18 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 17]
+Thubert, et al.          Expires January 2, 2020               [Page 17]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
-4.2.2.2.1.1.  Packet Marking and Handling
+5.2.2.1.1.  Packet Marking and Handling
 
    Section "Packet Marking and Handling" of
    [I-D.ietf-6tisch-architecture] describes the packet tagging and
    marking that is expected in 6TiSCH networks.
 
-4.2.2.2.1.1.1.  Tagging Packets for Flow Identification
+5.2.2.1.1.1.  Tagging Packets for Flow Identification
 
    For packets that are routed by a PCE along a Track, the tuple formed
    by the IPv6 source address and a local RPLInstanceID is tagged in the
@@ -975,7 +975,7 @@ Internet-Draft                  RAW Techs                      June 2019
    6lo is generalized to all 6TiSCH topological Instances, which
    includes Tracks.
 
-4.2.2.2.1.1.2.  Replication, Retries and Elimination
+5.2.2.1.1.2.  Replication, Retries and Elimination
 
    PRE establishes several paths in a network to provide redundancy and
    parallel transmissions to bound the end-to-end delay.  Considering
@@ -1005,9 +1005,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 18]
+Thubert, et al.          Expires January 2, 2020               [Page 18]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
                       ===> (A) => (C) => (E) ===
@@ -1061,9 +1061,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 19]
+Thubert, et al.          Expires January 2, 2020               [Page 19]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    whether a transmission succeeded in another branch.  It is also
@@ -1076,14 +1076,14 @@ Internet-Draft                  RAW Techs                      June 2019
    elimination are converged, meaning that the first successful
    reception is enough and that all the other timeSlots can be ignored.
 
-4.2.2.2.1.1.3.  Differentiated Services Per-Hop-Behavior
+5.2.2.1.1.3.  Differentiated Services Per-Hop-Behavior
 
    Additionally, an IP packet that is sent along a Track uses the
    Differentiated Services Per-Hop-Behavior Group called Deterministic
    Forwarding, as described in
    [I-D.svshah-tsvwg-deterministic-forwarding].
 
-4.2.2.2.1.2.  Topology and capabilities
+5.2.2.1.2.  Topology and capabilities
 
    6TiSCH nodes are usually IoT devices, characterized by very limited
    amount of memory, just enough buffers to store one or a few IPv6
@@ -1108,7 +1108,7 @@ Internet-Draft                  RAW Techs                      June 2019
    balance between nodes, ensure that the spent energy does not exceeded
    the scavenged energy over a period of time, etc...
 
-4.2.2.2.1.3.  Schedule Management by a PCE
+5.2.2.1.3.  Schedule Management by a PCE
 
    6TiSCH supports a mixed model of centralized routes and distributed
    routes.  Centralized routes can for example be computed by a entity
@@ -1117,9 +1117,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 20]
+Thubert, et al.          Expires January 2, 2020               [Page 20]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    Both methods may inject routes in the Routing Tables of the 6TiSCH
@@ -1136,7 +1136,7 @@ Internet-Draft                  RAW Techs                      June 2019
    have precedence over distributed routes in case of conflict between
    the slotFrames.
 
-4.2.2.2.1.4.  SlotFrames and Priorities
+5.2.2.1.4.  SlotFrames and Priorities
 
    A slotFrame is the base object that a PCE needs to manipulate to
    program a schedule into an LLN node.  Elaboration on that concept can
@@ -1173,9 +1173,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 21]
+Thubert, et al.          Expires January 2, 2020               [Page 21]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    are aligned, so as to reduce the chances of interferences from
@@ -1229,12 +1229,12 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 22]
+Thubert, et al.          Expires January 2, 2020               [Page 22]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
-4.2.2.2.2.  6TiSCH Tracks
+5.2.2.2.  6TiSCH Tracks
 
    A Track at 6TiSCH is the application to wireless of the concept of a
    path in the Detnet architecture [I-D.ietf-detnet-architecture].  A
@@ -1285,9 +1285,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 23]
+Thubert, et al.          Expires January 2, 2020               [Page 23]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
                      +-----+
@@ -1341,9 +1341,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 24]
+Thubert, et al.          Expires January 2, 2020               [Page 24]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    Methods to implement complex Tracks are described in
@@ -1352,7 +1352,7 @@ Internet-Draft                  RAW Techs                      June 2019
    traffic, but a centralized routing technique such as promoted in
    DetNet is still missing.
 
-4.2.2.2.2.1.  Track Scheduling Protocol
+5.2.2.2.1.  Track Scheduling Protocol
 
    Section "Schedule Management Mechanisms" of the 6TiSCH architecture
    describes 4 paradigms to manage the TSCH schedule of the LLN nodes:
@@ -1388,7 +1388,7 @@ Internet-Draft                  RAW Techs                      June 2019
       non-CoAP protocol such as PCEP into the RESTful interfaces that
       the 6TiSCH devices support.
 
-4.2.2.2.2.2.  Track Forwarding
+5.2.2.2.2.  Track Forwarding
 
    By forwarding, this specification means the per-packet operation that
    allows to deliver a packet to a next hop or an upper layer in this
@@ -1397,9 +1397,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 25]
+Thubert, et al.          Expires January 2, 2020               [Page 25]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    6TiSCH architecture supports three different forwarding model, G-MPLS
@@ -1453,9 +1453,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 26]
+Thubert, et al.          Expires January 2, 2020               [Page 26]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    In one hand, a TX-cell that is not needed for the current iteration
@@ -1489,14 +1489,14 @@ Internet-Draft                  RAW Techs                      June 2019
    Tracked, and to place it back on the appropriate bundle if possible.
    A frame should be re-Tracked if the Per-Hop-Behavior group indicated
    in the Differentiated Services Field in the IPv6 header is set to
-   Deterministic Forwarding, as discussed in Section 4.2.2.2.1.1.  A
-   frame is re-Tracked by scheduling it for transmission over the
-   transmit bundle associated to the Track, with the destination MAC
-   address set to broadcast.
+   Deterministic Forwarding, as discussed in Section 5.2.2.1.1.  A frame
+   is re-Tracked by scheduling it for transmission over the transmit
+   bundle associated to the Track, with the destination MAC address set
+   to broadcast.
 
    There are 2 modes for a Track, transport mode and tunnel mode.
 
-4.2.2.2.2.2.1.  Transport Mode
+5.2.2.2.2.1.  Transport Mode
 
    In transport mode, the Protocol Data Unit (PDU) is associated with
    flow-dependant meta-data that refers uniquely to the Track, so the
@@ -1509,9 +1509,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 27]
+Thubert, et al.          Expires January 2, 2020               [Page 27]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    before restoring the destination MAC address (DMAC) and punting to
@@ -1532,7 +1532,7 @@ Internet-Draft                  RAW Techs                      June 2019
 
                 Figure 7: Track Forwarding, Transport Mode
 
-4.2.2.2.2.2.2.  Tunnel Mode
+5.2.2.2.2.2.  Tunnel Mode
 
    In tunnel mode, the frames originate from an arbitrary protocol over
    a compatible MAC that may or may not be synchronized with the 6TiSCH
@@ -1565,9 +1565,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 28]
+Thubert, et al.          Expires January 2, 2020               [Page 28]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
       +--------------+
@@ -1603,7 +1603,7 @@ Internet-Draft                  RAW Techs                      June 2019
    metadata associated to the Track, the frame is passed to the
    appropriate link layer with the destination MAC restored.
 
-4.2.2.2.2.2.3.  Tunnel Metadata
+5.2.2.2.2.3.  Tunnel Metadata
 
    Metadata coming with the Track configuration is expected to provide
    the destination MAC address of the egress endpoint as well as the
@@ -1621,9 +1621,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 29]
+Thubert, et al.          Expires January 2, 2020               [Page 29]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    that injects a packet on a Track checks that the destination is
@@ -1631,7 +1631,7 @@ Internet-Draft                  RAW Techs                      June 2019
    to broadcast.  The 6top sublayer at the tunnel egress point reverts
    that operation to the MAC address obtained from the tunnel metadata.
 
-4.2.2.2.2.2.4.  OAM
+5.2.2.2.2.4.  OAM
 
    An Overview of Operations, Administration, and Maintenance (OAM)
    Tools [RFC7276] provides an overwiew of the existing tooling for OAM
@@ -1649,45 +1649,242 @@ Internet-Draft                  RAW Techs                      June 2019
    [I-D.thubert-6lo-bier-dispatch] enables an efficient encoding of the
    BIER bitmap within the 6LoRH framework.
 
-5.  3GPP standards
+6.  3GPP Ultra-Reliable Low-Latency Communication
 
-6.  IANA Considerations
+   coming up
+
+7.  L-band Digital Aeronautical Communications System
+
+   One of the main pillars of the modern Air Traffic Management (ATM)
+   system is the existence of a communication infrastructure that
+   enables efficient aircraft guidance and safe separation in all phases
+   of flight.  Although current systems are technically mature, they are
+   suffering from the VHF band's increasing saturation in high-density
+   areas and the limitations posed by analogue radio.  Therefore,
+   aviation globally and the European Union (EU) in particular, strives
+   for a sustainable modernization of the aeronautical communication
+   infrastructure.
+
+   In the long-term, ATM communication shall transition from analogue
+   VHF voice and VDL2 communication to more spectrum efficient digital
+   data communication.  The European ATM Master Plan foresees this
+   transition to be realized for terrestrial communications by the
+   development and implementation of the L-band Digital Aeronautical
+   Communications System (LDACS).  LDACS shall enable IPv6 based air-
+   ground communication related to the safety and regularity of the
+   flight.  The particular challenge is that no new frequencies can be
+   made available for terrestrial aeronautical communication.  It was
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 30]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
+   thus necessary to develop procedures to enable the operation of LDACS
+   in parallel with other services in the same frequency band.
+
+7.1.  Provenance and Documents
+
+   The development of LDACS has already made substantial progress in the
+   Single European Sky ATM Research (SESAR) framework, and is currently
+   being continued in the follow-up program, SESAR2020 [RIH18].  A key
+   objective of the SESAR activities is to develop, implement and
+   validate a modern aeronautical data link able to evolve with aviation
+   needs over long-term.  To this end, an LDACS specification has been
+   produced [GRA19] and is continuously updated; transmitter
+   demonstrators were developed to test the spectrum compatibility of
+   LDACS with legacy systems operating in the L-band [SAJ14]; and the
+   overall system performance was analyzed by computer simulations,
+   indicating that LDACS can fulfil the identified requirements [GRA11].
+
+   LDACS standardization within the framework of the International Civil
+   Aviation Organization (ICAO) started in December 2016.  The ICAO
+   standardization group has produced an initial Standards and
+   Recommended Practices (SARPs) document [ICAO18].  The SARPs document
+   defines the general characteristics of LDACS.  The ICAO
+   standardization group plans to produce an ICAO technical manual - the
+   ICAO equivalent to a technical standard - within the next years.
+   Generally, the group is open to input from all sources and develops
+   LDACS in the open.
+
+   Up to now the LDACS standardization has been focused on the
+   development of the physical layer and the data link layer, only
+   recently have higher layers come into the focus of the LDACS
+   development activities.  There is currently no "IPv6 over LDACS"
+   specification; however, SESAR2020 has started the testing of
+   IPv6-based LDACS testbeds.  The IPv6 architecture for the
+   aeronautical telecommunication network is called the Future
+   Communications Infrastructure (FCI).  FCI shall support quality of
+   service, diversity, and mobility under the umbrella of the "multi-
+   link concept".  This work is conducted by ICAO working group WG-I.
+
+   In addition to standardization activities several industrial LDACS
+   prototypes have been built.  One set of LDACS prototypes has been
+   evaluated in flight trials confirming the theoretical results
+   predicting the system performance [GRA18][SCH19].
+
+7.2.  General Characteristics
+
+   LDACS will become one of several wireless access networks connecting
+   aircraft to the Aeronautical Telecommunications Network (ATN).  The
+   LDACS access network contains several ground stations, each of them
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 31]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
+   providing one LDACS radio cell.  The LDACS air interface is a
+   cellular data link with a star-topology connecting aircraft to
+   ground-stations with a full duplex radio link.  Each ground-station
+   is the centralized instance controlling all air-ground communications
+   within its radio cell.  A ground-station supports up to 512 aircraft.
+
+   The LDACS air interface protocol stack defines two layers, the
+   physical layer and the data link layer.
+
+   The physical layer provides the means to transfer data over the radio
+   channel.  The LDACS ground-station supports bi-directional links to
+   multiple aircraft under its control.  The forward link direction (FL;
+   ground-to-air) and the reverse link direction (RL; air-to-ground) are
+   separated by frequency division duplex.  Forward link and reverse
+   link use a 500 kHz channel each.  The ground-station transmits a
+   continuous stream of OFDM symbols on the forward link.  In the
+   reverse link different aircraft are separated in time and frequency
+   using a combination of Orthogonal Frequency-Division Multiple-Access
+   (OFDMA) and Time-Division Multiple-Access (TDMA).  Aircraft thus
+   transmit discontinuously on the reverse link with radio bursts sent
+   in precisely defined transmission opportunities allocated by the
+   ground-station.  LDACS does not support beam-forming or Multiple
+   Input Multiple Output (MIMO).
+
+   The data-link layer provides the necessary protocols to facilitate
+   concurrent and reliable data transfer for multiple users.  The LDACS
+   data link layer is organized in two sub-layers: The medium access
+   sub-layer and the logical link control sub-layer.  The medium access
+   sub-layer manages the organization of transmission opportunities in
+   slots of time and frequency.  The logical link control sub-layer
+   provides acknowledged point-to-point logical channels between the
+   aircraft and the ground-station using an automatic repeat request
+   protocol.  LDACS supports also unacknowledged point-to-point channels
+   and ground-to-air broadcast.
+
+   The user data rate of LDACS is 315 kbit/s to 1428 kbit/s on the
+   forward link, and 294 kbit/s to 1390 kbit/s on the reverse link,
+   depending on coding and modulation.  Due to strong interference from
+   legacy systems in the L-band, the most robust coding and modulation
+   should be expected for initial deployment i.e. 315/294 kbit/s on the
+   forward/reverse link, respectively.
+
+   Since LDACS has been mainly designed for air traffic management
+   communication it supports mutual entity authentication, integrity and
+   confidentiality capabilities of user data messages and some control
+   channel protection capabilities [MAE19].
+
+
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 32]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
+7.3.  Applicability to Deterministic Flows
+
+   LDACS has been designed with applications related to the safety and
+   regularity of the flight in mind.  It has therefore been designed as
+   a deterministic wireless data link (as far as possible).
+
+   LDACS medium access is always under the control of the ground-station
+   of a radio cell.  Any medium access for the transmission of user data
+   has to be requested with a resource request message stating the
+   requested amount of resources and class of service.  The ground-
+   station performs resource scheduling on the basis of these requests
+   and grants resources with resource allocation messages.  Resource
+   request and allocation messages are exchanged over dedicated
+   contention-free control channels.
+
+   LDACS has two mechanisms to request resources from the scheduler in
+   the ground-station.  Resources can either be requested "on demand"
+   with a given class of service.  On the forward link, this is done
+   locally in the ground-station, on the reverse link a dedicated
+   contention-free control channel is used (Dedicated Control Channel
+   (DCCH); roughly 83 bit every 60 ms).  A resource allocation is always
+   announced in the control channel of the forward link (Common Control
+   Channel (CCCH); variable sized).  Due to the spacing of the reverse
+   link control channels of every 60 ms, a medium access delay in the
+   same order of magnitude is to be expected.
+
+   Resources can also be requested "permanently".  The permanent
+   resource request mechanism supports requesting recurring resources in
+   given time intervals.  A permanent resource request has to be
+   canceled by the user (or by the ground-station, which is always in
+   control).  User data transmissions over LDACS are therefore always
+   scheduled by the ground-station, while control data uses statically
+   (i.e. at net entry) allocated recurring resources (DCCH and CCCH).
+   The current specification documents specify no scheduling algorithm.
+   However performance evaluations so far have used strict priority
+   scheduling and round robin for equal priorities for simplicity.  In
+   the current prototype implementations LDACS classes of service are
+   thus realized as priorities of medium access and not as flows.  Note
+   that this can starve out low priority flows.  However, this is not
+   seen as a big problem since safety related message always go first in
+   any case.  Scheduling of reverse link resources is done in physical
+   Protocol Data Units (PDU) of 112 bit (or larger if more aggressive
+   coding and modulation is used).  Scheduling on the forward link is
+   done Byte-wise since the forward link is transmitted continuously by
+   the ground-station.
+
+   In order to support diversity, LDACS supports handovers to other
+   ground-stations on different channels.  Handovers may be initiated by
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 33]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
+   the aircraft (break-before-make) or by the ground-station (make-
+   before-break) if it is connected to an alternative ground-station via
+   the same ground-station controller.  Beyond this, FCI diversity shall
+   be implemented by the multi-link concept.
+
+8.  IANA Considerations
 
    This specification does not require IANA action.
 
-7.  Security Considerations
+9.  Security Considerations
 
    Most RAW technologies integrate some authentication or encryption
    mechanisms that were defined outside the IETF.
 
-8.  Contributors
+10.  Contributors
 
    Georgios Z.  Papadopoulos:  Contributed to the TSCH section.
 
-9.  Acknowledgments
+   Nils Maeurer:  Contributed to the LDACS section.
+
+   Thomas Graeupl:  Contributed to the LDACS section.
+
+11.  Acknowledgments
 
    Many thanks to the participants of the RAW WG where a lot of the work
    discussed here happened.
 
-10.  References
+12.  References
 
-
-
-
-
-
-
-Thubert, et al.         Expires December 26, 2019              [Page 30]
-
-Internet-Draft                  RAW Techs                      June 2019
-
-
-10.1.  Normative References
+12.1.  Normative References
 
    [I-D.ietf-6tisch-architecture]
               Thubert, P., "An Architecture for IPv6 over the TSCH mode
-              of IEEE 802.15.4", draft-ietf-6tisch-architecture-20 (work
-              in progress), March 2019.
+              of IEEE 802.15.4", draft-ietf-6tisch-architecture-23 (work
+              in progress), June 2019.
 
    [I-D.ietf-detnet-architecture]
               Finn, N., Thubert, P., Varga, B., and J. Farkas,
@@ -1699,6 +1896,16 @@ Internet-Draft                  RAW Techs                      June 2019
               Lossy Networks", RFC 5673, DOI 10.17487/RFC5673, October
               2009, <https://www.rfc-editor.org/info/rfc5673>.
 
+
+
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 34]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
               (IPv6) Specification", STD 86, RFC 8200,
               DOI 10.17487/RFC8200, July 2017,
@@ -1709,7 +1916,7 @@ Internet-Draft                  RAW Techs                      June 2019
               DOI 10.17487/RFC8480, November 2018,
               <https://www.rfc-editor.org/info/rfc8480>.
 
-10.2.  Informative References
+12.2.  Informative References
 
    [Cavalcanti_2019]
               Dave Cavalcanti et al., "Extending Time Distribution and
@@ -1729,13 +1936,30 @@ Internet-Draft                  RAW Techs                      June 2019
               Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
               GHz Communications for 100 Gb/s Wi-Fi", December 2017.
 
+   [GRA11]    Graeupl, T. and M. Ehammer, "L-DACS1 Data Link Layer
+              Evolution of ATN/IPS", Proceedings of the 30th IEEE/AIAA
+              Digital Avionics Systems Conference (DASC) Seattle, WA,
+              USA, October 2011.
+
+   [GRA18]    al., T. G. E., "L-band Digital Aeronautical Communications
+              System (LDACS) flight trials in the national German
+              project MICONAV", Proceedings of the Integrated
+              Communications, Navigation, Surveillance Conference
+              (ICNS) Herndon, VA, USA, April 2018.
+
+   [GRA19]    Graeupl, T., Rihacek, C., and B. Haindl, "LDACS A/G
+              Specification", SESAR2020 PJ14-02-01 D3.3.010, February
+              2019.
 
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 31]
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 35]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    [I-D.ietf-6tisch-coap]
@@ -1757,7 +1981,7 @@ Internet-Draft                  RAW Techs                      June 2019
               Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
               Thubert, "RPL DAG Metric Container Node State and
               Attribute object type extension", draft-ietf-roll-nsa-
-              extension-01 (work in progress), March 2019.
+              extension-03 (work in progress), June 2019.
 
    [I-D.papadopoulos-paw-pre-reqs]
               Papadopoulos, G., Koutsiamanis, R., Montavont, N., and P.
@@ -1781,17 +2005,17 @@ Internet-Draft                  RAW Techs                      June 2019
               Function (PREF) and OAM", draft-thubert-bier-replication-
               elimination-03 (work in progress), March 2018.
 
+   [ICAO18]   International Civil Aviation Organization (ICAO), "L-Band
+              Digital Aeronautical Communication System (LDACS)",
+              International Standards and Recommended Practices Annex 10
+              - Aeronautical Telecommunications, Vol. III -
+              Communication Systems, July 2018.
 
 
 
-
-
-
-
-
-Thubert, et al.         Expires December 26, 2019              [Page 32]
+Thubert, et al.          Expires January 2, 2020               [Page 36]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    [IEEE80211]
@@ -1845,9 +2069,9 @@ Internet-Draft                  RAW Techs                      June 2019
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 33]
+Thubert, et al.          Expires January 2, 2020               [Page 37]
 
-Internet-Draft                  RAW Techs                      June 2019
+Internet-Draft                  RAW Techs                      July 2019
 
 
    [ISA100.11a]
@@ -1855,6 +2079,12 @@ Internet-Draft                  RAW Techs                      June 2019
               also IEC 62734", 2011, < http://www.isa100wci.org/en-
               US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-
               WEB-ETSI.aspx>.
+
+   [MAE19]    Maeurer, N. and C. Schmitt, "DLR tests digital
+              communications technologies combined with additional
+              navigation functions for the first time", Proceedings of
+              the Integrated Communications, Navigation, Surveillance
+              Conference (ICNS) Washington D.C., USA, April 2019.
 
    [morell13]
               Antoni Morell et al., "Label switching over IEEE802.15.4e
@@ -1893,18 +2123,35 @@ Internet-Draft                  RAW Techs                      June 2019
               DOI 10.17487/RFC7276, June 2014,
               <https://www.rfc-editor.org/info/rfc7276>.
 
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 38]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    [RFC8279]  Wijnands, IJ., Ed., Rosen, E., Ed., Dolganow, A.,
               Przygienda, T., and S. Aldrin, "Multicast Using Bit Index
               Explicit Replication (BIER)", RFC 8279,
               DOI 10.17487/RFC8279, November 2017,
               <https://www.rfc-editor.org/info/rfc8279>.
 
+   [RIH18]    Rihacek, C., Haindl, B., Fantappie, P., Pierattelli, S.,
+              Graeupl, T., Schnell, M., and N. Fistas, "L-band Digital
+              Aeronautical Communications System (LDACS) Activities in
+              SESAR2020", Proceedings of the Integrated Communications
+              Navigation and Surveillance Conference (ICNS) Herndon, VA,
+              USA, April 2018.
 
+   [SAJ14]    Sajatovic, M., Guenzel, H., and S. Mueller, "WA04 D22 Test
+              Report for Assessing LDACS1 Transmitter Impact upon DME/
+              TACAN Receivers", April 2014.
 
-Thubert, et al.         Expires December 26, 2019              [Page 34]
-
-Internet-Draft                  RAW Techs                      June 2019
-
+   [SCH19]    Schnell, M., "DLR tests digital communications
+              technologies combined with additional navigation functions
+              for the first time", March 2019,
+              <https://www.dlr.de/dlr/en/desktopdefault.aspx/
+              tabid-10081/151_read-32951/#/gallery/33877>.
 
    [TiSCH]    IETF, "IPv6 over the TSCH mode over 802.15.4",
               <https://dataTracker.ietf.org/doc/charter-ietf-6tisch/>.
@@ -1931,6 +2178,14 @@ Authors' Addresses
    Email: pthubert@cisco.com
 
 
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 39]
+
+Internet-Draft                  RAW Techs                      July 2019
+
+
    Dave Cavalcanti
    Intel Corporation
    2111 NE 25th Ave
@@ -1950,6 +2205,13 @@ Authors' Addresses
    Email: xvilajosana@uoc.edu
 
 
+   Corinna Schmitt
+   Universitaet der Bundeswehr Muenchen
+   Werner-Heisenberg-Weg 39
+   Neubiberg  85577
+   Germany
+
+   Email: corinna.schmitt@unibw.de
 
 
 
@@ -1957,4 +2219,22 @@ Authors' Addresses
 
 
 
-Thubert, et al.         Expires December 26, 2019              [Page 35]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.          Expires January 2, 2020               [Page 40]
