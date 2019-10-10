@@ -1,16 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE rfc    SYSTEM "rfc2629.dtd" [ 
+<?xml version='1.0' encoding='utf-8'?>
 
 
-<!ENTITY inc_eht    SYSTEM "https://raw.githubusercontent.com/pthubert/raw-techs/master/draft-include-raw-technologies-EHT.xml">
-<!ENTITY inc_urllc  SYSTEM "https://raw.githubusercontent.com/pthubert/raw-techs/master/draft-include-raw-technologies-URLLC.xml">
-<!ENTITY inc_tsch   SYSTEM "https://raw.githubusercontent.com/pthubert/raw-techs/master/draft-include-raw-technologies-TSCH.xml">
-
-
-]> 
 <?rfc toc="yes"?>
 <?rfc tocompact="yes"?>
-<?rfc tocdepth="4"?>
+<?rfc tocdepth="3"?>
 <?rfc tocindent="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -21,12 +14,24 @@
 <?rfc authorship="yes"?>
 <?rfc tocappendix="yes"?>
 
-<rfc category="info" docName="draft-thubert-raw-technologies-03" ipr="trust200902">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="no"?>
+<?rfc subcompact="no"?>
+<?rfc authorship="yes"?>
+<?rfc tocappendix="yes"?>
+<rfc  xmlns:xi="http://www.w3.org/2001/XInclude" category="info" ipr='trust200902' tocInclude="true"  obsoletes="" updates="" submissionType="IETF" xml:lang="en" version="3" docName="draft-thubert-raw-technologies-03" >
 
 <front>
-   <title abbrev="RAW Techs">Reliable and Available Wireless Technologies</title>
-   <author initials="P" surname="Thubert" fullname="Pascal Thubert" role="editor">
-      <organization abbrev="Cisco Systems">Cisco Systems, Inc</organization>
+   <title abbrev='RAW Techs'>Reliable and Available Wireless Technologies</title>
+   <author initials='P' surname='Thubert' fullname='Pascal Thubert' role='editor'>
+      <organization abbrev='Cisco Systems'>Cisco Systems, Inc</organization>
       <address>
          <postal>
             <street>Building D</street>
@@ -39,8 +44,8 @@
          <email>pthubert@cisco.com</email>
       </address>
    </author>
-   <author initials="D" surname="Cavalcanti" fullname="Dave Cavalcanti" >
-      <organization abbrev="Intel">Intel Corporation</organization>
+   <author initials='D' surname='Cavalcanti' fullname='Dave Cavalcanti'>
+      <organization abbrev='Intel'>Intel Corporation</organization>
       <address>
          <postal>
             <street>2111 NE 25th Ave </street>
@@ -52,7 +57,7 @@
          <email>dave.cavalcanti@intel.com</email>
       </address>
    </author>
-   <author initials="X" surname="Vilajosana" fullname="Xavier Vilajosana">
+   <author initials='X' surname='Vilajosana' fullname='Xavier Vilajosana'>
       <organization>Universitat Oberta de Catalunya</organization>
       <address>
          <postal>
@@ -64,26 +69,26 @@
          </postal>
          <email>xvilajosana@uoc.edu</email></address>
     </author>
-    
-   <author initials="C" surname="Schmitt" fullname="Corinna Schmitt">
-      <organization>Universität der Bundeswehr München</organization>
+
+   <author initials='C' surname='Schmitt' fullname='Corinna Schmitt'>
+      <organization>Research Institute CODE, UniBwM</organization>
       <address>
          <postal>
-            <street>Werner-Heisenberg-Weg 39</street>
+            <street>Werner-Heisenberg-Weg 28</street>
             <city>Neubiberg</city>
             <code>85577</code>
             <country>Germany</country>
          </postal>
          <email>corinna.schmitt@unibw.de</email></address>
     </author>
-    
+
    <date/>
    <area>Internet Area</area>
    <workgroup>RAW</workgroup>
    <keyword>Draft</keyword>
    <abstract>
-      <t>   This document presents a series of recent technologies that are 
-      capable of time synchronization and scheduling of transmission, making 
+      <t>   This document presents a series of recent technologies that are
+      capable of time synchronization and scheduling of transmission, making
       them suitable to carry time-sensitive flows with requirements of both
       reliable delivery in bounded time, and availability at all times,
       regardless of packet transmission or individual equipement failures.
@@ -92,33 +97,33 @@
 </front>
 
 <middle>
-   <section title="Introduction">
+   <section><name>Introduction</name>
    <t>
-   When used in math or philosophy, the term "deterministic" generally refers to 
+   When used in math or philosophy, the term "deterministic" generally refers to
    a perfection where all aspect are understood and predictable. A perfectly
    Deterministic Network would ensure that every packet reach its destination
    following a predetermined path along a predefined schedule to be delivered at
-   the exact due time. In a real and imperfect world, a Deterministic Network 
+   the exact due time. In a real and imperfect world, a Deterministic Network
    must highly predictable, which is a combination of reliability and
    availability. On the one hand the network must be reliable, meaning that it
    will perform as expected for all packets and in particular that it will
    always deliver the packet at the destination in due time. On the other hand,
    the network must be available, meaning that it is resilient to any single
-   outage, whether the cause is a software, a hardware or a transmission issue. 
-   
+   outage, whether the cause is a software, a hardware or a transmission issue.
+
    </t>
    <t>
-   
+
    RAW (Reliable and Available Wireless) is an effort to provide Deterministic
-   Networking on across a path that include a wireless physical layer.          
+   Networking on across a path that include a wireless physical layer.
    Making Wireless Reliable and Available is even more challenging than it is
-   with wires, due to the numerous causes of loss in transmission that add up 
+   with wires, due to the numerous causes of loss in transmission that add up
    to the congestion losses and the delays caused by overbooked shared resources.
-   In order to maintain a similar quality of service along a multihop path that 
+   In order to maintain a similar quality of service along a multihop path that
    is composed of wired and wireless hops, additional methods that are specific
    to wireless must be leveraged to combat the sources of loss that are also
    specific to wireless.
-   
+
    </t>
    <t>
 
@@ -126,63 +131,63 @@
    P2MP overhearing whereby multiple receivers are scheduled to receive the same
    transmission, which balances the adverse effects of the transmission losses
    that are experienced when a radio is used as pure P2P.
-   
+
    </t>
    </section><!-- title="Introduction"-->
-   
-   <section title="Terminology">
+
+   <section><name>Terminology</name>
    <t>This specification uses several terms that are uncommon on protocols
-   that ensure bets effort transmissions for stochastics flows, such as found in 
+   that ensure bets effort transmissions for stochastics flows, such as found in
    the traditional Internet and other statistically multiplexed packet networks.
-   
-       <list hangIndent="6" style="hanging">
-       <t hangText="ARQ:"> Automatic Repeat Request, enabling an acknowledged
+
+       </t><dl  spacing='normal'>
+       <dt>ARQ:</dt><dd> Automatic Repeat Request, enabling an acknowledged
        transmission and retries. ARQ is a typical model at Layer-2 on a wireless
        medium. It is typically avoided end-to-end on deterministic flows because
        it introduces excessive indetermination in latency, but a limited number
        of retries within a bounded time may be used over a wireless link and yet
        respect end-to-end constraints.
-       </t>
-       <t hangText="Available:"> That is exempt of unscheduled outage, the
+       </dd>
+       <dt>Available:</dt><dd> That is exempt of unscheduled outage, the
        expectation for a network being that the flow is maintained in the face
-       of any single breakage. </t>
-       <t hangText="FEC:"> Forward error correction, sending redundant coded
+       of any single breakage. </dd>
+       <dt>FEC:</dt><dd> Forward error correction, sending redundant coded
        data to help the receiver recover transmission errors without the delays
-       incurred with ARQ. </t>
-       <t hangText="HARQ:"> Hybrid ARQ, a combination of FEC and ARQ. </t>
-       <t hangText="PCE:"> Path Computation Element. </t>
-       <t hangText="PAREO (functions):"> the wireless extension of DetNet PREOF.
+       incurred with ARQ. </dd>
+       <dt>HARQ:</dt><dd> Hybrid ARQ, a combination of FEC and ARQ. </dd>
+       <dt>PCE:</dt><dd> Path Computation Element. </dd>
+       <dt>PAREO (functions):</dt><dd> the wireless extension of DetNet PREOF.
        PAREO functions include scheduled ARQ at selected hops, and expect the
-       use of new operations like overhearing where available. </t>
-       <t hangText="Reliable:"> That consistently performs as expected, the
-       expectation for a network being to always deliver a packet in due time. </t>
-       <t hangText="Track:"> A DODAG oriented to a destination, and that enables
-       Packet ARQ, Replication, Elimination, and Ordering Functions. </t>
-       </list>
+       use of new operations like overhearing where available. </dd>
+       <dt>Reliable:</dt><dd> That consistently performs as expected, the
+       expectation for a network being to always deliver a packet in due time. </dd>
+       <dt>Track:</dt><dd> A DODAG oriented to a destination, and that enables
+       Packet ARQ, Replication, Elimination, and Ordering Functions. </dd>
+       </dl><t>
    </t>
    </section><!-- Terminology -->
-   
-   <section title="On Scheduling">
+
+   <section><name>On Scheduling</name>
    <t>
-       
+
    The operations of a Deterministic Network often rely on precisely
    applying a tight schedule, in order to avoid collision loss and guarantee
    the worst-case time of delivery. To achieve this, there must be a shared
-   sense of time throughout the network. The sense of time is 
-   usually provided by the lower layer and is not in scope for RAW. 
+   sense of time throughout the network. The sense of time is
+   usually provided by the lower layer and is not in scope for RAW.
    </t>
-   
-   
-   <section anchor="wbenef" title="Benefits of Scheduling on Wires">
+
+
+   <section anchor='wbenef'><name>Benefits of Scheduling on Wires</name>
    <t>
-   
-   A network is reliable when the statistical effects that affect the packet 
+
+   A network is reliable when the statistical effects that affect the packet
    transmission are eliminated. This involves maintaining at all time the amount
-   of critical packets within the physical capabilities of the hardware and that 
+   of critical packets within the physical capabilities of the hardware and that
    of the radio medium. This is achieved by controlling the use of time-shared
    resources such as CPUs and buffers, by shaping the flows and by scheduling
    the time of transmission of the packets that compose the flow at every hop.
-   
+
    </t>
    <t>
 
@@ -194,25 +199,25 @@
    loop will tolerate an occasional packet loss, but a loss of several packets
    in a row will cause an emergency stop (e.g., after 4 packets lost, within a
    period of 1 second).
-   
+
    </t>
    <t>
-      
+
    Network Availability is obtained by making the transmission resilient against
    hardware failures and radio transmission losses due to uncontrolled events
    such as co-channel interferers, multipath fading or moving obstacles. The
    best results are typically achieved by pseudo randomly cumulating all forms
    of diversity, in the spatial domain with replication and elimination, in the
    time domain with ARQ and diverse scheduled transmissions, and in the
-   frequency domain with frequency hopping or channel hopping between frames. 
-   
+   frequency domain with frequency hopping or channel hopping between frames.
+
    </t>
    </section><!-- Benefits of Scheduling on Wires -->
-   
-   <section anchor="wessbenef" title="Benefits of Scheduling on Wireless">
+
+   <section anchor='wessbenef'><name>Benefits of Scheduling on Wireless</name>
 
    <t>
-   In addition to the benefits listed in <xref target="wbenef"/>, scheduling
+   In addition to the benefits listed in <xref target='wbenef'/>, scheduling
    transmissions provides specific value to the wireless medium.
    </t>
    <t>
@@ -224,7 +229,7 @@
    hidden terminal problem, e.g., when the next packet in a same flow interferes
    on a same channel with the previous one that progressed a few hops farther.
    </t>
-   <t>   
+   <t>
    On the other hand, scheduling optimizes the bandwidth usage: compared to
    classical Collision Avoidance techniques, there is no blank time related to
    inter-frame space (IFS) and exponential back-off in scheduled operations.
@@ -234,367 +239,364 @@
    And because scheduling allows a time-sharing operation, there is no limit to
    the ratio of isolated critical traffic.
    </t>
-   <t>   
+   <t>
    Finally, scheduling plays a critical role to save energy. In IOT, energy is
    the foremost concern, and synchronizing sender and listener enables to
    always maintain them in deep sleep when there is no scheduled
    transmission. This avoids idle listening and long preambles and enables long
-   sleep periods between traffic and resynchronization, allowing 
+   sleep periods between traffic and resynchronization, allowing
    battery-operated nodes to operate in a mesh topology for multiple years.
    </t>
    </section><!-- Benefits of Scheduling on Wireless -->
-   
+
    </section><!-- Scheduling -->
-   
-   <section title="IEEE 802.11">
-        <section title="Provenance and Documents">
-        
+
+   <section><name>IEEE 802.11</name>
+        <section><name>Provenance and Documents</name>
+
    <t>
    With an active portfolio of nearly 1,300 standards and projects under development, IEEE is a leading developer of industry standards in a broad range of technologies that drive the functionality, capabilities, and interoperability of products and services, transforming how people live, work, and communicate.
-   </t>   
-      
-   <t> 
+   </t>
+
+   <t>
    The IEEE 802 LAN/MAN Standards Committee (SC) develops and maintains networking standards and recommended practices for local, metropolitan, and other area networks, using an open and accredited process, and advocates them on a global basis. The most widely used standards are for Ethernet, Bridging and Virtual Bridged LANs Wireless LAN, Wireless PAN, Wireless MAN, Wireless Coexistence, Media Independent Handover Services, and Wireless RAN. An individual Working Group provides the focus for each area. Standards produced by the IEEE 802 SC are freely available from the IEEE GET Program after they have been published in PDF for six months.
    </t>
         <t>
         	The IEEE 802.11 LAN standards define the underlying MAC and PHY layers for the Wi-Fi technology. Wi-Fi/802.11 is one of the most successful wireless technologies, supporting many application domains. While previous 802.11 generations, such as 802.11n and 802.11ac, have focused mainly on improving peak throughput, more recent generations are also considering other performance vectors, such as efficiency enhancements for dense environments in 802.11ax, and latency and support for Time-Sensitive Networking (TSN) capabilities in 802.11be.
         	</t>
         	<t>
-        	IEEE 802.11 already supports some 802.1 TSN standards  and it is undergoing efforts to support for other 802.1 TSN capabilities required to address the use cases that require time synchronization and timeliness (bounded latency) guarantees with high reliability and availability. The IEEE 802.11 working group has been working in collaboration with the IEEE 802.1 group for several years extending 802.1 features over 802.11. As with any wireless media, 802.11 imposes new constraints and restrictions to TSN-grade QoS, and tradeoffs between latency and reliability guarantees must be considered as well as managed deployment requirements. An overview of 802.1 TSN capabilities and their extensions to 802.11 are discussed in <xref target="Cavalcanti_2019"/>. 
+        	IEEE 802.11 already supports some 802.1 TSN standards  and it is undergoing efforts to support for other 802.1 TSN capabilities required to address the use cases that require time synchronization and timeliness (bounded latency) guarantees with high reliability and availability. The IEEE 802.11 working group has been working in collaboration with the IEEE 802.1 group for several years extending 802.1 features over 802.11. As with any wireless media, 802.11 imposes new constraints and restrictions to TSN-grade QoS, and tradeoffs between latency and reliability guarantees must be considered as well as managed deployment requirements. An overview of 802.1 TSN capabilities and their extensions to 802.11 are discussed in <xref target='Cavalcanti_2019'/>.
      		</t>
      		<t>
             Wi-Fi Alliance (WFA) is the worldwide network of companies that drives global Wi-Fi adoption and evolution through thought leadership, spectrum advocacy, and industry-wide collaboration. The WFA work helps ensure that Wi-Fi devices and networks provide users the interoperability, security, and reliability they have come to expect.
         	</t>
         	<t>
      		The following IEEE 802.11 specifications/certifications are relevant in the context of reliable and available wireless services and support for time-sensitive networking capabilities:
-     		<list hangIndent="7" style="hanging">
-            <t hangText="Time Synchronization:"> IEEE802.11-2016 with IEEE802.1AS; WFA TimeSync Certification.</t>
-            <t hangText="Congestion Control:"> IEEE802.11-2016 Admission Control; WFA Admission Control.</t>
-            <t hangText="Security:"> WFA Wi-Fi Protected Access, WPA2 and WPA3.</t>
-            <t hangText="Interoperating with IEEE802.1Q bridges:"> IEEE802.11ak.</t>
-            <t hangText="Stream Reservation Protocol (part of IEEE802.1Qat):"> AIEEE802.11-2016.</t>
-            <t hangText="Scheduled channel access:"> IEEE802.11ad Enhancements for very high throughput in the 60 GHz band <xref target="IEEE80211ad"/>.</t>
-            <t hangText="802.11 Real-Time Applications:"> Topic Interest Group (TIG) ReportDoc <xref target="IEEE_doc_11-18-2009-06"/>.</t>
-          </list>
+     		</t><dl  spacing='normal'>
+            <dt>Time Synchronization:</dt><dd> IEEE802.11-2016 with IEEE802.1AS; WFA TimeSync Certification.</dd>
+            <dt>Congestion Control:</dt><dd> IEEE802.11-2016 Admission Control; WFA Admission Control.</dd>
+            <dt>Security:</dt><dd> WFA Wi-Fi Protected Access, WPA2 and WPA3.</dd>
+            <dt>Interoperating with IEEE802.1Q bridges:</dt><dd> IEEE802.11ak.</dd>
+            <dt>Stream Reservation Protocol (part of IEEE802.1Qat):</dt><dd> AIEEE802.11-2016.</dd>
+            <dt>Scheduled channel access:</dt><dd> IEEE802.11ad Enhancements for very high throughput in the 60 GHz band <xref target='IEEE80211ad'/>.</dd>
+            <dt>802.11 Real-Time Applications:</dt><dd> Topic Interest Group (TIG) ReportDoc <xref target='IEEE_doc_11-18-2009-06'/>.</dd>
+          </dl><t>
          </t>
-         
+
         <t>
         In addition, major amendments being developed by the IEEE802.11 Working Group include capabilities that can be used as the basis for providing more reliable and predictable wireless connectivity and support time-sensitive applications:
-        <list hangIndent="3" style="hanging">
-        	<t hangText="IEEE 802.11ax  D4.0: Enhancements for High Efficiency (HE)."><xref target="IEEE80211ax"/></t>
-        	<t hangText="IEEE 802.11be Extreme High Throughput (EHT)."><xref target="IEEE80211be"/></t>
-        	<t hangText="IEE 802.11ay Enhanced throughput for operation in license-exempt bands above 45 GHz."> <xref target="IEEE80211ay"/></t>
-        	</list>
+        </t><dl  spacing='normal'>
+        	<dt>IEEE 802.11ax  D4.0: Enhancements for High Efficiency (HE).</dt><dd><xref target='IEEE80211ax'/></dd>
+        	<dt>IEEE 802.11be Extreme High Throughput (EHT).</dt><dd><xref target='IEEE80211be'/></dd>
+        	<dt>IEE 802.11ay Enhanced throughput for operation in license-exempt bands above 45 GHz.</dt><dd> <xref target='IEEE80211ay'/></dd>
+        	</dl><t>
         </t>
      		<t>
      		The main 802.11ax and 802.11be capabilities and their relevance to RAW are discussed in the remainder of this document.
             </t>
         </section> <!-- Provenance and Documents-->
-        <section title="802.11ax High Efficiency (HE)">
-        	<section title="General Characteristics"> 
+        <section><name>802.11ax High Efficiency (HE)</name>
+        	<section><name>General Characteristics</name>
         		<t>
-        			The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax amendment <xref target="IEEE80211ax"/>, which includes new capabilities to increase efficiency, control and reduce latency. Some of the new features include higher order 1024-QAM modulation, support for uplink multi-user MIMO, OFDMA, trigger-based access and Target Wake time (TWT) for enhanced power savings. The OFDMA mode and trigger-based access enable scheduled operation, which is a key capability required to support deterministic latency and reliability for time-sensitive flows. 802.11ax can operate in up to 160 MHz channels and it includes support for operation in the new 6 GHz band, which is expected to be open to unlicensed use by the FCC and other regulatory agencies worldwide. 
+        			The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax amendment <xref target='IEEE80211ax'/>, which includes new capabilities to increase efficiency, control and reduce latency. Some of the new features include higher order 1024-QAM modulation, support for uplink multi-user MIMO, OFDMA, trigger-based access and Target Wake time (TWT) for enhanced power savings. The OFDMA mode and trigger-based access enable scheduled operation, which is a key capability required to support deterministic latency and reliability for time-sensitive flows. 802.11ax can operate in up to 160 MHz channels and it includes support for operation in the new 6 GHz band, which is expected to be open to unlicensed use by the FCC and other regulatory agencies worldwide.
         			</t>
-        		<section title="Multi-User OFDMA and Trigger-based Scheduled Access">
+        		<section><name>Multi-User OFDMA and Trigger-based Scheduled Access</name>
         			<t>
-        				802.11ax introduced a new orthogonal frequency-division multiple access (OFDMA) mode in which multiple users can be scheduled across the frequency domain. In this mode, the Access Point (AP) can initiate multi-user (MU) Uplink (UL) transmissions in the same PHY Protocol Data Unit (PPDU) by sending a trigger frame. This centralized scheduling capability gives the AP much more control of the channel, and it can remove contention between devices for uplink transmissions, therefore reducing the randomness caused by CSMA-based access between stations. The AP can also transmit simultaneously to multiple users in the downlink direction by using a Downlink (DL) MU OFDMA PPDU. In order to initiate a contention free Transmission Opportunity (TXOP) using the OFDMA mode, the AP still follows the typical listen before talk procedure to acquire the medium, which ensures interoperability and compliance with unlicensed band access rules. However, 802.11ax also includes a multi-user Enhanced Distributed Channel Access (MU-EDCA) capability, which allows the AP to get higher channel access priority. 
+        				802.11ax introduced a new orthogonal frequency-division multiple access (OFDMA) mode in which multiple users can be scheduled across the frequency domain. In this mode, the Access Point (AP) can initiate multi-user (MU) Uplink (UL) transmissions in the same PHY Protocol Data Unit (PPDU) by sending a trigger frame. This centralized scheduling capability gives the AP much more control of the channel, and it can remove contention between devices for uplink transmissions, therefore reducing the randomness caused by CSMA-based access between stations. The AP can also transmit simultaneously to multiple users in the downlink direction by using a Downlink (DL) MU OFDMA PPDU. In order to initiate a contention free Transmission Opportunity (TXOP) using the OFDMA mode, the AP still follows the typical listen before talk procedure to acquire the medium, which ensures interoperability and compliance with unlicensed band access rules. However, 802.11ax also includes a multi-user Enhanced Distributed Channel Access (MU-EDCA) capability, which allows the AP to get higher channel access priority.
         			</t>
         		</section> <!--Multi-User OFDMA and Trigger-based Scheduled Access -->
-        		<section title="Improved PHY Robustness">
+        		<section><name>Improved PHY Robustness</name>
         			<t>
-        				The 802.11ax PHY can operate with 0.8, 1.6 or 3.2 microsecond guard interval (GI). The larger GI options provide better protection against multipath, which is expected to be a challenge in industrial environments. The possibility to operate with smaller resource units (e.g. 2 MHz) enabled by OFDMA also helps reduce noise power and improve SNR, leading to better packet error rate (PER) performance. 
+        				The 802.11ax PHY can operate with 0.8, 1.6 or 3.2 microsecond guard interval (GI). The larger GI options provide better protection against multipath, which is expected to be a challenge in industrial environments. The possibility to operate with smaller resource units (e.g. 2 MHz) enabled by OFDMA also helps reduce noise power and improve SNR, leading to better packet error rate (PER) performance.
         			</t>
         			<t>
-        				802.11ax supports beamforming as in 802.11ac, but introduces UL MU MIMO, which helps improve reliability. The UL MU MIMO capability is also enabled by the trigger based access operation in 802.11ax. 
+        				802.11ax supports beamforming as in 802.11ac, but introduces UL MU MIMO, which helps improve reliability. The UL MU MIMO capability is also enabled by the trigger based access operation in 802.11ax.
         				</t>
         		</section> <!-- Improved PHY Robustness -->
-        		<section title="Support for 6GHz band">
+        		<section><name>Support for 6GHz band</name>
         				<t>
-        					The 802.11ax specification <xref target="IEEE80211ax"/> includes support for operation in the new 6 GHz band. Given the amount of new spectrum available as well as the fact that no legacy 802.11 device (prior 802.11ax) will be able to operate in this new band, 802.11ax operation in this new band can be even more efficient. 
+        					The 802.11ax specification <xref target='IEEE80211ax'/> includes support for operation in the new 6 GHz band. Given the amount of new spectrum available as well as the fact that no legacy 802.11 device (prior 802.11ax) will be able to operate in this new band, 802.11ax operation in this new band can be even more efficient.
         					</t>
         		</section> <!-- Support for 6GHz band -->
         	</section> <!-- General Characteristics-->
 
-        <section title="Applicability to deterministic flows"> 
+        <section><name>Applicability to deterministic flows</name>
         	<t>
         		TSN capabilities, as defined by the IEEE 802.1 TSN standards, provide the underlying mechanism for supporting deterministic flows in a Local Area Network (LAN). The 802.11 working group has already incorporated support for several TSN capabilities, so that time-sensitive flow can experience precise time synchronization and timeliness when operating over 802.11 links. TSN capabilities supported over 802.11 (which also extends to 802.11ax), include:
-        		<list hangIndent="3" style="hanging">
-        			<t hangText="1."> 802.1AS based Time Synchronization (other time synchronization techniques may also be used) </t>
-        			<t hangText="2."> Interoperating with IEEE802.1Q bridges</t>
-        			<t hangText="3."> Time-sensitive Traffic Stream identification</t>
-        			</list>
-        	</t>
+        		</t>
+                <ol type='%d.'>
+        		<li> 802.1AS based Time Synchronization (other time synchronization techniques may also be used) </li>
+        		<li> Interoperating with IEEE802.1Q bridges</li>
+        		<li> Time-sensitive Traffic Stream identification</li>
+        		</ol>
         	<t>
         			The exiting 802.11 TSN capabilities listed above, and the 802.11ax OFDMA and scheduled access provide a new set of tools to better server time-sensitive flows. However, it is important to understand the tradeoffs and constraints associated with such capabilities, as well as redundancy and diversity mechanisms that can be used to provide more predictable and reliable performance.
         	</t>
-        	<section title=" 802.11 Managed network operation and admission control"> 
+        	<section><name> 802.11 Managed network operation and admission control</name>
         	<t>
-        		Time-sensitive applications and TSN standards are expected to operate under a managed network (e.g. industrial/enterprise network). Thus, the Wi-Fi operation must also be carefully managed and integrated with the overall TSN management framework, as defined in the IEEE Std. 802.1Qcc specification <xref target="IEEE8021Qcc"/>.
-        	</t>	
+        		Time-sensitive applications and TSN standards are expected to operate under a managed network (e.g. industrial/enterprise network). Thus, the Wi-Fi operation must also be carefully managed and integrated with the overall TSN management framework, as defined in the IEEE Std. 802.1Qcc specification <xref target='IEEE8021Qcc'/>.
+        	</t>
          	<t>
-        		Some of the random-access latency and interference from legacy/unmanaged devices can be minimized under a centralized management mode as defined in IEEE Std. 802.1Qcc, in which admission control procedures are enforced. 				
+        		Some of the random-access latency and interference from legacy/unmanaged devices can be minimized under a centralized management mode as defined in IEEE Std. 802.1Qcc, in which admission control procedures are enforced.
         	</t>
         	<t>
-        		Existing traffic stream identification, configuration and admission control procedures defined in IEEE Std. 802.11 QoS mechanism can be re-used. However, given the high degree of determinism required by many time-sensitive applications, additional capabilities to manage interference and legacy devices within tight time-constraints need to be explored. 
+        		Existing traffic stream identification, configuration and admission control procedures defined in IEEE Std. 802.11 QoS mechanism can be re-used. However, given the high degree of determinism required by many time-sensitive applications, additional capabilities to manage interference and legacy devices within tight time-constraints need to be explored.
         	</t>
         	</section> <!-- 802.11 Managed network operation and admission control -->
-        	<section title="Scheduling for bounded latency and diversity">
+        	<section><name>Scheduling for bounded latency and diversity</name>
         	<t>
         		As discussed earlier, the 802.11ax OFDMA mode introduces the possibility of assigning different RUs (frequency resources) to users within a PPDU. Several RU sizes are defined in the specification (26, 52, 106, 242, 484, 996 subcarriers). In addition, the AP can also decide on MCS and grouping of users within a given OFMDA PPDU. Such flexibility can be leveraged to support time-sensitive applications with bounded latency, especially in a managed network where stations can be configured to operate under the control of the AP.
         	</t>
         	<t>
-        		As shown in <xref target="Cavalcanti_2019"/>, it is possible to achieve latencies in the order of 1msec with high reliability in an interference free environment. Obviously, there are latency, reliability and capacity tradeoffs to be considered. For instance, smaller Resource Units (RU)s result in longer transmission durations, which may impact the minimal latency that can be achieved, but the contention latency and randomness elimination due to multi-user transmission is a major benefit of the OFDMA mode.
+        		As shown in <xref target='Cavalcanti_2019'/>, it is possible to achieve latencies in the order of 1msec with high reliability in an interference free environment. Obviously, there are latency, reliability and capacity tradeoffs to be considered. For instance, smaller Resource Units (RU)s result in longer transmission durations, which may impact the minimal latency that can be achieved, but the contention latency and randomness elimination due to multi-user transmission is a major benefit of the OFDMA mode.
         	</t>
         	<t>
-        		The flexibility to dynamically assign RUs to each transmission also enables the AP to provide frequency diversity, which can help increase reliability.	
+        		The flexibility to dynamically assign RUs to each transmission also enables the AP to provide frequency diversity, which can help increase reliability.
         	</t>
         	</section> <!--Scheduling for bounded latency and diversity-->
         </section> <!-- Applicability to deterministic flows -->
         </section><!-- 802.11ax High Efficiency (HE)   -->
-        
-        <section title="802.11be Extreme High Throughput (EHT)">
-        
-        	<section title="General Characteristics"> 
+
+        <section><name>802.11be Extreme High Throughput (EHT)</name>
+
+        	<section><name>General Characteristics</name>
         		<t>
         			The 802.11be is the next major 802.11 amendment (after 802.11ax) for operation in the 2.4, 5 and 6 GHz bands. 802.11be is expected to include new PHY and MAC features and it is targeting extremely high throughput (at least 30 Gbps), as well as enhancements to worst case latency and jitter. It is also expected to improve the integration with 802.1 TSN to support time-sensitive applications over Ethernet and Wireless LANs.
         			</t>
         		<t>
         			The 802.11be Task Group started its operation in May 2019, therefore, detailed information about specific features is not yet available. Only high level candidate features have been discussed so far, including:
-        			<list hangIndent="6" style="hanging">
-        				<t hangText="1."> 320MHz bandwidth and more efficient utilization of non-contiguous spectrum. </t>
-        				<t hangText="2."> Multi-band/multi-channel aggregation and operation. </t>
-        				<t hangText="3."> 16 spatial streams and related MIMO enhancements. </t>
-        				<t hangText="4."> Multi-Access Point (AP) Coordination.</t>
-        				<t hangText="5."> Enhanced link adaptation and retransmission protocol, e.g. Hybrid Automatic Repeat Request (HARQ).</t>
-        				<t hangText="6."> Any required adaptations to regulatory rules for the 6 GHz spectrum. </t>
-        			</list>
+        			</t><ol type='%d.'>
+        				<li> 320MHz bandwidth and more efficient utilization of non-contiguous spectrum. </li>
+        				<li> Multi-band/multi-channel aggregation and operation. </li>
+        				<li> 16 spatial streams and related MIMO enhancements. </li>
+        				<li> Multi-Access Point (AP) Coordination.</li>
+        				<li> Enhanced link adaptation and retransmission protocol, e.g. Hybrid Automatic Repeat Request (HARQ).</li>
+        				<li> Any required adaptations to regulatory rules for the 6 GHz spectrum. </li>
+        			</ol><t>
         		</t>
         	</section> <!-- General Characteristics-->
-        	<section title="Applicability to deterministic flows"> 
+        	<section><name>Applicability to deterministic flows</name>
         		<t>
-        			The 802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) provided detailed information on use cases, issues and potential solution directions to improve support for time-sensitive applications in 802.11. The RTA TIG report <xref target="IEEE_doc_11-18-2009-06"/> was used as input to the 802.11be project scope.
+        			The 802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) provided detailed information on use cases, issues and potential solution directions to improve support for time-sensitive applications in 802.11. The RTA TIG report <xref target='IEEE_doc_11-18-2009-06'/> was used as input to the 802.11be project scope.
         		</t>
         		<t>
-        			Improvements for worst-case latency, jitter and reliability were the main topics identified in the RTA report, which were motivated by applications in gaming, industrial automation, robotics, etc. The RTA report also highlighted the need to support additional TSN capabilities, such as time-aware (802.1Qbv) shaping and packet replication and elimination as defined in 802.1CB. 
+        			Improvements for worst-case latency, jitter and reliability were the main topics identified in the RTA report, which were motivated by applications in gaming, industrial automation, robotics, etc. The RTA report also highlighted the need to support additional TSN capabilities, such as time-aware (802.1Qbv) shaping and packet replication and elimination as defined in 802.1CB.
         		</t>
         		<t>
         			802.11be is expected to build on and enhance 802.11ax capabilities to improve worst case latency and jitter. Some of the enhancement areas are discussed next.
         			</t>
-        		<section title="Enhanced scheduled operation for bounded latency ">
+        		<section><name>Enhanced scheduled operation for bounded latency </name>
         			<t>
-        				In addition to the throughput enhancements, 802.11be will leverage the trigger-based scheduled operation enabled by 802.11ax to provide efficient and more predictable medium access. 802.11be is expected to include enhancements to reduce overhead and enable more efficient operation in managed network deployments <xref target="IEEE_doc_11-19-0373-00"/>.
+        				In addition to the throughput enhancements, 802.11be will leverage the trigger-based scheduled operation enabled by 802.11ax to provide efficient and more predictable medium access. 802.11be is expected to include enhancements to reduce overhead and enable more efficient operation in managed network deployments <xref target='IEEE_doc_11-19-0373-00'/>.
         				</t>
         		</section> <!-- Enhanced scheduled operation for bounded latency -->
-        		<section title="Multi-AP coordination">
+        		<section><name>Multi-AP coordination</name>
         			<t>
-        				Multi-AP coordination is one of the main new candidate features in 802.11be. It can provide benefits in throughput and capacity and has the potential to address some of the issues that impact worst case latency and reliability. 
-        				Multi-AP coordination is expected to address the contention due to overlapping Basic Service Sets (OBSS), which is one of the main sources of random latency variations. 802.11be can define methods to enable better coordination between APs, for instance, in a managed network scenario, in order to reduce latency due to unmanaged contention. 
+        				Multi-AP coordination is one of the main new candidate features in 802.11be. It can provide benefits in throughput and capacity and has the potential to address some of the issues that impact worst case latency and reliability.
+        				Multi-AP coordination is expected to address the contention due to overlapping Basic Service Sets (OBSS), which is one of the main sources of random latency variations. 802.11be can define methods to enable better coordination between APs, for instance, in a managed network scenario, in order to reduce latency due to unmanaged contention.
 	       			</t>
 	       			<t>
 	       				Several multi-AP coordination approaches have been discussed with different levels of complexities and benefits, but specific coordination methods have not yet been defined.
 	       			</t>
         		</section> <!-- Multi-AP coordination -->
-        		<section title="Multi-band operation">
+        		<section><name>Multi-band operation</name>
         			<t>
-        				802.11be will introduce new features to improve operation over multiple bands and channels. By leveraging multiple bands/channels, 802.11be can isolate time-sensitive traffic from network congestion, one of the main causes of large latency variations. In a managed 802.11be network, it should be possible to steer traffic to certain bands/channels to isolate time-sensitive traffic from other traffic and help achieve bounded latency.	
+        				802.11be will introduce new features to improve operation over multiple bands and channels. By leveraging multiple bands/channels, 802.11be can isolate time-sensitive traffic from network congestion, one of the main causes of large latency variations. In a managed 802.11be network, it should be possible to steer traffic to certain bands/channels to isolate time-sensitive traffic from other traffic and help achieve bounded latency.
         			</t>
         		</section> <!--Multi-band operation-->
         	</section>
         </section><!-- 802.11be Extreme High Throughput (EHT)  -->
-        
-        <section title="802.11ad and 802.11ay (mmWave operation)">
-        	<section title="General Characteristics"> 
+
+        <section><name>802.11ad and 802.11ay (mmWave operation)</name>
+        	<section><name>General Characteristics</name>
         		<t>
-        			The IEEE 802.11ad amendment defines PHY and MAC capabilities to enable multi-Gbps throughput in the 60 GHz millimeter wave (mmWave) band. The standard addresses the adverse mmWave signal propagation characteristics and provides directional communication capabilities that take advantage of beamforming to cope with increased attenuation. An overview of the 802.11ad standard can be found in <xref target="Nitsche_2015"/> .	
+        			The IEEE 802.11ad amendment defines PHY and MAC capabilities to enable multi-Gbps throughput in the 60 GHz millimeter wave (mmWave) band. The standard addresses the adverse mmWave signal propagation characteristics and provides directional communication capabilities that take advantage of beamforming to cope with increased attenuation. An overview of the 802.11ad standard can be found in <xref target='Nitsche_2015'/> .
         		</t>
         		<t>
-        			The IEEE 802.11ay is currently developing enhancements to the 802.11ad standard to enable the next generation mmWave operation targeting 100 Gbps throughput. Some of the main enhancements in 802.11ay include MIMO, channel bonding, improved channel access and beamforming training. An overview of the 802.11ay capabilities can be found in <xref target="Ghasempour_2017"/>
+        			The IEEE 802.11ay is currently developing enhancements to the 802.11ad standard to enable the next generation mmWave operation targeting 100 Gbps throughput. Some of the main enhancements in 802.11ay include MIMO, channel bonding, improved channel access and beamforming training. An overview of the 802.11ay capabilities can be found in <xref target='Ghasempour_2017'/>
         			</t>
         	</section><!--General Characteristics -->
-        	<section title="Applicability to deterministic flows"> 
+        	<section><name>Applicability to deterministic flows</name>
         		<t>
         			The high data rates achievable with 802.11ad and 802.11ay can significantly reduce latency down to microsecond levels. Limited interference from legacy and other unlicensed devices in 60 GHz is also a benefit. However, directionality and short range typical in mmWave operation impose new challenges such as the overhead required for beam training and blockage issues, which impact both latency and reliability. Therefore, it is important to understand the use case and deployment conditions in order to properly apply and configure 802.11ad/ay networks for time sensitive applications.
         		</t>
         		<t>
-        			The 802.11ad standard include a scheduled access mode in which stations can be allocated contention-free service periods by a central controller. This scheduling capability is also available in 802.11ay, and it is one of the mechanisms that can be used to provide bounded latency to time-sensitive data flows. An analysis of the theoretical latency bounds that can be achieved with 802.11ad service periods is provided in <xref target="Cavalcanti_2019"/>.
+        			The 802.11ad standard include a scheduled access mode in which stations can be allocated contention-free service periods by a central controller. This scheduling capability is also available in 802.11ay, and it is one of the mechanisms that can be used to provide bounded latency to time-sensitive data flows. An analysis of the theoretical latency bounds that can be achieved with 802.11ad service periods is provided in <xref target='Cavalcanti_2019'/>.
         		</t>
         	</section> <!-- Applicability to deterministic flows-->
         </section><!-- 802.11ad and 802.11ay (mmWave operation)  -->
    </section><!-- title="IEEE 802.11" -->
 
 
-   <section title="IEEE 802.15.4">
-   
-   <section title="Provenance and Documents">
+   <section><name>IEEE 802.15.4</name>
+
+   <section><name>Provenance and Documents</name>
    <t>
-   The IEEE802.15.4 Task Group has been driving the development of low-power 
-   low-cost radio technology. 
-   The IEEE802.15.4 physical layer has been designed to support demanding 
-   low-power scenarios targeting the use of unlicensed bands, both the 2.4 GHz 
-   and sub GHz Industrial, Scientific and Medical (ISM) bands. This has imposed 
-   requirements in terms of frame size, data rate and bandwidth to achieve 
-   reduced collision probability, reduced packet error rate, and acceptable 
+   The IEEE802.15.4 Task Group has been driving the development of low-power
+   low-cost radio technology.
+   The IEEE802.15.4 physical layer has been designed to support demanding
+   low-power scenarios targeting the use of unlicensed bands, both the 2.4 GHz
+   and sub GHz Industrial, Scientific and Medical (ISM) bands. This has imposed
+   requirements in terms of frame size, data rate and bandwidth to achieve
+   reduced collision probability, reduced packet error rate, and acceptable
    range with limited transmission power. The PHY layer supports frames of up to
    127 bytes. The Medium Access Control (MAC) sublayer overhead is in the order
-   of 10-20 bytes, leaving about 100 bytes to the upper layers. IEEE802.15.4 
-   uses spread spectrum modulation such as the Direct Sequence Spread 
+   of 10-20 bytes, leaving about 100 bytes to the upper layers. IEEE802.15.4
+   uses spread spectrum modulation such as the Direct Sequence Spread
    Spectrum (DSSS).
    </t>
    <t>
    The Timeslotted Channel Hopping (TSCH) mode was added to the 2015 revision of
-   the IEEE802.15.4 standard <xref target="IEEE802154"/>. TSCH is 
-   targeted at the embedded and industrial world, where reliability, energy 
+   the IEEE802.15.4 standard <xref target='IEEE802154'/>. TSCH is
+   targeted at the embedded and industrial world, where reliability, energy
    consumption and cost drive the application space.
    </t>
-   
+
    <t>
-   At the IETF, the 6TiSCH Working Group (WG) <xref target="TiSCH"/> deals with
-   best effort operation of IPv6 <xref target="RFC8200"/> over TSCH. 6TiSCH has 
-   enabled distributed scheduling to exploit the deterministic 
-   access capabilities provided by TSCH. The group designed the essential 
-   mechanisms to enable the management plane operation while ensuring IPv6 is 
+   At the IETF, the 6TiSCH Working Group (WG) <xref target='TiSCH'/> deals with
+   best effort operation of IPv6 <xref target='RFC8200'/> over TSCH. 6TiSCH has
+   enabled distributed scheduling to exploit the deterministic
+   access capabilities provided by TSCH. The group designed the essential
+   mechanisms to enable the management plane operation while ensuring IPv6 is
    supported. Yet the charter did not focus to providing a solution to establish
-   end to end Tracks while meeting quality of service requirements. 6TiSCH, 
-   through the RFC8480 <xref target="RFC8480"/> defines the 6P protocol which 
-   provides a pairwise negotiation mechanism to the control plane operation. 
-   The protocol supports agreement on a schedule between neighbors, enabling 
-   distributed scheduling. 
+   end to end Tracks while meeting quality of service requirements. 6TiSCH,
+   through the RFC8480 <xref target='RFC8480'/> defines the 6P protocol which
+   provides a pairwise negotiation mechanism to the control plane operation.
+   The protocol supports agreement on a schedule between neighbors, enabling
+   distributed scheduling.
    6P goes hand-in-hand with a Scheduling Function (SF), the policy that decides
-   how to maintain cells and trigger 6P transactions. The Minimal Scheduling 
-   Function (MSF) <xref target="I-D.ietf-6tisch-msf"/> is the default SF defined
-   by the 6TiSCH WG; other standardized SFs can be defined in the future. 
-   MSF extends the minimal schedule configuration, and is used to add 
-   child-parent links according to the traffic load. 
+   how to maintain cells and trigger 6P transactions. The Minimal Scheduling
+   Function (MSF) <xref target='I-D.ietf-6tisch-msf'/> is the default SF defined
+   by the 6TiSCH WG; other standardized SFs can be defined in the future.
+   MSF extends the minimal schedule configuration, and is used to add
+   child-parent links according to the traffic load.
    </t>
 
    <!--  TSN-like activities, past and present (introduce the likes of as OFDMA, URLLC and EHT) -->
    <t>
-   Time sensitive networking on low power constrained wireless networks have 
-   been partially addressed by ISA100.11a <xref target="ISA100.11a"/> and
-   WirelessHART <xref target="WirelessHART"/>. Both technologies 
+   Time sensitive networking on low power constrained wireless networks have
+   been partially addressed by ISA100.11a <xref target='ISA100.11a'/> and
+   WirelessHART <xref target='WirelessHART'/>. Both technologies
    involve a central controller that computes redundant paths for industrial
    process control traffic over a TSCH mesh. Moreover, ISA100.11a introduces
-   IPv6 capabilities with a Link-Local Address for the join process and a 
-   global unicast addres for later exchanges, but the IPv6 traffic typically 
+   IPv6 capabilities with a Link-Local Address for the join process and a
+   global unicast addres for later exchanges, but the IPv6 traffic typically
    ends at a local application gateway and the full power of IPv6 for end-to-end
    communication is not enabled. Compared to that state of the art, work at the
    IETF and in particular at RAW could provide additional techniques such as
    optimized P2P routing, PAREO functions, and end-to-end secured IPv6/CoAP
    connectivity.
-  
+
    </t>
 
- 
+
      <!--  DetNet-like arching art (introduce the likes of ISA100.11a or WiHART) -->
-   <t>  
-   The 6TiSCH architecture <xref target="I-D.ietf-6tisch-architecture"/> 
-   identifies different models to schedule resources along so-called Tracks 
-   (see <xref target="Tracks"/>) exploiting the
+   <t>
+   The 6TiSCH architecture <xref target='I-D.ietf-6tisch-architecture'/>
+   identifies different models to schedule resources along so-called Tracks
+   (see <xref target='Tracks'/>) exploiting the
    TSCH schedule structure however the focus at 6TiSCH is on best effort traffic
    and the group was never chartered to produce standard work related to Tracks.
-   
+
    </t>
    <t>Useful References include:
-       	<list hangIndent="5" style="hanging">
-        	<t hangText="1."> IEEE Std 802.15.4: "IEEE Std. 802.15.4, Part. 15.4: Wireless Medium Access Control (MAC) and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal Area Networks" <xref target="IEEE802154"/>. The latest version at the time of this writing is dated year 2015.</t>
-        	<t hangText="2."> Morell, A. , Vilajosana, X. , Vicario, J. L. and Watteyne, T. (2013), Label switching over IEEE802.15.4e networks. Trans. Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650" <xref target="morell13"/>.</t>
-        	<t hangText="3."> De Armas, J., Tuset, P., Chang, T., Adelantado, F., Watteyne, T., Vilajosana, X. (2016, September). Determinism through path diversity: Why packet replication makes sense. In 2016 International Conference on Intelligent Networking and Collaborative Systems (INCoS) (pp. 150-154). IEEE. <xref target="dearmas16"/>.</t>
-            <t hangText="4."> X. Vilajosana, T. Watteyne, M. Vucinic, T. Chang and K. S. J. Pister, "6TiSCH: Industrial Performance for IPv6 Internet-of-Things Networks," in Proceedings of the IEEE, vol. 107, no. 6, pp. 1153-1165, June 2019. <xref target="vilajosana19"/>.</t>
-        </list>
-   </t>
-   
-   </section><!-- Provenance and Documents   -->
-   
-   
-   <section title="TimeSlotted Channel Hopping">
+       	</t><ol type='%d.'>
+        	<li> IEEE Std 802.15.4: "IEEE Std. 802.15.4, Part. 15.4: Wireless Medium Access Control (MAC) and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal Area Networks" <xref target='IEEE802154'/>. The latest version at the time of this writing is dated year 2015.</li>
+        	<li> Morell, A. , Vilajosana, X. , Vicario, J. L. and Watteyne, T. (2013), Label switching over IEEE802.15.4e networks. Trans. Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650" <xref target='morell13'/>.</li>
+        	<li> De Armas, J., Tuset, P., Chang, T., Adelantado, F., Watteyne, T., Vilajosana, X. (2016, September). Determinism through path diversity: Why packet replication makes sense. In 2016 International Conference on Intelligent Networking and Collaborative Systems (INCoS) (pp. 150-154). IEEE. <xref target='dearmas16'/>.</li>
+            <li> X. Vilajosana, T. Watteyne, M. Vucinic, T. Chang and K. S. J. Pister, "6TiSCH: Industrial Performance for IPv6 Internet-of-Things Networks," in Proceedings of the IEEE, vol. 107, no. 6, pp. 1153-1165, June 2019. <xref target='vilajosana19'/>.</li>
+        </ol>
 
-   
-   <section title="General Characteristics">
-   <t>  
-   As a core technique in IEEE802.15.4, TSCH splits time in multiple time slots 
-   that repeat over time. 
+   </section><!-- Provenance and Documents   -->
+
+
+   <section><name>TimeSlotted Channel Hopping</name>
+
+
+   <section><name>General Characteristics</name>
+   <t>
+   As a core technique in IEEE802.15.4, TSCH splits time in multiple time slots
+   that repeat over time.
    A set of timeslots constructs a Slotframe (see
-   <xref target="slotFrames"/>). For each 
-   timeslot, a set of available frequencies can be used, resulting in a 
-   matrix-like schedule (see <xref target="fig_slotframe"/>). 
+   <xref target='slotFrames'/>). For each
+   timeslot, a set of available frequencies can be used, resulting in a
+   matrix-like schedule (see <xref target='fig_slotframe'/>).
    </t>
-<t>
-<figure title="Slotframe example with scheduled cells between nodes A, B and C"  anchor="fig_slotframe">
+<figure anchor='fig_slotframe'><name>Slotframe example with scheduled cells between nodes A, B and C</name>
 <artwork><![CDATA[
                        timeslot offset
      | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
      +------------------------+------------------------+   +-----+
      |    |    |    |    |    |    |    |    |    |    |   |  C  |
-CH-1 | EB |    |    |C->B|    | EB |    |    |C->B|    |   |     |
+CH-1 | EB |    |    |C-&gt;B|    | EB |    |    |C-&gt;B|    |   |     |
      |    |    |    |    |    |    |    |    |    |    |   +-----+
      +-------------------------------------------------+      |
      |    |    |    |    |    |    |    |    |    |    |      |
-CH-2 |    |    |B->C|    |B->A|    |    |B->C|    |B->A|   +-----+
+CH-2 |    |    |B-&gt;C|    |B-&gt;A|    |    |B-&gt;C|    |B-&gt;A|   +-----+
      |    |    |    |    |    |    |    |    |    |    |   |  B  |
      +-------------------------------------------------+   |     |
- ...                                                       +-----+  
+ ...                                                       +-----+
                                                               |
      +-------------------------------------------------+      |
-     |    |    |    |    |    |    |    |    |    |    |   +-----+     
-CH-15|    |A->B|    |    |    |    |A->B|    |    |    |   |  A  |
+     |    |    |    |    |    |    |    |    |    |    |   +-----+
+CH-15|    |A-&gt;B|    |    |    |    |A-&gt;B|    |    |    |   |  A  |
      |    |    |    |    |    |    |    |    |    |    |   |     |
-     +-------------------------------------------------+   +-----+ 
+     +-------------------------------------------------+   +-----+
 ch.
-offset                                                           
-]]></artwork> 
+offset
+]]></artwork>
 </figure>
-</t>
 
    <t>
    This schedule represents the possible communications of a node with its
    neighbors, and is managed by a Scheduling Function such as the Minimal
-   Scheduling Function (MSF)  <xref target="I-D.ietf-6tisch-msf"/>. Each cell in
+   Scheduling Function (MSF)  <xref target='I-D.ietf-6tisch-msf'/>. Each cell in
    the schedule is identified by its slotoffset and channeloffset coordinates. A
    cell's timeslot offset indicates its position in time, relative to the
    beginning of the slotframe. A cell's channel offset is an index which maps to
    a frequency at each iteration of the slotframe. Each packet exchanged between
-   neighbors happens within one cell. The size of a cell is a timeslot duration, 
+   neighbors happens within one cell. The size of a cell is a timeslot duration,
    between 10 to 15 milliseconds. An Absolute Slot Number (ASN) indicates
    the number of slots elapsed since the network started. It increments at every
    slot. This is a 5 byte counter that can support networks running for more
    than 300 years without wrapping (assuming a 10 ms timeslot). Channel hopping
    provides increased reliability to multi-path fading and external
    interference. It is handled by TSCH through a channel hopping sequence
-   referred as macHopSeq in the IEEE802.15.4 specification.     
+   referred as macHopSeq in the IEEE802.15.4 specification.
    </t>
-   
+
    <t>
    <!-- bandwidth, beam forming-->
-    The Time-Frequency Division Multiple Access provided by TSCH enables the 
+    The Time-Frequency Division Multiple Access provided by TSCH enables the
     orchestration of traffic flows, spreading them in time and frequency,
-    and hence enabling an efficient management of the bandwidth utilization. 
-    Such efficient bandwidth utilization can be combined to OFDM modulations 
-    also supported by the IEEE802.15.4 standard <xref target="IEEE802154"/> 
-    since the 2015 version. 
+    and hence enabling an efficient management of the bandwidth utilization.
+    Such efficient bandwidth utilization can be combined to OFDM modulations
+    also supported by the IEEE802.15.4 standard <xref target='IEEE802154'/>
+    since the 2015 version.
  </t>
    <t>
   <!-- expected capabilities for safety and automation, e.g., loops per second -->
-    In the RAW context, low power reliable networks should address non-critical 
+    In the RAW context, low power reliable networks should address non-critical
     control scenarios such as Class 2 and monitoring scenarios such as Class 4
-    defined by the RFC5673 <xref target="RFC5673"/>. 
-    As a low power technology targeting industrial scenarios radio transducers provide 
-    low data rates (typically between 50kbps to 250kbps) and robust modulations 
+    defined by the RFC5673 <xref target='RFC5673'/>.
+    As a low power technology targeting industrial scenarios radio transducers provide
+    low data rates (typically between 50kbps to 250kbps) and robust modulations
     to trade-off performance to reliability. TSCH networks are organized in mesh
-    topologies and connected to a backbone. Latency in the mesh network is 
-    mainly influenced by propagation aspects such as interference. 
-    ARQ methods and redundancy techniques such as replication and elimination 
+    topologies and connected to a backbone. Latency in the mesh network is
+    mainly influenced by propagation aspects such as interference.
+    ARQ methods and redundancy techniques such as replication and elimination
     should be studied to provide the needed performance to address deterministic
-    scenarios.   
+    scenarios.
    </t>
-   
+
    </section> <!-- General Characteristics  -->
-   
-   <section title="Applicability to Deterministic Flows">
+
+   <section><name>Applicability to Deterministic Flows</name>
    <t>
     Nodes in a TSCH network are tightly synchronized. This enables to build the
     slotted structure and ensure efficient utilization of resources thanks to
     proper scheduling policies. Scheduling is a key to orchestrate the resources
-    that different nodes in a Track or a path are using. Slotframes can be 
+    that different nodes in a Track or a path are using. Slotframes can be
     split in resource blocks reserving the needed capacity to certain flows.
     Periodic and bursty traffic can be handled independently in the schedule,
     using active and reactive policies and taking advantage of overprovisionned
@@ -602,30 +604,30 @@ offset
     so nodes in previous hops transmit their data before the next packet comes.
     This provides a tight control to latency along a Track. Collision loss is
     avoided for best effort traffic by overprovisionning resources, giving time
-    to the management plane of the network to dedicate more resources if needed. 
-      
+    to the management plane of the network to dedicate more resources if needed.
+
       <!--
-      
+
      -time synchronization
-     - scheduling capabilities, discuss such things as Resource Units, time slots or resource blocks. 
+     - scheduling capabilities, discuss such things as Resource Units, time slots or resource blocks.
        Can we reserve periodic resources vs. ask each time, what precision can we get in latency control.
-     - diversity scenarios, what's available, 
+     - diversity scenarios, what's available,
      - gap analysis, e.g. discuss multihop, or what's missing how to do PAREO features.
      -->
    </t>
-   
-   <section anchor="detnet" title="Centralized Path Computation">
+
+   <section anchor='detnet'><name>Centralized Path Computation</name>
    <t>
    In a controlled environment, a 6TiSCH device usually does not place a request
    for bandwidth between itself and another device in the network. Rather, an
    Operation Control System (OCS) invoked through an Human/Machine Interface
    (HMI) iprovides the Traffic Specification, in particular in terms of latency
-   and reliability, and the end nodes, to a Path Computation element (PCE). 
-   With this, the PCE computes a Track between the end nodes and provisions every 
-   hop in the Track with per-flow state that describes the per-hop operation for a 
-   given packet, the corresponding timeSlots, and the flow identification to 
+   and reliability, and the end nodes, to a Path Computation element (PCE).
+   With this, the PCE computes a Track between the end nodes and provisions every
+   hop in the Track with per-flow state that describes the per-hop operation for a
+   given packet, the corresponding timeSlots, and the flow identification to
    recognize which packet is placed in which Track, sort out duplicates, etc.
-   In <xref target="NorthSouth"/>, an example of Operational Control System and HMI
+   In <xref target='NorthSouth'/>, an example of Operational Control System and HMI
    is depicted.
    </t>
    <t>
@@ -633,29 +635,29 @@ offset
    time, it is expected that a node will be provisioned in one shot with a full
    schedule, which incorporates the aggregation of its behavior for multiple
    Tracks. The 6TiSCH Architecture expects that the programing of the schedule
-   is done over CoAP as discussed in <xref target="I-D.ietf-6tisch-coap">"6TiSCH
+   is done over CoAP as discussed in <xref target='I-D.ietf-6tisch-coap'>"6TiSCH
    Resource Management and Interaction using CoAP"</xref>.
    </t>
    <t>
    But an Hybrid mode may be required as well whereby a single Track is added,
-   modified, or removed, for instance if it appears that a Track does not 
+   modified, or removed, for instance if it appears that a Track does not
    perform as expected for, say, Packet Delivery Ratio (PDR).
    For that case, the expectation is that a protocol that flows along a Track
    (to be), in a fashion similar to classical Traffic Engineering (TE)
-   <xref target="CCAMP"/>, may be used to update the state in the devices. 
+   <xref target='CCAMP'/>, may be used to update the state in the devices.
    6TiSCH provides means for a device to negotiate a timeSlot with
    a neighbor, but in general that flow was not designed and no protocol was
-   selected and it is expected that DetNet will determine the appropriate 
+   selected and it is expected that DetNet will determine the appropriate
    end-to-end protocols to be used in that case.
    </t>
-      
-   
-<figure align="center" anchor="NorthSouth">
-    <preamble>Stream Management Entity</preamble>
-    <artwork align="left"><![CDATA[
-                                                
+
+
+<t keepWithNext='true'>Stream Management Entity</t><figure align='center' anchor='NorthSouth'>
+
+    <artwork align='left'><![CDATA[
+
                       Operational Control System and HMI
-                     
+
    -+-+-+-+-+-+-+ Northbound -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
              PCE         PCE              PCE              PCE
@@ -667,25 +669,25 @@ offset
   Device-                                                    - 6TiSCH
          \     6TiSCH      6TiSCH      6TiSCH      6TiSCH   /  Device
            ----Device------Device------Device------Device--
-           
+
 			]]></artwork>
 </figure>
-    
-   <section anchor="pmh" title="Packet Marking and Handling">
+
+   <section anchor='pmh'><name>Packet Marking and Handling</name>
    <t>
-   Section "Packet Marking and Handling" of 
-   <xref target="I-D.ietf-6tisch-architecture"/> describes the packet tagging and 
+   Section "Packet Marking and Handling" of
+   <xref target='I-D.ietf-6tisch-architecture'/> describes the packet tagging and
    marking that is expected in 6TiSCH networks.
    </t>
-   <section anchor="pmhft" title="Tagging Packets for Flow Identification">
+   <section anchor='pmhft'><name>Tagging Packets for Flow Identification</name>
     <t>
    For packets that are routed by a PCE along a Track, the tuple formed by the
    IPv6 source address and a local RPLInstanceID is tagged in the packets
    to identify uniquely the Track and associated transmit bundle of timeSlots.
    </t>
    <t>
-   It results that the tagging that is used for a DetNet flow outside the 
-   6TiSCH LLN MUST be swapped into 6TiSCH formats and back as the packet 
+   It results that the tagging that is used for a DetNet flow outside the
+   6TiSCH LLN MUST be swapped into 6TiSCH formats and back as the packet
    enters and then leaves the 6TiSCH network.
    </t>
    <t>
@@ -693,141 +695,138 @@ offset
    is generalized to all 6TiSCH topological Instances, which includes Tracks.
    </t>
    </section>
-   
-   <section anchor="pmhrre" title="Replication, Retries and Elimination">
+
+   <section anchor='pmhrre'><name>Replication, Retries and Elimination</name>
     <t>
-        PRE establishes several paths in a network to provide redundancy and parallel 
-        transmissions to bound the end-to-end delay. 
+        PRE establishes several paths in a network to provide redundancy and parallel
+        transmissions to bound the end-to-end delay.
         <!--Optionally, promiscuous listening between paths is possible, such that the nodes
         on one path may overhear transmissions along the other path. -->
-        Considering the scenario shown in <xref
-        target="fig_ladder"/>, 
-        many different paths are possible for S to reach R. 
+        Considering the scenario shown in <xref target='fig_ladder'/>,
+        many different paths are possible for S to reach R.
         A simple way to benefit from this topology could be to use the
-        two independent paths via nodes A, C, E and via B, D, F.  
+        two independent paths via nodes A, C, E and via B, D, F.
         But more complex paths are possible as well.
-    </t>         
+    </t>
 
-      <figure anchor="fig_ladder" align="center" title="A Typical Ladder Shape with Two Parallel Paths Toward the Destination">
-         <artwork align="center"><![CDATA[
- 
-                 (A)   (C)   (E)   
-                                                
+      <figure anchor='fig_ladder' align='center'><name>A Typical Ladder Shape with Two Parallel Paths Toward the Destination</name>
+         <artwork align='center'><![CDATA[
+
+                 (A)   (C)   (E)
+
    source (S)                       (R) (destination)
-                                                
-                 (B)   (D)   (F)  
+
+                 (B)   (D)   (F)
 
         ]]></artwork>
      </figure>
-    
+
     <t>
-    	By employing a Packet Replication function, each node forwards 
+    	By employing a Packet Replication function, each node forwards
         a copy of each data packet over two different branches.
-        For instance, in <xref target="fig_replication"/>, the source node S 
-        transmits the data packet to nodes A and B, in two different 
-        timeslots within the same TSCH slotframe. 
+        For instance, in <xref target='fig_replication'/>, the source node S
+        transmits the data packet to nodes A and B, in two different
+        timeslots within the same TSCH slotframe.
     </t>
-    
-        <figure anchor="fig_replication" align="center"
-            title="Packet Replication: S transmits twice the same data packet, to its DP
-            (A) and to its AP (B).">
-            <artwork align="center"><![CDATA[
- 
-               ===> (A) => (C) => (E) === 
+
+        <figure anchor='fig_replication' align='center'><name>Packet Replication: S transmits twice the same data packet, to its DP             (A) and to its AP (B).</name>
+            <artwork align='center'><![CDATA[
+
+               ===&gt; (A) =&gt; (C) =&gt; (E) ===
              //        \\//   \\//       \\
    source (S)          //\\   //\\         (R) (destination)
              \\       //  \\ //  \\      //
-               ===> (B) => (D) => (F) ===
+               ===&gt; (B) =&gt; (D) =&gt; (F) ===
 
             ]]></artwork>
         </figure>
-    
+
     <t>
-        By employing Packet Elimination function once a node receives the 
-        first copy of a data packet, it discards the subsequent copies. 
+        By employing Packet Elimination function once a node receives the
+        first copy of a data packet, it discards the subsequent copies.
         Because the first copy that reaches a node is the
         one that matters, it is the only copy that will be
-        forwarded upward. 
+        forwarded upward.
     </t>
-    
+
     <t>
-		Considering that the wireless medium is broadcast by nature, any neighbor of 
-		a transmitter may overhear a transmission. 
-		By employing the Promiscuous Overhearing function, nodes will have multiple 
-		opportunities to receive a given data packet. 
-		For instance, in <xref target="fig_replication"/>, when the source node S
+		Considering that the wireless medium is broadcast by nature, any neighbor of
+		a transmitter may overhear a transmission.
+		By employing the Promiscuous Overhearing function, nodes will have multiple
+		opportunities to receive a given data packet.
+		For instance, in <xref target='fig_replication'/>, when the source node S
 		transmits the data packet to node A, node B may overhear this transmission.
 	</t>
-   
+
    <t>
-   6TiSCH expects elimination and replication of packets along a complex 
-   Track, but has no position about how the sequence numbers would be tagged in 
-   the packet. 
+   6TiSCH expects elimination and replication of packets along a complex
+   Track, but has no position about how the sequence numbers would be tagged in
+   the packet.
    </t>
    <t>
    As it goes, 6TiSCH expects that timeSlots corresponding to copies
-   of a same packet along a Track are correlated by configuration, and does not 
+   of a same packet along a Track are correlated by configuration, and does not
    need to process the sequence numbers.
    </t>
    <t>
    The semantics of the configuration MUST enable correlated timeSlots to be
-   grouped for transmit (and respectively receive) with a 'OR' relations, 
-   and then a 'AND' relation MUST be configurable between groups. 
+   grouped for transmit (and respectively receive) with a'OR' relations,
+   and then a'AND' relation MUST be configurable between groups.
    The semantics is that if the transmit (and respectively receive) operation
-   succeeded in one timeSlot in a 'OR' group, then all the other timeSLots in 
-   the group are ignored. 
-   Now, if there are at least two groups, the 'AND' relation between the groups 
-   indicates that one operation must succeed in each of the groups. 
+   succeeded in one timeSlot in a'OR' group, then all the other timeSLots in
+   the group are ignored.
+   Now, if there are at least two groups, the'AND' relation between the groups
+   indicates that one operation must succeed in each of the groups.
    </t>
    <t>
    On the transmit side, timeSlots provisioned for retries along a same branch
-   of a Track are placed a same 'OR' group. The 'OR' relation indicates that if
-   a transmission is acknowledged, then further transmissions SHOULD NOT be 
-   attempted for timeSlots in that group. There are as many 'OR' groups as 
-   there are branches of the Track departing from this node. Different 'OR' groups
-   are programmed for the purpose of replication, each group corresponding to 
-   one branch of the Track. The 'AND' relation between the groups indicates that
+   of a Track are placed a same'OR' group. The'OR' relation indicates that if
+   a transmission is acknowledged, then further transmissions SHOULD NOT be
+   attempted for timeSlots in that group. There are as many'OR' groups as
+   there are branches of the Track departing from this node. Different'OR' groups
+   are programmed for the purpose of replication, each group corresponding to
+   one branch of the Track. The'AND' relation between the groups indicates that
    transmission over any of branches MUST be attempted regardless of whether a
    transmission succeeded in another branch. It is also possible to place cells
-   to different next-hop routers in a same 'OR' group. This allows to route along
-   multi-path Tracks, trying one next-hop and then another only if sending to the 
+   to different next-hop routers in a same'OR' group. This allows to route along
+   multi-path Tracks, trying one next-hop and then another only if sending to the
    first fails.
    </t>
    <t>
-   On the receive side, all timeSlots are programmed in a same 'OR' group.
+   On the receive side, all timeSlots are programmed in a same'OR' group.
    Retries of a same copy as well as converging branches for elimination
    are converged, meaning that the first successful reception is enough and that
    all the other timeSlots can be ignored.
    </t>
    </section>
-   <section anchor="pmhds" title="Differentiated Services Per-Hop-Behavior">
+   <section anchor='pmhds'><name>Differentiated Services Per-Hop-Behavior</name>
    <t>
    Additionally, an IP packet that is sent along a Track uses the
    Differentiated Services Per-Hop-Behavior Group called
    Deterministic Forwarding, as described in
-   <xref target="I-D.svshah-tsvwg-deterministic-forwarding"/>.
+   <xref target='I-D.svshah-tsvwg-deterministic-forwarding'/>.
    </t>
    </section>
    </section>
-   
-   <section anchor="topo" title="Topology and capabilities">
-   
-      
+
+   <section anchor='topo'><name>Topology and capabilities</name>
+
+
    <t>6TiSCH nodes are usually IoT devices, characterized by very limited amount
-   of memory, just enough buffers to store one or a few IPv6 packets, and 
-   limited bandwidth between peers. It results that a node will maintain only a 
+   of memory, just enough buffers to store one or a few IPv6 packets, and
+   limited bandwidth between peers. It results that a node will maintain only a
    small number of peering information, and will not be able to store many
    packets waiting to be forwarded. Peers can be identified through MAC or IPv6
    addresses.
    </t>
    <t>
    Neighbors can be discovered over the radio using mechanism such as Enhanced Beacons,
-   but, though the neighbor information is available in the 6TiSCH interface 
-   data model, 6TiSCH does not describe a protocol to pro-actively push the 
-   neighborhood information to a PCE. 
+   but, though the neighbor information is available in the 6TiSCH interface
+   data model, 6TiSCH does not describe a protocol to pro-actively push the
+   neighborhood information to a PCE.
    This protocol should be described and should operate over CoAP. The protocol
    should be able to carry multiple metrics, in particular the same metrics as
-   used for RPL operations <xref target="RFC6551"/>.
+   used for RPL operations <xref target='RFC6551'/>.
    </t>
    <t>
    The energy that the device consumes in sleep, transmit and receive modes can
@@ -837,16 +836,16 @@ offset
    energy is consumed, for instance balance between nodes, ensure that the spent
    energy does not exceeded the scavenged energy over a period of time, etc...
    </t>
-   
-   
+
+
    </section>
 
-   <section anchor="schd" title="Schedule Management by a PCE">
+   <section anchor='schd'><name>Schedule Management by a PCE</name>
       <t>
       6TiSCH supports a mixed model of centralized routes and distributed routes.
-      Centralized routes can for example be computed by a entity such as a 
-      PCE <xref target="PCE"/>.
-      Distributed routes are computed by <xref target="RFC6550">RPL</xref>.
+      Centralized routes can for example be computed by a entity such as a
+      PCE <xref target='PCE'/>.
+      Distributed routes are computed by <xref target='RFC6550'>RPL</xref>.
       </t>
       <t>
       Both methods may inject routes in the Routing Tables of the 6TiSCH routers.
@@ -863,40 +862,40 @@ offset
       routes will be used for scheduled traffic and will have precedence over
       distributed routes in case of conflict between the slotFrames.
       </t>
-      
 
-   </section > <!--anchor="schd" title="Schedule Management by a PCE"-->
-   
 
-      <section anchor="slotFrames" title="SlotFrames and Priorities">
-         <t>A slotFrame is the base object that a PCE needs to manipulate 
+   </section> <!--anchor="schd" title="Schedule Management by a PCE"-->
+
+
+      <section anchor='slotFrames'><name>SlotFrames and Priorities</name>
+         <t>A slotFrame is the base object that a PCE needs to manipulate
          to program a schedule into an LLN node. Elaboration on that concept
-         can be fond in section "SlotFrames and Priorities" of 
-         <xref target="I-D.ietf-6tisch-architecture"/>
+         can be fond in section "SlotFrames and Priorities" of
+         <xref target='I-D.ietf-6tisch-architecture'/>
          </t>
          <t>
          IEEE802.15.4 TSCH avoids contention on the medium by formatting time
-         and frequencies in cells of transmission of equal duration. 
+         and frequencies in cells of transmission of equal duration.
          In order to describe that formatting of time and frequencies, the
          6TiSCH architecture defines a global concept that is called a Channel
          Distribution and Usage (CDU) matrix; a CDU matrix is a matrix of
          cells with an height equal to the number of available channels
          (indexed by ChannelOffsets) and a width (in timeSlots) that is the
          period of the network scheduling operation (indexed by slotOffsets) for
-         that CDU matrix. The size of a cell is a timeSlot duration, and 
-         values  of 10 to 15 milliseconds are typical in 802.15.4 TSCH to 
-         accommodate for the transmission of a frame and an acknowledgement, 
-         including the security validation on the receive side which may take 
+         that CDU matrix. The size of a cell is a timeSlot duration, and
+         values  of 10 to 15 milliseconds are typical in 802.15.4 TSCH to
+         accommodate for the transmission of a frame and an acknowledgement,
+         including the security validation on the receive side which may take
          up to a few milliseconds on some device architecture.
          </t>
          <t>
-         The frequency used by a cell in the matrix rotates in a pseudo-random 
+         The frequency used by a cell in the matrix rotates in a pseudo-random
          fashion, from an initial position at an epoch time, as the matrix
          iterates over and over.
          </t>
          <t>
          A CDU matrix is computed by the PCE, but unallocated timeSlots may be
-         used opportunistically by the nodes for classical best effort IP 
+         used opportunistically by the nodes for classical best effort IP
          traffic. The PCE has precedence in the allocation in case of a conflict.
          </t>
          <t>
@@ -928,15 +927,14 @@ offset
           </t>
          <t>
          The 6TiSCH architecture introduces the concept of chunks
-         (<xref target="I-D.ietf-6tisch-architecture"/>) to operate
+         (<xref target='I-D.ietf-6tisch-architecture'/>) to operate
          such spectrum distribution for a whole group of cells at a time.
          The CDU matrix is formatted into a set of chunks, each of them
-         identified uniquely by a chunk-ID, see <xref target="fig3"/>. 
+         identified uniquely by a chunk-ID, see <xref target='fig3'/>.
          The PCE MUST compute the partitioning of CDU matrices into chunks and
-         shared that knowledge with all the nodes in a 6TiSCH network. 
+         shared that knowledge with all the nodes in a 6TiSCH network.
          </t>
-         <t>
-            <figure anchor="fig3" title="CDU matrix Partitioning in Chunks">
+            <figure anchor='fig3'><name>CDU matrix Partitioning in Chunks</name>
 <artwork>
 <![CDATA[
              +-----+-----+-----+-----+-----+-----+-----+     +-----+
@@ -952,31 +950,29 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
 ]]>
 </artwork>
             </figure>
-         </t>
-
          <t>
             The appropriation of a chunk can be requested explicitly by the
             PCE to any node. After a successful appropriation, the PCE owns the
-            cells in that chunk, and may use them as hard cells to set up Tracks. 
-            Then again, 6TiSCH did not propose a method for chunk 
-            definition and a protocol for appropriation. This is to be done 
+            cells in that chunk, and may use them as hard cells to set up Tracks.
+            Then again, 6TiSCH did not propose a method for chunk
+            definition and a protocol for appropriation. This is to be done
             at RAW.
          </t>
       </section>
-   
+
    </section>
-   <section anchor="Tracks" title="6TiSCH Tracks">
-   
+   <section anchor='Tracks'><name>6TiSCH Tracks</name>
+
    <t>
    A Track at 6TiSCH is the application to wireless of the concept of a path in
-   the Detnet architecture <xref target="I-D.ietf-detnet-architecture"/>.
+   the Detnet architecture <xref target='I-D.ietf-detnet-architecture'/>.
    A Track can follow a simple sequence of relay nodes or can be structured as a
-   more complex Destination Oriented Directed Acyclic Graph (DODAG) to a unicast 
+   more complex Destination Oriented Directed Acyclic Graph (DODAG) to a unicast
    destination. Along a Track, 6TiSCH nodes reserve the resources to enable the
    efficient transmission of packets while aiming to optimize certain properties
-   such as reliability and ensure small jitter or bounded latency. The Track 
+   such as reliability and ensure small jitter or bounded latency. The Track
    structure enables Layer-2 forwarding schemes, reducing the overhead of taking
-   routing decisions at the Layer-3.  
+   routing decisions at the Layer-3.
    </t>
    <t>
    Serial Tracks can be understood as the concatenation of cells or bundles
@@ -984,61 +980,59 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
    concept is analogous to the circuit concept where resources are chained
    through the multi-hop topology. For example, A bundle of Tx Cells in a
    particular node is paired to a bundle of Rx Cells in the next hop node
-   following a routing path. 
+   following a routing path.
    </t>
    <t>
    Whereas scheduling ensures reliable delivery in bounded time along any Track,
    high availability requires the application of PAREO functions along a more
-   complex DODAG Track structure. A DODAG has forking and joining nodes where 
-   the concepts such as Replication and Elimination can be exploited. 
+   complex DODAG Track structure. A DODAG has forking and joining nodes where
+   the concepts such as Replication and Elimination can be exploited.
    Spatial redundancy increases the oveall energy consumption in the network but
    improves significantly the availability of the network as well as the packet
-   delivery ratio. 
+   delivery ratio.
 
    A Track may also branch off and rejoin, for the purpose of the so-called
    Packet Replication and Elimination (PRE), over non congruent branches.
    PRE may be used to complement layer-2 Automatic Repeat reQuest (ARQ) and
    receiver-end Ordering to form the PAREO functions. PAREO functions enable
-   to meet industrial expectations in PDR within bounded delivery time over a 
-   Track that includes wireless links, even when the Track extends beyond the 
+   to meet industrial expectations in PDR within bounded delivery time over a
+   Track that includes wireless links, even when the Track extends beyond the
    6TiSCH network.
       </t>
-      <t>
-         <figure anchor="fig4" title="End-to-End deterministic Track">
+         <figure anchor='fig4'><name>End-to-End deterministic Track</name>
 <artwork><![CDATA[
 
-                  +-----+ 
+                  +-----+
                   | IoT |
                   | G/W |
-                  +-----+ 
-                     ^  <---- Elimination
+                  +-----+
+                     ^  &lt;---- Elimination
                     | |
-     Track branch   | |    
-            +-------+ +--------+ Subnet Backbone  
-            |                  |   
-         +--|--+            +--|--+ 
+     Track branch   | |
+            +-------+ +--------+ Subnet Backbone
+            |                  |
+         +--|--+            +--|--+
          |  |  | Backbone   |  |  | Backbone
-    o    |  |  | router     |  |  | router  
-         +--/--+            +--|--+         
-    o     /    o     o---o----/       o   
-        o    o---o--/   o      o   o  o   o    
-   o     \  /     o               o   LLN    o      
-      o   v  <---- Replication
-          o 
-      
-      
+    o    |  |  | router     |  |  | router
+         +--/--+            +--|--+
+    o     /    o     o---o----/       o
+        o    o---o--/   o      o   o  o   o
+   o     \  /     o               o   LLN    o
+      o   v  &lt;---- Replication
+          o
+
+
 ]]></artwork>
          </figure>
-      </t>
-      <t>In the example above (see <xref target="fig4"/>), a Track is laid out from a field device in a 
+      <t>In the example above (see <xref target='fig4'/>), a Track is laid out from a field device in a
       6TiSCH network to an IoT gateway that is located on a IEEE802.1 TSN
-      backbone. 
+      backbone.
       </t>
       <t>
-      The Replication function in the field device sends a copy of each packet 
+      The Replication function in the field device sends a copy of each packet
       over two different branches, and a PCE schedules each hop of both branches
-      so that the two 
-      copies arrive in due time at the gateway. In case of a loss on one branch, 
+      so that the two
+      copies arrive in due time at the gateway. In case of a loss on one branch,
       hopefully the other copy of the packet still makes it in due time. If two
       copies make it to the IoT gateway, the Elimination function in the gateway
       ignores the extra packet and presents only one copy to upper layers.
@@ -1047,7 +1041,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
       At each 6TiSCH hop along the Track, the PCE may schedule more than one
       timeSlot for a packet, so as to support Layer-2 retries (ARQ). It is also
       possible that the field device only uses the second branch if sending over
-      the first branch fails. 
+      the first branch fails.
       </t>
       <t>
       In current deployments, a TSCH Track does not necessarily support PRE but
@@ -1057,16 +1051,16 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
       case of Layer-2 transmission failure as detected by ARQ.
          </t>
            <t>Methods to implement complex Tracks are described
-   in <xref target="I-D.papadopoulos-paw-pre-reqs"/> and complemented by 
-   extensions to the RPL routing protocol in 
-   <xref target="I-D.ietf-roll-nsa-extension"/> for best effort traffic, but a
-   centralized routing technique such as promoted in DetNet is still missing. 
+   in <xref target='I-D.papadopoulos-paw-pre-reqs'/> and complemented by
+   extensions to the RPL routing protocol in
+   <xref target='I-D.ietf-roll-nsa-extension'/> for best effort traffic, but a
+   centralized routing technique such as promoted in DetNet is still missing.
 
       </t>
-     <section anchor="Tschd" title="Track Scheduling Protocol">
+     <section anchor='Tschd'><name>Track Scheduling Protocol</name>
       <t>
          Section "Schedule Management Mechanisms" of the 6TiSCH architecture
-         describes 4 paradigms to manage the TSCH schedule of the LLN nodes: 
+         describes 4 paradigms to manage the TSCH schedule of the LLN nodes:
          Static Scheduling, neighbor-to-neighbor Scheduling, remote monitoring
          and scheduling management, and Hop-by-hop scheduling.
          The Track operation for DetNet corresponds to a remote monitoring and
@@ -1076,55 +1070,55 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
       Early work at 6TiSCH on a data model and a protocol to program the
       schedule in the 6TiSCH device was never concluded as the group focussed on
       best effort traffic. This work would be revived by RAW:
-      <list>
-         <t>
+      </t><ul empty='true' spacing='normal'>
+         <li>
             The 6top interface document
-            <xref target="RFC8480"/>
+            <xref target='RFC8480'/>
             (to be reopened at RAW) was intended to
-            specify the generic data model that can be used to monitor and 
+            specify the generic data model that can be used to monitor and
             manage
-            resources of the 6top sublayer. Abstract methods were suggested 
+            resources of the 6top sublayer. Abstract methods were suggested
             for use
             by a management entity in the device. The data model also enables
             remote control operations on the 6top sublayer.
-         </t>
-         <t>
-            <xref target="I-D.ietf-6tisch-coap"/> 
+         </li>
+         <li>
+            <xref target='I-D.ietf-6tisch-coap'/>
             (to be reopened at RAW) was intended to define a mapping of the 6top
             set of commands, which is described in RFC 8480, to CoAP resources.
             This allows an entity to interact with the 6top layer of a node that
             is multiple hops away in a RESTful fashion.
-         </t>
-         <t>
-            <xref target="I-D.ietf-6tisch-coap"/> also defined a basic set CoAP
+         </li>
+         <li>
+            <xref target='I-D.ietf-6tisch-coap'/> also defined a basic set CoAP
             resources and associated RESTful access methods
             (GET/PUT/POST/DELETE). The payload (body) of the CoAP messages
             is encoded using the CBOR format.
             The PCE commands are expected to be issued directly as CoAP requests
-            or to be mapped back and forth into CoAP by a gateway function at 
+            or to be mapped back and forth into CoAP by a gateway function at
             the edge of the 6TiSCH network. For instance, it is possible that a
-            mapping entity on the backbone transforms a non-CoAP protocol such 
+            mapping entity on the backbone transforms a non-CoAP protocol such
             as PCEP into the RESTful interfaces that the 6TiSCH devices support.
-          </t>
-       </list>
-      </t>       
-   </section>   
-   
-   
-   
-   
-   
-   
-   <section  anchor="fwd" title="Track Forwarding">
+          </li>
+       </ul><t>
+      </t>
+   </section>
+
+
+
+
+
+
+   <section anchor='fwd'><name>Track Forwarding</name>
       <t>
-         By forwarding, this specification means the per-packet operation that 
+         By forwarding, this specification means the per-packet operation that
          allows to deliver a packet to a next hop or an upper layer in this node.
-         Forwarding is based on pre-existing state that was installed as a 
-         result of the routing computation of a Track by a PCE. 
-         The 6TiSCH architecture supports three different forwarding model, 
-         G-MPLS Track Forwarding (TF), 6LoWPAN Fragment Forwarding (FF) and 
+         Forwarding is based on pre-existing state that was installed as a
+         result of the routing computation of a Track by a PCE.
+         The 6TiSCH architecture supports three different forwarding model,
+         G-MPLS Track Forwarding (TF), 6LoWPAN Fragment Forwarding (FF) and
          IPv6 Forwarding (6F) which is the classical IP operation
-         <xref target="I-D.ietf-6tisch-architecture"/>.
+         <xref target='I-D.ietf-6tisch-architecture'/>.
          The DetNet case relates to the Track Forwarding operation under the
          control of a PCE.
       </t>
@@ -1211,7 +1205,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
             A frame should be re-Tracked if the Per-Hop-Behavior
             group indicated in the Differentiated Services Field in the
             IPv6 header is set to Deterministic Forwarding, as discussed in
-            <xref target="pmh"/>.
+            <xref target='pmh'/>.
             A frame is re-Tracked by scheduling it for transmission over the
             transmit bundle associated to the Track,
             with the destination MAC address set to broadcast.
@@ -1219,7 +1213,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
          <t>
             There are 2 modes for a Track, transport mode and tunnel mode.
          </t>
-         <section title="Transport Mode">
+         <section><name>Transport Mode</name>
             <t>
                In transport mode, the Protocol Data Unit (PDU) is associated
                with flow-dependant meta-data that refers uniquely to the Track,
@@ -1232,8 +1226,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
                validated at egress before restoring
                the destination MAC address (DMAC) and punting to the upper layer.
             </t>
-            <t>
-               <figure anchor="fig5" title="Track Forwarding, Transport Mode">
+               <figure anchor='fig5'><name>Track Forwarding, Transport Mode</name>
 <artwork><![CDATA[
                        |                                    ^
    +--------------+    |                                    |
@@ -1249,11 +1242,10 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
    +--------------+
 ]]></artwork>
                </figure>
-            </t>
          </section>
-         <section title="Tunnel Mode">
+         <section><name>Tunnel Mode</name>
             <t>
-               In tunnel mode, the frames originate from an arbitrary protocol 
+               In tunnel mode, the frames originate from an arbitrary protocol
                over a compatible MAC that may or may not be synchronized with
                the 6TiSCH network. An example of this would be a router with a
                dual radio that is capable of receiving and sending WirelessHART
@@ -1266,8 +1258,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
                specify the flows that are to be transported transparently
                over the Track.
             </t>
-            <t>
-               <figure anchor="fig6" title="Track Forwarding, Tunnel Mode">
+               <figure anchor='fig6'><name>Track Forwarding, Tunnel Mode</name>
 <artwork><![CDATA[
    +--------------+
    |     IPv6     |
@@ -1290,7 +1281,6 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
    +--------------+
 ]]></artwork>
                </figure>
-            </t>
             <t>
                In that case, the flow information that identifies the Track at
                the ingress 6TiSCH router is derived from the RX-cell. The dmac
@@ -1305,7 +1295,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
                appropriate link layer with the destination MAC restored.
             </t>
          </section>
-         <section title="Tunnel Metadata">
+         <section><name>Tunnel Metadata</name>
             <t>
                Metadata coming with the Track configuration is expected to provide the destination MAC address
                of the egress endpoint as well as the tunnel mode and specific data depending on the mode,
@@ -1323,53 +1313,52 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
                The 6top sublayer at the tunnel egress point reverts that operation to the MAC address obtained
                from the tunnel metadata.
             </t>
-            
+
           </section>
-         <section title="OAM">
+         <section><name>OAM</name>
             <t>
-            
-	        <xref target="RFC7276"> An Overview of Operations,
+
+	        <xref target='RFC7276'> An Overview of Operations,
             Administration, and Maintenance (OAM) Tools</xref> provides an
-            overwiew of the existing tooling for OAM <xref target=
-            "RFC6291"/>. Tracks are complex paths and new tooling 
+            overwiew of the existing tooling for OAM <xref target='RFC6291'/>. Tracks are complex paths and new tooling
             is necessary to manage them, with respect to load control, timing,
             and the Packet Replication and Elimination Functions (PREF).
-            
+
             </t>
             <t>
-            An example of such tooling can be found in the context of 
-            <xref target="RFC8279">BIER</xref> and more specifically 
-            <xref target="I-D.ietf-bier-te-arch">BIER Traffic Engineering</xref>
-            (BIER-TE): 
-            <xref target="I-D.thubert-bier-replication-elimination"/>
+            An example of such tooling can be found in the context of
+            <xref target='RFC8279'>BIER</xref> and more specifically
+            <xref target='I-D.ietf-bier-te-arch'>BIER Traffic Engineering</xref>
+            (BIER-TE):
+            <xref target='I-D.thubert-bier-replication-elimination'/>
             leverages BIER-TE to control the process of PREF, and to provide
             traceability of these operations, in the deterministic dataplane,
             along a complex Track.
-            For the 6TiSCH type of constrained environment, 
-            <xref target="I-D.thubert-6lo-bier-dispatch"/> enables an efficient
+            For the 6TiSCH type of constrained environment,
+            <xref target='I-D.thubert-6lo-bier-dispatch'/> enables an efficient
             encoding of the BIER bitmap within the 6LoRH framework.
             </t>
-            
+
    </section>
    </section>
-   
+
    </section> <!-- 6TiSCH Tracks  -->
-   
-   
+
+
    </section><!-- Applicability to deterministic flows  -->
-   
+
    </section> <!-- IEEE 802.15.4  -->
    </section> <!-- TimeSlotted Channel Hopping-->
-   
-   
-   
-   <section title="3GPP Ultra-Reliable Low-Latency Communication">
-   
+
+
+
+   <section><name>3GPP Ultra-Reliable Low-Latency Communication</name>
+
    <t> coming up </t>
    </section> <!-- 3GPP Ultra-Reliable Low-Latency Communication -->
-   
-   
- <section title="L-band Digital Aeronautical Communications System">
+
+
+ <section><name>L-band Digital Aeronautical Communications System</name>
    <t>
 One of the main pillars of the modern Air Traffic Management (ATM) system is the existence of a communication infrastructure that enables efficient aircraft guidance and safe separation in all phases of flight. Although current systems are technically mature, they are suffering from the VHF band’s increasing saturation in high-density areas and the limitations posed by analogue radio. Therefore, aviation globally and the European Union (EU) in particular, strives for a sustainable modernization of the aeronautical communication infrastructure.
 </t><t>
@@ -1377,21 +1366,21 @@ In the long-term, ATM communication shall transition from analogue VHF voice and
 LDACS shall enable IPv6 based air-ground communication related to the safety and regularity of the flight. The particular challenge is that no new frequencies can be made available for terrestrial aeronautical communication. It was thus necessary to develop procedures to enable the operation of LDACS in parallel with other services in the same frequency band.
 
 </t>
-   <section title="Provenance and Documents">
-   
+   <section><name>Provenance and Documents</name>
+
 <t>
-The development of LDACS has already made substantial progress in the Single European Sky ATM Research (SESAR) framework, and is currently being continued in the follow-up program, SESAR2020 <xref target="RIH18"/>. A key objective of the SESAR activities is to develop, implement and validate a modern aeronautical data link able to evolve with aviation needs over long-term. To this end, an LDACS specification has been produced <xref target="GRA19"/> and is continuously updated; transmitter demonstrators were developed to test the spectrum compatibility of LDACS with legacy systems operating in the L-band <xref target="SAJ14"/>; and the overall system performance was analyzed by computer simulations, indicating that LDACS can fulfil the identified requirements <xref target="GRA11"/>.
+The development of LDACS has already made substantial progress in the Single European Sky ATM Research (SESAR) framework, and is currently being continued in the follow-up program, SESAR2020 <xref target='RIH18'/>. A key objective of the SESAR activities is to develop, implement and validate a modern aeronautical data link able to evolve with aviation needs over long-term. To this end, an LDACS specification has been produced <xref target='GRA19'/> and is continuously updated; transmitter demonstrators were developed to test the spectrum compatibility of LDACS with legacy systems operating in the L-band <xref target='SAJ14'/>; and the overall system performance was analyzed by computer simulations, indicating that LDACS can fulfil the identified requirements <xref target='GRA11'/>.
 </t><t>
-LDACS standardization within the framework of the International Civil Aviation Organization (ICAO) started in December 2016. The ICAO standardization group has produced an initial Standards and Recommended Practices (SARPs) document <xref target="ICAO18"/>. The SARPs document defines the general characteristics of LDACS. The ICAO standardization group plans to produce an ICAO technical manual - the ICAO equivalent to a technical standard - within the next years. Generally, the group is open to input from all sources and develops LDACS in the open.
+LDACS standardization within the framework of the International Civil Aviation Organization (ICAO) started in December 2016. The ICAO standardization group has produced an initial Standards and Recommended Practices (SARPs) document <xref target='ICAO18'/>. The SARPs document defines the general characteristics of LDACS. The ICAO standardization group plans to produce an ICAO technical manual - the ICAO equivalent to a technical standard - within the next years. Generally, the group is open to input from all sources and develops LDACS in the open.
 </t><t>
 Up to now the LDACS standardization has been focused on the development of the physical layer and the data link layer, only recently have higher layers come into the focus of the LDACS development activities. There is currently no "IPv6 over LDACS" specification; however, SESAR2020 has started the testing of IPv6-based LDACS testbeds. The IPv6 architecture for the aeronautical telecommunication network is called the Future Communications Infrastructure (FCI). FCI shall support quality of service, diversity, and mobility under the umbrella of the "multi-link concept". This work is conducted by ICAO working group WG-I.
 </t><t>
-In addition to standardization activities several industrial LDACS prototypes have been built. One set of LDACS prototypes has been evaluated in flight trials confirming the theoretical results predicting the system performance <xref target="GRA18"/><xref target="SCH19"/>.
+In addition to standardization activities several industrial LDACS prototypes have been built. One set of LDACS prototypes has been evaluated in flight trials confirming the theoretical results predicting the system performance <xref target='GRA18'/><xref target='SCH19'/>.
 </t>
    </section><!-- Provenance and Documents   -->
-   
-   <section title="General Characteristics">
-   
+
+   <section><name>General Characteristics</name>
+
 <t>
 LDACS will become one of several wireless access networks connecting aircraft to the Aeronautical Telecommunications Network (ATN). The LDACS access network contains several ground stations, each of them providing one LDACS radio cell.
 The LDACS air interface is a cellular data link with a star-topology connecting aircraft to ground-stations with a full duplex radio link. Each ground-station is the centralized instance controlling all air-ground communications within its radio cell. A ground-station supports up to 512 aircraft.
@@ -1404,62 +1393,62 @@ The data-link layer provides the necessary protocols to facilitate concurrent an
 </t><t>
 The user data rate of LDACS is 315 kbit/s to 1428 kbit/s on the forward link, and 294 kbit/s to 1390 kbit/s on the reverse link, depending on coding and modulation. Due to strong interference from legacy systems in the L-band, the most robust coding and modulation should be expected for initial deployment i.e. 315/294 kbit/s on the forward/reverse link, respectively.
 </t><t>
-Since LDACS has been mainly designed for air traffic management communication it supports mutual entity authentication, integrity and confidentiality capabilities of user data messages and some control channel protection capabilities <xref target="MAE19"/>.
+Since LDACS has been mainly designed for air traffic management communication it supports mutual entity authentication, integrity and confidentiality capabilities of user data messages and some control channel protection capabilities <xref target='MAE19'/>.
 </t>
-   
+
    </section><!-- General Characteristics  -->
-   
-   <section title="Applicability to Deterministic Flows">
+
+   <section><name>Applicability to Deterministic Flows</name>
 <t>
 LDACS has been designed with applications related to the safety and regularity of the flight in mind. It has therefore been designed as a deterministic wireless data link (as far as possible).
 </t><t>
 LDACS medium access is always under the control of the ground-station of a radio cell. Any medium access for the transmission of user data has to be requested with a resource request message stating the requested amount of resources and class of service. The ground-station performs resource scheduling on the basis of these requests and grants resources with resource allocation messages. Resource request and allocation messages are exchanged over dedicated contention-free control channels.
 </t><t>
-LDACS has two mechanisms to request resources from the scheduler in the ground-station. 
+LDACS has two mechanisms to request resources from the scheduler in the ground-station.
 Resources can either be requested "on demand" with a given class of service. On the forward link, this is done locally in the ground-station, on the reverse link a dedicated contention-free control channel is used (Dedicated Control Channel (DCCH); roughly 83 bit every 60 ms). A resource allocation is always announced in the control channel of the forward link (Common Control Channel (CCCH); variable sized). Due to the spacing of the reverse link control channels of every 60 ms, a medium access delay in the same order of magnitude is to be expected.
 </t><t>
 Resources can also be requested "permanently". The permanent resource request mechanism supports requesting recurring resources in given time intervals. A permanent resource request has to be canceled by the user (or by the ground-station, which is always in control).
-User data transmissions over LDACS are therefore always scheduled by the ground-station, while control data uses statically (i.e. at net entry) allocated recurring resources (DCCH and CCCH). The current specification documents specify no scheduling algorithm. However performance evaluations so far have used strict priority scheduling and round robin for equal priorities for simplicity. In the current prototype implementations LDACS classes of service are thus realized as priorities of medium access and not as flows. Note that this can starve out low priority flows. However, this is not seen as a big problem since safety related message always go first in any case.  Scheduling of reverse link resources is done in physical Protocol Data Units (PDU) of 112 bit (or larger if more aggressive coding and modulation is used). Scheduling on the forward link is done Byte-wise since the forward link is transmitted continuously by the ground-station. 
+User data transmissions over LDACS are therefore always scheduled by the ground-station, while control data uses statically (i.e. at net entry) allocated recurring resources (DCCH and CCCH). The current specification documents specify no scheduling algorithm. However performance evaluations so far have used strict priority scheduling and round robin for equal priorities for simplicity. In the current prototype implementations LDACS classes of service are thus realized as priorities of medium access and not as flows. Note that this can starve out low priority flows. However, this is not seen as a big problem since safety related message always go first in any case.  Scheduling of reverse link resources is done in physical Protocol Data Units (PDU) of 112 bit (or larger if more aggressive coding and modulation is used). Scheduling on the forward link is done Byte-wise since the forward link is transmitted continuously by the ground-station.
 </t><t>
 In order to support diversity, LDACS supports handovers to other ground-stations on different channels. Handovers may be initiated by the aircraft (break-before-make) or by the ground-station (make-before-break) if it is connected to an alternative ground-station via the same ground-station controller. Beyond this, FCI diversity shall be implemented by the multi-link concept.
 
 </t>
    </section><!-- Applicability to deterministic flows  -->
-   
+
    </section><!-- title="L-band Digital Aeronautical Communications System" -->
-   
-   
-   
-   
-   
-   
-   <section title="IANA Considerations">
+
+
+
+
+
+
+   <section><name>IANA Considerations</name>
       <t>
     This specification does not require IANA action.
       </t>
    </section>
 
-   <section  anchor='sec' title="Security Considerations">
+   <section anchor='sec'><name>Security Considerations</name>
       <t>
     	Most RAW technologies integrate some authentication or encryption
-    	mechanisms that were defined outside the IETF. 
+    	mechanisms that were defined outside the IETF.
       </t>
    </section>
 
-	
-	<section title="Contributors">
+
+	<section><name>Contributors</name>
 		<t>
-   			<list style="hanging">
-   				<t hangText="Georgios Z. Papadopoulos:"> Contributed to the TSCH section. </t>
-   				<t hangText="Nils Mäurer:"> Contributed to the LDACS section. </t>
-   				<t hangText="Thomas Gräupl:"> Contributed to the LDACS section. </t>
-   			</list>
-            
+   			</t><dl  spacing='normal'>
+   				<dt>Georgios Z. Papadopoulos:</dt><dd> Contributed to the TSCH section. </dd>
+   				<dt>Nils Mäurer:</dt><dd> Contributed to the LDACS section. </dd>
+   				<dt>Thomas Gräupl:</dt><dd> Contributed to the LDACS section. </dd>
+   			</dl><t>
+
    		</t>
 	</section>
 
-	
-	<section title="Acknowledgments">
+
+	<section><name>Acknowledgments</name>
 		<t>
     		Many thanks to the participants of the RAW WG where a lot of the work discussed here happened.
    		</t>
@@ -1468,31 +1457,31 @@ In order to support diversity, LDACS supports handovers to other ground-stations
 
 
 <back>
-   <references title="Normative References">
-      <?rfc include="reference.RFC.8480"?> <!-- 6P Protocol Specification -->
-      <?rfc include="reference.RFC.8200"?> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
-      <?rfc include="reference.RFC.5673"?> <!-- Industrial Routing Requirements in Low-Power and Lossy Networks -->
-      <?rfc include='reference.I-D.ietf-detnet-architecture'?>
-      <?rfc include='reference.I-D.ietf-6tisch-architecture'?>
-           
+   <references><name>Normative References</name>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.8480.xml'/> <!-- 6P Protocol Specification -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.8200.xml'/> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.5673.xml'/> <!-- Industrial Routing Requirements in Low-Power and Lossy Networks -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-detnet-architecture.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-architecture.xml'/>
+
    </references>
-   <references title="Informative References">
-   
-      <?rfc include="reference.RFC.6550"?> <!-- RPL -->
-      <?rfc include="reference.RFC.6551"?> <!-- RPL metrics -->
-      <?rfc include="reference.RFC.6291"?> <!-- OAM guidelines -->
-      <?rfc include="reference.RFC.7276"?> <!-- OAM -->
-      <?rfc include="reference.RFC.8279"?> <!-- Mcast BIER -->
-      <?rfc include='reference.I-D.ietf-6tisch-msf'?>
-      <?rfc include='reference.I-D.ietf-roll-nsa-extension'?>
-      <?rfc include='reference.I-D.papadopoulos-paw-pre-reqs'?>
-      <?rfc include='reference.I-D.thubert-bier-replication-elimination'?>
-      <?rfc include='reference.I-D.thubert-6lo-bier-dispatch'?>
-      <?rfc include='reference.I-D.ietf-bier-te-arch'?>
-      <?rfc include='reference.I-D.ietf-6tisch-coap'?>
-      <?rfc include='reference.I-D.svshah-tsvwg-deterministic-forwarding'?>
-      
-      <reference anchor="IEEE802154">
+   <references><name>Informative References</name>
+
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.6550.xml'/> <!-- RPL -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.6551.xml'/> <!-- RPL metrics -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.6291.xml'/> <!-- OAM guidelines -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.7276.xml'/> <!-- OAM -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.8279.xml'/> <!-- Mcast BIER -->
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-msf.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-roll-nsa-extension.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.papadopoulos-paw-pre-reqs.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.thubert-bier-replication-elimination.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.thubert-6lo-bier-dispatch.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-bier-te-arch.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-coap.xml'/>
+      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.svshah-tsvwg-deterministic-forwarding.xml'/>
+
+      <reference anchor='IEEE802154'>
          <front>
             <title>IEEE Std. 802.15.4, Part. 15.4: Wireless Medium Access
             Control (MAC) and Physical Layer (PHY) Specifications for Low-Rate
@@ -1504,8 +1493,8 @@ In order to support diversity, LDACS supports handovers to other ground-stations
             <date/>
          </front>
       </reference>
-      
-      <reference anchor="IEEE80211" >
+
+      <reference anchor='IEEE80211'>
         <front>
           <title>
             IEEE Standard 802.11 - IEEE Standard for Information
@@ -1513,182 +1502,181 @@ In order to support diversity, LDACS supports handovers to other ground-stations
             between systems Local and metropolitan area networks -
             Specific requirements - Part 11: Wireless LAN Medium
             Access Control (MAC) and Physical Layer (PHY)
-            Specifications. 
+            Specifications.
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
 
-      <reference anchor="IEEE80211ak" >
+      <reference anchor='IEEE80211ak'>
         <front>
           <title>
-           802.11ak: Enhancements for Transit Links Within Bridged Networks  
+           802.11ak: Enhancements for Transit Links Within Bridged Networks
           </title>
-          <author/>
-          <date year="2017"/>
+          <author></author>
+          <date year='2017'/>
         </front>
       </reference>
-      
-      <reference anchor="IEEE80211ax" >
+
+      <reference anchor='IEEE80211ax'>
         <front>
           <title>
-            802.11ax D4.0: Enhancements for High Efficiency WLAN 
+            802.11ax D4.0: Enhancements for High Efficiency WLAN
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
-      
-      <reference anchor="IEEE80211ay" >
+
+      <reference anchor='IEEE80211ay'>
         <front>
           <title>
             802.11ay: Enhanced throughput for operation in license-exempt bands above 45 GHz
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
-                     
-      <reference anchor="IEEE80211ad" >
+
+      <reference anchor='IEEE80211ad'>
         <front>
           <title>
             802.11ad: Enhancements for very high throughput in the 60 GHz band
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
-      
-      <reference anchor="IEEE80211be" >
+
+      <reference anchor='IEEE80211be'>
         <front>
           <title>
             802.11be: Extreme High Throughput
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
-      
-      <reference anchor="IEEE8021Qat" >
+
+      <reference anchor='IEEE8021Qat'>
         <front>
           <title>
             802.1Qat: Stream Reservation Protocol
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
-      <reference anchor="IEEE8021Qcc" >
+      <reference anchor='IEEE8021Qcc'>
         <front>
           <title>
             802.1Qcc: IEEE Standard for Local and Metropolitan Area Networks--Bridges and Bridged Networks -- Amendment 31: Stream Reservation Protocol (SRP) Enhancements and Performance Improvements
           </title>
-          <author/>
+          <author></author>
           <date/>
         </front>
       </reference>
-            
-      <reference anchor="Cavalcanti_2019" >
+
+      <reference anchor='Cavalcanti_2019'>
         <front>
           <title>
             Extending Time Distribution and
        		Timeliness Capabilities over the Air to Enable Future Wireless Industrial
        		Automation Systems, the Proceedings of IEEE
           </title>
-          <author initials="" surname="Dave Cavalcanti et al." fullname="Dave Cavalcanti">
-            <organization>IEEE</organization><address/>
+          <author initials='' surname='Dave Cavalcanti et al.' fullname='Dave Cavalcanti'>
+            <organization>IEEE</organization><address></address>
           </author>
-          <date month="June" year="2019"/>
+          <date month='June' year='2019'/>
         </front>
       </reference>
-      
-      <reference anchor="Nitsche_2015" >
+
+      <reference anchor='Nitsche_2015'>
         <front>
           <title>
             IEEE 802.11ad: directional 60 GHz communication for multi-Gigabit-per-second Wi-Fi
           </title>
-          <author initials="" surname="Thomas Nitsche et al." fullname="Thomas Nitsche">
-            <organization>IEEE</organization><address/>
+          <author initials='' surname='Thomas Nitsche et al.' fullname='Thomas Nitsche'>
+            <organization>IEEE</organization><address></address>
           </author>
-          <date month="December" year="2014"/>
+          <date month='December' year='2014'/>
         </front>
       </reference>
-      
-      <reference anchor="Ghasempour_2017" >
+
+      <reference anchor='Ghasempour_2017'>
         <front>
           <title>
             802.11ay: Next-Generation 60 GHz Communications for 100 Gb/s Wi-Fi
           </title>
-          <author initials="" surname=" Yasaman Ghasempour et al." fullname="Yasaman Ghasempour">
-            <organization>IEEE</organization><address/>
+          <author initials='' surname=' Yasaman Ghasempour et al.' fullname='Yasaman Ghasempour'>
+            <organization>IEEE</organization><address></address>
           </author>
-          <date month="December" year="2017"/>
+          <date month='December' year='2017'/>
         </front>
       </reference>
-      
-      <reference anchor="IEEE_doc_11-18-2009-06" >
+
+      <reference anchor='IEEE_doc_11-18-2009-06'>
         <front>
           <title>
-            802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) Report 
+            802.11 Real-Time Applications (RTA) Topic Interest Group (TIG) Report
           </title>
-          <author/>
-          <date month="November" year="2018"/>
+          <author></author>
+          <date month='November' year='2018'/>
         </front>
       </reference>
-       
-      <reference anchor="IEEE_doc_11-19-0373-00">
+
+      <reference anchor='IEEE_doc_11-19-0373-00'>
         <front>
           <title>
             Time-Sensitive Applications Support in EHT
           </title>
-          <author initials="" surname="Kevin Stanton et Al." fullname="Kevin Stanton">
-            <organization>IEEE</organization><address/>
+          <author initials='' surname='Kevin Stanton et Al.' fullname='Kevin Stanton'>
+            <organization>IEEE</organization><address></address>
           </author>
-          <date month="March" year="2019"/>
+          <date month='March' year='2019'/>
         </front>
       </reference>
-       
-      <reference anchor="morell13" >
+
+      <reference anchor='morell13'>
         <front>
           <title>
             Label switching over IEEE802.15.4e networks
           </title>
-          <author initials="" surname="Antoni Morell et al." fullname="Antoni Morell et al.">
-            <organization>Trans. Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650</organization><address/>
+          <author initials='' surname='Antoni Morell et al.' fullname='Antoni Morell et al.'>
+            <organization>Trans. Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650</organization><address></address>
           </author>
-          <date month="April" year="2013"/>
+          <date month='April' year='2013'/>
         </front>
       </reference>
-   
-   <reference anchor="dearmas16" >
+
+   <reference anchor='dearmas16'>
         <front>
           <title>
-            Determinism through path diversity: Why packet replication makes sense 
+            Determinism through path diversity: Why packet replication makes sense
           </title>
-          <author initials="" surname="Jesica de Armas et al." fullname="Jesica de Armas et al.">
-            <organization>In 2016 International Conference on Intelligent Networking and Collaborative Systems (INCoS)</organization><address/>
+          <author initials='' surname='Jesica de Armas et al.' fullname='Jesica de Armas et al.'>
+            <organization>In 2016 International Conference on Intelligent Networking and Collaborative Systems (INCoS)</organization><address></address>
           </author>
-          <date month="September" year="2016"/>
+          <date month='September' year='2016'/>
         </front>
       </reference>
-   
-   
-      <reference anchor="vilajosana19" >
+
+
+      <reference anchor='vilajosana19'>
         <front>
           <title>
             6TiSCH: Industrial Performance for IPv6 Internet-of-Things Networks
           </title>
-          <author initials="" surname="Xavier Vilajosana et al." fullname="Xavier Vilajosana et al.">
-            <organization>Proceedings of the IEEE, vol. 107, no. 6, pp. 1153-1165 </organization><address/>
+          <author initials='' surname='Xavier Vilajosana et al.' fullname='Xavier Vilajosana et al.'>
+            <organization>Proceedings of the IEEE, vol. 107, no. 6, pp. 1153-1165 </organization><address></address>
           </author>
-          <date month="June" year="2019"/>
+          <date month='June' year='2019'/>
         </front>
       </reference>
-              
-              
-      <reference anchor="ISA100.11a"
-                 target=" http://www.isa100wci.org/en-US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-WEB-ETSI.aspx">
+
+
+      <reference anchor='ISA100.11a' target=' http://www.isa100wci.org/en-US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-WEB-ETSI.aspx'>
         <front>
           <title>ISA100.11a, Wireless Systems for Automation, also IEC 62734</title>
 
@@ -1696,174 +1684,170 @@ In order to support diversity, LDACS supports handovers to other ground-stations
             <organization>ISA/IEC</organization>
           </author>
 
-          <date  year="2011" />
+          <date year='2011'/>
         </front>
       </reference>
-      
-              
-      <reference anchor="WirelessHART">
+
+
+      <reference anchor='WirelessHART'>
          <front>
             <title>Industrial Communication Networks - Wireless Communication
             Network and Communication Profiles - WirelessHART - IEC 62591</title>
             <author>
                <organization>www.hartcomm.org</organization>
             </author>
-            <date year="2010" />
+            <date year='2010'/>
          </front>
       </reference>
-      
-      
-      <reference anchor="PCE" target="https://dataTracker.ietf.org/doc/charter-ietf-pce/">
+
+
+      <reference anchor='PCE' target='https://dataTracker.ietf.org/doc/charter-ietf-pce/'>
          <front>
             <title>Path Computation Element</title>
             <author>
                <organization>IETF</organization>
             </author>
-            <date></date>
+            <date/>
          </front>
       </reference>
-      
-      <reference anchor="CCAMP" target="https://dataTracker.ietf.org/doc/charter-ietf-ccamp/">
+
+      <reference anchor='CCAMP' target='https://dataTracker.ietf.org/doc/charter-ietf-ccamp/'>
          <front>
             <title>Common Control and Measurement Plane</title>
             <author>
                <organization>IETF</organization>
             </author>
-            <date></date>
+            <date/>
          </front>
       </reference>
-      
+
       <!--reference anchor="MPLS" target="https://dataTracker.ietf.org/doc/charter-ietf-mpls/">
          <front>
             <title>Multiprotocol Label Switching</title>
             <author>
                <organization>IETF</organization>
             </author>
-            <date></date>
+            <date/>
          </front>
       </reference-->
-      
-      <reference anchor="TiSCH" target="https://dataTracker.ietf.org/doc/charter-ietf-6tisch/">
+
+      <reference anchor='TiSCH' target='https://dataTracker.ietf.org/doc/charter-ietf-6tisch/'>
          <front>
             <title>IPv6 over the TSCH mode over 802.15.4</title>
             <author>
                <organization>IETF</organization>
             </author>
-            <date></date>
+            <date/>
          </front>
       </reference>
-      
-      
-      <reference anchor="RIH18" >
+
+
+      <reference anchor='RIH18'>
          <front>
             <title>L-band Digital Aeronautical Communications System (LDACS) Activities in SESAR2020</title>
-            <author fullname="C. Rihacek">
+            <author fullname='C. Rihacek'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <author fullname="B. Haindl"></author>
-            <author fullname="P. Fantappie"></author>
-            <author fullname="S. Pierattelli"></author>
-            <author fullname="Thomas Gräupl">
+            <author fullname='B. Haindl'></author>
+            <author fullname='P. Fantappie'></author>
+            <author fullname='S. Pierattelli'></author>
+            <author fullname='Thomas Gräupl'>
                <organization>German Aerospace Center (DLR)</organization>
                </author>
-            <author fullname=" M. Schnell">
+            <author fullname=' M. Schnell'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <author fullname=" N. Fistas "></author>
-            <date  month="April" year="2018"></date>
+            <author fullname=' N. Fistas'></author>
+            <date month='April' year='2018'/>
          </front>
-         <seriesInfo name="Proceedings of the Integrated Communications Navigation and Surveillance Conference (ICNS)" 
-                    value="Herndon, VA, USA" />
+         <seriesInfo name='Proceedings of the Integrated Communications Navigation and Surveillance Conference (ICNS)' value='Herndon, VA, USA'/>
       </reference>
-      
-      <reference anchor="GRA19" >
+
+      <reference anchor='GRA19'>
          <front>
             <title>LDACS A/G Specification</title>
-            <author fullname="Thomas Gräupl">
+            <author fullname='Thomas Gräupl'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <author fullname="C. Rihacek">
+            <author fullname='C. Rihacek'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <author fullname="B. Haindl">
+            <author fullname='B. Haindl'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <date  month="February" year="2019"></date>
+            <date month='February' year='2019'/>
          </front>
-         <seriesInfo name="SESAR2020" 
-                    value="PJ14-02-01 D3.3.010" />
+         <seriesInfo name='SESAR2020' value='PJ14-02-01 D3.3.010'/>
       </reference>
-      
-      <reference anchor="SAJ14" >
+
+      <reference anchor='SAJ14'>
          <front>
             <title>WA04 D22 Test Report for Assessing LDACS1 Transmitter Impact upon DME/TACAN Receivers</title>
-            <author fullname="M. Sajatovic"></author>
-            <author fullname="H. Günzel"></author>
-            <author fullname="S. Müller  "></author>
-            <date  month="April" year="2014"></date>
+            <author fullname='M. Sajatovic'></author>
+            <author fullname='H. Günzel'></author>
+            <author fullname='S. Müller'></author>
+            <date month='April' year='2014'/>
          </front>
       </reference>
-      
-      <reference anchor="GRA11" >
+
+      <reference anchor='GRA11'>
          <front>
             <title>L-DACS1 Data Link Layer Evolution of ATN/IPS</title>
-            <author fullname="Thomas Gräupl">
+            <author fullname='Thomas Gräupl'>
                <organization>German Aerospace Center (DLR)</organization>
                </author>
-            <author fullname="M. Ehammer"></author>
-            <date  month="October " year="2011"></date>
+            <author fullname='M. Ehammer'></author>
+            <date month='October' year='2011'/>
          </front>
-        <seriesInfo name="Proceedings of the 30th IEEE/AIAA Digital Avionics Systems Conference (DASC)" 
-                    value="Seattle, WA, USA" />
-      </reference>      
-      
-      <reference anchor="ICAO18" >
+        <seriesInfo name='Proceedings of the 30th IEEE/AIAA Digital Avionics Systems Conference (DASC)' value='Seattle, WA, USA'/>
+      </reference>
+
+      <reference anchor='ICAO18'>
          <front>
             <title>L-Band Digital Aeronautical Communication System (LDACS)</title>
             <author>
                <organization>International Civil Aviation Organization (ICAO)</organization>
                </author>
-            <date  month="July " year="2018"></date>
+            <date month='July' year='2018'/>
          </front>
-        <seriesInfo name="International Standards and Recommended Practices" 
-                    value="Annex 10 - Aeronautical Telecommunications, Vol. III – Communication Systems" />
+        <seriesInfo name='International Standards and Recommended Practices' value='Annex 10 - Aeronautical Telecommunications, Vol. III - Communication Systems'/>
       </reference>
-      
-      <reference anchor="GRA18" >
+
+      <reference anchor='GRA18'>
          <front>
             <title>L-band Digital Aeronautical Communications System (LDACS) flight trials in the national German project MICONAV</title>
-            <author fullname="Thomas Gräupl et al."></author>
-            <date  month="April" year="2018"></date>
+            <author fullname='Thomas Gräupl et al.'></author>
+            <date month='April' year='2018'/>
          </front>
-        <seriesInfo name="Proceedings of the Integrated Communications, Navigation, Surveillance Conference (ICNS)" 
-                    value="Herndon, VA, USA" />
+        <seriesInfo name='Proceedings of the Integrated Communications, Navigation, Surveillance Conference (ICNS)' value='Herndon, VA, USA'/>
       </reference>
-      
-      <reference anchor="SCH19" target="https://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-10081/151_read-32951/#/gallery/33877">
+
+      <reference anchor='SCH19' target='https://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-10081/151_read-32951/#/gallery/33877'>
          <front>
             <title>DLR tests digital communications technologies combined with additional navigation functions for the first time</title>
-            <author fullname="M. Schnell">
+            <author fullname='M. Schnell'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <date day="03" month="March" year="2019"></date>
+            <date day='03' month='March' year='2019'/>
          </front>
       </reference>
-      
-      <reference anchor="MAE19">
+
+      <reference anchor='MAE19'>
          <front>
             <title>DLR tests digital communications technologies combined with additional navigation functions for the first time</title>
-            <author fullname="Nils Mäurer ">
+            <author fullname='Nils Mäurer'>
                <organization>German Aerospace Center (DLR)</organization>
                </author>
-            <author fullname=" Corinna Schmitt  ">
-               <organization>Research Institute CODE, Universität der Bundeswehr München</organization>
+            <author fullname=' Corinna Schmitt'>
+               <organization ascii="Research Institute CODE, UniBwM">Research Institute CODE, Universität der Bundeswehr München</organization>
                </author>
-            <date  month="April" year="2019"></date>
+            <date month='April' year='2019'/>
          </front>
-        <seriesInfo name="Proceedings of the Integrated Communications, Navigation, Surveillance Conference (ICNS)" 
-                    value="Washington D.C., USA" />
+        <seriesInfo name='Proceedings of the Integrated Communications, Navigation, Surveillance Conference (ICNS)' value='Washington D.C., USA'/>
       </reference>
-      
 
-      
-      
-      
-      
+
+
+
+
+
    </references>
 </back>
 
 </rfc>
+
+<!-- CONVERT WARNING: wide character found at character 2041 of the output -->
