@@ -1,18 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-
-
-<?rfc toc="yes"?>
-<?rfc tocompact="yes"?>
-<?rfc tocdepth="3"?>
-<?rfc tocindent="yes"?>
-<?rfc symrefs="yes"?>
-<?rfc sortrefs="yes"?>
-<?rfc comments="yes"?>
-<?rfc inline="yes"?>
-<?rfc compact="no"?>
-<?rfc subcompact="no"?>
-<?rfc authorship="yes"?>
-<?rfc tocappendix="yes"?>
+<!DOCTYPE rfc SYSTEM "rfc2629-xhtml.ent">
 
 <?rfc toc="yes"?>
 <?rfc tocompact="yes"?>
@@ -26,7 +13,7 @@
 <?rfc subcompact="no"?>
 <?rfc authorship="yes"?>
 <?rfc tocappendix="yes"?>
-<rfc  xmlns:xi="http://www.w3.org/2001/XInclude" category="info" ipr='trust200902' tocInclude="true"  obsoletes="" updates="" submissionType="IETF" xml:lang="en" version="3" docName="draft-thubert-raw-technologies-03" >
+<rfc  xmlns:xi="http://www.w3.org/2001/XInclude" category="info" ipr='trust200902' tocInclude="true"  obsoletes="" updates="" submissionType="IETF" xml:lang="en" version="3" docName="draft-thubert-raw-technologies-04" >
 
 <front>
    <title abbrev='RAW Techs'>Reliable and Available Wireless Technologies</title>
@@ -528,18 +515,18 @@
      | 0    1    2    3    4  | 0    1    2    3    4  |    Nodes
      +------------------------+------------------------+   +-----+
      |    |    |    |    |    |    |    |    |    |    |   |  C  |
-CH-1 | EB |    |    |C-&gt;B|    | EB |    |    |C-&gt;B|    |   |     |
+CH-1 | EB |    |    |C->B|    | EB |    |    |C->B|    |   |     |
      |    |    |    |    |    |    |    |    |    |    |   +-----+
      +-------------------------------------------------+      |
      |    |    |    |    |    |    |    |    |    |    |      |
-CH-2 |    |    |B-&gt;C|    |B-&gt;A|    |    |B-&gt;C|    |B-&gt;A|   +-----+
+CH-2 |    |    |B->C|    |B->A|    |    |B->C|    |B->A|   +-----+
      |    |    |    |    |    |    |    |    |    |    |   |  B  |
      +-------------------------------------------------+   |     |
  ...                                                       +-----+
                                                               |
      +-------------------------------------------------+      |
      |    |    |    |    |    |    |    |    |    |    |   +-----+
-CH-15|    |A-&gt;B|    |    |    |    |A-&gt;B|    |    |    |   |  A  |
+CH-15|    |A->B|    |    |    |    |A->B|    |    |    |   |  A  |
      |    |    |    |    |    |    |    |    |    |    |   |     |
      +-------------------------------------------------+   +-----+
 ch.
@@ -770,30 +757,30 @@ offset
    </t>
    <t>
    The semantics of the configuration MUST enable correlated timeSlots to be
-   grouped for transmit (and respectively receive) with a'OR' relations,
-   and then a'AND' relation MUST be configurable between groups.
+   grouped for transmit (and respectively receive) with a'OR'relations,
+   and then a'AND'relation MUST be configurable between groups.
    The semantics is that if the transmit (and respectively receive) operation
-   succeeded in one timeSlot in a'OR' group, then all the other timeSLots in
+   succeeded in one timeSlot in a'OR'group, then all the other timeSLots in
    the group are ignored.
-   Now, if there are at least two groups, the'AND' relation between the groups
+   Now, if there are at least two groups, the'AND'relation between the groups
    indicates that one operation must succeed in each of the groups.
    </t>
    <t>
    On the transmit side, timeSlots provisioned for retries along a same branch
-   of a Track are placed a same'OR' group. The'OR' relation indicates that if
+   of a Track are placed a same'OR'group. The'OR'relation indicates that if
    a transmission is acknowledged, then further transmissions SHOULD NOT be
-   attempted for timeSlots in that group. There are as many'OR' groups as
-   there are branches of the Track departing from this node. Different'OR' groups
+   attempted for timeSlots in that group. There are as many'OR'groups as
+   there are branches of the Track departing from this node. Different'OR'groups
    are programmed for the purpose of replication, each group corresponding to
-   one branch of the Track. The'AND' relation between the groups indicates that
+   one branch of the Track. The'AND'relation between the groups indicates that
    transmission over any of branches MUST be attempted regardless of whether a
    transmission succeeded in another branch. It is also possible to place cells
-   to different next-hop routers in a same'OR' group. This allows to route along
+   to different next-hop routers in a same'OR'group. This allows to route along
    multi-path Tracks, trying one next-hop and then another only if sending to the
    first fails.
    </t>
    <t>
-   On the receive side, all timeSlots are programmed in a same'OR' group.
+   On the receive side, all timeSlots are programmed in a same'OR'group.
    Retries of a same copy as well as converging branches for elimination
    are converged, meaning that the first successful reception is enough and that
    all the other timeSlots can be ignored.
@@ -1070,7 +1057,8 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
       Early work at 6TiSCH on a data model and a protocol to program the
       schedule in the 6TiSCH device was never concluded as the group focussed on
       best effort traffic. This work would be revived by RAW:
-      </t><ul empty='true' spacing='normal'>
+      </t>
+      <ul empty='true' spacing='normal'>
          <li>
             The 6top interface document
             <xref target='RFC8480'/>
@@ -1100,8 +1088,7 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
             mapping entity on the backbone transforms a non-CoAP protocol such
             as PCEP into the RESTful interfaces that the 6TiSCH devices support.
           </li>
-       </ul><t>
-      </t>
+       </ul>
    </section>
 
 
@@ -1458,28 +1445,28 @@ In order to support diversity, LDACS supports handovers to other ground-stations
 
 <back>
    <references><name>Normative References</name>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.8480.xml'/> <!-- 6P Protocol Specification -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.8200.xml'/> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.5673.xml'/> <!-- Industrial Routing Requirements in Low-Power and Lossy Networks -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-detnet-architecture.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-architecture.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8480.xml'/> <!-- 6P Protocol Specification -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8200.xml'/> <!-- Internet Protocol, Version 6 (IPv6) Specification -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5673.xml'/> <!-- Industrial Routing Requirements in Low-Power and Lossy Networks -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-detnet-architecture.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-architecture.xml'/>
 
    </references>
    <references><name>Informative References</name>
 
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.6550.xml'/> <!-- RPL -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.6551.xml'/> <!-- RPL metrics -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.6291.xml'/> <!-- OAM guidelines -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.7276.xml'/> <!-- OAM -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml/reference.RFC.8279.xml'/> <!-- Mcast BIER -->
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-msf.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-roll-nsa-extension.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.papadopoulos-paw-pre-reqs.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.thubert-bier-replication-elimination.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.thubert-6lo-bier-dispatch.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-bier-te-arch.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-coap.xml'/>
-      <xi:include href='http://xml.tools.resource.org/public/rfc/bibxml3/reference.I-D.svshah-tsvwg-deterministic-forwarding.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6550.xml'/> <!-- RPL -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6551.xml'/> <!-- RPL metrics -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6291.xml'/> <!-- OAM guidelines -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7276.xml'/> <!-- OAM -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8279.xml'/> <!-- Mcast BIER -->
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-msf.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-roll-nsa-extension.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.papadopoulos-paw-pre-reqs.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.thubert-bier-replication-elimination.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.thubert-6lo-bier-dispatch.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-bier-te-arch.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-6tisch-coap.xml'/>
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.svshah-tsvwg-deterministic-forwarding.xml'/>
 
       <reference anchor='IEEE802154'>
          <front>
@@ -1609,7 +1596,7 @@ In order to support diversity, LDACS supports handovers to other ground-stations
           <title>
             802.11ay: Next-Generation 60 GHz Communications for 100 Gb/s Wi-Fi
           </title>
-          <author initials='' surname=' Yasaman Ghasempour et al.' fullname='Yasaman Ghasempour'>
+          <author initials='' surname='Yasaman Ghasempour et al.' fullname='Yasaman Ghasempour'>
             <organization>IEEE</organization><address></address>
           </author>
           <date month='December' year='2017'/>
@@ -1676,7 +1663,7 @@ In order to support diversity, LDACS supports handovers to other ground-stations
       </reference>
 
 
-      <reference anchor='ISA100.11a' target=' http://www.isa100wci.org/en-US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-WEB-ETSI.aspx'>
+      <reference anchor='ISA100.11a' target='http://www.isa100wci.org/en-US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-WEB-ETSI.aspx'>
         <front>
           <title>ISA100.11a, Wireless Systems for Automation, also IEC 62734</title>
 
@@ -1753,9 +1740,9 @@ In order to support diversity, LDACS supports handovers to other ground-stations
             <author fullname='Thomas Gräupl'>
                <organization>German Aerospace Center (DLR)</organization>
                </author>
-            <author fullname=' M. Schnell'>
+            <author fullname='M. Schnell'>
                <organization>German Aerospace Center (DLR)</organization></author>
-            <author fullname=' N. Fistas'></author>
+            <author fullname='N. Fistas'></author>
             <date month='April' year='2018'/>
          </front>
          <seriesInfo name='Proceedings of the Integrated Communications Navigation and Surveillance Conference (ICNS)' value='Herndon, VA, USA'/>
@@ -1832,7 +1819,7 @@ In order to support diversity, LDACS supports handovers to other ground-stations
             <author fullname='Nils Mäurer'>
                <organization>German Aerospace Center (DLR)</organization>
                </author>
-            <author fullname=' Corinna Schmitt'>
+            <author fullname='Corinna Schmitt'>
                <organization ascii="Research Institute CODE, UniBwM">Research Institute CODE, Universität der Bundeswehr München</organization>
                </author>
             <date month='April' year='2019'/>
