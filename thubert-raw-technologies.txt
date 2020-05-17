@@ -5,12 +5,12 @@
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                             D. Cavalcanti
-Expires: 12 April 2020                                             Intel
+Expires: 18 November 2020                                          Intel
                                                            X. Vilajosana
                                          Universitat Oberta de Catalunya
                                                               C. Schmitt
                                          Research Institute CODE, UniBwM
-                                                         10 October 2019
+                                                             17 May 2020
 
 
               Reliable and Available Wireless Technologies
@@ -20,10 +20,8 @@ Abstract
 
    This document presents a series of recent technologies that are
    capable of time synchronization and scheduling of transmission,
-   making them suitable to carry time-sensitive flows with requirements
-   of both reliable delivery in bounded time, and availability at all
-   times, regardless of packet transmission or individual equipement
-   failures.
+   making them suitable to carry time-sensitive flows with high
+   reliability and availbility.
 
 Status of This Memo
 
@@ -40,26 +38,26 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 April 2020.
+   This Internet-Draft will expire on 18 November 2020.
 
 Copyright Notice
 
-   Copyright (c) 2019 IETF Trust and the persons identified as the
+   Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
    license-info) in effect on the date of publication of this document.
-
-
-
-Thubert, et al.           Expires 12 April 2020                 [Page 1]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.  Code Components
+
+
+
+Thubert, et al.         Expires 18 November 2020                [Page 1]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    extracted from this document must include Simplified BSD License text
    as described in Section 4.e of the Trust Legal Provisions and are
    provided without warranty as described in the Simplified BSD License.
@@ -87,32 +85,36 @@ Table of Contents
      5.2.  TimeSlotted Channel Hopping . . . . . . . . . . . . . . .  15
        5.2.1.  General Characteristics . . . . . . . . . . . . . . .  15
        5.2.2.  Applicability to Deterministic Flows  . . . . . . . .  16
-   6.  3GPP Ultra-Reliable Low-Latency Communication . . . . . . . .  30
-   7.  L-band Digital Aeronautical Communications System . . . . . .  30
-     7.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  31
-     7.2.  General Characteristics . . . . . . . . . . . . . . . . .  32
-     7.3.  Applicability to Deterministic Flows  . . . . . . . . . .  33
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  34
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  34
-   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  34
-   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  34
-   12. Normative References  . . . . . . . . . . . . . . . . . . . .  34
-   13. Informative References  . . . . . . . . . . . . . . . . . . .  35
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  40
+   6.  5G  . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     6.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  30
+     6.2.  General Characteristics . . . . . . . . . . . . . . . . .  32
+     6.3.  Deployment and Spectrum . . . . . . . . . . . . . . . . .  33
+     6.4.  Applicability to Deterministic Flows  . . . . . . . . . .  34
+       6.4.1.  System Architecture . . . . . . . . . . . . . . . . .  34
+       6.4.2.  Overview of The Radio Protocol Stack  . . . . . . . .  36
+       6.4.3.  Radio (PHY) . . . . . . . . . . . . . . . . . . . . .  37
+       6.4.4.  Scheduling and QoS (MAC)  . . . . . . . . . . . . . .  39
+       6.4.5.  Time-Sensitive Networking (TSN) Integration . . . . .  41
+     6.5.  Summary . . . . . . . . . . . . . . . . . . . . . . . . .  44
+   7.  L-band Digital Aeronautical Communications System . . . . . .  45
+     7.1.  Provenance and Documents  . . . . . . . . . . . . . . . .  45
+     7.2.  General Characteristics . . . . . . . . . . . . . . . . .  46
+     7.3.  Applicability to Deterministic Flows  . . . . . . . . . .  47
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  48
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  48
+   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  48
+   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  49
+   12. Normative References  . . . . . . . . . . . . . . . . . . . .  49
+   13. Informative References  . . . . . . . . . . . . . . . . . . .  49
 
 
 
-
-
-
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                 [Page 2]
+Thubert, et al.         Expires 18 November 2020                [Page 2]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
+
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  56
 
 1.  Introduction
 
@@ -163,11 +165,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-
-
-Thubert, et al.           Expires 12 April 2020                 [Page 3]
+Thubert, et al.         Expires 18 November 2020                [Page 3]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    Available:  That is exempt of unscheduled outage, the expectation for
@@ -221,9 +221,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                 [Page 4]
+Thubert, et al.         Expires 18 November 2020                [Page 4]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    occasional packet loss, but a loss of several packets in a row will
@@ -277,9 +277,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                 [Page 5]
+Thubert, et al.         Expires 18 November 2020                [Page 5]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
 4.  IEEE 802.11
@@ -326,18 +326,22 @@ Internet-Draft                  RAW Techs                   October 2019
    of 802.1 TSN capabilities and their extensions to 802.11 are
    discussed in [Cavalcanti_2019].
 
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020                [Page 6]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    Wi-Fi Alliance (WFA) is the worldwide network of companies that
    drives global Wi-Fi adoption and evolution through thought
    leadership, spectrum advocacy, and industry-wide collaboration.  The
    WFA work helps ensure that Wi-Fi devices and networks provide users
-
-
-
-Thubert, et al.           Expires 12 April 2020                 [Page 6]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    the interoperability, security, and reliability they have come to
    expect.
 
@@ -355,8 +359,8 @@ Internet-Draft                  RAW Techs                   October 2019
 
    Interoperating with IEEE802.1Q bridges:  IEEE802.11ak.
 
-   Stream Reservation Protocol (part of IEEE802.1Qat):  AIEEE802.11-2016
-      .
+   Stream Reservation Protocol (part of IEEE802.1Qat):
+      AIEEE802.11-2016.
 
    Scheduled channel access:  IEEE802.11ad Enhancements for very high
       throughput in the 60 GHz band [IEEE80211ad].
@@ -385,13 +389,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                 [Page 7]
+Thubert, et al.         Expires 18 November 2020                [Page 7]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
 4.2.  802.11ax High Efficiency (HE)
@@ -440,16 +440,17 @@ Internet-Draft                  RAW Techs                   October 2019
    (e.g. 2 MHz) enabled by OFDMA also helps reduce noise power and
    improve SNR, leading to better packet error rate (PER) performance.
 
-   802.11ax supports beamforming as in 802.11ac, but introduces UL MU
 
 
 
 
-Thubert, et al.           Expires 12 April 2020                 [Page 8]
+
+Thubert, et al.         Expires 18 November 2020                [Page 8]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
+   802.11ax supports beamforming as in 802.11ac, but introduces UL MU
    MIMO, which helps improve reliability.  The UL MU MIMO capability is
    also enabled by the trigger based access operation in 802.11ax.
 
@@ -500,10 +501,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-
-Thubert, et al.           Expires 12 April 2020                 [Page 9]
+Thubert, et al.         Expires 18 November 2020                [Page 9]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    Existing traffic stream identification, configuration and admission
@@ -557,9 +557,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 10]
+Thubert, et al.         Expires 18 November 2020               [Page 10]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    1.  320MHz bandwidth and more efficient utilization of non-contiguous
@@ -613,9 +613,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 11]
+Thubert, et al.         Expires 18 November 2020               [Page 11]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
 4.3.2.2.  Multi-AP coordination
@@ -669,9 +669,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 12]
+Thubert, et al.         Expires 18 November 2020               [Page 12]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
 4.4.2.  Applicability to deterministic flows
@@ -725,9 +725,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 13]
+Thubert, et al.         Expires 18 November 2020               [Page 13]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    solution to establish end to end Tracks while meeting quality of
@@ -774,18 +774,21 @@ Internet-Draft                  RAW Techs                   October 2019
        Emerging Tel. Tech., 24: 458-475. doi:10.1002/ett.2650"
        [morell13].
 
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 14]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    3.  De Armas, J., Tuset, P., Chang, T., Adelantado, F., Watteyne, T.,
        Vilajosana, X. (2016, September).  Determinism through path
        diversity: Why packet replication makes sense.  In 2016
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 14]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
        International Conference on Intelligent Networking and
        Collaborative Systems (INCoS) (pp. 150-154).  IEEE. [dearmas16].
 
@@ -831,17 +834,17 @@ Internet-Draft                  RAW Techs                   October 2019
    This schedule represents the possible communications of a node with
    its neighbors, and is managed by a Scheduling Function such as the
    Minimal Scheduling Function (MSF) [I-D.ietf-6tisch-msf].  Each cell
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 15]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    in the schedule is identified by its slotoffset and channeloffset
    coordinates.  A cell's timeslot offset indicates its position in
    time, relative to the beginning of the slotframe.  A cell's channel
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 15]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    offset is an index which maps to a frequency at each iteration of the
    slotframe.  Each packet exchanged between neighbors happens within
    one cell.  The size of a cell is a timeslot duration, between 10 to
@@ -887,16 +890,16 @@ Internet-Draft                  RAW Techs                   October 2019
    so nodes in previous hops transmit their data before the next packet
    comes.  This provides a tight control to latency along a Track.
    Collision loss is avoided for best effort traffic by
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 16]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    overprovisionning resources, giving time to the management plane of
    the network to dedicate more resources if needed.
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 16]
-
-Internet-Draft                  RAW Techs                   October 2019
-
 
 5.2.2.1.  Centralized Path Computation
 
@@ -946,12 +949,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 17]
+Thubert, et al.         Expires 18 November 2020               [Page 17]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
                          Operational Control System and HMI
@@ -1005,9 +1005,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 18]
+Thubert, et al.         Expires 18 November 2020               [Page 18]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
                             (A)   (C)   (E)
@@ -1061,9 +1061,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 19]
+Thubert, et al.         Expires 18 November 2020               [Page 19]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    groups.  The semantics is that if the transmit (and respectively
@@ -1117,9 +1117,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 20]
+Thubert, et al.         Expires 18 November 2020               [Page 20]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    The energy that the device consumes in sleep, transmit and receive
@@ -1158,6 +1158,26 @@ Internet-Draft                  RAW Techs                   October 2019
    be fond in section "SlotFrames and Priorities" of
    [I-D.ietf-6tisch-architecture]
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 21]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    IEEE802.15.4 TSCH avoids contention on the medium by formatting time
    and frequencies in cells of transmission of equal duration.  In order
    to describe that formatting of time and frequencies, the 6TiSCH
@@ -1169,15 +1189,6 @@ Internet-Draft                  RAW Techs                   October 2019
    for that CDU matrix.  The size of a cell is a timeSlot duration, and
    values of 10 to 15 milliseconds are typical in 802.15.4 TSCH to
    accommodate for the transmission of a frame and an acknowledgement,
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 21]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    including the security validation on the receive side which may take
    up to a few milliseconds on some device architecture.
 
@@ -1214,6 +1225,15 @@ Internet-Draft                  RAW Techs                   October 2019
    timeSlots in the slotFrame are indexed by the SlotOffset; the first
    cell is at SlotOffset 0.
 
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 22]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    The 6TiSCH architecture introduces the concept of chunks
    ([I-D.ietf-6tisch-architecture]) to operate such spectrum
    distribution for a whole group of cells at a time.  The CDU matrix is
@@ -1221,18 +1241,6 @@ Internet-Draft                  RAW Techs                   October 2019
    chunk-ID, see Figure 5.  The PCE MUST compute the partitioning of CDU
    matrices into chunks and shared that knowledge with all the nodes in
    a 6TiSCH network.
-
-
-
-
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 22]
-
-Internet-Draft                  RAW Techs                   October 2019
-
 
                 +-----+-----+-----+-----+-----+-----+-----+     +-----+
    chan.Off. 0  |chnkA|chnkP|chnk7|chnkO|chnk2|chnkK|chnk1| ... |chnkZ|
@@ -1273,6 +1281,15 @@ Internet-Draft                  RAW Techs                   October 2019
    bundle of Tx Cells in a particular node is paired to a bundle of Rx
    Cells in the next hop node following a routing path.
 
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 23]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    Whereas scheduling ensures reliable delivery in bounded time along
    any Track, high availability requires the application of PAREO
    functions along a more complex DODAG Track structure.  A DODAG has
@@ -1282,14 +1299,6 @@ Internet-Draft                  RAW Techs                   October 2019
    the availability of the network as well as the packet delivery ratio.
    A Track may also branch off and rejoin, for the purpose of the so-
    called Packet Replication and Elimination (PRE), over non congruent
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 23]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    branches.  PRE may be used to complement layer-2 Automatic Repeat
    reQuest (ARQ) and receiver-end Ordering to form the PAREO functions.
    PAREO functions enable to meet industrial expectations in PDR within
@@ -1329,6 +1338,14 @@ Internet-Draft                  RAW Techs                   October 2019
    the IoT gateway, the Elimination function in the gateway ignores the
    extra packet and presents only one copy to upper layers.
 
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 24]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    At each 6TiSCH hop along the Track, the PCE may schedule more than
    one timeSlot for a packet, so as to support Layer-2 retries (ARQ).
    It is also possible that the field device only uses the second branch
@@ -1338,14 +1355,6 @@ Internet-Draft                  RAW Techs                   October 2019
    but is systematically multi-path.  This means that a Track is
    scheduled so as to ensure that each hop has at least two forwarding
    solutions, and the forwarding decision is to try the preferred one
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 24]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    and use the other in case of Layer-2 transmission failure as detected
    by ARQ.
 
@@ -1385,22 +1394,19 @@ Internet-Draft                  RAW Techs                   October 2019
       associated RESTful access methods (GET/PUT/POST/DELETE).  The
       payload (body) of the CoAP messages is encoded using the CBOR
       format.  The PCE commands are expected to be issued directly as
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 25]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
       CoAP requests or to be mapped back and forth into CoAP by a
       gateway function at the edge of the 6TiSCH network.  For instance,
       it is possible that a mapping entity on the backbone transforms a
       non-CoAP protocol such as PCEP into the RESTful interfaces that
       the 6TiSCH devices support.
-
-
-
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 25]
-
-Internet-Draft                  RAW Techs                   October 2019
-
 
 5.2.2.2.2.  Track Forwarding
 
@@ -1443,6 +1449,15 @@ Internet-Draft                  RAW Techs                   October 2019
    Track the short address for the destination of the frame is set to
    0xFFFF.
 
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 26]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    A Track is thus formed end-to-end as a succession of paired bundles,
    a receive bundle from the previous hop and a transmit bundle to the
    next hop along the Track, and a cell in such a bundle belongs to at
@@ -1450,14 +1465,6 @@ Internet-Draft                  RAW Techs                   October 2019
    effective channel of the cell is obtained by adding a pseudo-random
    number to the channelOffset of the cell, which results in a rotation
    of the frequency that used for transmission.  The bundles may be
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 26]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    computed so as to accommodate both variable rates and
    retransmissions, so they might not be fully used at a given iteration
    of the schedule.  The 6TiSCH architecture provides additional means
@@ -1500,19 +1507,14 @@ Internet-Draft                  RAW Techs                   October 2019
    bundle associated to the Track, with the destination MAC address set
    to broadcast.
 
-   There are 2 modes for a Track, transport mode and tunnel mode.
 
 
-
-
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 27]
+Thubert, et al.         Expires 18 November 2020               [Page 27]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
+
+   There are 2 modes for a Track, transport mode and tunnel mode.
 
 5.2.2.2.2.1.  Transport Mode
 
@@ -1563,11 +1565,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 28]
+Thubert, et al.         Expires 18 November 2020               [Page 28]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
       +--------------+
@@ -1621,9 +1621,9 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 29]
+Thubert, et al.         Expires 18 November 2020               [Page 29]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
    that injects a packet on a Track checks that the destination is
@@ -1649,9 +1649,833 @@ Internet-Draft                  RAW Techs                   October 2019
    [I-D.thubert-6lo-bier-dispatch] enables an efficient encoding of the
    BIER bitmap within the 6LoRH framework.
 
-6.  3GPP Ultra-Reliable Low-Latency Communication
+6.  5G
 
-   coming up
+6.1.  Provenance and Documents
+
+   The 3rd Generation Partnership Project (3GPP) incorporates many
+   companies whose business is related to cellular network operation as
+   well as network equipment and device manufacturing.  All generations
+   of 3GPP technologies provide scheduled wireless segments, primarily
+   in licensed spectrum which is beneficial for reliability and
+   availability.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 30]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   In 2016, the 3GPP started to design New Radio (NR) technology
+   belonging to the fifth generation (5G) of cellular networks.  NR has
+   been designed from the beginning to not only address enhanced Mobile
+   Broadband (eMBB) services for consumer devices such as smart phones
+   or tablets but is also tailored for future Internet of Things (IoT)
+   communication and connected cyber-physical systems.  In addition to
+   eMBB, requirement categories have been defined on Massive Machine-
+   Type Communication (M-MTC) for a large number of connected devices/
+   sensors, and Ultra-Reliable Low-Latency Communication (URLLC) for
+   connected control systems and critical communication as illustrated
+   in Figure 9.  It is the URLLC capabilities that make 5G a great
+   candidate for reliable low-latency communication.  With these three
+   corner stones, NR is a complete solution supporting the connectivity
+   needs of consumers, enterprises, and public sector for both wide area
+   and local area, e.g. indoor deployments.  A general overview of NR
+   can be found in [TS38300].
+
+                                enhanced
+                            Mobile Broadband
+                                   ^
+                                  / \
+                                 /   \
+                                /     \
+                               /       \
+                              /   5G    \
+                             /           \
+                            /             \
+                           /               \
+                          +-----------------+
+                       Massive          Ultra-Reliable
+                     Machine-Type        Low-Latency
+                    Communication       Communication
+
+                       Figure 9: 5G Application Areas
+
+   As a result of releasing the first NR specification in 2018 (Release
+   15), it has been proven by many companies that NR is a URLLC-capable
+   technology and can deliver data packets at 10^-5 packet error rate
+   within 1ms latency budget [TR37910].  Those evaluations were
+   consolidated and forwarded to ITU to be included in the [IMT2020]
+   work.
+
+   In order to understand communication requirements for automation in
+   vertical domains, 3GPP studied different use cases [TR22804] and
+   released technical specification with reliability, availability and
+   latency demands for a variety of applications [TS22104].
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 31]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   As an evolution of NR, multiple studies have been conducted in scope
+   of 3GPP Release 16 including the following two, focusing on radio
+   aspects:
+
+   1.  Study on physical layer enhancements for NR ultra-reliable and
+       low latency communication (URLLC) [TR38824].
+
+   2.  Study on NR industrial Internet of Things (I-IoT) [TR38825].
+
+
+   In addition, several enhancements have been done on system
+   architecture level which are reflected in System architecture for the
+   5G System (5GS) [TS23501].
+
+6.2.  General Characteristics
+
+   The 5G Radio Access Network (5G RAN) with its NR interface includes
+   several features to achieve Quality of Service (QoS), such as a
+   guaranteeably low latency or tolerable packet error rates for
+   selected data flows.  Determinism is achieved by centralized
+   admission control and scheduling of the wireless frequency resources,
+   which are typically licensed frequency bands assigned to a network
+   operator.
+
+   NR enables short transmission slots in a radio subframe, which
+   benefits low-latency applications.  NR also introduces mini-slots,
+   where prioritized transmissions can be started without waiting for
+   slot boundaries, further reducing latency.  As part of giving
+   priority and faster radio access to URLLC traffic, NR introduces
+   preemption where URLLC data transmission can preempt ongoing non-
+   URLLC transmissions.  Additionally, NR applies very fast processing,
+   enabling retransmissions even within short latency bounds.
+
+   NR defines extra-robust transmission modes for increased reliability
+   both for data and control radio channels.  Reliability is further
+   improved by various techniques, such as multi-antenna transmission,
+   the use of multiple frequency carriers in parallel and packet
+   duplication over independent radio links.  NR also provides full
+   mobility support, which is an important reliability aspect not only
+   for devices that are moving, but also for devices located in a
+   changing environment.
+
+   Network slicing is seen as one of the key features for 5G, allowing
+   vertical industries to take advantage of 5G networks and services.
+   Network slicing is about transforming a Public Land Mobile Network
+   (PLMN) from a single network to a network where logical partitions
+   are created, with appropriate network isolation, resources, optimized
+   topology and specific configuration to serve various service
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 32]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   requirements.  An operator can configure and manage the mobile
+   network to support various types of services enabled by 5G, for
+   example eMBB and URLLC, depending on the different customers' needs.
+
+   Exposure of capabilities of 5G Systems to the network or applications
+   outside the 3GPP domain have been added to Release 16 [TS23501].  Via
+   exposure interfaces, applications can access 5G capabilities, e.g.,
+   communication service monitoring and network maintenance.
+
+   For several generations of mobile networks, 3GPP has considered how
+   the communication system should work on a global scale with billions
+   of users, taking into account resilience aspects, privacy regulation,
+   protection of data, encryption, access and core network security, as
+   well as interconnect.  Security requirements evolve as demands on
+   trustworthiness increase.  For example, this has led to the
+   introduction of enhanced privacy protection features in 5G. 5G also
+   employs strong security algorithms, encryption of traffic, protection
+   of signaling and protection of interfaces.
+
+   One particular strength of mobile networks is the authentication,
+   based on well-proven algorithms and tightly coupled with a global
+   identity management infrastructure.  Since 3G, there is also mutual
+   authentication, allowing the network to authenticate the device and
+   the device to authenticate the network.  Another strength is secure
+   solutions for storage and distribution of keys fulfilling regulatory
+   requirements and allowing international roaming.  When connecting to
+   5G, the user meets the entire communication system, where security is
+   the result of standardization, product security, deployment,
+   operations and management as well as incident handling capabilities.
+   The mobile networks approach the entirety in a rather coordinated
+   fashion which is beneficial for security.
+
+6.3.  Deployment and Spectrum
+
+   The 5G system allows deployment in a vast spectrum range, addressing
+   use-cases in both wide-area as well as local networks.  Furthermore,
+   5G can be configured for public and non-public access.
+
+   When it comes to spectrum, NR allows combining the merits of many
+   frequency bands, such as the high bandwidths in millimeter Waves
+   (mmW) for extreme capacity locally, as well as the broad coverage
+   when using mid- and low frequency bands to address wide-area
+   scenarios.  URLLC is achievable in all these bands.  Spectrum can be
+   either licensed, which means that the license holder is the only
+   authorized user of that spectrum range, or unlicensed, which means
+   that anyone who wants to use the spectrum can do so.
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 33]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   A prerequisite for critical communication is performance
+   predictability, which can be achieved by the full control of the
+   access to the spectrum, which 5G provides.  Licensed spectrum
+   guarantees control over spectrum usage by the system, making it a
+   preferable option for critical communication.  However, unlicensed
+   spectrum can provide an additional resource for scaling non-critical
+   communications.  While NR is initially developed for usage of
+   licensed spectrum, the functionality to access also unlicensed
+   spectrum was introduced in 3GPP Release 16.
+
+   Licensed spectrum dedicated to mobile communications has been
+   allocated to mobile service providers, i.e. issued as longer-term
+   licenses by national administrations around the world.  These
+   licenses have often been associated with coverage requirements and
+   issued across whole countries, or in large regions.  Besides this,
+   configured as a non-public network (NPN) deployment, 5G can provide
+   network services also to a non-operator defined organization and its
+   premises such as a factory deployment.  By this isolation, quality of
+   service requirements, as well as security requirements can be
+   achieved.  An integration with a public network, if required, is also
+   possible.  The non-public (local) network can thus be interconnected
+   with a public network, allowing devices to roam between the networks.
+
+   In an alternative model, some countries are now in the process of
+   allocating parts of the 5G spectrum for local use to industries.
+   These non-service providers then have a choice of applying for a
+   local license themselves and operating their own network or
+   cooperating with a public network operator or service provider.
+
+6.4.  Applicability to Deterministic Flows
+
+6.4.1.  System Architecture
+
+   The 5G system [TS23501] consists of the User Equipment (UE) at the
+   terminal side, and the Radio Access Network (RAN) with the gNB as
+   radio base station node, as well as the Core Network (CN).  The core
+   network is based on a service-based architecture with the central
+   functions: Access and Mobility Management Function (AMF), Session
+   Management Function (SMF) and User Plane Function (UPF) as
+   illustrated in Figure 10.
+
+   The gNB's main responsibility is the radio resource management,
+   including admission control and scheduling, mobility control and
+   radio measurement handling.  The AMF handles the UE's connection
+   status and security, while the SMF controls the UE's data sessions.
+   The UPF handles the user plane traffic.
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 34]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   The SMF can instantiate various Packet Data Unit (PDU) sessions for
+   the UE, each associated with a set of QoS flows, i.e., with different
+   QoS profiles.  Segregation of those sessions is also possible, e.g.,
+   resource isolation in the RAN and in the CN can be defined (slicing).
+
+             +----+  +---+   +---+    +---+    +---+   +---+
+             |NSSF|  |NEF|   |NRF|    |PCF|    |UDM|   |AF |
+             +--+-+  +-+-+   +-+-+    +-+-+    +-+-+   +-+-+
+                |      |       |        |        |       |
+           Nnssf|  Nnef|   Nnrf|    Npcf|    Nudm|    Naf|
+                |      |       |        |        |       |
+             ---+------+-+-----+-+------------+--+-----+-+---
+                         |       |            |         |
+                    Nausf|  Nausf|        Nsmf|         |
+                         |       |            |         |
+                      +--+-+   +-+-+        +-+-+     +-+-+
+                      |AUSF|   |AMF|        |SMF|     |SCP|
+                      +----+   +++-+        +-+-+     +---+
+                               / |            |
+                              /  |            |
+                             /   |            |
+                            N1   N2           N4
+                           /     |            |
+                          /      |            |
+                         /       |            |
+                     +--+-+   +--+--+      +--+---+      +----+
+                     | UE +---+(R)AN+--N3--+ UPF  +--N6--+ DN |
+                     +----+   +-----+      ++----++      +----+
+                                            |    |
+                                            +-N9-+
+
+                     Figure 10: 5G System Architecture
+
+   To allow UE mobility across cells/gNBs, handover mechanisms are
+   supported in NR.  For an established connection, i.e., connected mode
+   mobility, a gNB can configure a UE to report measurements of received
+   signal strength and quality of its own and neighbouring cells,
+   periodically or event-based.  Based on these measurement reports, the
+   gNB decides to handover a UE to another target cell/gNB.  Before
+   triggering the handover, it is hand-shaked with the target gNB based
+   on network signalling.  A handover command is then sent to the UE and
+   the UE switches its connection to the target cell/gNB.  The Packet
+   Data Convergence Protocol (PDCP) of the UE can be configured to avoid
+   data loss in this procedure, i.e., handle retransmissions if needed.
+   Data forwarding is possible between source and target gNB as well.
+   To improve the mobility performance further, i.e., to avoid
+   connection failures, e.g., due to too-late handovers, the mechanism
+   of conditional handover is introduced in Release 16 specifications.
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 35]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   Therein a conditional handover command, defining a triggering point,
+   can be sent to the UE before UE enters a handover situation.  A
+   further improvement introduced in Release 16 is the Dual Active
+   Protocol Stack (DAPS), where the UE maintains the connection to the
+   source cell while connecting to the target cell.  This way, potential
+   interruptions in packet delivery can be avoided entirely.
+
+6.4.2.  Overview of The Radio Protocol Stack
+
+   The protocol architecture for NR consists of the L1 Physical layer
+   (PHY) and as part of the L2, the sublayers of Medium Access Control
+   (MAC), Radio Link Control (RLC), Packet Data Convergence Protocol
+   (PDCP), as well as the Service Data Adaption Protocol (SDAP).
+
+   The PHY layer handles signal processing related actions, such as
+   encoding/decoding of data and control bits, modulation, antenna
+   precoding and mapping.
+
+   The MAC sub-layer handles multiplexing and priority handling of
+   logical channels (associated with QoS flows) to transport blocks for
+   PHY transmission, as well as scheduling information reporting and
+   error correction through Hybrid Automated Repeat Request (HARQ).
+
+   The RLC sublayer handles sequence numbering of higher layer packets,
+   retransmissions through Automated Repeat Request (ARQ), if
+   configured, as well as segmentation and reassembly and duplicate
+   detection.
+
+   The PDCP sublayer consists of functionalities for ciphering/
+   deciphering, integrity protection/verification, re-ordering and in-
+   order delivery, duplication and duplicate handling for higher layer
+   packets, and acts as the anchor protocol to support handovers.
+
+   The SDAP sublayer provides services to map QoS flows, as established
+   by the 5G core network, to data radio bearers (associated with
+   logical channels), as used in the 5G RAN.
+
+   Additionally, in RAN, the Radio Resource Control (RRC) protocol,
+   handles the access control and configuration signalling for the
+   aforementioned protocol layers.  RRC messages are considered L3 and
+   thus transmitted also via those radio protocol layers.
+
+   To provide low latency and high reliability for one transmission
+   link, i.e., to transport data (or control signaling) of one radio
+   bearer via one carrier, several features have been introduced on the
+   user plane protocols for PHY and L2, as explained in the following.
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 36]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+6.4.3.  Radio (PHY)
+
+   NR is designed with native support of antenna arrays utilizing
+   benefits from beamforming, transmissions over multiple MIMO layers
+   and advanced receiver algorithms allowing effective interference
+   cancellation.  Those antenna techniques are the basis for high signal
+   quality and effectiveness of spectral usage.  Spatial diversity with
+   up to 4 MIMO layers in UL and up to 8 MIMO layers in DL is supported.
+   Together with spatial-domain multiplexing, antenna arrays can focus
+   power in desired direction to form beams.  NR supports beam
+   management mechanisms to find the best suitable beam for UE initially
+   and when it is moving.  In addition, gNBs can coordinate their
+   respective DL and UL transmissions over the backhaul network keeping
+   interference reasonably low, and even make transmissions or
+   receptions from multiple points (multi-TRP).  Multi-TRP can be used
+   for repetition of data packet in time, in frequency or over multiple
+   MIMO layers which can improve reliability even further.
+
+   Any downlink transmission to a UE starts from resource allocation
+   signaling over the Physical Downlink Control Channel (PDCCH).  If it
+   is successfully received, the UE will know about the scheduled
+   transmission and may receive data over the Physical Downlink Shared
+   Channel (PDSCH).  If retransmission is required according to the HARQ
+   scheme, a signaling of negative acknowledgement (NACK) on the
+   Physical Uplink Control Channel (PUCCH) is involved and PDCCH
+   together with PDSCH transmissions (possibly with additional
+   redundancy bits) are transmitted and soft-combined with previously
+   received bits.  Otherwise, if no valid control signaling for
+   scheduling data is received, nothing is transmitted on PUCCH
+   (discontinuous transmission - DTX),and the base station upon
+   detecting DTX will retransmit the initial data.
+
+   An uplink transmission normally starts from a Scheduling Request (SR)
+   - a signaling message from the UE to the base station sent via PUCCH.
+   Once the scheduler is informed about buffer data in UE, e.g., by SR,
+   the UE transmits a data packet on the Physical Uplink Shared Channel
+   (PUSCH).  Pre-scheduling not relying on SR is also possible (see
+   following section).
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 37]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   Since transmission of data packets require usage of control and data
+   channels, there are several methods to maintain the needed
+   reliability.  NR uses Low Density Parity Check (LDPC) codes for data
+   channels, Polar codes for PDCCH, as well as orthogonal sequences and
+   Polar codes for PUCCH.  For ultra-reliability of data channels, very
+   robust (low spectral efficiency) Modulation and Coding Scheme (MCS)
+   tables are introduced containing very low (down to 1/20) LDPC code
+   rates using BPSK or QPSK.  Also, PDCCH and PUCCH channels support
+   multiple code rates including very low ones for the channel
+   robustness.
+
+   A connected UE reports downlink (DL) quality to gNB by sending
+   Channel State Information (CSI) reports via PUCCH while uplink (UL)
+   quality is measured directly at gNB.  For both uplink and downlink,
+   gNB selects the desired MCS number and signals it to the UE by
+   Downlink Control Information (DCI) via PDCCH channel.  For URLLC
+   services, the UE can assist the gNB by advising that MCS targeting
+   10^-5 Block Error Rate (BLER) are used.  Robust link adaptation
+   algorithms can maintain the needed level of reliability considering a
+   given latency bound.
+
+   Low latency on the physical layer is provided by short transmission
+   duration which is possible by using high Subcarrier Spacing (SCS) and
+   the allocation of only one or a few Orthogonal Frequency Division
+   Multiplexing (OFDM) symbols.  For example, the shortest latency for
+   the worst case in DL can be 0.23ms and in UL can be 0.24ms according
+   to (section 5.7.1 in [TR37910]).  Moreover, if the initial
+   transmission has failed, HARQ feedback can quickly be provided and an
+   HARQ retransmission is scheduled.
+
+   Dynamic multiplexing of data associated with different services is
+   highly desirable for efficient use of system resources and to
+   maximize system capacity.  Assignment of resources for eMBB is
+   usually done with regular (longer) transmission slots, which can lead
+   to blocking of low latency services.  To overcome the blocking, eMBB
+   resources can be pre-empted and re-assigned to URLLC services.  In
+   this way, spectrally efficient assignments for eMBB can be ensured
+   while providing flexibility required to ensure a bounded latency for
+   URLLC services.  In downlink, the gNB can notify the eMBB UE about
+   pre-emption after it has happened, while in uplink there are two pre-
+   emption mechanisms: special signaling to cancel eMBB transmission and
+   URLLC dynamic power boost to suppress eMBB transmission.
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 38]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+6.4.4.  Scheduling and QoS (MAC)
+
+   One integral part of the 5G system is the Quality of Service (QoS)
+   framework [TS23501].  QoS flows are setup by the 5G system for
+   certain IP or Ethernet packet flows, so that packets of each flow
+   receive the same forwarding treatment, i.e., in scheduling and
+   admission control.  QoS flows can for example be associated with
+   different priority level, packet delay budgets and tolerable packet
+   error rates.  Since radio resources are centrally scheduled in NR,
+   the admission control function can ensure that only those QoS flows
+   are admitted for which QoS targets can be reached.
+
+   NR transmissions in both UL and DL are scheduled by the gNB
+   [TS38300].  This ensures radio resource efficiency, fairness in
+   resource usage of the users and enables differentiated treatment of
+   the data flows of the users according to the QoS targets of the
+   flows.  Those QoS flows are handled as data radio bearers or logical
+   channels in NR RAN scheduling.
+
+   The gNB can dynamically assign DL and UL radio resources to users,
+   indicating the resources as DL assignments or UL grants via control
+   channel to the UE.  Radio resources are defined as blocks of OFDM
+   symbols in spectral domain and time domain.  Different lengths are
+   supported in time domain, i.e., (multiple) slot or mini-slot lengths.
+   Resources of multiple frequency carriers can be aggregated and
+   jointly scheduled to the UE.
+
+   Scheduling decisions are based, e.g., on channel quality measured on
+   reference signals and reported by the UE (cf. periodical CSI reports
+   for DL channel quality).  The transmission reliability can be chosen
+   in the scheduling algorithm, i.e., by link adaptation where an
+   appropriate transmission format (e.g., robustness of modulation and
+   coding scheme, controlled UL power) is selected for the radio channel
+   condition of the UE.  Retransmissions, based on HARQ feedback, are
+   also controlled by the scheduler.  If needed to avoid HARQ round-trip
+   time delays, repeated transmissions can be also scheduled beforehand,
+   to the cost of reduced spectral efficiency.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 39]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   In dynamic DL scheduling, transmission can be initiated immediately
+   when DL data becomes available in the gNB.  However, for dynamic UL
+   scheduling, when data becomes available but no UL resources are
+   available yet, the UE indicates the need for UL resources to the gNB
+   via a (single bit) scheduling request message in the UL control
+   channel.  When thereupon UL resources are scheduled to the UE, the UE
+   can transmit its data and may include a buffer status report,
+   indicating the exact amount of data per logical channel still left to
+   be sent.  More UL resources may be scheduled accordingly.  To avoid
+   the latency introduced in the scheduling request loop, UL radio
+   resources can also be pre-scheduled.
+
+   In particular for periodical traffic patterns, the pre-scheduling can
+   rely on the scheduling features DL Semi-Persistent Scheduling (SPS)
+   and UL Configured Grant (CG).  With these features, periodically
+   recurring resources can be assigned in DL and UL.  Multiple parallels
+   of those configurations are supported, in order to serve multiple
+   parallel traffic flows of the same UE.
+
+   To support QoS enforcement in the case of mixed traffic with
+   different QoS requirements, several features have recently been
+   introduced.  This way, e.g., different periodical critical QoS flows
+   can be served together with best effort transmissions, by the same
+   UE.  Among others, these features (partly Release 16) are: 1) UL
+   logical channel transmission restrictions allowing to map logical
+   channels of certain QoS only to intended UL resources of a certain
+   frequency carrier, slot-length, or CG configuration, and 2) intra-UE
+   pre-emption, allowing critical UL transmissions to pre-empt non-
+   critical transmissions.
+
+   When multiple frequency carriers are aggregated, duplicate parallel
+   transmissions can be employed (beside repeated transmissions on one
+   carrier).  This is possible in the Carrier Aggregation (CA)
+   architecture where those carriers originate from the same gNB, or in
+   the Dual Connectivity (DC) architecture where the carriers originate
+   from different gNBs, i.e., the UE is connected to two gNBs in this
+   case.  In both cases, transmission reliability is improved by this
+   means of providing frequency diversity.
+
+   In addition to licensed spectrum, a 5G system can also utilize
+   unlicensed spectrum to offload non-critical traffic.  This version of
+   NR is called NR-U, part of 3GPP Release 16.  The central scheduling
+   approach applies also for unlicensed radio resources, but in addition
+   also the mandatory channel access mechanisms for unlicensed spectrum,
+   e.g., Listen Before Talk (LBT) are supported in NR-U.  This way, by
+   using NR, operators have and can control access to both licensed and
+   unlicensed frequency resources.
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 40]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+6.4.5.  Time-Sensitive Networking (TSN) Integration
+
+   The main objective of Time-Sensitive Networking (TSN) is to provide
+   guaranteed data delivery within a guaranteed time window, i.e.,
+   bounded low latency.  IEEE 802.1 TSN [IEEE802.1TSN] is a set of open
+   standards that provide features to enable deterministic communication
+   on standard IEEE 802.3 Ethernet [IEEE802.3].  TSN standards can be
+   seen as a toolbox for traffic shaping, resource management, time
+   synchronization, and reliability.
+
+   A TSN stream is a data flow between one end station (Talker) to
+   another end station (Listener).  In the centralized configuration
+   model, TSN bridges are configured by the Central Network Controller
+   (CNC) [IEEE802.1Qcc] to provide deterministic connectivity for the
+   TSN stream through the network.  Time-based traffic shaping provided
+   by Scheduled Traffic [IEEE802.1Qbv] may be used to achieve bounded
+   low latency.  The TSN tool for time synchronization is the
+   generalized Precision Time Protocol (gPTP) [IEEE802.1AS]), which
+   provides reliable time synchronization that can be used by end
+   stations and by other TSN tools, e.g., Scheduled Traffic
+   [IEEE802.1Qbv].  High availability, as a result of ultra-reliability,
+   is provided for data flows by the Frame Replication and Elimination
+   for Reliability (FRER) [IEEE802.1CB] mechanism.
+
+   3GPP Release 16 includes integration of 5G with TSN, i.e., specifies
+   functions for the 5G System (5GS) to deliver TSN streams such that
+   the meet their QoS requirements.  A key aspect of the integration is
+   the 5GS appears from the rest of the network as a set of TSN bridges,
+   in particular, one virtual bridge per User Plane Function (UPF) on
+   the user plane.  The 5GS includes TSN Translator (TT) functionality
+   for the adaptation of the 5GS to the TSN bridged network and for
+   hiding the 5GS internal procedures.  The 5GS provides the following
+   components:
+
+   1.  interface to TSN controller, as per [IEEE802.1Qcc] for the fully
+       centralized configuration model
+
+   2.  time synchronization via reception and transmission of gPTP PDUs
+       [IEEE802.1AS]
+
+   3.  low latency, hence, can be integrated with Scheduled Traffic
+       [IEEE802.1Qbv]
+
+   4.  reliability, hence, can be integrated with FRER [IEEE802.1CB]
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 41]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   Figure 10 shows an illustration of 5G-TSN integration where an
+   industrial controller (Ind Ctrlr) is connected to industrial Input/
+   Output devices (I/O dev) via 5G.  The 5GS can directly transport
+   Ethernet frames since Release 15, thus, end-to-end Ethernet
+   connectivity is provided.  The 5GS implements the required interfaces
+   towards the TSN controller functions such as the CNC, thus adapts to
+   the settings of the TSN network.  A 5G user plane virtual bridge
+   interconnects TSN bridges or connect end stations, e.g., I/O devices
+   to the network.  Note that the introduction of 5G brings flexibility
+   in various aspects, e.g., more flexible network topology because a
+   wireless hop can replace several wireline hops thus significantly
+   reduce the number of hops end-to-end.  [ETR5GTSN] dives more into the
+   integration of 5G with TSN.
+
+                    +------------------------------+
+                    | 5G System                    |
+                    |                         +---+|
+                    |     +-+ +-+ +-+ +-+ +-+ |TSN||
+                    |     | | | | | | | | | | |AF |......+
+                    |     +++ +++ +++ +++ +++ +-+-+|     .
+                    |      |   |   |   |   |    |  |     .
+                    |     -+---+---++--+-+-+--+-+- |     .
+                    |          |    |    |    |    |  +--+--+
+                    |         +++  +++  +++  +++   |  | TSN |
+                    |         | |  | |  | |  | |   |  |Ctrlr+.......+
+                    |         +++  +++  +++  +++   |  +--+--+       .
+                    |                              |     .          .
+                    |                              |     .          .
+                    | +..........................+ |     .          .
+                    | .      Virtual Bridge      . |     .          .
+   +---+            | . +--+--+   +---+ +---+--+ . |  +--+---+      .
+   |I/O+----------------+DS|UE+---+RAN+-+UPF|NW+------+ TSN  +----+ .
+   |dev|            | . |TT|  |   |   | |   |TT| . |  |bridge|    | .
+   +---+            | . +--+--+   +---+ +---+--+ . |  +------+    | .
+                    | +..........................+ |     .      +-+-+-+
+                    |                              |     .      | Ind |
+                    | +..........................+ |     .      |Ctrlr|
+                    | .      Virtual Bridge      . |     .      +-+---+
+   +---+  +------+  | . +--+--+   +---+ +---+--+ . |  +--+---+    |
+   |I/O+--+ TSN  +------+DS|UE+---+RAN+-+UPF|NW+------+ TSN  +----+
+   |dev|  |bridge|  | . |TT|  |   |   | |   |TT| . |  |bridge|
+   +---+  +------+  | . +--+--+   +---+ +---+--+ . |  +------+
+                    | +..........................+ |
+                    +------------------------------+
+
+       <----------------- end-to-end Ethernet ------------------->
+
+                      Figure 11: 5G - TSN Integration
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 42]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   NR supports accurate reference time synchronization in 1us accuracy
+   level.  Since NR is a scheduled system, an NR UE and a gNB are
+   tightly synchronized to their OFDM symbol structures.  A 5G internal
+   reference time can be provided to the UE via broadcast or unicast
+   signaling, associating a known OFDM symbol to this reference clock.
+   The 5G internal reference time can be shared within the 5G network,
+   i.e., radio and core network components.  For the interworking with
+   gPTP for multiple time domains, the 5GS acts as a virtual gPTP time-
+   aware system and supports the forwarding of gPTP time synchronization
+   information between end stations and bridges through the 5G user
+   plane TTs.  These account for the residence time of the 5GS in the
+   time synchronization procedure.  One special option is when the 5GS
+   internal reference time in not only used within the 5GS, but also to
+   the rest of the devices in the deployment, including connected TSN
+   bridges and end stations.
+
+   Redundancy architectures were specified in order to provide
+   reliability against any kind of failure on the radio link or nodes in
+   the RAN and the core network, Redundant user plane paths can be
+   provided based on the dual connectivity architecture, where the UE
+   sets up two PDU sessions towards the same data network, and the 5G
+   system makes the paths of the two PDU sessions independent as
+   illustrated in Figure 13.  There are two PDU sessions involved in the
+   solution: the first spans from the UE via gNB1 to UPF1, acting as the
+   first PDU session anchor, while the second spans from the UE via gNB2
+   to UPF2, acting as second the PDU session anchor.  The independent
+   paths may continue beyond the 3GPP network.  Redundancy Handling
+   Functions (RHFs) are deployed outside of the 5GS, i.e., in Host A
+   (the device) and in Host B (the network).  RHF can implement
+   replication and elimination functions as per [IEEE802.1CB] or the
+   Packet Replication, Elimination, and Ordering Functions (PREOF) of
+   IETF Deterministic Networking (DetNet) [RFC8655].
+
+              +........+
+              . Device . +------+      +------+      +------+
+              .        . + gNB1 +--N3--+ UPF1 |--N6--+      |
+              .        ./+------+      +------+      |      |
+              . +----+ /                             |      |
+              . |    |/.                             |      |
+              . | UE + .                             |  DN  |
+              . |    |\.                             |      |
+              . +----+ \                             |      |
+              .        .\+------+      +------+      |      |
+              +........+ + gNB2 +--N3--+ UPF2 |--N6--+      |
+                         +------+      +------+      +------+
+
+                   Figure 12: Reliability with Single UE
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 43]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   An alternative solution is that multiple UEs per device are used for
+   user plane redundancy as illustrated in Figure 13.  Each UE sets up a
+   PDU session.  The 5GS ensures that those PDU sessions of the
+   different UEs are handled independently internal to the 5GS.  There
+   is no single point of failure in this solution, which also includes
+   RHF outside of the 5G system, e.g., as per FRER or as PREOF
+   specifications.
+
+             +.........+
+             .  Device .
+             .         .
+             . +----+  .  +------+      +------+      +------+
+             . | UE +-----+ gNB1 +--N3--+ UPF1 |--N6--+      |
+             . +----+  .  +------+      +------+      |      |
+             .         .                              |  DN  |
+             . +----+  .  +------+      +------+      |      |
+             . | UE +-----+ gNB2 +--N3--+ UPF2 |--N6--+      |
+             . +----+  .  +------+      +------+      +------+
+             .         .
+             +.........+
+
+                    Figure 13: Reliability with Dual UE
+
+   Note that the abstraction provided by the RHF and the location of the
+   RHF being outside of the 5G system make 5G equally supporting
+   integration for reliability both with FRER of TSN and PREOF of DetNet
+   as they both rely on the same concept.
+
+   Note also that TSN is the primary subnetwork technology for DetNet.
+   Thus, the DetNet over TSN work, e.g., [I-D.ietf-detnet-ip-over-tsn],
+   can be leveraged via the TSN support built in 5G.
+
+6.5.  Summary
+
+   5G technology enables deterministic communication.  Based on the
+   centralized admission control and the scheduling of the wireless
+   resources, licensed or unlicensed, quality of service such as latency
+   and reliability can be guaranteed. 5G contains several features to
+   achieve ultra-reliable and low latency performance, e.g., support for
+   different OFDM numerologies and slot-durations, as well as fast
+   processing capabilities and redundancy techniques that lead to
+   achievable latency numbers of below 1ms with reliability guarantees
+   up to 99.999%.
+
+   5G also includes features to support Industrial IoT use cases, e.g.,
+   via the integration of 5G with TSN.  This includes 5G capabilities
+   for each TSN component, latency, resource management, time
+   synchronization, and reliability.  Furthermore, 5G support for TSN
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 44]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   can be leveraged when 5G is used as subnet technology for DetNet, in
+   combination with or instead of TSN, which is the primary subnet for
+   DetNet.  In addition, the support for integration with TSN
+   reliability was added to 5G by making DetNet reliability also
+   applicable, thus making 5G DetNet ready.  Moreover, providing IP
+   service is native to 5G.
+
+   Overall, 5G provides scheduled wireless segments with high
+   reliability and availability.  In addition, 5G includes capabilities
+   for integration to IP networks.
 
 7.  L-band Digital Aeronautical Communications System
 
@@ -1674,14 +2498,6 @@ Internet-Draft                  RAW Techs                   October 2019
    ground communication related to the safety and regularity of the
    flight.  The particular challenge is that no new frequencies can be
    made available for terrestrial aeronautical communication.  It was
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 30]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    thus necessary to develop procedures to enable the operation of LDACS
    in parallel with other services in the same frequency band.
 
@@ -1698,6 +2514,13 @@ Internet-Draft                  RAW Techs                   October 2019
    LDACS with legacy systems operating in the L-band [SAJ14]; and the
    overall system performance was analyzed by computer simulations,
    indicating that LDACS can fulfil the identified requirements [GRA11].
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 45]
+
+Internet-Draft                  RAW Techs                       May 2020
+
 
    LDACS standardization within the framework of the International Civil
    Aviation Organization (ICAO) started in December 2016.  The ICAO
@@ -1725,19 +2548,6 @@ Internet-Draft                  RAW Techs                   October 2019
    evaluated in flight trials confirming the theoretical results
    predicting the system performance [GRA18][SCH19].
 
-
-
-
-
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 31]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
 7.2.  General Characteristics
 
    LDACS will become one of several wireless access networks connecting
@@ -1760,6 +2570,14 @@ Internet-Draft                  RAW Techs                   October 2019
    link use a 500 kHz channel each.  The ground-station transmits a
    continuous stream of OFDM symbols on the forward link.  In the
    reverse link different aircraft are separated in time and frequency
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 46]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    using a combination of Orthogonal Frequency-Division Multiple-Access
    (OFDMA) and Time-Division Multiple-Access (TDMA).  Aircraft thus
    transmit discontinuously on the reverse link with radio bursts sent
@@ -1785,15 +2603,6 @@ Internet-Draft                  RAW Techs                   October 2019
    should be expected for initial deployment i.e. 315/294 kbit/s on the
    forward/reverse link, respectively.
 
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 32]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    Since LDACS has been mainly designed for air traffic management
    communication it supports mutual entity authentication, integrity and
    confidentiality capabilities of user data messages and some control
@@ -1817,6 +2626,14 @@ Internet-Draft                  RAW Techs                   October 2019
    LDACS has two mechanisms to request resources from the scheduler in
    the ground-station.  Resources can either be requested "on demand"
    with a given class of service.  On the forward link, this is done
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 47]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    locally in the ground-station, on the reverse link a dedicated
    contention-free control channel is used (Dedicated Control Channel
    (DCCH); roughly 83 bit every 60 ms).  A resource allocation is always
@@ -1842,14 +2659,6 @@ Internet-Draft                  RAW Techs                   October 2019
    any case.  Scheduling of reverse link resources is done in physical
    Protocol Data Units (PDU) of 112 bit (or larger if more aggressive
    coding and modulation is used).  Scheduling on the forward link is
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 33]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    done Byte-wise since the forward link is transmitted continuously by
    the ground-station.
 
@@ -1874,9 +2683,19 @@ Internet-Draft                  RAW Techs                   October 2019
 
    Georgios Z.  Papadopoulos:  Contributed to the TSCH section.
 
-   Nils Maeurer:  Contributed to the LDACS section.
 
-   Thomas Graeupl:  Contributed to the LDACS section.
+
+Thubert, et al.         Expires 18 November 2020               [Page 48]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   Nils M&#228;urer:  Contributed to the LDACS section.
+
+   Thomas Gr&#228;upl:  Contributed to the LDACS section.
+
+   Janos Farkas, Torsten Dudda, Alexey Shapin, and Sara Sandberg:
+      Contributed to the 5G section.
 
 
 11.  Acknowledgments
@@ -1886,255 +2705,46 @@ Internet-Draft                  RAW Techs                   October 2019
 
 12.  Normative References
 
-   [I-D.ietf-6tisch-architecture]
-              Thubert, P., "An Architecture for IPv6 over the TSCH mode
-              of IEEE 802.15.4", Work in Progress, Internet-Draft,
-              draft-ietf-6tisch-architecture-26, 27 August 2019,
-              <https://tools.ietf.org/html/draft-ietf-6tisch-
-              architecture-26>.
-
-   [I-D.ietf-detnet-architecture]
-              Finn, N., Thubert, P., Varga, B., and J. Farkas,
-              "Deterministic Networking Architecture", Work in Progress,
-              Internet-Draft, draft-ietf-detnet-architecture-13, 6 May
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 34]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
-              2019, <https://tools.ietf.org/html/draft-ietf-detnet-
-              architecture-13>.
-
-   [RFC5673]  Pister, K., Ed., Thubert, P., Ed., Dwars, S., and T.
-              Phinney, "Industrial Routing Requirements in Low-Power and
-              Lossy Networks", RFC 5673, DOI 10.17487/RFC5673, October
-              2009, <https://www.rfc-editor.org/info/rfc5673>.
+   [RFC8480]  Wang, Q., Ed., Vilajosana, X., and T. Watteyne, "6TiSCH
+              Operation Sublayer (6top) Protocol (6P)", RFC 8480,
+              DOI 10.17487/RFC8480, November 2018,
+              <https://www.rfc-editor.org/info/rfc8480>.
 
    [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
               (IPv6) Specification", STD 86, RFC 8200,
               DOI 10.17487/RFC8200, July 2017,
               <https://www.rfc-editor.org/info/rfc8200>.
 
-   [RFC8480]  Wang, Q., Ed., Vilajosana, X., and T. Watteyne, "6TiSCH
-              Operation Sublayer (6top) Protocol (6P)", RFC 8480,
-              DOI 10.17487/RFC8480, November 2018,
-              <https://www.rfc-editor.org/info/rfc8480>.
+   [RFC5673]  Pister, K., Ed., Thubert, P., Ed., Dwars, S., and T.
+              Phinney, "Industrial Routing Requirements in Low-Power and
+              Lossy Networks", RFC 5673, DOI 10.17487/RFC5673, October
+              2009, <https://www.rfc-editor.org/info/rfc5673>.
+
+   [I-D.ietf-detnet-architecture]
+              Finn, N., Thubert, P., Varga, B., and J. Farkas,
+              "Deterministic Networking Architecture", Work in Progress,
+              Internet-Draft, draft-ietf-detnet-architecture-13, 6 May
+              2019, <https://tools.ietf.org/html/draft-ietf-detnet-
+              architecture-13>.
+
+   [I-D.ietf-6tisch-architecture]
+              Thubert, P., "An Architecture for IPv6 over the TSCH mode
+              of IEEE 802.15.4", Work in Progress, Internet-Draft,
+              draft-ietf-6tisch-architecture-28, 29 October 2019,
+              <https://tools.ietf.org/html/draft-ietf-6tisch-
+              architecture-28>.
 
 13.  Informative References
 
-   [Cavalcanti_2019]
-              Dave Cavalcanti et al., "Extending Time Distribution and
-              Timeliness Capabilities over the Air to Enable Future
-              Wireless Industrial Automation Systems, the Proceedings of
-              IEEE", June 2019.
-
-   [CCAMP]    IETF, "Common Control and Measurement Plane", October
-              2019,
-              <https://dataTracker.ietf.org/doc/charter-ietf-ccamp/>.
-
-   [dearmas16]
-              Jesica de Armas et al., "Determinism through path
-              diversity: Why packet replication makes sense", September
-              2016.
-
-   [Ghasempour_2017]
-              Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
-              GHz Communications for 100 Gb/s Wi-Fi", December 2017.
-
-   [GRA11]    Gräupl, T. and M. Ehammer, "L-DACS1 Data Link Layer
-              Evolution of ATN/IPS", Proceedings of the 30th IEEE/AIAA
-              Digital Avionics Systems Conference (DASC) Seattle, WA,
-              USA, October 2011.
-
-   [GRA18]    al., T. G. E., "L-band Digital Aeronautical Communications
-              System (LDACS) flight trials in the national German
-              project MICONAV", Proceedings of the Integrated
 
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 35]
+
+Thubert, et al.         Expires 18 November 2020               [Page 49]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
-
-              Communications, Navigation, Surveillance Conference
-              (ICNS) Herndon, VA, USA, April 2018.
-
-   [GRA19]    Gräupl, T., Rihacek, C., and B. Haindl, "LDACS A/G
-              Specification", SESAR2020 PJ14-02-01 D3.3.010, February
-              2019.
-
-   [I-D.ietf-6tisch-coap]
-              Sudhaakar, R. and P. Zand, "6TiSCH Resource Management and
-              Interaction using CoAP", Work in Progress, Internet-Draft,
-              draft-ietf-6tisch-coap-03, 9 March 2015,
-              <https://tools.ietf.org/html/draft-ietf-6tisch-coap-03>.
-
-   [I-D.ietf-6tisch-msf]
-              Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
-              D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
-              Work in Progress, Internet-Draft, draft-ietf-6tisch-msf-
-              06, 12 August 2019,
-              <https://tools.ietf.org/html/draft-ietf-6tisch-msf-06>.
-
-   [I-D.ietf-bier-te-arch]
-              Eckert, T., Cauchie, G., and M. Menth, "Traffic
-              Engineering for Bit Index Explicit Replication (BIER-TE)",
-              Work in Progress, Internet-Draft, draft-ietf-bier-te-arch-
-              03, 8 July 2019,
-              <https://tools.ietf.org/html/draft-ietf-bier-te-arch-03>.
-
-   [I-D.ietf-roll-nsa-extension]
-              Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
-              Thubert, "Common Ancestor Objective Functions and Parent
-              Set DAG Metric Container Extension", Work in Progress,
-              Internet-Draft, draft-ietf-roll-nsa-extension-04, 8 July
-              2019, <https://tools.ietf.org/html/draft-ietf-roll-nsa-
-              extension-04>.
-
-   [I-D.papadopoulos-paw-pre-reqs]
-              Papadopoulos, G., Koutsiamanis, R., Montavont, N., and P.
-              Thubert, "Exploiting Packet Replication and Elimination in
-              Complex Tracks in LLNs", Work in Progress, Internet-Draft,
-              draft-papadopoulos-paw-pre-reqs-01, 25 March 2019,
-              <https://tools.ietf.org/html/draft-papadopoulos-paw-pre-
-              reqs-01>.
-
-   [I-D.svshah-tsvwg-deterministic-forwarding]
-              Shah, S. and P. Thubert, "Deterministic Forwarding PHB",
-              Work in Progress, Internet-Draft, draft-svshah-tsvwg-
-              deterministic-forwarding-04, 30 August 2015,
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 36]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
-              <https://tools.ietf.org/html/draft-svshah-tsvwg-
-              deterministic-forwarding-04>.
-
-   [I-D.thubert-6lo-bier-dispatch]
-              Thubert, P., Brodard, Z., Jiang, H., and G. Texier, "A
-              6loRH for BitStrings", Work in Progress, Internet-Draft,
-              draft-thubert-6lo-bier-dispatch-06, 28 January 2019,
-              <https://tools.ietf.org/html/draft-thubert-6lo-bier-
-              dispatch-06>.
-
-   [I-D.thubert-bier-replication-elimination]
-              Thubert, P., Eckert, T., Brodard, Z., and H. Jiang, "BIER-
-              TE extensions for Packet Replication and Elimination
-              Function (PREF) and OAM", Work in Progress, Internet-
-              Draft, draft-thubert-bier-replication-elimination-03, 3
-              March 2018,
-              <https://tools.ietf.org/html/draft-thubert-bier-
-              replication-elimination-03>.
-
-   [ICAO18]   International Civil Aviation Organization (ICAO), "L-Band
-              Digital Aeronautical Communication System (LDACS)",
-              International Standards and Recommended Practices Annex 10
-              - Aeronautical Telecommunications, Vol. III -
-              Communication Systems, July 2018.
-
-   [IEEE80211]
-              "IEEE Standard 802.11 - IEEE Standard for Information
-              Technology - Telecommunications and information exchange
-              between systems Local and metropolitan area networks -
-              Specific requirements - Part 11: Wireless LAN Medium
-              Access Control (MAC) and Physical Layer (PHY)
-              Specifications.", October 2019.
-
-   [IEEE80211ad]
-              "802.11ad: Enhancements for very high throughput in the 60
-              GHz band", October 2019.
-
-   [IEEE80211ak]
-              "802.11ak: Enhancements for Transit Links Within Bridged
-              Networks", 2017.
-
-   [IEEE80211ax]
-              "802.11ax D4.0: Enhancements for High Efficiency WLAN",
-              October 2019.
-
-   [IEEE80211ay]
-              "802.11ay: Enhanced throughput for operation in license-
-              exempt bands above 45 GHz", October 2019.
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 37]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
-   [IEEE80211be]
-              "802.11be: Extreme High Throughput", October 2019.
-
-   [IEEE802154]
-              IEEE standard for Information Technology, "IEEE Std.
-              802.15.4, Part. 15.4: Wireless Medium Access Control (MAC)
-              and Physical Layer (PHY) Specifications for Low-Rate
-              Wireless Personal Area Networks", October 2019.
-
-   [IEEE8021Qat]
-              "802.1Qat: Stream Reservation Protocol", October 2019.
-
-   [IEEE8021Qcc]
-              "802.1Qcc: IEEE Standard for Local and Metropolitan Area
-              Networks--Bridges and Bridged Networks -- Amendment 31:
-              Stream Reservation Protocol (SRP) Enhancements and
-              Performance Improvements", October 2019.
-
-   [IEEE_doc_11-18-2009-06]
-              "802.11 Real-Time Applications (RTA) Topic Interest Group
-              (TIG) Report", November 2018.
-
-   [IEEE_doc_11-19-0373-00]
-              Kevin Stanton et Al., "Time-Sensitive Applications Support
-              in EHT", March 2019.
-
-   [ISA100.11a]
-              ISA/IEC, "ISA100.11a, Wireless Systems for Automation,
-              also IEC 62734", 2011,
-              <http://www.isa100wci.org/en-US/Documents/PDF/3405-ISA100-
-              WirelessSystems-Future-broch-WEB-ETSI.aspx>.
-
-   [MAE19]    Mäurer, N. and C. Schmitt, "DLR tests digital
-              communications technologies combined with additional
-              navigation functions for the first time", Proceedings of
-              the Integrated Communications, Navigation, Surveillance
-              Conference (ICNS) Washington D.C., USA, April 2019.
-
-   [morell13] Antoni Morell et al., "Label switching over IEEE802.15.4e
-              networks", April 2013.
-
-   [Nitsche_2015]
-              Thomas Nitsche et al., "IEEE 802.11ad: directional 60 GHz
-              communication for multi-Gigabit-per-second Wi-Fi",
-              December 2014.
-
-   [PCE]      IETF, "Path Computation Element", October 2019,
-              <https://dataTracker.ietf.org/doc/charter-ietf-pce/>.
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 38]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
-   [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
-              D., and S. Mansfield, "Guidelines for the Use of the "OAM"
-              Acronym in the IETF", BCP 161, RFC 6291,
-              DOI 10.17487/RFC6291, June 2011,
-              <https://www.rfc-editor.org/info/rfc6291>.
 
    [RFC6550]  Winter, T., Ed., Thubert, P., Ed., Brandt, A., Hui, J.,
               Kelsey, R., Levis, P., Pister, K., Struik, R., Vasseur,
@@ -2149,6 +2759,12 @@ Internet-Draft                  RAW Techs                   October 2019
               DOI 10.17487/RFC6551, March 2012,
               <https://www.rfc-editor.org/info/rfc6551>.
 
+   [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
+              D., and S. Mansfield, "Guidelines for the Use of the "OAM"
+              Acronym in the IETF", BCP 161, RFC 6291,
+              DOI 10.17487/RFC6291, June 2011,
+              <https://www.rfc-editor.org/info/rfc6291>.
+
    [RFC7276]  Mizrahi, T., Sprecher, N., Bellagamba, E., and Y.
               Weingarten, "An Overview of Operations, Administration,
               and Maintenance (OAM) Tools", RFC 7276,
@@ -2161,6 +2777,199 @@ Internet-Draft                  RAW Techs                   October 2019
               DOI 10.17487/RFC8279, November 2017,
               <https://www.rfc-editor.org/info/rfc8279>.
 
+   [I-D.ietf-6tisch-msf]
+              Chang, T., Vucinic, M., Vilajosana, X., Duquennoy, S., and
+              D. Dujovne, "6TiSCH Minimal Scheduling Function (MSF)",
+              Work in Progress, Internet-Draft, draft-ietf-6tisch-msf-
+              16, 2 April 2020,
+              <https://tools.ietf.org/html/draft-ietf-6tisch-msf-16>.
+
+   [I-D.ietf-roll-nsa-extension]
+              Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
+              Thubert, "Common Ancestor Objective Function and Parent
+              Set DAG Metric Container Extension", Work in Progress,
+              Internet-Draft, draft-ietf-roll-nsa-extension-08, 27 March
+              2020, <https://tools.ietf.org/html/draft-ietf-roll-nsa-
+              extension-08>.
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 50]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   [I-D.papadopoulos-paw-pre-reqs]
+              Papadopoulos, G., Koutsiamanis, R., Montavont, N., and P.
+              Thubert, "Exploiting Packet Replication and Elimination in
+              Complex Tracks in LLNs", Work in Progress, Internet-Draft,
+              draft-papadopoulos-paw-pre-reqs-01, 25 March 2019,
+              <https://tools.ietf.org/html/draft-papadopoulos-paw-pre-
+              reqs-01>.
+
+   [I-D.thubert-bier-replication-elimination]
+              Thubert, P., Eckert, T., Brodard, Z., and H. Jiang, "BIER-
+              TE extensions for Packet Replication and Elimination
+              Function (PREF) and OAM", Work in Progress, Internet-
+              Draft, draft-thubert-bier-replication-elimination-03, 3
+              March 2018, <https://tools.ietf.org/html/draft-thubert-
+              bier-replication-elimination-03>.
+
+   [I-D.thubert-6lo-bier-dispatch]
+              Thubert, P., Brodard, Z., Jiang, H., and G. Texier, "A
+              6loRH for BitStrings", Work in Progress, Internet-Draft,
+              draft-thubert-6lo-bier-dispatch-06, 28 January 2019,
+              <https://tools.ietf.org/html/draft-thubert-6lo-bier-
+              dispatch-06>.
+
+   [I-D.ietf-bier-te-arch]
+              Eckert, T., Cauchie, G., and M. Menth, "Tree Engineering
+              for Bit Index Explicit Replication (BIER-TE)", Work in
+              Progress, Internet-Draft, draft-ietf-bier-te-arch-07, 9
+              March 2020,
+              <https://tools.ietf.org/html/draft-ietf-bier-te-arch-07>.
+
+   [I-D.ietf-6tisch-coap]
+              Sudhaakar, R. and P. Zand, "6TiSCH Resource Management and
+              Interaction using CoAP", Work in Progress, Internet-Draft,
+              draft-ietf-6tisch-coap-03, 9 March 2015,
+              <https://tools.ietf.org/html/draft-ietf-6tisch-coap-03>.
+
+   [I-D.svshah-tsvwg-deterministic-forwarding]
+              Shah, S. and P. Thubert, "Deterministic Forwarding PHB",
+              Work in Progress, Internet-Draft, draft-svshah-tsvwg-
+              deterministic-forwarding-04, 30 August 2015,
+              <https://tools.ietf.org/html/draft-svshah-tsvwg-
+              deterministic-forwarding-04>.
+
+   [IEEE802154]
+              IEEE standard for Information Technology, "IEEE Std.
+              802.15.4, Part. 15.4: Wireless Medium Access Control (MAC)
+              and Physical Layer (PHY) Specifications for Low-Rate
+              Wireless Personal Area Networks".
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 51]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   [IEEE80211]
+              "IEEE Standard 802.11 - IEEE Standard for Information
+              Technology - Telecommunications and information exchange
+              between systems Local and metropolitan area networks -
+              Specific requirements - Part 11: Wireless LAN Medium
+              Access Control (MAC) and Physical Layer (PHY)
+              Specifications.".
+
+   [IEEE80211ak]
+              "802.11ak: Enhancements for Transit Links Within Bridged
+              Networks", 2017.
+
+   [IEEE80211ax]
+              "802.11ax D4.0: Enhancements for High Efficiency WLAN".
+
+   [IEEE80211ay]
+              "802.11ay: Enhanced throughput for operation in license-
+              exempt bands above 45 GHz".
+
+   [IEEE80211ad]
+              "802.11ad: Enhancements for very high throughput in the 60
+              GHz band".
+
+   [IEEE80211be]
+              "802.11be: Extreme High Throughput".
+
+   [IEEE8021Qat]
+              "802.1Qat: Stream Reservation Protocol".
+
+   [IEEE8021Qcc]
+              "802.1Qcc: IEEE Standard for Local and Metropolitan Area
+              Networks--Bridges and Bridged Networks -- Amendment 31:
+              Stream Reservation Protocol (SRP) Enhancements and
+              Performance Improvements".
+
+   [Cavalcanti_2019]
+              Dave Cavalcanti et al., "Extending Time Distribution and
+              Timeliness Capabilities over the Air to Enable Future
+              Wireless Industrial Automation Systems, the Proceedings of
+              IEEE", June 2019.
+
+   [Nitsche_2015]
+              Thomas Nitsche et al., "IEEE 802.11ad: directional 60 GHz
+              communication for multi-Gigabit-per-second Wi-Fi",
+              December 2014.
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 52]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   [Ghasempour_2017]
+              Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
+              GHz Communications for 100 Gb/s Wi-Fi", December 2017.
+
+   [IEEE_doc_11-18-2009-06]
+              "802.11 Real-Time Applications (RTA) Topic Interest Group
+              (TIG) Report", November 2018.
+
+   [IEEE_doc_11-19-0373-00]
+              Kevin Stanton et Al., "Time-Sensitive Applications Support
+              in EHT", March 2019.
+
+   [morell13] Antoni Morell et al., "Label switching over IEEE802.15.4e
+              networks", April 2013.
+
+   [dearmas16]
+              Jesica de Armas et al., "Determinism through path
+              diversity: Why packet replication makes sense", September
+              2016.
+
+   [vilajosana19]
+              Xavier Vilajosana et al., "6TiSCH: Industrial Performance
+              for IPv6 Internet-of-Things Networks", June 2019.
+
+   [ISA100.11a]
+              ISA/IEC, "ISA100.11a, Wireless Systems for Automation,
+              also IEC 62734", 2011, <http://www.isa100wci.org/en-
+              US/Documents/PDF/3405-ISA100-WirelessSystems-Future-broch-
+              WEB-ETSI.aspx>.
+
+   [WirelessHART]
+              www.hartcomm.org, "Industrial Communication Networks -
+              Wireless Communication Network and Communication Profiles
+              - WirelessHART - IEC 62591", 2010.
+
+   [PCE]      IETF, "Path Computation Element",
+              <https://dataTracker.ietf.org/doc/charter-ietf-pce/>.
+
+   [CCAMP]    IETF, "Common Control and Measurement Plane",
+              <https://dataTracker.ietf.org/doc/charter-ietf-ccamp/>.
+
+   [TiSCH]    IETF, "IPv6 over the TSCH mode over 802.15.4",
+              <https://dataTracker.ietf.org/doc/charter-ietf-6tisch/>.
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 53]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    [RIH18]    Rihacek, C., Haindl, B., Fantappie, P., Pierattelli, S.,
               Gräupl, T., Schnell, M., and N. Fistas, "L-band Digital
               Aeronautical Communications System (LDACS) Activities in
@@ -2168,9 +2977,30 @@ Internet-Draft                  RAW Techs                   October 2019
               Navigation and Surveillance Conference (ICNS) Herndon, VA,
               USA, April 2018.
 
+   [GRA19]    Gräupl, T., Rihacek, C., and B. Haindl, "LDACS A/G
+              Specification", SESAR2020 PJ14-02-01 D3.3.010, February
+              2019.
+
    [SAJ14]    Sajatovic, M., Günzel, H., and S. Müller, "WA04 D22 Test
               Report for Assessing LDACS1 Transmitter Impact upon DME/
               TACAN Receivers", April 2014.
+
+   [GRA11]    Gräupl, T. and M. Ehammer, "L-DACS1 Data Link Layer
+              Evolution of ATN/IPS", Proceedings of the 30th IEEE/AIAA
+              Digital Avionics Systems Conference (DASC) Seattle, WA,
+              USA, October 2011.
+
+   [ICAO18]   International Civil Aviation Organization (ICAO), "L-Band
+              Digital Aeronautical Communication System (LDACS)",
+              International Standards and Recommended Practices Annex 10
+              - Aeronautical Telecommunications, Vol. III -
+              Communication Systems, July 2018.
+
+   [GRA18]    al., T. G. E., "L-band Digital Aeronautical Communications
+              System (LDACS) flight trials in the national German
+              project MICONAV", Proceedings of the Integrated
+              Communications, Navigation, Surveillance Conference
+              (ICNS) Herndon, VA, USA, April 2018.
 
    [SCH19]    Schnell, M., "DLR tests digital communications
               technologies combined with additional navigation functions
@@ -2178,32 +3008,136 @@ Internet-Draft                  RAW Techs                   October 2019
               <https://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-
               10081/151_read-32951/#/gallery/33877>.
 
+   [MAE19]    Mäurer, N. and C. Schmitt, "DLR tests digital
+              communications technologies combined with additional
+              navigation functions for the first time", Proceedings of
+              the Integrated Communications, Navigation, Surveillance
+              Conference (ICNS) Washington D.C., USA, April 2019.
+
+   [TR37910]  "3GPP TR 37.910, Study on self evaluation towards IMT-2020
+              submission",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3190>.
 
 
 
-Thubert, et al.           Expires 12 April 2020                [Page 39]
+Thubert, et al.         Expires 18 November 2020               [Page 54]
 
-Internet-Draft                  RAW Techs                   October 2019
+Internet-Draft                  RAW Techs                       May 2020
 
 
-   [TiSCH]    IETF, "IPv6 over the TSCH mode over 802.15.4", October
-              2019,
-              <https://dataTracker.ietf.org/doc/charter-ietf-6tisch/>.
+   [TR38824]  "3GPP TR 38.824, Study on physical layer enhancements for
+              NR ultra-reliable and low latency case (URLLC)",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3498>.
 
-   [vilajosana19]
-              Xavier Vilajosana et al., "6TiSCH: Industrial Performance
-              for IPv6 Internet-of-Things Networks", June 2019.
+   [TR38825]  "3GPP TR 38.825, Study on NR industrial Internet of Things
+              (IoT)",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3492>.
 
-   [WirelessHART]
-              www.hartcomm.org, "Industrial Communication Networks -
-              Wireless Communication Network and Communication Profiles
-              - WirelessHART - IEC 62591", 2010.
+   [TS22104]  "3GPP TS 22.104, Service requirements for cyber-physical
+              control applications in vertical domains",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3528>.
+
+   [TR22804]  "3GPP TR 22.804, Study on Communication for Automation in
+              Vertical domains (CAV)",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3187>.
+
+   [TS23501]  "3GPP TS 23.501, System architecture for the 5G System
+              (5GS)",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3144>.
+
+   [TS38300]  "3GPP TS 38.300, NR Overall description",
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3191>.
+
+   [IMT2020]  "ITU towards IMT for 2020 and beyond",
+              <https://www.itu.int/en/ITU-R/study-groups/rsg5/rwp5d/imt-
+              2020/Pages/default.aspx>.
+
+   [RFC8655]  Finn, N., Thubert, P., Varga, B., and J. Farkas,
+              "Deterministic Networking Architecture", RFC 8655,
+              DOI 10.17487/RFC8655, October 2019,
+              <https://www.rfc-editor.org/info/rfc8655>.
+
+   [I-D.ietf-detnet-ip-over-tsn]
+              Varga, B., Farkas, J., Malis, A., and S. Bryant, "DetNet
+              Data Plane: IP over IEEE 802.1 Time Sensitive Networking
+              (TSN)", Work in Progress, Internet-Draft, draft-ietf-
+              detnet-ip-over-tsn-02, 6 March 2020,
+              <https://tools.ietf.org/html/draft-ietf-detnet-ip-over-
+              tsn-02>.
+
+
+
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 55]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   [IEEE802.1TSN]
+              IEEE 802.1, "Time-Sensitive Networking (TSN) Task Group",
+              <http://www.ieee802.org/1/pages/tsn.html>.
+
+   [IEEE802.1AS]
+              IEEE, "IEEE Standard for Local and metropolitan area
+              networks -- Timing and Synchronization for Time-Sensitive
+              Applications", IEEE 802.1AS-2020,
+              <https://standards.ieee.org/content/ieee-standards/en/
+              standard/802_1AS-2020.html>.
+
+   [IEEE802.1CB]
+              IEEE, "IEEE Standard for Local and metropolitan area
+              networks -- Frame Replication and Elimination for
+              Reliability", DOI 10.1109/IEEESTD.2017.8091139, IEEE 
+              802.1CB-2017,
+              <https://ieeexplore.ieee.org/document/8091139>.
+
+   [IEEE802.1Qbv]
+              IEEE, "IEEE Standard for Local and metropolitan area
+              networks -- Bridges and Bridged Networks -- Amendment 25:
+              Enhancements for Scheduled Traffic", IEEE 802.1Qbv-2015,
+              <https://ieeexplore.ieee.org/document/7440741>.
+
+   [IEEE802.1Qcc]
+              IEEE, "IEEE Standard for Local and metropolitan area
+              networks -- Bridges and Bridged Networks -- Amendment 31:
+              Stream Reservation Protocol (SRP) Enhancements and
+              Performance Improvements", IEEE 802.1Qcc-2018,
+              <https://ieeexplore.ieee.org/document/8514112>.
+
+   [IEEE802.3]
+              IEEE, "IEEE Standard for Ethernet", IEEE 802.3-2018,
+              <https://ieeexplore.ieee.org/document/8457469>.
+
+   [ETR5GTSN] Farkas, J., Varga, B., Miklos, G., and J. Sachs, "5G-TSN
+              integration meets networking requirements for industrial
+              automation", Ericsson Technology Review, Volume 9, No 7,
+              August 2019, <https://www.ericsson.com/en/reports-and-
+              papers/ericsson-technology-review/articles/5g-tsn-
+              integration-for-industrial-automation>.
 
 Authors' Addresses
 
    Pascal Thubert (editor)
    Cisco Systems, Inc
-   Building D, 45 Allee des Ormes - BP1200
+   Building D
+   45 Allee des Ormes - BP1200
+
+
+
+Thubert, et al.         Expires 18 November 2020               [Page 56]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    06254 MOUGINS - Sophia Antipolis
    France
 
@@ -2234,14 +3168,6 @@ Authors' Addresses
    Research Institute CODE, UniBwM
    Werner-Heisenberg-Weg 28
    85577 Neubiberg
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 40]
-
-Internet-Draft                  RAW Techs                   October 2019
-
-
    Germany
 
    Email: corinna.schmitt@unibw.de
@@ -2263,34 +3189,4 @@ Internet-Draft                  RAW Techs                   October 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Thubert, et al.           Expires 12 April 2020                [Page 41]
+Thubert, et al.         Expires 18 November 2020               [Page 57]

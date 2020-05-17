@@ -1338,10 +1338,786 @@ chan.Off. 15 |chnkO|chnk6|chnkN|chnk1|chnkJ|chnkZ|chnkI| ... |chnkG|
 
 
 
-   <section><name>3GPP Ultra-Reliable Low-Latency Communication</name>
+   <section><name>5G</name>
 
-   <t> coming up </t>
-   </section> <!-- 3GPP Ultra-Reliable Low-Latency Communication -->
+   <section><name>Provenance and Documents</name>
+   <t>
+   The 3rd Generation Partnership Project (3GPP) incorporates many companies 
+   whose business is related to cellular network operation as well as network 
+   equipment and device manufacturing. All generations of 3GPP technologies 
+   provide scheduled wireless segments, primarily in licensed spectrum which is 
+   beneficial for reliability and availability. 
+   </t>
+
+   <t>
+   In 2016, the 3GPP started to design New Radio (NR) technology belonging to 
+   the fifth generation (5G) of cellular networks. NR has been designed from 
+   the beginning to not only address enhanced Mobile Broadband (eMBB) services
+   for consumer devices such as smart phones or tablets but is also tailored 
+   for future Internet of Things (IoT) communication and connected 
+   cyber-physical systems. In addition to eMBB, requirement categories have 
+   been defined on Massive Machine-Type Communication (M-MTC) for a large 
+   number of connected devices/sensors, and Ultra-Reliable Low-Latency 
+   Communication (URLLC) for connected control systems and critical 
+   communication as illustrated in <xref target='fig-5g-triangle'/>. It is 
+   the URLLC capabilities that make 5G a great candidate for reliable 
+   low-latency communication. With these three corner stones, NR is a complete
+   solution supporting the connectivity needs of consumers, enterprises, and 
+   public sector for both wide area and local area, e.g. indoor deployments. 
+   A general overview of NR can be found in <xref target='TS38300'/>.
+   </t>
+
+<figure anchor='fig-5g-triangle'><name>5G Application Areas</name>
+<artwork align="center"><![CDATA[
+            enhanced
+        Mobile Broadband
+               ^
+              / \
+             /   \
+            /     \
+           /       \  
+          /   5G    \ 
+         /           \
+        /             \
+       /               \
+      +-----------------+
+   Massive          Ultra-Reliable
+ Machine-Type        Low-Latency
+Communication       Communication
+]]></artwork>
+</figure>   
+
+   <t>
+   As a result of releasing the first NR specification in 2018 (Release 15), it 
+   has been proven by many companies that NR is a URLLC-capable technology and 
+   can deliver data packets at 10^-5 packet error rate within 1ms latency 
+   budget <xref target='TR37910'/>. Those evaluations were consolidated and 
+   forwarded to ITU to be included in the <xref target='IMT2020'/> work.
+   </t>
+
+   <t>
+   In order to understand communication requirements for automation in vertical 
+   domains, 3GPP studied different use cases <xref target='TR22804'/> and 
+   released technical specification with reliability, availability and latency 
+   demands for a variety of applications <xref target='TS22104'/>. 
+   </t>
+
+   <t>
+   As an evolution of NR, multiple studies have been conducted in scope of 3GPP 
+   Release 16 including the following two, focusing on radio aspects: 
+   </t><ol type='%d.'>
+      <li> Study on physical layer enhancements for NR ultra-reliable and low 
+	  latency communication (URLLC) <xref target='TR38824'/>.</li>
+      <li> Study on NR industrial Internet of Things (I-IoT) 
+	  <xref target='TR38825'/>.</li>
+     </ol><t>
+   </t>
+
+   <t>
+   In addition, several enhancements have been done on system architecture level
+   which are reflected in System architecture for the 5G System (5GS) 
+   <xref target='TS23501'/>. 
+   </t>
+
+   </section><!-- Provenance and Documents   -->
+   
+   
+   
+   <section><name>General Characteristics</name>
+
+   <t>   
+   The 5G Radio Access Network (5G RAN) with its NR interface includes several 
+   features to achieve Quality of Service (QoS), such as a guaranteeably 
+   low latency or tolerable packet error rates for selected data flows. 
+   Determinism is achieved by centralized admission control and scheduling of 
+   the wireless frequency resources, which are typically licensed frequency 
+   bands assigned to a network operator. 
+   </t>
+   
+   <t>
+   NR enables short transmission slots in a radio subframe, which benefits 
+   low-latency applications. NR also introduces mini-slots, where prioritized
+   transmissions can be started without waiting for slot boundaries, further 
+   reducing latency. As part of giving priority and faster radio access to 
+   URLLC traffic, NR introduces preemption where URLLC data transmission can 
+   preempt ongoing non-URLLC transmissions. Additionally, NR applies very fast
+   processing, enabling retransmissions even within short latency bounds.
+   </t>
+   
+   <t>
+   NR defines extra-robust transmission modes for increased reliability both 
+   for data and control radio channels. Reliability is further improved by 
+   various techniques, such as multi-antenna transmission, the use of multiple
+   frequency carriers in parallel and packet duplication over independent radio
+   links. NR also provides full mobility support, which is an important 
+   reliability aspect not only for devices that are moving, but also for 
+   devices located in a changing environment.
+   </t>
+   
+   <t>
+   Network slicing is seen as one of the key features for 5G, allowing vertical 
+   industries to take advantage of 5G networks and services. Network slicing is 
+   about transforming a Public Land Mobile Network (PLMN) from a single network 
+   to a network where logical partitions are created, with appropriate network 
+   isolation, resources, optimized topology and specific configuration to serve 
+   various service requirements. An operator can configure and manage the 
+   mobile network to support various types of services enabled by 5G, for 
+   example eMBB and URLLC, depending on the different customers’ needs.
+   </t>
+   
+   <t>
+   Exposure of capabilities of 5G Systems to the network or applications 
+   outside the 3GPP domain have been added to Release 16 
+   <xref target='TS23501'/>. Via exposure interfaces, applications can access
+   5G capabilities, e.g., communication service monitoring and network
+   maintenance.
+   </t>
+   
+   <t>
+   For several generations of mobile networks, 3GPP has considered how the 
+   communication system should work on a global scale with billions of users, 
+   taking into account resilience aspects, privacy regulation, protection of 
+   data, encryption, access and core network security, as well as interconnect.
+   Security requirements evolve as demands on trustworthiness increase. For 
+   example, this has led to the introduction of enhanced privacy protection 
+   features in 5G. 5G also employs strong security algorithms, encryption of 
+   traffic, protection of signaling and protection of interfaces.
+   </t>
+   
+   <t>
+   One particular strength of mobile networks is the authentication, based on 
+   well-proven algorithms and tightly coupled with a global identity management 
+   infrastructure. Since 3G, there is also mutual authentication, allowing the 
+   network to authenticate the device and the device to authenticate the 
+   network. Another strength is secure solutions for storage and distribution 
+   of keys fulfilling regulatory requirements and allowing international 
+   roaming. When connecting to 5G, the user meets the entire communication 
+   system, where security is the result of standardization, product security, 
+   deployment, operations and management as well as incident handling 
+   capabilities. The mobile networks approach the entirety in a rather 
+   coordinated fashion which is beneficial for security.
+   </t>
+   
+   </section><!-- General Characteristics   -->   
+
+
+   <section><name>Deployment and Spectrum</name>
+   
+   <t>   
+   The 5G system allows deployment in a vast spectrum range, addressing 
+   use-cases in both wide-area as well as local networks. Furthermore, 5G can
+   be configured for public and non-public access.
+   </t>  
+   
+   <t>
+   When it comes to spectrum, NR allows combining the merits of many frequency 
+   bands, such as the high bandwidths in millimeter Waves (mmW) for extreme 
+   capacity locally, as well as the broad coverage when using mid- and low 
+   frequency bands to address wide-area scenarios. URLLC is achievable in all 
+   these bands. Spectrum can be either licensed, which means that the license 
+   holder is the only authorized user of that spectrum range, or unlicensed, 
+   which means that anyone who wants to use the spectrum can do so.
+   </t>
+   
+   <t>
+   A prerequisite for critical communication is performance predictability, 
+   which can be achieved by the full control of the access to the spectrum, 
+   which 5G provides. Licensed spectrum guarantees control over spectrum usage 
+   by the system, making it a preferable option for critical communication. 
+   However, unlicensed spectrum can provide an additional resource for scaling 
+   non-critical communications. While NR is initially developed for usage of 
+   licensed spectrum, the functionality to access also unlicensed spectrum was
+   introduced in 3GPP Release 16.
+   </t>
+   
+   <t>
+   Licensed spectrum dedicated to mobile communications has been allocated to 
+   mobile service providers, i.e. issued as longer-term licenses by national 
+   administrations around the world. These licenses have often been associated 
+   with coverage requirements and issued across whole countries, or in large 
+   regions. Besides this, configured as a non-public network (NPN) deployment,
+   5G can provide network services also to a non-operator defined organization 
+   and its premises such as a factory deployment. By this isolation, quality of
+   service requirements, as well as security requirements can be achieved. An 
+   integration with a public network, if required, is also possible. The 
+   non-public (local) network can thus be interconnected with a public network, 
+   allowing devices to roam between the networks.
+   </t>
+   
+   <t>
+   In an alternative model, some countries are now in the process of allocating
+   parts of the 5G spectrum for local use to industries. These non-service 
+   providers then have a choice of applying for a local license themselves and 
+   operating their own network or cooperating with a public network operator or 
+   service provider.
+   </t>
+
+   </section><!-- Deployment and Spectrum   -->   
+
+
+   <section><name>Applicability to Deterministic Flows</name>
+
+   <section><name>System Architecture</name>
+   
+   <t>
+   The 5G system <xref target='TS23501'/> consists of the User Equipment (UE) 
+   at the terminal side, and the Radio Access Network (RAN) with the gNB as 
+   radio base station node, as well as the Core Network (CN). The core network
+   is based on a service-based architecture with the central functions: Access 
+   and Mobility Management Function (AMF), Session Management Function (SMF) 
+   and User Plane Function (UPF) as illustrated in <xref target='fig-5g-arch'/>.
+   </t>
+   
+   <t>The gNB’s main responsibility is the radio resource management, including
+   admission control and scheduling, mobility control and radio measurement 
+   handling. The AMF handles the UE’s connection status and security, while the 
+   SMF controls the UE’s data sessions. The UPF handles the user plane traffic.
+   </t>
+   
+   <t>The SMF can instantiate various Packet Data Unit (PDU) sessions for the
+   UE, each associated with a set of QoS flows, i.e., with different QoS 
+   profiles. Segregation of those sessions is also possible, e.g., resource 
+   isolation in the RAN and in the CN can be defined (slicing). 
+   </t>
+
+<figure anchor='fig-5g-arch'><name>5G System Architecture</name>
+<artwork align="center"><![CDATA[
+  +----+  +---+   +---+    +---+    +---+   +---+
+  |NSSF|  |NEF|   |NRF|    |PCF|    |UDM|   |AF |
+  +--+-+  +-+-+   +-+-+    +-+-+    +-+-+   +-+-+
+     |      |       |        |        |       |
+Nnssf|  Nnef|   Nnrf|    Npcf|    Nudm|    Naf|
+     |      |       |        |        |       |
+  ---+------+-+-----+-+------------+--+-----+-+---
+              |       |            |         |
+         Nausf|  Nausf|        Nsmf|         |
+              |       |            |         |
+           +--+-+   +-+-+        +-+-+     +-+-+
+           |AUSF|   |AMF|        |SMF|     |SCP|
+           +----+   +++-+        +-+-+     +---+
+                    / |            |
+                   /  |            |
+                  /   |            |
+                 N1   N2           N4
+                /     |            |
+               /      |            |
+              /       |            |
+          +--+-+   +--+--+      +--+---+      +----+ 
+          | UE +---+(R)AN+--N3--+ UPF  +--N6--+ DN |
+          +----+   +-----+      ++----++      +----+ 
+                                 |    |
+                                 +-N9-+
+]]></artwork>
+</figure>
+   
+   <t>
+   To allow UE mobility across cells/gNBs, handover mechanisms are supported in
+   NR. For an established connection, i.e., connected mode mobility, a gNB can
+   configure a UE to report measurements of received signal strength and
+   quality of its own and neighbouring cells, periodically or event-based. 
+   Based on these measurement reports, the gNB decides to handover a UE to
+   another target cell/gNB. Before triggering the handover, it is hand-shaked
+   with the target gNB based on network signalling. A handover command is then 
+   sent to the UE and the UE switches its connection to the target cell/gNB. 
+   The Packet Data Convergence Protocol (PDCP) of the UE can be configured to 
+   avoid data loss in this procedure, i.e., handle retransmissions if needed. 
+   Data forwarding is possible between source and target gNB as well. To 
+   improve the mobility performance further, i.e., to avoid connection failures, 
+   e.g., due to too-late handovers, the mechanism of conditional handover is 
+   introduced in Release 16 specifications. Therein a conditional handover 
+   command, defining a triggering point, can be sent to the UE before UE enters
+   a handover situation. A further improvement introduced in Release 16 is the 
+   Dual Active Protocol Stack (DAPS), where the UE maintains the connection to 
+   the source cell while connecting to the target cell. This way, potential 
+   interruptions in packet delivery can be avoided entirely.
+   </t>
+   
+   </section><!-- System Architecture   -->  
+	
+
+   <section><name>Overview of The Radio Protocol Stack</name>
+ 
+   <t> 
+   The protocol architecture for NR consists of the L1 Physical layer (PHY) and
+   as part of the L2, the sublayers of Medium Access Control (MAC), Radio Link 
+   Control (RLC), Packet Data Convergence Protocol (PDCP), as well as the 
+   Service Data Adaption Protocol (SDAP).
+   </t>
+   
+   <t>
+   The PHY layer handles signal processing related actions, such as 
+   encoding/decoding of data and control bits, modulation, antenna precoding 
+   and mapping.
+   </t>
+   
+   <t>
+   The MAC sub-layer handles multiplexing and priority handling of logical 
+   channels (associated with QoS flows) to transport blocks for PHY 
+   transmission, as well as scheduling information reporting and error 
+   correction through Hybrid Automated Repeat Request (HARQ).
+   </t>
+   
+   <t>
+   The RLC sublayer handles sequence numbering of higher layer packets, 
+   retransmissions through Automated Repeat Request (ARQ), if configured, as 
+   well as segmentation and reassembly and duplicate detection. 
+   </t>
+   
+   <t>
+   The PDCP sublayer consists of functionalities for ciphering/deciphering, 
+   integrity protection/verification, re-ordering and in-order delivery, 
+   duplication and duplicate handling for higher layer packets, and acts as the
+   anchor protocol to support handovers. 
+   </t>
+   
+   <t>
+   The SDAP sublayer provides services to map QoS flows, as established by the
+   5G core network, to data radio bearers (associated with logical channels), 
+   as used in the 5G RAN.
+   </t>
+   
+   <t>
+   Additionally, in RAN, the Radio Resource Control (RRC) protocol, handles the
+   access control and configuration signalling for the aforementioned protocol 
+   layers. RRC messages are considered L3 and thus transmitted also via those 
+   radio protocol layers.
+   </t>
+   
+   <t>
+   To provide low latency and high reliability for one transmission link, i.e., 
+   to transport data (or control signaling) of one radio bearer via one carrier, 
+   several features have been introduced on the user plane protocols for PHY 
+   and L2, as explained in the following.
+   </t>
+
+   </section><!-- Overview of Radio Protocol Stack   -->  
+
+   <section><name>Radio (PHY)</name>
+
+   <t>
+   NR is designed with native support of antenna arrays utilizing benefits from
+   beamforming, transmissions over multiple MIMO layers and advanced receiver 
+   algorithms allowing effective interference cancellation. Those antenna 
+   techniques are the basis for high signal quality and effectiveness of 
+   spectral usage. Spatial diversity with up to 4 MIMO layers in UL and up to 8
+   MIMO layers in DL is supported. Together with spatial-domain multiplexing, 
+   antenna arrays can focus power in desired direction to form beams. NR 
+   supports beam management mechanisms to find the best suitable beam for UE 
+   initially and when it is moving. In addition, gNBs can coordinate their 
+   respective DL and UL transmissions over the backhaul network keeping 
+   interference reasonably low, and even make transmissions or receptions from
+   multiple points (multi-TRP). Multi-TRP can be used for repetition of data 
+   packet in time, in frequency or over multiple MIMO layers which can improve 
+   reliability even further.
+   </t>
+   
+   <t>
+   Any downlink transmission to a UE starts from resource allocation signaling 
+   over the Physical Downlink Control Channel (PDCCH). If it is successfully 
+   received, the UE will know about the scheduled transmission and may receive
+   data over the Physical Downlink Shared Channel (PDSCH). If retransmission is 
+   required according to the HARQ scheme, a signaling of negative 
+   acknowledgement (NACK) on the Physical Uplink Control Channel (PUCCH) is 
+   involved and PDCCH together with PDSCH transmissions (possibly with 
+   additional redundancy bits) are transmitted and soft-combined with 
+   previously received bits. Otherwise, if no valid control signaling for 
+   scheduling data is received, nothing is transmitted on PUCCH (discontinuous
+   transmission - DTX),and the base station upon detecting DTX will retransmit
+   the initial data.
+   </t>
+   
+   <t>
+   An uplink transmission normally starts from a Scheduling Request (SR) – a 
+   signaling message from the UE to the base station sent via PUCCH. 
+   Once the scheduler is informed about buffer data in UE, e.g., by SR, the UE 
+   transmits a data packet on the Physical Uplink Shared Channel (PUSCH). 
+   Pre-scheduling not relying on SR is also possible (see following section).
+   </t>
+   
+   <t>
+   Since transmission of data packets require usage of control and data 
+   channels, there are several methods to maintain the needed reliability. NR
+   uses Low Density Parity Check (LDPC) codes for data channels, Polar codes
+   for PDCCH, as well as orthogonal sequences and Polar codes for PUCCH. For 
+   ultra-reliability of data channels, very robust (low spectral efficiency)
+   Modulation and Coding Scheme (MCS) tables are introduced containing very low
+   (down to 1/20) LDPC code rates using BPSK or QPSK. Also, PDCCH and PUCCH 
+   channels support multiple code rates including very low ones for the channel
+   robustness. 
+   </t>
+
+   <t>
+   A connected UE reports downlink (DL) quality to gNB by sending Channel State
+   Information (CSI) reports via PUCCH while uplink (UL) quality is measured 
+   directly at gNB. For both uplink and downlink, gNB selects the desired MCS 
+   number and signals it to the UE by Downlink Control Information (DCI) via
+   PDCCH channel. For URLLC services, the UE can assist the gNB by advising 
+   that MCS targeting 10^-5 Block Error Rate (BLER) are used. Robust link
+   adaptation algorithms can maintain the needed level of reliability
+   considering a given latency bound.
+   </t>
+	
+   <t>
+   Low latency on the physical layer is provided by short transmission duration 
+   which is possible by using high Subcarrier Spacing (SCS) and the allocation
+   of only one or a few Orthogonal Frequency Division Multiplexing (OFDM)
+   symbols. For example, the shortest latency for the worst case in DL can be 
+   0.23ms and in UL can be 0.24ms according to (section 5.7.1 in
+   <xref target='TR37910'/>). Moreover, if the initial transmission has failed, 
+   HARQ feedback can quickly be provided and an HARQ retransmission is
+   scheduled. 
+   </t>
+   
+   <t>
+   Dynamic multiplexing of data associated with different services is highly 
+   desirable for efficient use of system resources and to maximize system 
+   capacity. Assignment of resources for eMBB is usually done with regular
+   (longer) transmission slots, which can lead to blocking of low latency
+   services. To overcome the blocking, eMBB resources can be pre-empted and 
+   re-assigned to URLLC services. In this way, spectrally efficient assignments
+   for eMBB can be ensured while providing flexibility required to ensure a
+   bounded latency for URLLC services. In downlink, the gNB can notify the eMBB
+   UE about pre-emption after it has happened, while in uplink there are two
+   pre-emption mechanisms: special signaling to cancel eMBB transmission and
+   URLLC dynamic power boost to suppress eMBB transmission.
+   </t>
+
+   </section><!-- Radio (PHY)   -->  
+
+
+  <section><name>Scheduling and QoS (MAC)</name>
+
+   <t>
+   One integral part of the 5G system is the Quality of Service (QoS) framework
+   <xref target='TS23501'/>. QoS flows are setup by the 5G system for certain 
+   IP or Ethernet packet flows, so that packets of each flow receive the same 
+   forwarding treatment, i.e., in scheduling and admission control. QoS flows 
+   can for example be associated with different priority level, packet delay
+   budgets and tolerable packet error rates. Since radio resources are 
+   centrally scheduled in NR, the admission control function can ensure that 
+   only those QoS flows are admitted for which QoS targets can be reached. 
+   </t>
+   
+   <t>
+   NR transmissions in both UL and DL are scheduled by the gNB
+   <xref target='TS38300'/>. This ensures radio resource efficiency, fairness 
+   in resource usage of the users and enables differentiated treatment of the 
+   data flows of the users according to the QoS targets of the flows. Those QoS
+   flows are handled as data radio bearers or logical channels in NR RAN 
+   scheduling. 
+   </t>
+
+   <t>
+   The gNB can dynamically assign DL and UL radio resources to users, 
+   indicating the resources as DL assignments or UL grants via control channel
+   to the UE. Radio resources are defined as blocks of OFDM symbols in spectral
+   domain and time domain. Different lengths are supported in time domain, 
+   i.e., (multiple) slot or mini-slot lengths. Resources of multiple frequency
+   carriers can be aggregated and jointly scheduled to the UE. 
+   </t>
+   
+   <t>
+   Scheduling decisions are based, e.g., on channel quality measured on 
+   reference signals and reported by the UE (cf. periodical CSI reports for DL
+   channel quality). The transmission reliability can be chosen in the 
+   scheduling algorithm, i.e., by link adaptation where an appropriate 
+   transmission format (e.g., robustness of modulation and coding scheme, 
+   controlled UL power) is selected for the radio channel condition of the UE. 
+   Retransmissions, based on HARQ feedback, are also controlled by the 
+   scheduler. If needed to avoid HARQ round-trip time delays, repeated
+   transmissions can be also scheduled beforehand, to the cost of reduced
+   spectral efficiency.
+   </t>
+   
+   <t>
+   In dynamic DL scheduling, transmission can be initiated immediately
+   when DL data becomes available in the gNB. However, for dynamic UL 
+   scheduling, when data becomes available but no UL resources are available
+   yet, the UE indicates the need for UL resources to the gNB via a (single bit)
+   scheduling request message in the UL control channel. When thereupon UL
+   resources are scheduled to the UE, the UE can transmit its data and may
+   include a buffer status report, indicating the exact amount of data per
+   logical channel still left to be sent. More UL resources may be scheduled 
+   accordingly. To avoid the latency introduced in the scheduling request loop,
+   UL radio resources can also be pre-scheduled. 
+   </t>   
+   
+   <t>
+   In particular for periodical traffic patterns, the pre-scheduling can rely
+   on the scheduling features DL Semi-Persistent Scheduling (SPS) and UL
+   Configured Grant (CG). With these features, periodically recurring resources
+   can be assigned in DL and UL. Multiple parallels of those configurations are
+   supported, in order to serve multiple parallel traffic flows of the same UE.
+   </t>
+   
+   <t>
+   To support QoS enforcement in the case of mixed traffic with different QoS
+   requirements, several features have recently been introduced. This way,
+   e.g., different periodical critical QoS flows can be served together with
+   best effort transmissions, by the same UE. Among others, these features 
+   (partly Release 16) are: 1) UL logical channel transmission restrictions 
+   allowing to map logical channels of certain QoS only to intended UL
+   resources of a certain frequency carrier, slot-length, or CG configuration,
+   and 2) intra-UE pre-emption, allowing critical UL transmissions to pre-empt
+   non-critical transmissions. 
+   </t>
+   
+   <t>
+   When multiple frequency carriers are aggregated, duplicate parallel
+   transmissions can be employed (beside repeated transmissions on one
+   carrier). This is possible in the Carrier Aggregation (CA) architecture
+   where those carriers originate from the same gNB, or in the Dual
+   Connectivity (DC) architecture where the carriers originate from different
+   gNBs, i.e., the UE is connected to two gNBs in this case.  In both cases, 
+   transmission reliability is improved by this means of providing frequency
+   diversity. 
+   </t>
+   
+   <t>
+   In addition to licensed spectrum, a 5G system can also utilize unlicensed
+   spectrum to offload non-critical traffic. This version of NR is called NR-U,
+   part of 3GPP Release 16. The central scheduling approach applies also for
+   unlicensed radio resources, but in addition also the mandatory channel 
+   access mechanisms for unlicensed spectrum, e.g., Listen Before Talk (LBT) 
+   are supported in NR-U. This way, by using NR, operators have and can control
+   access to both licensed and unlicensed frequency resources.
+   </t>
+
+   </section><!-- Scheduling and QoS (MAC)   -->  
+
+
+  <section><name>Time-Sensitive Networking (TSN) Integration</name>
+
+   <t>
+   The main objective of Time-Sensitive Networking (TSN) is to provide 
+   guaranteed data delivery within a guaranteed time window, i.e., bounded low
+   latency. IEEE 802.1 TSN <xref target='IEEE802.1TSN'/> is a set of open 
+   standards that provide features to enable deterministic communication on 
+   standard IEEE 802.3 Ethernet <xref target='IEEE802.3'/>. TSN standards can 
+   be seen as a toolbox for traffic shaping, resource management, time 
+   synchronization, and reliability. 
+   </t>
+
+   <t>
+   A TSN stream is a data flow between one end station (Talker) to another end 
+   station (Listener). In the centralized configuration model, TSN bridges are
+   configured by the Central Network Controller (CNC)  
+   <xref target='IEEE802.1Qcc'/> to provide deterministic connectivity for the
+   TSN stream through the network. Time-based traffic shaping provided by 
+   Scheduled Traffic <xref target='IEEE802.1Qbv'/> may be used to achieve 
+   bounded low latency. The TSN tool for time synchronization is the 
+   generalized Precision Time Protocol (gPTP) <xref target='IEEE802.1AS'/>), 
+   which provides reliable time synchronization that can be used by end 
+   stations and by other TSN tools, e.g., Scheduled Traffic 
+   <xref target='IEEE802.1Qbv'/>. High availability, as a result of 
+   ultra-reliability, is provided for data flows by the Frame Replication and 
+   Elimination for Reliability (FRER) <xref target='IEEE802.1CB'/> mechanism. 
+   </t>
+
+   <t>
+   3GPP Release 16 includes integration of 5G with TSN, i.e., specifies 
+   functions for the 5G System (5GS) to deliver TSN streams such that the meet
+   their QoS requirements. A key aspect of the integration is the 5GS appears
+   from the rest of the network as a set of TSN bridges, in particular, one 
+   virtual bridge per User Plane Function (UPF) on the user plane. The 5GS 
+   includes TSN Translator (TT) functionality for the adaptation of the 5GS to 
+   the TSN bridged network and for hiding the 5GS internal procedures. The 5GS
+   provides the following components:
+   </t><ol type='%d.'>
+      <li>interface to TSN controller, as per <xref target='IEEE802.1Qcc'/> for
+      the fully centralized configuration model</li>
+      <li>time synchronization via reception and transmission of gPTP PDUs 
+	  <xref target='IEEE802.1AS'/></li>
+      <li>low latency, hence, can be integrated with Scheduled Traffic 
+	  <xref target='IEEE802.1Qbv'/></li>
+      <li>reliability, hence, can be integrated with FRER 
+	  <xref target='IEEE802.1CB'/></li>
+	  </ol><t>
+   </t>
+
+   <t>  
+   <xref target='fig-5g-arch'/> shows an illustration of 5G-TSN integration 
+   where an industrial controller (Ind Ctrlr) is connected to industrial 
+   Input/Output devices (I/O dev) via 5G. The 5GS can directly transport 
+   Ethernet frames since Release 15, thus, end-to-end Ethernet connectivity is
+   provided. The 5GS implements the required interfaces towards the TSN 
+   controller functions such as the CNC, thus adapts to the settings of the TSN
+   network. A 5G user plane virtual bridge interconnects TSN bridges or connect
+   end stations, e.g., I/O devices to the network. Note that the introduction 
+   of 5G brings flexibility in various aspects, e.g., more flexible network 
+   topology because a wireless hop can replace several wireline hops thus 
+   significantly reduce the number of hops end-to-end. 
+   <xref target='ETR5GTSN'/> dives more into the integration of 5G with TSN.
+   </t>
+
+<figure anchor='fig-5g-tsn'><name>5G - TSN Integration</name>
+<artwork align="center"><![CDATA[
+                 +------------------------------+                                           
+                 | 5G System                    |
+                 |                         +---+|
+                 |     +-+ +-+ +-+ +-+ +-+ |TSN||
+                 |     | | | | | | | | | | |AF |......+ 
+                 |     +++ +++ +++ +++ +++ +-+-+|     .
+                 |      |   |   |   |   |    |  |     .
+                 |     -+---+---++--+-+-+--+-+- |     .
+                 |          |    |    |    |    |  +--+--+
+                 |         +++  +++  +++  +++   |  | TSN |
+                 |         | |  | |  | |  | |   |  |Ctrlr+.......+
+                 |         +++  +++  +++  +++   |  +--+--+       .
+                 |                              |     .          .
+                 |                              |     .          .
+                 | +..........................+ |     .          .
+                 | .      Virtual Bridge      . |     .          .
++---+            | . +--+--+   +---+ +---+--+ . |  +--+---+      .
+|I/O+----------------+DS|UE+---+RAN+-+UPF|NW+------+ TSN  +----+ .
+|dev|            | . |TT|  |   |   | |   |TT| . |  |bridge|    | .   
++---+            | . +--+--+   +---+ +---+--+ . |  +------+    | .  
+                 | +..........................+ |     .      +-+-+-+
+                 |                              |     .      | Ind |
+                 | +..........................+ |     .      |Ctrlr|
+                 | .      Virtual Bridge      . |     .      +-+---+
++---+  +------+  | . +--+--+   +---+ +---+--+ . |  +--+---+    |
+|I/O+--+ TSN  +------+DS|UE+---+RAN+-+UPF|NW+------+ TSN  +----+ 
+|dev|  |bridge|  | . |TT|  |   |   | |   |TT| . |  |bridge|   
++---+  +------+  | . +--+--+   +---+ +---+--+ . |  +------+   
+                 | +..........................+ | 
+                 +------------------------------+
+				 
+    <----------------- end-to-end Ethernet ------------------->				 
+]]></artwork>
+</figure>
+
+   <t>
+   NR supports accurate reference time synchronization in 1us accuracy level. 
+   Since NR is a scheduled system, an NR UE and a gNB are tightly synchronized 
+   to their OFDM symbol structures. A 5G internal reference time can be 
+   provided to the UE via broadcast or unicast signaling, associating a known 
+   OFDM symbol to this reference clock. The 5G internal reference time can be 
+   shared within the 5G network, i.e., radio and core network components. For 
+   the interworking with gPTP for multiple time domains, the 5GS acts as a 
+   virtual gPTP time-aware system and supports the forwarding of gPTP time 
+   synchronization information between end stations and bridges through the 5G
+   user plane TTs. These account for the residence time of the 5GS in the time
+   synchronization procedure. One special option is when the 5GS internal 
+   reference time in not only used within the 5GS, but also to the rest of the 
+   devices in the deployment, including connected TSN bridges and end stations.
+   </t>
+   
+   <t>
+   Redundancy architectures were specified in order to provide reliability 
+   against any kind of failure on the radio link or nodes in the RAN and the 
+   core network, Redundant user plane paths can be provided based on the dual 
+   connectivity architecture, where the UE sets up two PDU sessions towards the
+   same data network, and the 5G system makes the paths of the two PDU sessions
+   independent as illustrated in <xref target='fig-5g-dual-ue'/>. There are two 
+   PDU sessions involved in the solution: the first spans from the UE via gNB1 
+   to UPF1, acting as the first PDU session anchor, while the second spans from
+   the UE via gNB2 to UPF2, acting as second the PDU session anchor. The 
+   independent paths may continue beyond the 3GPP network. Redundancy Handling 
+   Functions (RHFs) are deployed outside of the 5GS, i.e., in Host A (the 
+   device) and in Host B (the network). RHF can implement replication and 
+   elimination functions as per <xref target='IEEE802.1CB'/> or the 
+   Packet Replication, Elimination, and Ordering Functions (PREOF) of IETF 
+   Deterministic Networking (DetNet) <xref target='RFC8655'/>.
+   </t>
+
+<figure anchor='fig-5g-single-ue'><name>Reliability with Single UE</name>
+<artwork align="center"><![CDATA[
++........+
+. Device . +------+      +------+      +------+  
+.        . + gNB1 +--N3--+ UPF1 |--N6--+      |
+.        ./+------+      +------+      |      |
+. +----+ /                             |      |
+. |    |/.                             |      |
+. | UE + .                             |  DN  |
+. |    |\.                             |      |
+. +----+ \                             |      |
+.        .\+------+      +------+      |      |
++........+ + gNB2 +--N3--+ UPF2 |--N6--+      | 
+           +------+      +------+      +------+	
+]]></artwork>
+</figure>   
+
+   <t>
+   An alternative solution is that multiple UEs per device are used for user
+   plane redundancy as illustrated in <xref target='fig-5g-dual-ue'/>. Each UE
+   sets up a PDU session. The 5GS ensures that those PDU sessions of the 
+   different UEs are handled independently internal to the 5GS. There is no
+   single point of failure in this solution, which also includes RHF outside
+   of the 5G system, e.g., as per FRER or as PREOF specifications.
+   </t>
+
+<figure anchor='fig-5g-dual-ue'><name>Reliability with Dual UE</name>
+<artwork align="center"><![CDATA[
++.........+
+.  Device .
+.         .
+. +----+  .  +------+      +------+      +------+  
+. | UE +-----+ gNB1 +--N3--+ UPF1 |--N6--+      |
+. +----+  .  +------+      +------+      |      |
+.         .                              |  DN  |
+. +----+  .  +------+      +------+      |      |
+. | UE +-----+ gNB2 +--N3--+ UPF2 |--N6--+      | 
+. +----+  .  +------+      +------+      +------+	
+.         .
++.........+
+]]></artwork>
+</figure>
+
+   <t>
+   Note that the abstraction provided by the RHF and the location of the RHF 
+   being outside of the 5G system make 5G equally supporting integration for 
+   reliability both with FRER of TSN and PREOF of DetNet as they both rely on 
+   the same concept. 
+   </t>
+   
+   <t>
+   Note also that TSN is the primary subnetwork technology for DetNet. Thus, the 
+   DetNet over TSN work, e.g., <xref target='I-D.ietf-detnet-ip-over-tsn'/>, 
+   can be leveraged via the TSN support built in 5G.
+   </t>
+
+   </section><!-- Time-Sensitive Networking (TSN) Integration)   --> 
+
+
+   </section><!-- Applicability to Deterministic Flows   -->   
+
+
+   <section><name>Summary</name>
+   
+   <t>
+   5G technology enables deterministic communication. Based on the centralized
+   admission control and the scheduling of the wireless resources, licensed or
+   unlicensed, quality of service such as latency and reliability can be 
+   guaranteed. 5G contains several features to achieve ultra-reliable and low 
+   latency performance, e.g., support for different OFDM numerologies and 
+   slot-durations, as well as fast processing capabilities and redundancy 
+   techniques that lead to achievable latency numbers of below 1ms with 
+   reliability guarantees up to 99.999%.
+   </t>
+  
+   <t>
+   5G also includes features to support Industrial IoT use cases, e.g., via the
+   integration of 5G with TSN. This includes 5G capabilities for each TSN 
+   component, latency, resource management, time synchronization, and 
+   reliability. Furthermore, 5G support for TSN can be leveraged when 5G is used
+   as subnet technology for DetNet, in combination with or instead of TSN, which 
+   is the primary subnet for DetNet. In addition, the support for integration 
+   with TSN reliability was added to 5G by making DetNet reliability also 
+   applicable, thus making 5G DetNet ready. Moreover, providing IP service is 
+   native to 5G.  
+   </t>
+   
+   <t>
+   Overall, 5G provides scheduled wireless segments with high reliability and 
+   availability. In addition, 5G includes capabilities for integration to IP 
+   networks.
+   </t>
+
+
+   </section><!-- Summary   -->  
+
+   </section> <!-- 5G -->
 
 
  <section><name>L-band Digital Aeronautical Communications System</name>
@@ -1428,6 +2204,7 @@ In order to support diversity, LDACS supports handovers to other ground-stations
    				<dt>Georgios Z. Papadopoulos:</dt><dd> Contributed to the TSCH section. </dd>
    				<dt>Nils Mäurer:</dt><dd> Contributed to the LDACS section. </dd>
    				<dt>Thomas Gräupl:</dt><dd> Contributed to the LDACS section. </dd>
+				<dt>Janos Farkas, Torsten Dudda, Alexey Shapin, and Sara Sandberg:</dt><dd> Contributed to the 5G section. </dd>
    			</dl><t>
 
    		</t>
@@ -1827,7 +2604,141 @@ In order to support diversity, LDACS supports handovers to other ground-stations
       </reference>
 
 
+      <reference anchor='TR37910' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3190'>
+        <front>
+          <title>3GPP TR 37.910, Study on self evaluation towards IMT-2020 submission</title>
+          <author></author>
+        </front>
+      </reference>
 
+      <reference anchor='TR38824' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3498'>
+        <front>
+          <title>3GPP TR 38.824, Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</title>
+          <author></author>
+        </front>
+      </reference>	  
+
+      <reference anchor='TR38825' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3492'>
+        <front>
+          <title>3GPP TR 38.825, Study on NR industrial Internet of Things (IoT)</title>
+          <author></author>
+        </front>
+      </reference>	
+
+	  <reference anchor='TS22104' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3528'>
+        <front>
+          <title>3GPP TS 22.104, Service requirements for cyber-physical control applications in vertical domains</title>
+          <author></author>
+        </front>
+      </reference>
+
+      <reference anchor='TR22804' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3187'>
+        <front>
+          <title>3GPP TR 22.804, Study on Communication for Automation in Vertical domains (CAV)</title>
+          <author></author>
+        </front>
+      </reference>
+	  
+	  <reference anchor='TS23501' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144'>
+        <front>
+          <title>3GPP TS 23.501, System architecture for the 5G System (5GS)</title>
+          <author></author>
+        </front>
+      </reference>
+
+       <reference anchor='TS38300' target='https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3191'>
+        <front>
+          <title>3GPP TS 38.300, NR Overall description</title>
+          <author></author>
+        </front>
+      </reference>
+	  
+	  <reference anchor='IMT2020' target='https://www.itu.int/en/ITU-R/study-groups/rsg5/rwp5d/imt-2020/Pages/default.aspx'>
+        <front>
+          <title>ITU towards IMT for 2020 and beyond</title>
+          <author></author>
+        </front>
+      </reference>
+	  
+      <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8655.xml'/> <!-- DetNet Architecture -->
+	  <xi:include href='http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-detnet-ip-over-tsn.xml'/>
+	  
+      <reference anchor="IEEE802.1TSN" target="http://www.ieee802.org/1/pages/tsn.html" quoteTitle="true" derivedAnchor="IEEE802.1TSN">
+        <front>
+          <title>Time-Sensitive Networking (TSN) Task Group</title>
+          <author>
+            <organization showOnFrontPage="true">IEEE 802.1</organization>
+          </author>
+        </front>
+      </reference>
+     <reference anchor="IEEE802.1AS" target="https://standards.ieee.org/content/ieee-standards/en/standard/802_1AS-2020.html" quoteTitle="true" derivedAnchor="IEEE802.1AS">
+        <front>
+          <title>IEEE Standard for Local and metropolitan area networks -- Timing and Synchronization for Time-Sensitive Applications</title>
+          <seriesInfo name="IEEE" value="802.1AS-2020"/>
+          <author>
+            <organization showOnFrontPage="true">IEEE</organization>
+          </author>
+        </front>
+      </reference>
+      <reference anchor="IEEE802.1CB" target="https://ieeexplore.ieee.org/document/8091139" quoteTitle="true" derivedAnchor="IEEE802.1CB">
+        <front>
+          <title>IEEE Standard for Local and metropolitan area networks -- Frame Replication and Elimination for Reliability</title>
+          <seriesInfo name="DOI" value="10.1109/IEEESTD.2017.8091139"/>
+          <seriesInfo name="IEEE" value="802.1CB-2017"/>
+          <author>
+            <organization showOnFrontPage="true">IEEE</organization>
+          </author>
+          <date/>
+        </front>
+     </reference>
+     <reference anchor="IEEE802.1Qbv" target="https://ieeexplore.ieee.org/document/7440741" quoteTitle="true" derivedAnchor="IEEE802.1Qbv">
+        <front>
+          <title>IEEE Standard for Local and metropolitan area networks -- Bridges and Bridged Networks -- Amendment 25: Enhancements for Scheduled Traffic</title>
+          <seriesInfo name="IEEE" value="802.1Qbv-2015"/>
+          <author>
+            <organization showOnFrontPage="true">IEEE</organization>
+          </author>
+        </front>
+      </reference>	  
+	  <reference anchor="IEEE802.1Qcc" target="https://ieeexplore.ieee.org/document/8514112" quoteTitle="true" derivedAnchor="IEEE802.1Qcc">
+        <front>
+          <title>IEEE Standard for Local and metropolitan area networks -- Bridges and Bridged Networks -- Amendment 31: Stream Reservation Protocol (SRP) Enhancements and Performance Improvements</title>
+          <seriesInfo name="IEEE" value="802.1Qcc-2018"/>
+          <author>
+            <organization showOnFrontPage="true">IEEE</organization>
+          </author>
+        </front>
+      </reference>
+	  
+      <reference anchor="IEEE802.3" target="https://ieeexplore.ieee.org/document/8457469" quoteTitle="true" derivedAnchor="IEEE802.3">
+        <front>
+          <title>IEEE Standard for Ethernet</title>
+          <seriesInfo name="IEEE" value="802.3-2018"/>
+          <author>
+            <organization showOnFrontPage="true">IEEE</organization>
+          </author>
+        </front>
+      </reference>
+
+      <reference anchor="ETR5GTSN" quoteTitle="true" target="https://www.ericsson.com/en/reports-and-papers/ericsson-technology-review/articles/5g-tsn-integration-for-industrial-automation" derivedAnchor="ETR5GTSN">
+        <front>
+          <title>5G-TSN integration meets networking requirements for industrial automation</title>
+		  <seriesInfo name="Ericsson Technology Review," value="Volume 9, No 7"/>
+          <author initials="J." surname="Farkas" fullname="Janos Farkas">
+            <organization showOnFrontPage="true"/>
+          </author>
+          <author initials="B." surname="Varga" fullname="Balazs Varga">
+            <organization showOnFrontPage="true"/>
+          </author>
+          <author initials="G." surname="Miklos" fullname="Gyorgy Miklos">
+            <organization showOnFrontPage="true"/>
+          </author>
+		  <author initials="J." surname="Sachs" fullname="Joachim Sachs">
+            <organization showOnFrontPage="true"/>
+           </author>
+    	   <date month='August' year='2019'/>
+        </front>
+      </reference>
 
 
 
