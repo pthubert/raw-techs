@@ -5,12 +5,14 @@
 RAW                                                      P. Thubert, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                             D. Cavalcanti
-Expires: 18 November 2020                                          Intel
+Expires: 19 November 2020                                          Intel
                                                            X. Vilajosana
                                          Universitat Oberta de Catalunya
                                                               C. Schmitt
                                          Research Institute CODE, UniBwM
-                                                             17 May 2020
+                                                               J. Farkas
+                                                                Ericsson
+                                                             18 May 2020
 
 
               Reliable and Available Wireless Technologies
@@ -38,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 November 2020.
+   This Internet-Draft will expire on 19 November 2020.
 
 Copyright Notice
 
@@ -48,16 +50,16 @@ Copyright Notice
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
    license-info) in effect on the date of publication of this document.
-   Please review these documents carefully, as they describe your rights
-   and restrictions with respect to this document.  Code Components
 
 
 
-Thubert, et al.         Expires 18 November 2020                [Page 1]
+Thubert, et al.         Expires 19 November 2020                [Page 1]
 
 Internet-Draft                  RAW Techs                       May 2020
 
 
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
    extracted from this document must include Simplified BSD License text
    as described in Section 4.e of the Trust Legal Provisions and are
    provided without warranty as described in the Simplified BSD License.
@@ -104,16 +106,16 @@ Table of Contents
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .  48
    10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  48
    11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  49
-   12. Normative References  . . . . . . . . . . . . . . . . . . . .  49
-   13. Informative References  . . . . . . . . . . . . . . . . . . .  49
 
 
 
-Thubert, et al.         Expires 18 November 2020                [Page 2]
+Thubert, et al.         Expires 19 November 2020                [Page 2]
 
 Internet-Draft                  RAW Techs                       May 2020
 
 
+   12. Normative References  . . . . . . . . . . . . . . . . . . . .  49
+   13. Informative References  . . . . . . . . . . . . . . . . . . .  49
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  56
 
 1.  Introduction
@@ -147,7 +149,9 @@ Internet-Draft                  RAW Techs                       May 2020
    and P2MP overhearing whereby multiple receivers are scheduled to
    receive the same transmission, which balances the adverse effects of
    the transmission losses that are experienced when a radio is used as
-   pure P2P.
+   pure P2P.  Those methods are collectively referred to as PAREO
+   functions in the "Reliable and Available Wireless Architecture/
+   Framework" [I-D.pthubert-raw-architecture].
 
 2.  Terminology
 
@@ -156,19 +160,22 @@ Internet-Draft                  RAW Techs                       May 2020
    found in the traditional Internet and other statistically multiplexed
    packet networks.
 
+
+
+
+
+
+Thubert, et al.         Expires 19 November 2020                [Page 3]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    ARQ:  Automatic Repeat Request, enabling an acknowledged transmission
       and retries.  ARQ is a typical model at Layer-2 on a wireless
       medium.  It is typically avoided end-to-end on deterministic flows
       because it introduces excessive indetermination in latency, but a
       limited number of retries within a bounded time may be used over a
       wireless link and yet respect end-to-end constraints.
-
-
-
-Thubert, et al.         Expires 18 November 2020                [Page 3]
-
-Internet-Draft                  RAW Techs                       May 2020
-
 
    Available:  That is exempt of unscheduled outage, the expectation for
       a network being that the flow is maintained in the face of any
@@ -212,20 +219,19 @@ Internet-Draft                  RAW Techs                       May 2020
    buffers, by shaping the flows and by scheduling the time of
    transmission of the packets that compose the flow at every hop.
 
+
+
+Thubert, et al.         Expires 19 November 2020                [Page 4]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    Equipment failure, such as an access point rebooting, a broken radio
    adapter, or a permanent obstacle to the transmission, is a secondary
    source of packet loss.  When a breakage occurs, multiple packets are
    lost in a row before the flows are rerouted or the system may
    recover.  This is not acceptable for critical applications such as
    related to safety.  A typical process control loop will tolerate an
-
-
-
-Thubert, et al.         Expires 18 November 2020                [Page 4]
-
-Internet-Draft                  RAW Techs                       May 2020
-
-
    occasional packet loss, but a loss of several packets in a row will
    cause an emergency stop (e.g., after 4 packets lost, within a period
    of 1 second).
@@ -263,6 +269,19 @@ Internet-Draft                  RAW Techs                       May 2020
    And because scheduling allows a time-sharing operation, there is no
    limit to the ratio of isolated critical traffic.
 
+
+
+
+
+
+
+
+
+Thubert, et al.         Expires 19 November 2020                [Page 5]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    Finally, scheduling plays a critical role to save energy.  In IOT,
    energy is the foremost concern, and synchronizing sender and listener
    enables to always maintain them in deep sleep when there is no
@@ -270,17 +289,6 @@ Internet-Draft                  RAW Techs                       May 2020
    preambles and enables long sleep periods between traffic and
    resynchronization, allowing battery-operated nodes to operate in a
    mesh topology for multiple years.
-
-
-
-
-
-
-
-Thubert, et al.         Expires 18 November 2020                [Page 5]
-
-Internet-Draft                  RAW Techs                       May 2020
-
 
 4.  IEEE 802.11
 
@@ -322,21 +330,17 @@ Internet-Draft                  RAW Techs                       May 2020
    802.1 features over 802.11.  As with any wireless media, 802.11
    imposes new constraints and restrictions to TSN-grade QoS, and
    tradeoffs between latency and reliability guarantees must be
-   considered as well as managed deployment requirements.  An overview
-   of 802.1 TSN capabilities and their extensions to 802.11 are
-   discussed in [Cavalcanti_2019].
 
 
 
-
-
-
-
-
-Thubert, et al.         Expires 18 November 2020                [Page 6]
+Thubert, et al.         Expires 19 November 2020                [Page 6]
 
 Internet-Draft                  RAW Techs                       May 2020
 
+
+   considered as well as managed deployment requirements.  An overview
+   of 802.1 TSN capabilities and their extensions to 802.11 are
+   discussed in [Cavalcanti_2019].
 
    Wi-Fi Alliance (WFA) is the worldwide network of companies that
    drives global Wi-Fi adoption and evolution through thought
@@ -345,9 +349,9 @@ Internet-Draft                  RAW Techs                       May 2020
    the interoperability, security, and reliability they have come to
    expect.
 
-   The following IEEE 802.11 specifications/certifications are relevant
-   in the context of reliable and available wireless services and
-   support for time-sensitive networking capabilities:
+   The following [IEEE Std. 802.11] specifications/certifications are
+   relevant in the context of reliable and available wireless services
+   and support for time-sensitive networking capabilities:
 
    Time Synchronization:  IEEE802.11-2016 with IEEE802.1AS; WFA TimeSync
       Certification.
@@ -357,13 +361,13 @@ Internet-Draft                  RAW Techs                       May 2020
 
    Security:  WFA Wi-Fi Protected Access, WPA2 and WPA3.
 
-   Interoperating with IEEE802.1Q bridges:  IEEE802.11ak.
+   Interoperating with IEEE802.1Q bridges:  [IEEE Std. 802.11ak].
 
-   Stream Reservation Protocol (part of IEEE802.1Qat):
-      AIEEE802.11-2016.
+   Stream Reservation Protocol (part of [IEEE Std. 802.1Qat]):
+      AIEEE802.11-2016
 
    Scheduled channel access:  IEEE802.11ad Enhancements for very high
-      throughput in the 60 GHz band [IEEE80211ad].
+      throughput in the 60 GHz band [IEEE Std. 802.11ad].
 
    802.11 Real-Time Applications:  Topic Interest Group (TIG) ReportDoc
       [IEEE_doc_11-18-2009-06].
@@ -374,38 +378,37 @@ Internet-Draft                  RAW Techs                       May 2020
    providing more reliable and predictable wireless connectivity and
    support time-sensitive applications:
 
-   IEEE 802.11ax D4.0: Enhancements for High Efficiency (HE).  [IEEE8021
-      1ax]
+   IEEE 802.11ax D4.0: Enhancements for High Efficiency (HE).  [IEEE
+      Std. 802.11ax]
 
-   IEEE 802.11be Extreme High Throughput (EHT).  [IEEE80211be]
+   IEEE 802.11be Extreme High Throughput (EHT).  [IEEE 802.11be WIP]
 
    IEE 802.11ay Enhanced throughput for operation in license-exempt
-   bands above 45 GHz.  [IEEE8021
-      1ay]
+   bands above 45 GHz.  [IEEE
+      Std. 802.11ay]
+
+
+
+Thubert, et al.         Expires 19 November 2020                [Page 7]
+
+Internet-Draft                  RAW Techs                       May 2020
 
 
    The main 802.11ax and 802.11be capabilities and their relevance to
    RAW are discussed in the remainder of this document.
-
-
-
-Thubert, et al.         Expires 18 November 2020                [Page 7]
-
-Internet-Draft                  RAW Techs                       May 2020
-
 
 4.2.  802.11ax High Efficiency (HE)
 
 4.2.1.  General Characteristics
 
    The next generation Wi-Fi (Wi-Fi 6) is based on the IEEE802.11ax
-   amendment [IEEE80211ax], which includes new capabilities to increase
-   efficiency, control and reduce latency.  Some of the new features
-   include higher order 1024-QAM modulation, support for uplink multi-
-   user MIMO, OFDMA, trigger-based access and Target Wake time (TWT) for
-   enhanced power savings.  The OFDMA mode and trigger-based access
-   enable scheduled operation, which is a key capability required to
-   support deterministic latency and reliability for time-sensitive
+   amendment [IEEE Std. 802.11ax], which includes new capabilities to
+   increase efficiency, control and reduce latency.  Some of the new
+   features include higher order 1024-QAM modulation, support for uplink
+   multi-user MIMO, OFDMA, trigger-based access and Target Wake time
+   (TWT) for enhanced power savings.  The OFDMA mode and trigger-based
+   access enable scheduled operation, which is a key capability required
+   to support deterministic latency and reliability for time-sensitive
    flows. 802.11ax can operate in up to 160 MHz channels and it includes
    support for operation in the new 6 GHz band, which is expected to be
    open to unlicensed use by the FCC and other regulatory agencies
@@ -442,10 +445,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-
-
-
-Thubert, et al.         Expires 18 November 2020                [Page 8]
+Thubert, et al.         Expires 19 November 2020                [Page 8]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -456,7 +456,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 4.2.1.3.  Support for 6GHz band
 
-   The 802.11ax specification [IEEE80211ax] includes support for
+   The 802.11ax specification [IEEE Std. 802.11ax] includes support for
    operation in the new 6 GHz band.  Given the amount of new spectrum
    available as well as the fact that no legacy 802.11 device (prior
    802.11ax) will be able to operate in this new band, 802.11ax
@@ -491,23 +491,23 @@ Internet-Draft                  RAW Techs                       May 2020
    Time-sensitive applications and TSN standards are expected to operate
    under a managed network (e.g. industrial/enterprise network).  Thus,
    the Wi-Fi operation must also be carefully managed and integrated
-   with the overall TSN management framework, as defined in the IEEE
-   Std. 802.1Qcc specification [IEEE8021Qcc].
+   with the overall TSN management framework, as defined in the
+   [IEEE8021Qcc] specification.
 
    Some of the random-access latency and interference from legacy/
    unmanaged devices can be minimized under a centralized management
-   mode as defined in IEEE Std. 802.1Qcc, in which admission control
+   mode as defined in [IEEE8021Qcc], in which admission control
    procedures are enforced.
 
 
 
-Thubert, et al.         Expires 18 November 2020                [Page 9]
+Thubert, et al.         Expires 19 November 2020                [Page 9]
 
 Internet-Draft                  RAW Techs                       May 2020
 
 
    Existing traffic stream identification, configuration and admission
-   control procedures defined in IEEE Std. 802.11 QoS mechanism can be
+   control procedures defined in [IEEE Std. 802.11] QoS mechanism can be
    re-used.  However, given the high degree of determinism required by
    many time-sensitive applications, additional capabilities to manage
    interference and legacy devices within tight time-constraints need to
@@ -515,15 +515,15 @@ Internet-Draft                  RAW Techs                       May 2020
 
 4.2.2.2.  Scheduling for bounded latency and diversity
 
-   As discussed earlier, the 802.11ax OFDMA mode introduces the
-   possibility of assigning different RUs (frequency resources) to users
-   within a PPDU.  Several RU sizes are defined in the specification
-   (26, 52, 106, 242, 484, 996 subcarriers).  In addition, the AP can
-   also decide on MCS and grouping of users within a given OFMDA PPDU.
-   Such flexibility can be leveraged to support time-sensitive
-   applications with bounded latency, especially in a managed network
-   where stations can be configured to operate under the control of the
-   AP.
+   As discussed earlier, the [IEEE Std. 802.11ax] OFDMA mode introduces
+   the possibility of assigning different RUs (frequency resources) to
+   users within a PPDU.  Several RU sizes are defined in the
+   specification (26, 52, 106, 242, 484, 996 subcarriers).  In addition,
+   the AP can also decide on MCS and grouping of users within a given
+   OFMDA PPDU.  Such flexibility can be leveraged to support time-
+   sensitive applications with bounded latency, especially in a managed
+   network where stations can be configured to operate under the control
+   of the AP.
 
    As shown in [Cavalcanti_2019], it is possible to achieve latencies in
    the order of 1msec with high reliability in an interference free
@@ -542,13 +542,13 @@ Internet-Draft                  RAW Techs                       May 2020
 
 4.3.1.  General Characteristics
 
-   The 802.11be is the next major 802.11 amendment (after 802.11ax) for
-   operation in the 2.4, 5 and 6 GHz bands. 802.11be is expected to
-   include new PHY and MAC features and it is targeting extremely high
-   throughput (at least 30 Gbps), as well as enhancements to worst case
-   latency and jitter.  It is also expected to improve the integration
-   with 802.1 TSN to support time-sensitive applications over Ethernet
-   and Wireless LANs.
+   The [IEEE 802.11be WIP]is the next major 802.11 amendment (after
+   [IEEE Std. 802.11ax]) for operation in the 2.4, 5 and 6 GHz bands.
+   802.11be is expected to include new PHY and MAC features and it is
+   targeting extremely high throughput (at least 30 Gbps), as well as
+   enhancements to worst case latency and jitter.  It is also expected
+   to improve the integration with 802.1 TSN to support time-sensitive
+   applications over Ethernet and Wireless LANs.
 
    The 802.11be Task Group started its operation in May 2019, therefore,
    detailed information about specific features is not yet available.
@@ -557,7 +557,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 10]
+Thubert, et al.         Expires 19 November 2020               [Page 10]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -613,7 +613,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 11]
+Thubert, et al.         Expires 19 November 2020               [Page 11]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -669,7 +669,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 12]
+Thubert, et al.         Expires 19 November 2020               [Page 12]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -712,9 +712,9 @@ Internet-Draft                  RAW Techs                       May 2020
    as the Direct Sequence Spread Spectrum (DSSS).
 
    The Timeslotted Channel Hopping (TSCH) mode was added to the 2015
-   revision of the IEEE802.15.4 standard [IEEE802154].  TSCH is targeted
-   at the embedded and industrial world, where reliability, energy
-   consumption and cost drive the application space.
+   revision of the IEEE802.15.4 standard [IEEE Std. 802.15.4].  TSCH is
+   targeted at the embedded and industrial world, where reliability,
+   energy consumption and cost drive the application space.
 
    At the IETF, the 6TiSCH Working Group (WG) [TiSCH] deals with best
    effort operation of IPv6 [RFC8200] over TSCH. 6TiSCH has enabled
@@ -725,7 +725,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 13]
+Thubert, et al.         Expires 19 November 2020               [Page 13]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -766,8 +766,8 @@ Internet-Draft                  RAW Techs                       May 2020
    1.  IEEE Std 802.15.4: "IEEE Std. 802.15.4, Part. 15.4: Wireless
        Medium Access Control (MAC) and Physical Layer (PHY)
        Specifications for Low-Rate Wireless Personal Area Networks"
-       [IEEE802154].  The latest version at the time of this writing is
-       dated year 2015.
+       [IEEE Std. 802.15.4].  The latest version at the time of this
+       writing is dated year 2015.
 
    2.  Morell, A. , Vilajosana, X. , Vicario, J.  L. and Watteyne, T.
        (2013), Label switching over IEEE802.15.4e networks.  Trans.
@@ -781,7 +781,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 14]
+Thubert, et al.         Expires 19 November 2020               [Page 14]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -837,7 +837,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 15]
+Thubert, et al.         Expires 19 November 2020               [Page 15]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -862,7 +862,7 @@ Internet-Draft                  RAW Techs                       May 2020
    frequency, and hence enabling an efficient management of the
    bandwidth utilization.  Such efficient bandwidth utilization can be
    combined to OFDM modulations also supported by the IEEE802.15.4
-   standard [IEEE802154] since the 2015 version.
+   standard [IEEE Std. 802.15.4] since the 2015 version.
 
    In the RAW context, low power reliable networks should address non-
    critical control scenarios such as Class 2 and monitoring scenarios
@@ -893,7 +893,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 16]
+Thubert, et al.         Expires 19 November 2020               [Page 16]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -949,7 +949,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 17]
+Thubert, et al.         Expires 19 November 2020               [Page 17]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 18]
+Thubert, et al.         Expires 19 November 2020               [Page 18]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 19]
+Thubert, et al.         Expires 19 November 2020               [Page 19]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 20]
+Thubert, et al.         Expires 19 November 2020               [Page 20]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 21]
+Thubert, et al.         Expires 19 November 2020               [Page 21]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 22]
+Thubert, et al.         Expires 19 November 2020               [Page 22]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 23]
+Thubert, et al.         Expires 19 November 2020               [Page 23]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 24]
+Thubert, et al.         Expires 19 November 2020               [Page 24]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 25]
+Thubert, et al.         Expires 19 November 2020               [Page 25]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 26]
+Thubert, et al.         Expires 19 November 2020               [Page 26]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 27]
+Thubert, et al.         Expires 19 November 2020               [Page 27]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 28]
+Thubert, et al.         Expires 19 November 2020               [Page 28]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 29]
+Thubert, et al.         Expires 19 November 2020               [Page 29]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 30]
+Thubert, et al.         Expires 19 November 2020               [Page 30]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 31]
+Thubert, et al.         Expires 19 November 2020               [Page 31]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 32]
+Thubert, et al.         Expires 19 November 2020               [Page 32]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 33]
+Thubert, et al.         Expires 19 November 2020               [Page 33]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1901,7 +1901,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 34]
+Thubert, et al.         Expires 19 November 2020               [Page 34]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -1957,7 +1957,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 35]
+Thubert, et al.         Expires 19 November 2020               [Page 35]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2013,7 +2013,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 36]
+Thubert, et al.         Expires 19 November 2020               [Page 36]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2069,7 +2069,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 37]
+Thubert, et al.         Expires 19 November 2020               [Page 37]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2125,7 +2125,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 38]
+Thubert, et al.         Expires 19 November 2020               [Page 38]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2181,7 +2181,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 39]
+Thubert, et al.         Expires 19 November 2020               [Page 39]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2237,7 +2237,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 40]
+Thubert, et al.         Expires 19 November 2020               [Page 40]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2293,7 +2293,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 41]
+Thubert, et al.         Expires 19 November 2020               [Page 41]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2349,7 +2349,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 42]
+Thubert, et al.         Expires 19 November 2020               [Page 42]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2405,7 +2405,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 43]
+Thubert, et al.         Expires 19 November 2020               [Page 43]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2461,7 +2461,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 44]
+Thubert, et al.         Expires 19 November 2020               [Page 44]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2517,7 +2517,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 45]
+Thubert, et al.         Expires 19 November 2020               [Page 45]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2573,7 +2573,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 46]
+Thubert, et al.         Expires 19 November 2020               [Page 46]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2629,7 +2629,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 47]
+Thubert, et al.         Expires 19 November 2020               [Page 47]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2685,7 +2685,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 48]
+Thubert, et al.         Expires 19 November 2020               [Page 48]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2741,7 +2741,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 49]
+Thubert, et al.         Expires 19 November 2020               [Page 49]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -2784,23 +2784,28 @@ Internet-Draft                  RAW Techs                       May 2020
               16, 2 April 2020,
               <https://tools.ietf.org/html/draft-ietf-6tisch-msf-16>.
 
+   [I-D.pthubert-raw-architecture]
+              Thubert, P. and G. Papadopoulos, "Reliable and Available
+              Wireless Architecture/Framework", Work in Progress,
+              Internet-Draft, draft-pthubert-raw-architecture-01, 2
+              April 2020, <https://tools.ietf.org/html/draft-pthubert-
+              raw-architecture-01>.
+
    [I-D.ietf-roll-nsa-extension]
               Koutsiamanis, R., Papadopoulos, G., Montavont, N., and P.
               Thubert, "Common Ancestor Objective Function and Parent
+
+
+
+Thubert, et al.         Expires 19 November 2020               [Page 50]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
               Set DAG Metric Container Extension", Work in Progress,
               Internet-Draft, draft-ietf-roll-nsa-extension-08, 27 March
               2020, <https://tools.ietf.org/html/draft-ietf-roll-nsa-
               extension-08>.
-
-
-
-
-
-
-Thubert, et al.         Expires 18 November 2020               [Page 50]
-
-Internet-Draft                  RAW Techs                       May 2020
-
 
    [I-D.papadopoulos-paw-pre-reqs]
               Papadopoulos, G., Koutsiamanis, R., Montavont, N., and P.
@@ -2845,20 +2850,21 @@ Internet-Draft                  RAW Techs                       May 2020
               <https://tools.ietf.org/html/draft-svshah-tsvwg-
               deterministic-forwarding-04>.
 
-   [IEEE802154]
+
+
+
+Thubert, et al.         Expires 19 November 2020               [Page 51]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
+   [IEEE Std. 802.15.4]
               IEEE standard for Information Technology, "IEEE Std.
               802.15.4, Part. 15.4: Wireless Medium Access Control (MAC)
               and Physical Layer (PHY) Specifications for Low-Rate
               Wireless Personal Area Networks".
 
-
-
-Thubert, et al.         Expires 18 November 2020               [Page 51]
-
-Internet-Draft                  RAW Techs                       May 2020
-
-
-   [IEEE80211]
+   [IEEE Std. 802.11]
               "IEEE Standard 802.11 - IEEE Standard for Information
               Technology - Telecommunications and information exchange
               between systems Local and metropolitan area networks -
@@ -2866,25 +2872,25 @@ Internet-Draft                  RAW Techs                       May 2020
               Access Control (MAC) and Physical Layer (PHY)
               Specifications.".
 
-   [IEEE80211ak]
+   [IEEE Std. 802.11ak]
               "802.11ak: Enhancements for Transit Links Within Bridged
               Networks", 2017.
 
-   [IEEE80211ax]
+   [IEEE Std. 802.11ax]
               "802.11ax D4.0: Enhancements for High Efficiency WLAN".
 
-   [IEEE80211ay]
+   [IEEE Std. 802.11ay]
               "802.11ay: Enhanced throughput for operation in license-
               exempt bands above 45 GHz".
 
-   [IEEE80211ad]
+   [IEEE Std. 802.11ad]
               "802.11ad: Enhancements for very high throughput in the 60
               GHz band".
 
-   [IEEE80211be]
+   [IEEE 802.11be WIP]
               "802.11be: Extreme High Throughput".
 
-   [IEEE8021Qat]
+   [IEEE Std. 802.1Qat]
               "802.1Qat: Stream Reservation Protocol".
 
    [IEEE8021Qcc]
@@ -2899,20 +2905,19 @@ Internet-Draft                  RAW Techs                       May 2020
               Wireless Industrial Automation Systems, the Proceedings of
               IEEE", June 2019.
 
+
+
+
+
+Thubert, et al.         Expires 19 November 2020               [Page 52]
+
+Internet-Draft                  RAW Techs                       May 2020
+
+
    [Nitsche_2015]
               Thomas Nitsche et al., "IEEE 802.11ad: directional 60 GHz
               communication for multi-Gigabit-per-second Wi-Fi",
               December 2014.
-
-
-
-
-
-
-Thubert, et al.         Expires 18 November 2020               [Page 52]
-
-Internet-Draft                  RAW Techs                       May 2020
-
 
    [Ghasempour_2017]
               Yasaman Ghasempour et al., "802.11ay: Next-Generation 60
@@ -2960,12 +2965,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-
-
-
-
-
-Thubert, et al.         Expires 18 November 2020               [Page 53]
+Thubert, et al.         Expires 19 November 2020               [Page 53]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -3021,7 +3021,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 54]
+Thubert, et al.         Expires 19 November 2020               [Page 54]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -3077,7 +3077,7 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 55]
+Thubert, et al.         Expires 19 November 2020               [Page 55]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -3133,7 +3133,7 @@ Authors' Addresses
 
 
 
-Thubert, et al.         Expires 18 November 2020               [Page 56]
+Thubert, et al.         Expires 19 November 2020               [Page 56]
 
 Internet-Draft                  RAW Techs                       May 2020
 
@@ -3173,6 +3173,14 @@ Internet-Draft                  RAW Techs                       May 2020
    Email: corinna.schmitt@unibw.de
 
 
+   Janos Farkas
+   Ericsson
+   Budapest
+   Magyar tudosok korutja 11
+   1117
+   Hungary
+
+   Email: janos.farkas@ericsson.com
 
 
 
@@ -3181,12 +3189,4 @@ Internet-Draft                  RAW Techs                       May 2020
 
 
 
-
-
-
-
-
-
-
-
-Thubert, et al.         Expires 18 November 2020               [Page 57]
+Thubert, et al.         Expires 19 November 2020               [Page 57]
