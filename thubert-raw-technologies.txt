@@ -318,11 +318,11 @@ Internet-Draft                  RAW Techs                       May 2020
    802.11ac, have focused mainly on improving peak throughput, more
    recent generations are also considering other performance vectors,
    such as efficiency enhancements for dense environments in 802.11ax,
-   and latency and support for Time-Sensitive Networking (TSN)
+    low latency and enhancements for Time-Sensitive Networking (TSN)
    capabilities in 802.11be.
 
    IEEE 802.11 already supports some 802.1 TSN standards and it is
-   undergoing efforts to support for other 802.1 TSN capabilities
+   undergoing efforts to enhance support for other 802.1 TSN capabilities
    required to address the use cases that require time synchronization
    and timeliness (bounded latency) guarantees with high reliability and
    availability.  The IEEE 802.11 working group has been working in
@@ -479,12 +479,14 @@ Internet-Draft                  RAW Techs                       May 2020
 
    3.  Time-sensitive Traffic Stream identification
 
-   The exiting 802.11 TSN capabilities listed above, and the 802.11ax
-   OFDMA and scheduled access provide a new set of tools to better
-   server time-sensitive flows.  However, it is important to understand
-   the tradeoffs and constraints associated with such capabilities, as
-   well as redundancy and diversity mechanisms that can be used to
-   provide more predictable and reliable performance.
+   Other TSN capabilities, such as 802.1Qbv and 802.1CB can also operate
+   over 802.11, as demontrated in [Fung_19]. The exiting 802.11 TSN 
+   capabilities listed above, and the 802.11ax OFDMA scheduled 
+   access provide a new set of tools to better serve time-sensitive flows.  
+   However, it is important to understand the tradeoffs and constraints 
+   associated with such capabilities, as well as redundancy and 
+   diversity mechanisms that can be used to provide more predictable
+   and reliable performance.
 
 4.2.2.1.  802.11 Managed network operation and admission control
 
@@ -589,7 +591,7 @@ Internet-Draft                  RAW Techs                       May 2020
    Improvements for worst-case latency, jitter and reliability were the
    main topics identified in the RTA report, which were motivated by
    applications in gaming, industrial automation, robotics, etc.  The
-   RTA report also highlighted the need to support additional TSN
+   RTA report also highlighted the need to improve support for TSN
    capabilities, such as time-aware (802.1Qbv) shaping and packet
    replication and elimination as defined in 802.1CB.
 
@@ -604,6 +606,9 @@ Internet-Draft                  RAW Techs                       May 2020
    efficient and more predictable medium access. 802.11be is expected to
    include enhancements to reduce overhead and enable more efficient
    operation in managed network deployments [IEEE_doc_11-19-0373-00].
+   The restricted TWT (Target Wake Time) capabilities has been introduced
+   in the 802.1be Draft to enable protection and priority for time-sensitive
+   flows during scheduled service periods.
 
 
 
@@ -634,15 +639,17 @@ Internet-Draft                  RAW Techs                       May 2020
    different levels of complexities and benefits, but specific
    coordination methods have not yet been defined.
 
-4.3.2.3.  Multi-band operation
+4.3.2.3.  Multi-link Operation (MLO)
 
    802.11be will introduce new features to improve operation over
-   multiple bands and channels.  By leveraging multiple bands/channels,
+   multiple links and channels.  By leveraging multiple links/channels,
    802.11be can isolate time-sensitive traffic from network congestion,
    one of the main causes of large latency variations.  In a managed
    802.11be network, it should be possible to steer traffic to certain
    bands/channels to isolate time-sensitive traffic from other traffic
-   and help achieve bounded latency.
+   and help achieve bounded latency. The multi-link operation can also
+   enhance latency and reliablity by enabling data frames to be duplicated
+   across multiple links.
 
 4.4.  802.11ad and 802.11ay (mmWave operation)
 
@@ -3123,6 +3130,11 @@ Internet-Draft                  RAW Techs                       May 2020
               August 2019, <https://www.ericsson.com/en/reports-and-
               papers/ericsson-technology-review/articles/5g-tsn-
               integration-for-industrial-automation>.
+              
+   [Fang_21] Fang, J., Cavalcanti, D., Cordeiro, C., and Cheng, C.,
+             "Wireless TSN with Multi-Radio Wi-Fi,"IEEE Conference on 
+             Standards for Communications and Networking," 15-17 December
+             2021.
 
 Authors' Addresses
 
